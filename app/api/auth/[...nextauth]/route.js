@@ -49,10 +49,10 @@ export const authOptions = {
         dbUser = result.rows[0];
         if (!dbUser) {
           const newUserResult = await pool.query(
-            `INSERT INTO users (name, email, provider)
+            `INSERT INTO users (full_name, email, role)
              VALUES ($1, $2, $3)
-             RETURNING *`,
-            [user.name, email, 'twitter']
+             RETURNING id, full_name, email, role`,
+            [profile.name, profile.email, 'student']
           );
           dbUser = newUserResult.rows[0];
         }
@@ -93,6 +93,26 @@ export const authOptions = {
             maxAge: 60 * 60,
           });
         }
+        if (account?.provider === 'twitter') {
+          const customToken = jwt.sign(
+            {
+              id: user.id,
+              name: user.name,
+              email: user.email,
+              role: user.role,
+            },
+            process.env.JWT_SECRET,
+            { expiresIn: '1h' }
+          );
+          token.customToken = customToken;
+
+          cookies().set('token', customToken, {
+            httpOnly: true,
+            secure: process.env.NODE_ENV === 'production',
+            path: '/',
+            maxAge: 60 * 60,
+          });
+        }
       }
       return token;
     },
@@ -107,12 +127,11 @@ export const authOptions = {
       return session;
     },
 
-    async redirect({ baseUrl, token }) {
-      if (token?.provider === 'twitter') {
-        return `${baseUrl}/dashboard`;
-      }
-      return baseUrl;
-    },
+    async redirect({ url, baseUrl }) {
+      if (url.startsWith(baseUrl)) return url;
+      return `http://localhost:3000/dashboard`;
+    }
+
   },
   session: {
     strategy: 'jwt',

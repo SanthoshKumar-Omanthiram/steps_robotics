@@ -125,14 +125,8 @@ export default function LoginPage() {
 
           {/* Auth Buttons (Google/Apple skipped for brevity) */}
           <div className="flex justify-center gap-4">
-            {/* <svg xmlns="http://www.w3.org/2000/svg" width="42" height="42" viewBox="0 0 42 42" fill="none">
-              <path d="M39.3662 21.0578C39.3662 31.0698 31.2497 39.1954 21.2287 39.1954C11.2077 39.1954 3.09109 31.0698 3.09109 21.0578C3.09109 11.0368 11.2077 2.92029 21.2287 2.92029C31.2497 2.92029 39.3662 11.0368 39.3662 21.0578Z" fill="#283544" />
-              <path d="M29.7301 16.4683C29.6311 16.526 27.275 17.7445 27.275 20.4462C27.3861 23.5273 30.2483 24.6078 30.2974 24.6078C30.2483 24.6655 29.8653 26.0798 28.7307 27.5622C27.8302 28.8392 26.8308 30.1267 25.3132 30.1267C23.8696 30.1267 23.3514 29.2756 21.6857 29.2756C19.8969 29.2756 19.3907 30.1267 18.0211 30.1267C16.5035 30.1267 15.43 28.7702 14.4805 27.5052C13.2469 25.8496 12.1984 23.2513 12.1614 20.7566C12.1365 19.4346 12.4085 18.1352 13.0989 17.0314C14.0733 15.4905 15.8131 14.4444 17.7129 14.41C19.1686 14.3642 20.4642 15.3413 21.3525 15.3413C22.2039 15.3413 23.7956 14.41 25.5964 14.41C26.3738 14.4107 28.4466 14.6289 29.7301 16.4683ZM21.2294 14.146C20.9703 12.9388 21.6857 11.7315 22.3519 10.9614C23.2033 10.0301 24.5479 9.39801 25.7075 9.39801C25.7815 10.6053 25.3124 11.7893 24.4739 12.6516C23.7215 13.5829 22.426 14.284 21.2294 14.146Z" fill="white" />
-            </svg> */}
-            {/* <button onClick={() => signIn('google')}>
-              Sign in with Google
-            </button> */}
-            <button onClick={() => signIn('google', { callbackUrl: '/dashboard' })}>
+
+            <button className='social_media_icons' onClick={() => signIn('google', { callbackUrl: '/dashboard' })}>
               <svg xmlns="http://www.w3.org/2000/svg" width="42" height="42" viewBox="0 0 42 42" fill="none">
                 <path d="M38.9107 21.4607C38.9107 19.9694 38.7872 18.8811 38.52 17.7526H21.1433V24.4836H31.3431C31.1375 26.1563 30.027 28.6754 27.5593 30.3682L27.5247 30.5935L33.0189 34.7647L33.3995 34.8019C36.8954 31.6379 38.9107 26.9825 38.9107 21.4607Z" fill="#4285F4" />
                 <path d="M21.1422 39.1954C26.1392 39.1954 30.3342 37.5831 33.3984 34.8021L27.5581 30.3683C25.9953 31.4364 23.8977 32.1821 21.1422 32.1821C16.248 32.1821 12.0941 29.0181 10.6133 24.6449L10.3963 24.663L4.68337 28.9959L4.60866 29.1994C7.65211 35.1244 13.9036 39.1954 21.1422 39.1954Z" fill="#34A853" />
@@ -141,14 +135,7 @@ export default function LoginPage() {
               </svg>
             </button>
             {/* Twitter Button */}
-            {/* <button
-              onClick={() => signIn('twitter', { callbackUrl: '/dashboard' })}
-              className="p-2 border rounded hover:bg-gray-100"
-            >
-              Sign in with Twitter
-            </button> */}
-
-            <button
+            <button className='social_media_icons'
               onClick={() =>
                 signIn("twitter", {
                   callbackUrl: "/dashboard", // force post-login redirect
@@ -159,6 +146,20 @@ export default function LoginPage() {
                 <path d="M17.21 3H20.08L14.12 10.11L21.17 21H15.42L11.12 14.87L6.12 21H3.25L9.64 13.36L2.83 3H8.73L12.65 8.58L17.21 3Z" fill="#1DA1F2" />
               </svg>
             </button>
+
+            {/* Facebook Button */}
+            <button className='social_media_icons'
+              onClick={() =>
+                signIn("facebook", {
+                  callbackUrl: "/dashboard",
+                })
+              }
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="42" height="42" fill="#1877F2" viewBox="0 0 24 24">
+                <path d="M22.675 0h-21.35C.6 0 0 .6 0 1.337v21.326C0 23.4.6 24 1.325 24h11.495V14.708H9.691v-3.62h3.129V8.414c0-3.1 1.893-4.788 4.658-4.788 1.325 0 2.464.098 2.797.142v3.245h-1.92c-1.507 0-1.798.716-1.798 1.765v2.313h3.593l-.468 3.62h-3.125V24h6.125C23.4 24 24 23.4 24 22.663V1.337C24 .6 23.4 0 22.675 0z" />
+              </svg>
+            </button>
+
 
           </div>
           <div className="text-center mt-4 text-sm">

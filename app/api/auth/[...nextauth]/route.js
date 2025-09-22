@@ -2,6 +2,7 @@ import NextAuth from 'next-auth';
 import GoogleProvider from 'next-auth/providers/google';
 import TwitterProvider from 'next-auth/providers/twitter';
 import FacebookProvider from 'next-auth/providers/facebook';
+import OktaProvider from 'next-auth/providers/okta';
 import pool from '@/lib/db';
 import jwt from 'jsonwebtoken';
 import { cookies } from 'next/headers';
@@ -20,6 +21,11 @@ export const authOptions = {
     FacebookProvider({
       clientId: process.env.FACEBOOK_CLIENT_ID,
       clientSecret: process.env.FACEBOOK_CLIENT_SECRET,
+    }),
+    OktaProvider({
+      clientId: process.env.OKTA_CLIENT_ID,
+      clientSecret: process.env.OKTA_CLIENT_SECRET,
+      issuer: process.env.OKTA_ISSUER, 
     }),
   ],
   callbacks: {

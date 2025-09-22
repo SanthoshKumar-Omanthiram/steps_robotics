@@ -160,6 +160,21 @@ export default function LoginPage() {
               </svg>
             </button>
 
+            {/* Okta Button */}
+            <button
+              className="social_media_icons"
+              onClick={() =>
+                signIn("okta", {
+                  callbackUrl: "/dashboard",
+                })
+              }
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="42" height="42" viewBox="0 0 24 24" fill="none">
+                <circle cx="12" cy="12" r="10" fill="#00297A" />
+                <text x="12" y="16" textAnchor="middle" fontSize="10" fill="white" fontWeight="bold">Okta</text>
+              </svg>
+            </button>
+
 
           </div>
           <div className="text-center mt-4 text-sm">

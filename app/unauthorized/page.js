@@ -1,10 +1,10 @@
 import React from 'react'
-import SignIn from '../component/SignIn'
+import Authorized from '../component/Authorized'
 
 export default function page() {
   return (
     <>
-      <SignIn />
+    <Authorized />
     </>
   )
 }

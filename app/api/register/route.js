@@ -1,4 +1,3 @@
-// app/api/users/route.js
 import pool from '@/lib/db';
 import { NextResponse } from 'next/server';
 import bcrypt from 'bcrypt';
@@ -16,31 +15,32 @@ export async function GET(request) {
   }
 }
 
-// POST method to create a new user
 export async function POST(req) {
   try {
     const body = await req.json();
-    const { full_name, student_id, age, grade, email, parent_phone, password, role } = body;
+    const { full_name, student_id, age, grade, email, parent_phone, password, role, access } = body;
 
     if (!full_name || !email || !password) {
       return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });
     }
 
-    // Hash password
     const password_hash = await bcrypt.hash(password, 10);
 
-    // Insert into DB
+    const accessValue = access !== undefined ? 1 : 0;
+
     const result = await pool.query(
-      `INSERT INTO users (full_name, student_id, age, grade, email, parent_phone, password_hash, role)
-       VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
-       RETURNING id, full_name, student_id, age, grade, email, parent_phone, role`,
-      [full_name, student_id, age, grade, email, parent_phone, password_hash, role]
+      `INSERT INTO users (full_name, student_id, age, grade, email, parent_phone, password_hash, role, access)
+       VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9)
+       RETURNING id, full_name, student_id, age, grade, email, parent_phone, role, access`,
+      [full_name, student_id, age, grade, email, parent_phone, password_hash, role, accessValue]
     );
 
     return NextResponse.json({ message: 'User registered successfully', user: result.rows[0] });
   } catch (error) {
     console.error(error);
-    return NextResponse.json({ error: 'Registration failed' }, { status: 500 });
+    return NextResponse.json({ error: 'Registration failed', details: error.message }, { status: 500 });
   }
 }
+
+
 

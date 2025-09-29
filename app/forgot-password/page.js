@@ -1,10 +1,10 @@
 import React from 'react'
-import SignIn from '../component/SignIn'
+import ForgotPassword from '../component/ForgotPassword'
 
 export default function page() {
   return (
     <>
-      <SignIn />
+      <ForgotPassword />
     </>
   )
 }

@@ -1,10 +1,10 @@
 import React from 'react'
-import SignIn from '../component/SignIn'
+import AdminDashboard from '../components/AdminDashboard'
 
 export default function page() {
   return (
     <>
-      <SignIn />
+      <AdminDashboard />
     </>
   )
 }

@@ -1,4 +1,5 @@
 'use client';
+import { useRouter } from "next/navigation";
 
 import { useState } from 'react';
 import { Menu, Bell, User } from 'lucide-react';
@@ -12,6 +13,18 @@ export default function Layout({ children }) {
 
   const displayName = user?.full_name || "Loading...";
   const displayDept = user?.department || "Loading...";
+
+  const router = useRouter();
+
+  const handleLogout = async () => {
+    try {
+      await fetch("/api/logout", { method: "POST" });
+      localStorage.removeItem('role');
+      router.push("/login");
+    } catch (err) {
+      console.error("Logout failed:", err);
+    }
+  };
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -72,7 +85,7 @@ export default function Layout({ children }) {
                     </li>
                     <li
                       className="px-4 py-2 text-sm text-red-600 hover:bg-gray-100 cursor-pointer"
-                      onClick={() => alert('Logout Clicked')}
+                      onClick={handleLogout}
                     >
                       Logout
                     </li>

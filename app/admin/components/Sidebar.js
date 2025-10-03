@@ -32,7 +32,7 @@ export default function Sidebar({ collapsed, setCollapsed }) {
 
   const menuItems = [
     { href: "/admin/dashboard", label: "Dashboard", icon: "/dashboard.svg" },
-    { href: "/admin/users", label: "Users", icon: "/user.svg" },
+    { href: "/admin/add-users", label: "Users", icon: "/user.svg" },
     { href: "/admin/projects", label: "LMS", icon: "/lms.svg" },
     {
       href: "/admin/tasks",

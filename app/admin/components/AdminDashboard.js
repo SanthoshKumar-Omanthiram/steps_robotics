@@ -3,12 +3,38 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import Loader from "../components/Loader";
+import Link from "next/link";
+import axios from "axios";
 
 export default function LMSDashboard() {
   const router = useRouter();
   const [currentTime, setCurrentTime] = useState("");
   const [loading, setLoading] = useState(true);
   const [authorized, setAuthorized] = useState(false);
+
+  const [counts, setCounts] = useState({
+    totalUsers: 0,
+    totalStudents: 0,
+    newStudents: 0
+  });
+
+
+  const fetchCounts = async () => {
+    try {
+      const res = await axios.get("/api/register/count");
+      console.log("API response:", res.data); // ✅ Check the shape
+      setCounts(res.data); // ✅ Only once
+      setLoading(false);
+    } catch (error) {
+      console.error("Error fetching counts:", error);
+      setLoading(false);
+    }
+  };
+
+
+  useEffect(() => {
+    fetchCounts();
+  }, []);
 
   useEffect(() => {
     const timer = setTimeout(() => setLoading(false), 2000);
@@ -43,8 +69,10 @@ export default function LMSDashboard() {
   if (loading) return <Loader />;
   if (!authorized) return null;
 
+
+
   return (
-    <div className="p-6 admin-main bg-gray-50 min-h-screen">
+    <div className="p-6 admin-main bg-gray-50 min-h-screen ml-64">
       {/* Header */}
       <div className="container admin-header py-4">
         <div className="grid grid-cols-1 md:grid-cols-12 items-center gap-6">
@@ -89,8 +117,12 @@ export default function LMSDashboard() {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
         <div className="bg-green-50 shadow-md rounded-lg p-4">
           <p className="text-sm font-medium text-gray-700">Total Students</p>
-          <h2 className="text-2xl font-bold mt-1">1,250</h2>
-          <p className="text-sm text-green-600 mt-1">50 New</p>
+          <h2 className="text-2xl font-bold mt-1">
+            {counts.totalStudents.toLocaleString()}
+          </h2>
+          <p className="text-sm text-green-600 mt-1">
+            {counts.newStudents} New
+          </p>
         </div>
         <div className="bg-blue-50 shadow-md rounded-lg p-4">
           <p className="text-sm font-medium text-gray-700">Total Courses</p>
@@ -209,7 +241,7 @@ export default function LMSDashboard() {
             <li>Faculty meeting scheduled</li>
           </ul>
         </div>
-        <div className="bg-white shadow-md rounded-lg p-4">
+        {/* <div className="bg-white shadow-md rounded-lg p-4">
           <h4 className="font-semibold mb-2">Quick Actions</h4>
           <button className="w-full bg-blue-500 text-white py-2 rounded mb-2 hover:bg-blue-600">
             Add Student
@@ -217,6 +249,21 @@ export default function LMSDashboard() {
           <button className="w-full bg-green-500 text-white py-2 rounded hover:bg-green-600">
             Add Course
           </button>
+        </div> */}
+        <div className="bg-white shadow-md rounded-lg p-4">
+          <h4 className="font-semibold mb-2">Quick Actions</h4>
+
+          <Link href="/admin/add-users">
+            <button className="w-full bg-blue-500 text-white py-2 rounded mb-2 hover:bg-blue-600">
+              Add Student
+            </button>
+          </Link>
+
+          <Link href="/courses/add">
+            <button className="w-full bg-green-500 text-white py-2 rounded hover:bg-green-600">
+              Add Course
+            </button>
+          </Link>
         </div>
         <div className="bg-white shadow-md rounded-lg p-4">
           <h4 className="font-semibold mb-2">Messages</h4>

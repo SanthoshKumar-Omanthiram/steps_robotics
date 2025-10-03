@@ -26,7 +26,7 @@ export async function POST(req) {
 
     const password_hash = await bcrypt.hash(password, 10);
 
-    const accessValue = access !== undefined ? 1 : 0;
+    const accessValue = role === "admin" ? 1 : 0;
 
     const result = await pool.query(
       `INSERT INTO users (full_name, student_id, age, grade, email, parent_phone, password_hash, role, access)

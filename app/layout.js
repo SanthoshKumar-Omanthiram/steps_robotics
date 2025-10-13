@@ -1,17 +1,15 @@
 import { Geist, Geist_Mono, Orbitron, Poppins } from "next/font/google";
 import "./globals.css";
 import { UserProvider } from "./Context/UserContext";
-import { Orbitron, Poppins } from "next/font/google";
+import Navbar from "./component/Navbar";
+
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
 });
 
-// const geistMono = Geist_Mono({
-//   variable: "--font-geist-mono",
-//   subsets: ["latin"],
-// });
+
 const orbitron = Orbitron({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
@@ -33,7 +31,8 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${orbitron.variable} ${poppins.variable}`}>
       <body>
-       <UserProvider>{children}</UserProvider>
+        <Navbar />
+        <UserProvider>{children}</UserProvider>
       </body>
     </html>
   );

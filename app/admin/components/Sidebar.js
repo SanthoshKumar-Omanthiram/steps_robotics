@@ -42,6 +42,7 @@ export default function Sidebar({ collapsed, setCollapsed }) {
     { href: "/admin/analytics", label: "Attendance", icon: "/attendance.svg" },
     { href: "/admin/reports", label: "Exams & Results", icon: "/exam.svg" },
      { href: "/admin/dashboard/roles", label: "Roles", icon: "/user.svg" },
+     { href: "/admin/courses", label: "Courses", icon: "/courses.png" },
     { href: "/admin/settings", label: "Settings", icon: "/settings.svg" },
   ];
 

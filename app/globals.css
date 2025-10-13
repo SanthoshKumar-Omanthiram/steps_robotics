@@ -1,5 +1,21 @@
 @import "tailwindcss";
 
+:root {
+  --font-orbitron: 'Orbitron';
+  --font-poppins: 'Poppins';
+}
+
+/* Use Orbitron for all headings */
+/* h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-orbitron);
+} */
+
+/* Use Poppins for normal text */
+p, span, a, li {
+  font-family: var(--font-poppins);
+}
+
+
 .text-font, .py-2 {
   font-family: Poppins;
   font-size: 14px;
@@ -55,3 +71,96 @@
 .social_media_icons{
   cursor: pointer;
 }
+
+
+.nav-items-name{
+  color: #cc1616 !important
+}
+
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* .animate-float {
+  animation: float 3s ease-in-out infinite;
+} */
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@layer utilities {
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+}
+
+
+.text-font-poppins {
+  font-family: var(--font-poppins);
+  font-size: 14px;
+}
+
+.text-font-orbitron{
+  font-family: var(--font-orbitron);
+  font-size: 30px;
+}
+
+
+.custom-dashed-border {
+  border-style: dashed;
+  border-width: 1px; /* change this to control thickness */
+}
+
+.banner-text h1,
+.banner-text h2 {
+  font-family: var(--font-orbitron);
+  font-weight: bold;
+  font-size: 64px;
+}
+
+.text-font-orbitron-explore{
+  font-family: var(--font-orbitron);
+}
+
+.text-font-poppins-explore{
+  font-family: var(--font-poppins);
+}
+
+/** Navigation border line **/
+
+
+/* globals.css */
+.nav-link {
+  position: relative;
+}
+
+.nav-link::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #facc15; /* Tailwind yellow-500 */
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover::before {
+  width: 50%;
+}
+
+
+
+

@@ -1,7 +1,5 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Orbitron, Poppins } from "next/font/google";
 import "./globals.css";
-import tailwindcss from "tailwindcss";
-import autoprefixer from "autoprefixer";
 import { UserProvider } from "./Context/UserContext";
 import { Orbitron, Poppins } from "next/font/google";
 

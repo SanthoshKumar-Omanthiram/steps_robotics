@@ -18,7 +18,7 @@ export default function AdminLayout({ children }) {
       <Sidebar collapsed={collapsed} setCollapsed={setCollapsed} />
       <main
         className={`p-6 admin-main bg-gray-50 min-h-screen w-full transition-all duration-300
-          ml-0 md:ml-${collapsed ? '14' : '10'}`}
+          ml-0 md:ml-${collapsed ? '14' : '64'}`}
       >
         {children}
       </main>

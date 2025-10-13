@@ -17,8 +17,9 @@ export default function AdminLayout({ children }) {
     <div className={`${poppins.variable} font-sans flex`}>
       <Sidebar collapsed={collapsed} setCollapsed={setCollapsed} />
       <main
-        className={`p-6 admin-main bg-gray-50 min-h-screen w-full transition-all duration-300
-          ml-0 md:ml-${collapsed ? '14' : '64'}`}
+        className={`admin-main bg-gray-50 min-h-screen w-full transition-all duration-300 ml-0 ${
+          collapsed ? 'md:ml-14' : 'md:ml-64'
+        } px-4 sm:px-6 lg:px-8 py-6`}
       >
         {children}
       </main>

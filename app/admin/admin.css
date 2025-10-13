@@ -19,3 +19,6 @@ letter-spacing: 0.384px;
 .admin-header{
     padding: 0 0 50px 0;
 }
+.footer{
+    display: none !important;
+}

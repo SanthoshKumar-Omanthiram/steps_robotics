@@ -15,10 +15,8 @@ export default function Layout({ children }) {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* HEADER */}
       <header className="bg-white shadow-sm border-b border-gray-200 fixed w-full top-0 z-30">
         <div className="flex items-center justify-between px-4 py-3">
-          {/* Mobile Sidebar Button */}
           <button
             onClick={() => setSidebarOpen(true)}
             className="lg:hidden p-2 rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-100"
@@ -84,7 +82,6 @@ export default function Layout({ children }) {
         </div>
       </header>
 
-      {/* SIDEBAR */}
       <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
 
       {/* MAIN CONTENT */}

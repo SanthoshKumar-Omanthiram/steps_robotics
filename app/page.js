@@ -140,7 +140,7 @@ const features = [
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-white sticky top-0 z-50">
+    <div className="min-h-screen bg-white">
 
     {/**Navbar */}
 
@@ -432,7 +432,7 @@ export default function Home() {
         {/* Content Section */}
         <div className="container mx-auto px-4 grid grid-cols-2 md:grid-cols-2 gap-10 items-center">
           {/* Left: Images and colored boxes */}
-          <div className="">
+          <div className="choose_steps">
             <div className='relative flex flex-col items-start'>
               <div className="relative w-[257px] h-[257px] overflow-hidden shadow-lg mb-6 ml-12">
                 <Image

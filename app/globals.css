@@ -11,7 +11,10 @@
 } */
 
 /* Use Poppins for normal text */
-p, span, a, li {
+p,
+span,
+a,
+li {
   font-family: var(--font-poppins);
 }
 
@@ -28,53 +31,61 @@ p, span, a, li {
 .bg-signup {
   background-color: #000;
 }
-.signin{
+
+.signin {
   background: url('/sign-banner.jpg');
-    background-position: center;
+  background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   height: auto !important;
   width: 100%;
 }
-.signin-main-title{
-    font-family: var(--font-orbitron), sans-serif;
+
+.signin-main-title {
+  font-family: var(--font-orbitron), sans-serif;
   font-size: 34px;
   font-weight: 600;
   color: #000;
   margin-bottom: 10px;
 }
-.signin-sub-title{
-    font-family: var(--font-poppins), sans-serif;
+
+.signin-sub-title {
+  font-family: var(--font-poppins), sans-serif;
   font-size: 14px;
   font-weight: 400;
   color: #000;
   margin-bottom: 10px;
 }
-.signin-form-title{
-     font-family: var(--font-orbitron), sans-serif;
+
+.signin-form-title {
+  font-family: var(--font-orbitron), sans-serif;
   font-size: 24px;
   font-weight: 600;
   color: #000;
   margin-bottom: 10px;
 }
-.signin-form-subtitle{
-      font-family: var(--font-poppins), sans-serif;
+
+.signin-form-subtitle {
+  font-family: var(--font-poppins), sans-serif;
   font-size: 12px;
   font-weight: 400;
   color: #474343;
   margin-bottom: 10px;
   font-style: italic;
 }
+
 .logo {
   width: auto;
 }
-.f-poppins{
-   font-family: var(--font-poppins), sans-serif;
+
+.f-poppins {
+  font-family: var(--font-poppins), sans-serif;
 }
-.role-sigin-btn{
-    font-family: var(--font-poppins), sans-serif;
+
+.role-sigin-btn {
+  font-family: var(--font-poppins), sans-serif;
   font-size: 12px;
-  font-weight: 600;  
+  font-weight: 600;
 }
 
 .bgImagesignup {
@@ -149,14 +160,14 @@ p, span, a, li {
 }
 
 .stem-education-course {
-	background-image: url("/course-vex-bg.png");
-	background-position: center;
-	background-repeat: no-repeat;
-	background-size: cover;
-	width: 100%;
-	height: auto !important;
-	margin-top: 10px;
-	padding: 70px;
+  background-image: url("/course-vex-bg.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: auto !important;
+  margin-top: 10px;
+  padding: 70px;
 }
 
 .stem-education-title {
@@ -257,21 +268,23 @@ p, span, a, li {
 }
 
 .course-works {
-   background: #fffdf2;
+  background: #fffdf2;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   height: auto !important;
   width: 100%;
 }
-.course-news-letter-model{
+
+.course-news-letter-model {
   margin: 30px 0 0 -60px !important;
 }
 
-.course-news-letter{
+.course-news-letter {
   border-radius: 20px;
 }
-.course-news-letters{
+
+.course-news-letters {
   background-image: url('/course-news-bg.jpg');
   background-position: center;
   background-repeat: no-repeat;
@@ -279,338 +292,393 @@ p, span, a, li {
   height: auto !important;
   width: 100%;
 }
-.course-work-h2{
+
+.course-work-h2 {
   font-family: var(--font-orbitron), sans-serif;
   font-size: 26px;
   font-weight: 500;
   margin-bottom: 10px;
 }
-.course-work-p{
-    font-family: var(--font-poppins), sans-serif;
-  font-size: 13px;
-  font-weight: 400;
-  margin-bottom: 10px;
-  color: #000;
-}
-.works-main-tag{
-    font-family: var(--font-orbitron), sans-serif;
-  font-size: 16px;
-  font-weight: 500;
-  margin-bottom: 10px;
-}
-.works-main-subtag{
-    font-family: var(--font-poppins), sans-serif;
-  font-size: 13px;
-  font-weight: 400;
-  margin-bottom: 10px;
-  color: #000;
-}
-.feedback-main{
- font-family: var(--font-orbitron), sans-serif;
-  font-size: 26px;
-  font-weight: 500;
-  margin-bottom: 10px;
-}
-.feedback-subtag{
+
+.course-work-p {
   font-family: var(--font-poppins), sans-serif;
   font-size: 13px;
   font-weight: 400;
   margin-bottom: 10px;
   color: #000;
 }
-.course-testimonial-text{
+
+.works-main-tag {
+  font-family: var(--font-orbitron), sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.works-main-subtag {
+  font-family: var(--font-poppins), sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  margin-bottom: 10px;
+  color: #000;
+}
+
+.feedback-main {
+  font-family: var(--font-orbitron), sans-serif;
+  font-size: 26px;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.feedback-subtag {
+  font-family: var(--font-poppins), sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  margin-bottom: 10px;
+  color: #000;
+}
+
+.course-testimonial-text {
   font-family: var(--font-poppins), sans-serif;
   font-size: 12px;
   font-weight: 400;
   margin-bottom: 10px;
   color: #000;
 }
-.course-testimonial-name{
+
+.course-testimonial-name {
   font-family: var(--font-poppins), sans-serif;
   font-size: 19px;
   font-weight: 500;
   margin-bottom: 10px;
   color: #000;
 }
-.course-testimonial-role{
+
+.course-testimonial-role {
   font-family: var(--font-poppins), sans-serif;
   font-size: 12px;
   font-weight: 400;
   margin-bottom: 10px;
   color: #000;
 }
-.course-news-letter-top-tag{
-   font-family: var(--font-orbitron), sans-serif;
+
+.course-news-letter-top-tag {
+  font-family: var(--font-orbitron), sans-serif;
   font-size: 12px;
   font-weight: 400;
   margin-bottom: 10px;
 }
-.course-news-letter-top-title{
-   font-family: var(--font-orbitron), sans-serif;
+
+.course-news-letter-top-title {
+  font-family: var(--font-orbitron), sans-serif;
   font-size: 24px;
   font-weight: 500;
   margin-bottom: 10px;
 }
-.course-news-letter-text{
-    font-family: var(--font-poppins), sans-serif;
-  font-size: 12px;
-  font-weight: 400;
-  margin-bottom: 10px;
-}
-.course-news-letter-points{
-    font-family: var(--font-poppins), sans-serif;
-  font-size: 12px;
-  font-weight: 400;
-  margin-bottom: 10px;
-}
-.course-news-letter-emailbox {
-	background: #fff;
-	border-radius: 8px;
-	padding: 9px 9px 0 9px;
-	margin-top: -17px;
-}
-.course-news-letter-btn{
+
+.course-news-letter-text {
   font-family: var(--font-poppins), sans-serif;
   font-size: 12px;
   font-weight: 400;
   margin-bottom: 10px;
 }
-.course-news-letter-email{
-	background: #d9d9d9;
-}
 
-.course-news-letter-email::placeholder{
-	color: #3f3b3b;
-   font-family: var(--font-poppins), sans-serif;
+.course-news-letter-points {
+  font-family: var(--font-poppins), sans-serif;
   font-size: 12px;
   font-weight: 400;
   margin-bottom: 10px;
 }
-.stem-education-course{
-    background-image: url('/course-vex-bg.png');
+
+.course-news-letter-emailbox {
+  background: #fff;
+  border-radius: 8px;
+  padding: 9px 9px 0 9px;
+  margin-top: -17px;
+}
+
+.course-news-letter-btn {
+  font-family: var(--font-poppins), sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  margin-bottom: 10px;
+}
+
+.course-news-letter-email {
+  background: #d9d9d9;
+}
+
+.course-news-letter-email::placeholder {
+  color: #3f3b3b;
+  font-family: var(--font-poppins), sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  margin-bottom: 10px;
+}
+
+.stem-education-course {
+  background-image: url('/course-vex-bg.png');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   height: auto !important;
   width: 100%;
 }
-.step-image{
+
+.step-image {
   width: 100%;
   height: 182px !important;
 }
-.footer-address{
-   font-family: var(--font-poppins), sans-serif;
+
+.footer-address {
+  font-family: var(--font-poppins), sans-serif;
   font-size: 13px;
   font-weight: 400;
   margin-bottom: 10px;
   color: #000;
 }
-.footer-address-company{
+
+.footer-address-company {
   font-family: var(--font-poppins), sans-serif;
   font-size: 12px;
   font-weight: 400;
   margin-bottom: 10px;
   color: #000;
 }
-.footer-links{
-    font-family: var(--font-poppins), sans-serif;
+
+.footer-links {
+  font-family: var(--font-poppins), sans-serif;
   font-size: 13px;
   font-weight: 400;
   margin-bottom: 10px;
   color: #000;
 }
-.footer-links-title{
-     font-family: var(--font-orbitron), sans-serif;
+
+.footer-links-title {
+  font-family: var(--font-orbitron), sans-serif;
   font-size: 17px;
   font-weight: 600;
   margin-bottom: 10px;
 }
-.footer-sub-title{
+
+.footer-sub-title {
   font-family: var(--font-poppins), sans-serif;
   font-size: 14px;
   font-weight: 400;
 }
-.footer{
-   background-image: url('/footer-bg.jpg');
+
+.footer {
+  background-image: url('/footer-bg.jpg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   height: auto !important;
   width: 100%;
 }
-.footer-bottom-text{
-   font-family: var(--font-poppins), sans-serif;
+
+.footer-bottom-text {
+  font-family: var(--font-poppins), sans-serif;
   font-size: 12px;
   font-weight: 400;
 }
-.contacts{
-   background-image: url('/banner.jpg');
+
+.contacts {
+  background-image: url('/banner.jpg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   height: 345px !important;
   width: 100%;
 }
-.contact-heroic-image{
-	object-fit: contain;
-	margin-top: -12px;
-	width: 100% !important;
-	height: auto !important;
+
+.contact-heroic-image {
+  object-fit: contain;
+  margin-top: -12px;
+  width: 100% !important;
+  height: auto !important;
 }
 
 .heroic-title {
-	font-family: var(--font-orbitron), sans-serif;
-	color: #000;
-	-webkit-text-stroke: .3px white;
-	text-shadow: 1px 1px #fff, -1px 1px #fff, 1px -1px #fff, -1px -1px #fff;
-	margin-top: 120px;
-	font-size: 38px;
-	font-weight: 700;
-	text-align: center;
+  font-family: var(--font-orbitron), sans-serif;
+  color: #000;
+  -webkit-text-stroke: .3px white;
+  text-shadow: 1px 1px #fff, -1px 1px #fff, 1px -1px #fff, -1px -1px #fff;
+  margin-top: 120px;
+  font-size: 38px;
+  font-weight: 700;
+  text-align: center;
 }
+
 .contact-way-title {
   font-family: var(--font-orbitron), sans-serif;
   font-size: 24px;
   font-weight: 500;
   margin-bottom: 10px;
 }
+
 .contact-model-title {
   text-align: left;
   font-size: 11px;
   font-family: Poppins;
   color: black;
 }
-.contact-main-title{
-   font-family: var(--font-orbitron), sans-serif;
+
+.contact-main-title {
+  font-family: var(--font-orbitron), sans-serif;
   font-size: 18px;
   font-weight: 600;
   margin-bottom: 5px;
 }
-.contact-subtitle{
-    font-family: var(--font-poppins), sans-serif;
+
+.contact-subtitle {
+  font-family: var(--font-poppins), sans-serif;
   font-size: 12px;
   font-weight: 400;
 }
+
 .get-in-touch-title {
-	font-family: var(--font-orbitron), sans-serif;
-	margin-bottom: 5px;
-	font-size: 18px;
-	font-weight: 600;
+  font-family: var(--font-orbitron), sans-serif;
+  margin-bottom: 5px;
+  font-size: 18px;
+  font-weight: 600;
 }
-.get-in-touch-subtitle{
-    font-family: var(--font-poppins), sans-serif;
+
+.get-in-touch-subtitle {
+  font-family: var(--font-poppins), sans-serif;
   font-size: 12px;
   font-weight: 400;
 }
+
 .form-contact-label {
-	font-family: var(--font-poppins), sans-serif;
-	margin-top: -5px;
-	margin-bottom: 5px;
-	padding: 0 9px;
-	font-size: 10px;
-	font-weight: 400;
+  font-family: var(--font-poppins), sans-serif;
+  margin-top: -5px;
+  margin-bottom: 5px;
+  padding: 0 9px;
+  font-size: 10px;
+  font-weight: 400;
 }
-.contact-field-placeholder{
-   font-family: var(--font-poppins), sans-serif;
+
+.contact-field-placeholder {
+  font-family: var(--font-poppins), sans-serif;
   font-size: 12px;
   font-weight: 400;
   color: #000 !important;
 }
-.contact-field-placeholder::placeholder{
-   font-family: var(--font-poppins), sans-serif;
+
+.contact-field-placeholder::placeholder {
+  font-family: var(--font-poppins), sans-serif;
   font-size: 12px;
   font-weight: 400;
   color: #000 !important;
 }
-.getin-touch{
+
+.getin-touch {
   margin: 40px 0;
 }
-.maps{
+
+.maps {
   margin: 40px 0 0 0;
 }
-.program-main-title{
+
+.program-main-title {
   font-family: var(--font-orbitron), sans-serif;
-	font-size: 21px;
-	font-weight: 500;
+  font-size: 21px;
+  font-weight: 500;
 }
-.program-sub-title{
-   font-family: var(--font-poppins), sans-serif;
-	font-size: 13px;
-	font-weight: 400;
+
+.program-sub-title {
+  font-family: var(--font-poppins), sans-serif;
+  font-size: 13px;
+  font-weight: 400;
 }
-.border-hr{
+
+.border-hr {
   border: 1px dashed orange;
   margin-top: -22px;
   margin-bottom: 15px;
 }
+
 .event-title {
-	font-family: var(--font-orbitron), sans-serif;
-	font-size: 18px;
-	font-weight: 500;
+  font-family: var(--font-orbitron), sans-serif;
+  font-size: 18px;
+  font-weight: 500;
 }
-.event-subtitle{
+
+.event-subtitle {
   font-family: var(--font-poppins), sans-serif;
-	font-size: 13px;
-	font-weight: 600;
+  font-size: 13px;
+  font-weight: 600;
 }
-.event-subtext{
+
+.event-subtext {
   font-family: var(--font-poppins), sans-serif;
-	font-size: 13px;
-	font-weight: 400;
+  font-size: 13px;
+  font-weight: 400;
 }
-.event-details{
+
+.event-details {
   font-family: var(--font-poppins), sans-serif;
-	font-size: 12px;
-	font-weight: 500;
+  font-size: 12px;
+  font-weight: 500;
 }
-.event-details-span{
+
+.event-details-span {
   font-family: var(--font-poppins), sans-serif;
-	font-size: 11px;
-	font-weight: 400;
+  font-size: 11px;
+  font-weight: 400;
 }
-.event-enroll-btn{
+
+.event-enroll-btn {
   font-family: var(--font-poppins), sans-serif;
-	font-size: 18px;
-	font-weight: 600;
+  font-size: 18px;
+  font-weight: 600;
 }
-.border-hr-breadcrumb{
-   border: 1px dashed orange;
+
+.border-hr-breadcrumb {
+  border: 1px dashed orange;
   margin-bottom: 25px;
 }
-.border-hr-text{
-    font-family: var(--font-poppins), sans-serif;
-	font-size: 12px;
-	font-weight: 400;
+
+.border-hr-text {
+  font-family: var(--font-poppins), sans-serif;
+  font-size: 12px;
+  font-weight: 400;
 }
-.program-workshop{
-     /* background-image: url('/footer-bg.jpg'); */
+
+.program-workshop {
+  /* background-image: url('/footer-bg.jpg'); */
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   height: auto !important;
   width: 100%;
 }
-.choose-main-title{
-  	font-family: var(--font-orbitron), sans-serif;
-	font-size: 22px;
-	font-weight: 500;
+
+.choose-main-title {
+  font-family: var(--font-orbitron), sans-serif;
+  font-size: 22px;
+  font-weight: 500;
 }
-.choose-description{
+
+.choose-description {
   font-family: var(--font-poppins), sans-serif;
-	font-size: 12px;
-	font-weight: 400;
+  font-size: 12px;
+  font-weight: 400;
 }
-.choose-points-main{
-  	font-family: var(--font-orbitron), sans-serif;
-	font-size: 14px;
-	font-weight: 500;
+
+.choose-points-main {
+  font-family: var(--font-orbitron), sans-serif;
+  font-size: 14px;
+  font-weight: 500;
 }
-.choose-points-description{
+
+.choose-points-description {
   font-family: var(--font-poppins), sans-serif;
-	font-size: 12px;
-	font-weight: 400;
+  font-size: 12px;
+  font-weight: 400;
 }
-.choose-section{
+
+.choose-section {
   background-image: url('/choose_bg.jpg');
   background-position: center;
   background-repeat: no-repeat;
@@ -618,50 +686,59 @@ p, span, a, li {
   height: auto !important;
   width: 100%;
 }
-.join-title{
-  	font-family: var(--font-orbitron), sans-serif;
-	font-size: 17px;
-	font-weight: 500;
+
+.join-title {
+  font-family: var(--font-orbitron), sans-serif;
+  font-size: 17px;
+  font-weight: 500;
 }
-.join-description{
+
+.join-description {
   font-family: var(--font-poppins), sans-serif;
-	font-size: 12px;
-	font-weight: 400;
+  font-size: 12px;
+  font-weight: 400;
 }
-.why-join{
-   background-image: url('/join-bg.jpg');
+
+.why-join {
+  background-image: url('/join-bg.jpg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   height: auto !important;
   width: 100%;
 }
-.workshop-sample-title{
-  	font-family: var(--font-orbitron), sans-serif;
-	font-size: 24px;
-	font-weight: 500;
+
+.workshop-sample-title {
+  font-family: var(--font-orbitron), sans-serif;
+  font-size: 24px;
+  font-weight: 500;
 }
-.workshop-sample-description{
+
+.workshop-sample-description {
   font-family: var(--font-poppins), sans-serif;
-	font-size: 12px;
-	font-weight: 400;
+  font-size: 12px;
+  font-weight: 400;
 }
-.workshop-sample-btn{
+
+.workshop-sample-btn {
   font-family: var(--font-poppins), sans-serif;
-	font-size: 16px;
-	font-weight: 500;
+  font-size: 16px;
+  font-weight: 500;
 }
 
 
-.nav-items-name{
+.nav-items-name {
   color: #cc1616 !important
 }
 
 
 @keyframes float {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0);
   }
+
   50% {
     transform: translateY(-10px);
   }
@@ -672,9 +749,12 @@ p, span, a, li {
 } */
 
 @keyframes float {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0px);
   }
+
   50% {
     transform: translateY(-10px);
   }
@@ -692,7 +772,7 @@ p, span, a, li {
   font-size: 14px;
 }
 
-.text-font-orbitron{
+.text-font-orbitron {
   font-family: var(--font-orbitron);
   font-size: 30px;
 }
@@ -700,7 +780,8 @@ p, span, a, li {
 
 .custom-dashed-border {
   border-style: dashed;
-  border-width: 1px; /* change this to control thickness */
+  border-width: 1px;
+  /* change this to control thickness */
 }
 
 .banner-text h1,
@@ -710,11 +791,11 @@ p, span, a, li {
   font-size: 64px;
 }
 
-.text-font-orbitron-explore{
+.text-font-orbitron-explore, .font-orbitron {
   font-family: var(--font-orbitron);
 }
 
-.text-font-poppins-explore{
+.text-font-poppins-explore {
   font-family: var(--font-poppins);
 }
 
@@ -733,7 +814,8 @@ p, span, a, li {
   left: 0;
   width: 0;
   height: 2px;
-  background-color: #facc15; /* Tailwind yellow-500 */
+  background-color: #facc15;
+  /* Tailwind yellow-500 */
   transition: width 0.3s ease;
 }
 
@@ -742,5 +824,37 @@ p, span, a, li {
 }
 
 
+/**About Image */
+.about_section {
+  flex-shrink: 0;
+  object-fit:scale-down;
+}
 
+.about_right_text h2{
+  color: #040404;
+  text-align: center;
+  font-feature-settings: 'liga' off, 'clig' off;
+  font-family: Orbitron;
+  font-size: 45px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 66px;
+}
 
+/** font-orbitron **/
+
+.text_poppins{
+  font-family: Poppins;
+}
+
+.start_rating{
+  margin-top: 100px;
+}
+
+.our_vmv_heading{
+  font-size: 24px;
+}
+
+.our_vmv_para{
+  font-size: 14px;
+}

@@ -7,10 +7,9 @@ export async function GET() {
   });
 }
 
-// Update a lesson
 export async function PUT(req, { params }) {
   try {
-    const { id } = params; // lesson id
+    const { id } = params;
     const { title, content } = await req.json();
 
     if (!id || !title) {
@@ -49,10 +48,9 @@ export async function OPTIONS() {
   return new Response(null, { status: 204, headers: { Allow: 'PUT, DELETE' } });
 }
 
-// Delete a lesson
 export async function DELETE(req, { params }) {
   try {
-    const { id } = params; // lesson id
+    const { id } = params; 
 
     if (!id) {
       return new Response(
@@ -60,10 +58,7 @@ export async function DELETE(req, { params }) {
         { status: 400 }
       );
     }
-
     const result = await pool.query('DELETE FROM lessons WHERE id = $1', [id]);
-
-    // Idempotent delete: return 200 whether or not the row existed
     return new Response(JSON.stringify({
       message: result.rowCount > 0 ? 'Lesson deleted successfully' : 'Lesson already removed',
     }), {

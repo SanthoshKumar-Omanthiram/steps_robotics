@@ -56,10 +56,10 @@ export default function StemCourse() {
   return (
     <div className="stem-education-course py-10">
       <div className="container mx-auto px-4">
-        <div className="stem-education-main mb-8 text-center">
+        <div className="stem-education-main mb-8 mt-5 text-left">
           <p className="stem-education-title text-3xl font-bold">
-            We Are <span className="stem-gold">Much Experience</span> in
-            Learning <span className="stem-gold">STEM Education</span>
+            We Are <span className="stem-education-title stem-gold">Much Experience</span> in
+            Learning <span className="stem-education-title stem-gold">STEM Education</span>
           </p>
           <p className="course-model-title mt-3">
             The course gives students an excellent platform to create and
@@ -95,7 +95,7 @@ export default function StemCourse() {
             return (
               <div
                 key={course.id || idx}
-                className={`flex rounded-3xl h-550 border-dashed transition-all duration-500 ${
+                className={`flex rounded-3xl h-[620px] border-dashed transition-all duration-500 ${
                   isActive
                     ? `${colorScheme.border} shadow-xl`
                     : "border-gray-200"
@@ -207,29 +207,22 @@ export default function StemCourse() {
                         </div>
                       </div>
                     </div>
-                    <div className="rounded-3xl course-obj-modal p-8 mt-5 shadow-[4px_-4px_10px_0_rgba(0,0,0,0.15)] bg-white">
+                    <div className="rounded-3xl course-obj-modal p-6 mt-5 shadow-[4px_-4px_10px_0_rgba(0,0,0,0.15)] bg-[#f2f2f2]">
                       <h3 className="f-14-title text-2xl mb-6">
                         Course Objectives
                       </h3>
                       <div className="grid grid-cols-1 md:grid-cols-[70%_28%] gap-9 items-start">
-                        <ul className="space-y-4">
+                        <ul className="space-y-3">
                           {course.objectives?.length ? (
                             course.objectives.map((item, i) => (
-                              <li key={i} className="flex items-start gap-4">
-                                <span className="mt-0.5 inline-flex h-8 w-8 items-center justify-center rounded-full bg-orange-500 text-white font-bold text-lg flex-shrink-0 shadow-md">
-                                  <svg
-                                    className="w-5 h-5"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    viewBox="0 0 24 24"
-                                    strokeWidth="3"
-                                  >
-                                    <path
-                                      strokeLinecap="round"
-                                      strokeLinejoin="round"
-                                      d="M13 7l5 5m0 0l-5 5m5-5H6"
-                                    />
-                                  </svg>
+                              <li key={i} className="flex items-start gap-4 -mb-[7px]">
+                                <span className="mt-0.5 inline-flex h-8 w-8 items-center justify-center text-white font-bold text-lg flex-shrink-0">
+                              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12Z" stroke="#FFA228" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+  <path d="M16 12L12 8" stroke="#FFA228" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+  <path d="M16 12L8 12" stroke="#FFA228" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+  <path d="M12 16L16 12" stroke="#FFA228" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+</svg>
                                 </span>
                                 <span className="f-13-subtitle text-base leading-relaxed">
                                   {item}
@@ -253,12 +246,10 @@ export default function StemCourse() {
                           />
                         </div>
                       </div>
-
-                      {/* Explore More Button */}
-                      <div className="pt-8 flex justify-center">
+                      <div className="pt-3 flex justify-center">
                         <Link
                           href={`/courses/${course.slug || course.id || "#"}`}
-                          className="inline-flex items-center gap-3 text-white font-semibold px-8 py-2 rounded-full transition-all shadow-lg hover:shadow-xl bg-gradient-to-r from-[#FF6F28] to-[#FFCF20] hover:from-[#FFCF20] hover:to-[#FF6F28]"
+                          className="inline-flex items-center gap-3 text-white font-semibold px-3 py-1 rounded-full transition-all shadow-lg hover:shadow-xl bg-gradient-to-r from-[#FF6F28] to-[#FFCF20] hover:from-[#FFCF20] hover:to-[#FF6F28]"
                         >
                           Explore More
                           <span className="text-xl leading-none flex items-center justify-center w-8 h-8 rounded-full bg-white text-[#FF6F28] shadow-md">

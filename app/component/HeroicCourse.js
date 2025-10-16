@@ -1,40 +1,13 @@
 'use client';
 
-import React, { useEffect, useState, useRef } from 'react';
-import axios from 'axios';
+import React from 'react';
 import Image from 'next/image';
-import { useParams } from 'next/navigation';
 
 export default function HeroicCourse() {
-  const { id } = useParams(); 
-  const [course, setCourse] = useState(null);
-  const [error, setError] = useState('');
-  const fetched = useRef(false);
-
-  useEffect(() => {
-    if (!id) return;
-    if (fetched.current) return; 
-    fetched.current = true;
-    fetchCourse();
-  }, [id]);
-
-  const fetchCourse = async () => {
-    try {
-      const res = await axios.get(`/api/courses/${id}`);
-      setCourse(res.data || null);
-    } catch (err) {
-      console.error('Failed to fetch course:', err);
-      setError('Unable to load course. Please try again later.');
-    }
+  const course = {
+    heroictitle: 'Future-Ready Kids Start Here!',
+    heroicimage: '/course-heroic.png', 
   };
-
-  if (error) {
-    return <p className="text-center text-red-500">{error}</p>;
-  }
-
-  if (!course) {
-    return <p className="text-center text-gray-500">Loading course...</p>;
-  }
 
   return (
     <div className="course-heroic p-6">
@@ -44,7 +17,7 @@ export default function HeroicCourse() {
             {course.heroicimage ? (
               <Image
                 src={course.heroicimage}
-                alt={course.heroictitle || 'Course image'}
+                alt={course.heroictitle}
                 width={600}
                 height={484}
                 className="course-heroic-image rounded-lg"
@@ -55,9 +28,9 @@ export default function HeroicCourse() {
               </div>
             )}
           </div>
-          <div className=" text-left ">
+          <div className="text-left">
             <h2 className="course-heroic-title text-3xl font-semibold">
-              {course.heroictitle || 'Untitled'}
+              {course.heroictitle}
             </h2>
           </div>
         </div>
@@ -65,3 +38,4 @@ export default function HeroicCourse() {
     </div>
   );
 }
+

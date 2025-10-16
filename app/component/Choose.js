@@ -36,7 +36,7 @@ export default function Choose() {
         <div className="mb-11 text-center lg:text-left">
           <h1 className="text-4xl lg:text-5xl font-bold choose-main-title mb-4">
             Why Choose STEPS Robotics{" "}
-            <span className="text-yellow-500">with VEX GO?</span>
+            <span className="stem-gold choose-main-title">with VEX GO?</span>
           </h1>
           <p className="choose-description leading-relaxed max-w-5xl mx-auto lg:mx-0">
             The integration of AI Connect in academics has revolutionized the
@@ -74,7 +74,7 @@ export default function Choose() {
                       />
                     </div>
                   </div>
-                  <div className="flex-1 pt-1">
+                  <div className="flex-1 pt-3">
                     <h3 className="choose-points-main mb-1 font-semibold text-gray-800">
                       {feature.title}
                     </h3>

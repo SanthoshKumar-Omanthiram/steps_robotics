@@ -82,7 +82,7 @@ export default function SignIn() {
 
   return (
     <div className="signin-component">
-    <div className="signin min-h-screen flex">
+    <div className="signin min-h-screen flex padding-40">
       <div className="w-1/2 relative text-white p-2 flex flex-col hidden md:flex">
         <div className="mb-2 pl-[50px] pt-[30px]">
           <h1 className="signin-main-title">Welcome to</h1>

@@ -19,13 +19,12 @@ export default function Workshop() {
 
   return (
     <section className="w-full program-workshop py-14">
-      <div className="container mx-auto sm:px-6">
+      <div className="container mx-auto padding-80 sm:px-6">
         {programs.map((program) => (
           <div
             key={program.id}
             className="grid grid-cols-1 md:grid-cols-[60%_40%] gap-9 items-start"
           >          
-          
             <div className="w-full">
                 <div className="flex items-center text-sm font-medium text-gray-700">
       <span className="border-hr-text hover:text-yellow-500 transition">Programs</span>

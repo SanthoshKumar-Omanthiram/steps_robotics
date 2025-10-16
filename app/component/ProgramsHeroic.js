@@ -21,7 +21,7 @@ export default function ProgramsHeroic() {
                 alt={course.heroictitle || 'Course image'}
                 width={600}
                 height={484}
-                className="contact-heroic-image rounded-lg"
+                className="programs-heroic-image rounded-lg"
               />
             ) : (
               <div className="w-full h-80 bg-gray-200 flex items-center justify-center text-gray-500">

@@ -1,6 +1,5 @@
 import pool from '@/lib/db';
 
-// GET lessons (optionally filter by moduleId)
 export async function GET(req) {
   try {
     const { searchParams } = new URL(req.url);

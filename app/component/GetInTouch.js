@@ -24,7 +24,7 @@ export default function GetInTouch() {
 
   return (
     <div className="min-h-screen getin-touch p-4 sm:p-6 lg:p-8">
-      <div className="container mx-auto">
+      <div className="container mx-auto padding-40">
         <div className="bg-white rounded-3xl shadow-2xl overflow-hidden">
           <div className="grid lg:grid-cols-2 gap-0">
             <div className="get-in-touch-image">

@@ -11,7 +11,7 @@ export async function GET(req) {
 
   try {
     const result = await pool.query(
-      'SELECT * FROM course_highlights WHERE course_id = $1 ORDER BY id DESC',
+      'SELECT * FROM course_highlights WHERE course_id = $1 ORDER BY id ASC',
       [courseId]
     );
 

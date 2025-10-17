@@ -10,12 +10,32 @@ import Robot from "@/public/robot.png"
 import TestimonialsSection from './component/TestimonialsSection';
 import { motion } from 'framer-motion';
 
+import { useState } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import WhyChooseSection from './component/WhyChooseSection';
+import Footer from './component/Footer';
 
+import { Mail, Phone, ArrowRight } from 'lucide-react';
+
+
+
+
+
+// const projects = [
+//   { image: "Swetha.png", name: "Swetha" },
+//   { image: "John.png", name: "John" },
+//   { image: "Aditi.png", name: "Aditi" },
+// ];
 
 const projects = [
-  { image: "Swetha.png", name: "Swetha" },
-  { image: "John.png", name: "John" },
-  { image: "Aditi.png", name: "Aditi" },
+  { image: "/Swetha.png", video: "/about/kid-1.mp4", name: "Aditi" },
+  { image: "/Sathish.png", video: "/about/kid-2.mp4", name: "Shankar" },
+  { image: "/Sandiya.png", video: "/about/kid-3.mp4", name: "Divya" },
+  { image: "/Swetha.png", video: "/about/kid-4.mp4", name: "Aditi Shakar" },
+  { image: "/Sathish.png", video: "/about/kid-5.mp4", name: "Mukesh Raj" },
+  { image: "/Sandiya.png", video: "/about/kid-1.mp4", name: "Vidhya Sree" },
+
 ];
 
 const leftOfferings = [
@@ -139,44 +159,101 @@ const features = [
 
 
 export default function Home() {
+  const [activeVideo, setActiveVideo] = useState(null);
+
   return (
     <div className="min-h-screen bg-white">
-
-    {/**Navbar */}
-
-
       {/* Hero Section */}
       <HeroSlider />
 
       {/* Projects Section */}
       <section className="py-12 bg-white px-4 sm:px-8 lg:px-30">
         {/* Heading */}
-        <h2 className="text-2xl sm:text-3xl lg:text-4xl mb-4 leading-snug text-left text-font-orbitron">
+        <h2 className="text-2xl sm:text-3xl lg:text-4xl mb-4 leading-snug text-center sm:text-left text-font-orbitron">
           See what kids built with{" "}
           <span className="text-yellow-500 text-font-orbitron">STEPS Robotics!</span>
         </h2>
 
-        {/* Description */}
-        <p className="text-gray-600 text-sm dotted-cards sm:text-base lg:text-lg mb-10 leading-relaxed text-font-poppins text-left">
+        <p className="text-gray-600 text-sm sm:text-base lg:text-lg mb-10 leading-relaxed text-center sm:text-left text-font-poppins">
           With Steps Robotics, your child will build products in the real world to solve real world problems and become skilled in technologies
           that matter for the future. Best part — this happens while your child is playing!
         </p>
 
-        {/* Projects Grid */}
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="relative max-w-7xl mx-auto ">
+          {/* Swiper Slider */}
+          <Swiper
+            spaceBetween={20}
+            slidesPerView={1.2}
+            breakpoints={{
+              640: { slidesPerView: 2.2 },
+              1024: { slidesPerView: 3.2 },
+            }}
+            className="cursor-grab"
+          >
             {projects.map((p, i) => (
-              <ProjectCard key={i} image={p.image} name={p.name} />
+              <SwiperSlide key={i}>
+                <ProjectCard
+                  image={p.image}
+                  name={p.name}
+                  onClick={() => setActiveVideo(p.video)}
+                />
+              </SwiperSlide>
             ))}
-          </div>
+          </Swiper>
+
+          {/* Fullscreen Video Modal */}
+          {/* {activeVideo && (
+            <div className="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50">
+              <video
+                src={activeVideo}
+                controls
+                autoPlay
+                className="w-full max-w-4xl h-auto rounded-lg shadow-lg"
+              />
+              <button
+                onClick={() => setActiveVideo(null)}
+                className="absolute top-5 right-5 text-white text-3xl font-bold"
+              >
+                ✕
+              </button>
+            </div>
+          )} */}
+          {activeVideo && (
+            <div className="fixed inset-0 flex items-center justify-center z-50">
+              {/* Semi-transparent overlay */}
+              <div
+                className="absolute inset-0 bg-black opacity-70"
+                onClick={() => setActiveVideo(null)} // click outside to close
+              ></div>
+
+              {/* Video container */}
+              <div className="relative z-10 w-full max-w-4xl rounded-lg overflow-hidden shadow-lg">
+                <video
+                  src={activeVideo}
+                  controls
+                  autoPlay
+                  className="w-full h-auto"
+                />
+                <button
+                  onClick={() => setActiveVideo(null)}
+                  className="absolute top-3 right-3 text-white text-3xl font-bold bg-black bg-opacity-50 rounded-full p-1 hover:bg-opacity-75 transition"
+                >
+                  ✕
+                </button>
+              </div>
+            </div>
+          )}
+
         </div>
+
+
       </section>
 
       {/**Robot section */}
-      <section className="py-12 px-4 sm:px-8 lg:px-30">
+      <section className="py-6 px-4 sm:px-8 lg:px-30">
         <div className="max-w-7xl mx-auto">
           {/* Header */}
-          <div className="mb-20">
+          <div className="mb-10">
             <h2 className="text-3xl sm:text-3xl lg:text-4xl mb-4 leading-snug text-left text-font-orbitron">
               What We Offer <span className="text-yellow-400 text-font-orbitron">STEPS Robotics</span> for Your Child?
             </h2>
@@ -186,12 +263,21 @@ export default function Home() {
           </div>
 
           {/* Main Content - 3 Columns Layout */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-3 w-auto gap-8 items-center">
 
             {/* Left Column - 3 Offerings */}
             <div className="space-y-4 lg:ml-auto">
               {leftOfferings.map((offering, index) => (
-                <div key={index} className="flex flex-col items-start w-full max-w-[330px]">
+                <div key={index}
+                  className="
+                        flex flex-col
+                        items-start
+                        w-full          /* full width on mobile */
+                        sm:max-w-[250px] /* small screens */
+                        md:max-w-[300px] /* medium screens */
+                        lg:max-w-[330px] /* large screens */
+                      "
+                >
 
                   {/* White box with icon and heading */}
                   <div className="bg-white rounded-[3rem] px-6 py-4 shadow-md flex flex-row items-center gap-3 mb-2 w-full">
@@ -237,7 +323,16 @@ export default function Home() {
             {/* Right Column - 3 Offerings */}
             <div className="space-y-4">
               {rightOfferings.map((offering, index) => (
-                <div key={index} className="flex flex-col items-start w-full max-w-[330px]">
+                <div key={index}
+                  className="
+                        flex flex-col
+                        items-start
+                        w-full          /* full width on mobile */
+                        sm:max-w-[250px] /* small screens */
+                        md:max-w-[300px] /* medium screens */
+                        lg:max-w-[330px] /* large screens */
+                      "
+                >
                   {/* White box with icon and heading */}
                   <div className="bg-white rounded-[3rem] px-6 py-4 shadow-md flex flex-row items-center gap-3 mb-2 w-full">
                     {/* Icon on LEFT */}
@@ -412,101 +507,21 @@ export default function Home() {
       </section>
 
       {/**Choose STEPS Robotics */}
-      <section className="relative py-16" style={{
-        backgroundImage: "url('/why_choose_bg.jpg')",
-        backgroundRepeat: "no-repeat",
-      }}>
-        {/* Heading Section */}
-        <div className="max-w-7xl mx-auto mb-4">
-          <h2 className="text-3xl sm:text-3xl lg:text-4xl mb-4 leading-snug text-left text-font-orbitron">
-            Why Choose{" "}
-            <span className="text-[#F5B800]">STEPS Robotics</span> for Your Child?
-          </h2>
-          <p className="text-gray-600 mt-4 mb-8 leading-relaxed">
-            With so many options out there, finding the right course matters.
-            Our programs combine creativity, logic, and hands-on practice
-            to build real-world skills across coding, robotics, AI, and more.
-          </p>
-        </div>
-
-        {/* Content Section */}
-        <div className="container mx-auto px-4 grid grid-cols-2 md:grid-cols-2 gap-10 items-center">
-          {/* Left: Images and colored boxes */}
-          <div className="choose_steps">
-            <div className='relative flex flex-col items-start'>
-              <div className="relative w-[257px] h-[257px] overflow-hidden shadow-lg mb-6 ml-12">
-                <Image
-                  src="/kid1.png"
-                  alt="Kids learning robotics"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-
-              {/* Colored boxes */}
-              <div className="absolute top-[175px] left-[315px] w-[70px] h-[70px] bg-[#66CDAA]"></div>
-              <div className="absolute top-[100px] left-[390px] w-[70px] h-[70px] bg-[#F25C5C]"></div>{/**Red Color */}
-            </div>
-
-
-
-
-            <div className='relative flex flex-col items-end'>
-              {/* Colored boxes */}
-              <div className="absolute top-[60px] left-[75px] w-[150px] h-[120px] bg-[#66CDAA]"></div>
-              <div className="absolute top-[-12px] left-[225px] w-[70px] h-[70px] bg-[#F25C5C]"></div>{/**Red Color */}
-              <div className="relative w-[257px] h-[257px] overflow-hidden shadow-lg mb-6 mt-[-22px] mr-[40px]">
-                <Image
-                  src="/kid1.png"
-                  alt="Kids learning robotics"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-
-
-
-            </div>
-          </div>
-
-          {/* Right: Feature List */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-20 mt-[-40px]">
-            {features.map((item, index) => (
-              <div key={index} className="flex items-center gap-4">
-                <div className="relative flex-shrink-0">
-                  <div className="">
-                    <Image
-                      src={item.icon}
-                      alt={item.title}
-                      width={100}
-                      height={100}
-                      className="object-contain"
-                    />
-                  </div>
-                </div>
-                <div>
-                  <h4 className="text-gray-900 font-semibold text-base">
-                    {item.title}
-                  </h4>
-                  <p className="text-gray-800 font-bold text-sm">
-                    {item.subtitle}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <WhyChooseSection />
 
       {/**STEPS Robotics Talsk */}
       <TestimonialsSection />
 
-      {/**Study Process Gallery */}
-      <section className="relative bg-gradient-to-br from-yellow-200 via-yellow-300 to-yellow-400 py-16 px-4 sm:px-8 lg:px-16 overflow-hidden" style={{
-        backgroundImage: "url('/studyProgress.png')", backgroundRepeat: "no-repeat",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-      }}>
+      {/**Study Process Gallery Start */}
+      <section
+        className="relative hidden md:block bg-gradient-to-br from-yellow-200 via-yellow-300 to-yellow-400 py-16 px-4 sm:px-8 lg:px-16 overflow-hidden"
+        style={{
+          backgroundImage: "url('/studyProgress.png')",
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      >
         {/* Geometric Pattern Background */}
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-0 left-0 w-full h-full"
@@ -733,9 +748,60 @@ export default function Home() {
           </div>
         </div>
       </section>
+      {/**Mobile View Section */}
+      <section
+        className="relative bg-gradient-to-br from-yellow-200 via-yellow-300 to-yellow-400 py-16 px-4 sm:px-8 lg:px-16 overflow-hidden"
+        style={{
+          backgroundImage: "url('/studyProgress.png')",
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      >
+        {/* ======= DESKTOP / TABLET GALLERY ======= */}
+        <div className="hidden md:block">
+          {/* 👉 Paste your current gallery code here exactly as you have it */}
+        </div>
+
+        {/* ======= MOBILE SECTION ======= */}
+        <div className="block md:hidden relative z-10 text-center mt-8">
+          <h2 className="text-3xl font-bold text-gray-900 mb-3 text-font-orbitron text-white px-20">
+            Try for free Register now
+          </h2>
+
+          <p className="text-gray-800 text-base leading-relaxed mb-6 text-font-poppins px-20">
+            Let your chile experience the magic of play based learning in this free 1:1 Live Online Class. <br />Book your slot now!
+          </p>
+
+          {/* <button className="bg-yellow-500 hover:bg-yellow-600 text-white px-6 py-3 rounded-full font-semibold mb-8 transition duration-300">
+            Explore More
+          </button> */}
+          <div className="flex justify-center pt-2">
+            <button className="group bg-gradient-to-r mb-8 from-orange-500 to-yellow-400 text-white font-bold px-5 py-2 rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 flex items-center gap-3"
+            >
+              SEND MESSAGE
+              <div className="bg-white font-bold rounded-full p-2 group-hover:translate-x-1 transition-transform">
+                <ArrowRight className="w-5 h-5 text-orange-500" />
+              </div>
+            </button>
+          </div>
+
+          <div className="relative w-72 h-72 mx-auto rounded-3xl overflow-hidden shadow-xl">
+            <Image
+              src="/child-1.jpg"
+              alt="Study process preview"
+              fill
+              className="object-cover"
+            />
+          </div>
+        </div>
+      </section>
+
+      {/**Study Process Gallery End */}
+
 
       {/**Footer */}
-      {/* <Footer /> */}
+      <Footer />
 
     </div>
 

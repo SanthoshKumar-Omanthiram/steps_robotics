@@ -858,3 +858,63 @@ li {
 .our_vmv_para{
   font-size: 14px;
 }
+
+.custom-dotted-border {
+  position: relative;
+  border-radius: 1rem;
+}
+
+.custom-dotted-border {
+  position: relative;
+  border: 2px dotted transparent;
+  border-radius: 1rem;
+  background-clip: padding-box;
+}
+
+.custom-dotted-border::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 1rem;
+  border: 1.5px dotted #000; /* change color here */
+  pointer-events: none;
+  z-index: 1;  
+}
+
+
+.testimonial-wrapper {
+  position: relative;
+  width: 310px;          /* outer circle size */
+  height: 310px;
+  border-radius: 50%;    /* circle */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.testimonial-border {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: 4px dotted #A9A9A9; /* dotted border */
+  border-radius: 50%;
+  box-sizing: border-box;
+}
+
+.testimonial-inner {
+  width: 280px;           /* slightly smaller to create spacing */
+  height: 280px;
+  border-radius: 50%;
+  overflow: hidden;
+  position: relative;
+}
+
+.talks_description p{
+  line-height:24px
+}
+
+
+
+
+

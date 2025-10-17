@@ -801,7 +801,7 @@ export default function Home() {
 
 
       {/**Footer */}
-      <Footer />
+      {/* <Footer /> */}
 
     </div>
 

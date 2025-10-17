@@ -2,6 +2,7 @@ import { Geist, Geist_Mono, Orbitron, Poppins } from "next/font/google";
 import "./globals.css";
 import { UserProvider } from "./Context/UserContext";
 import Navbar from "./component/Navbar";
+import Footer from "./component/Footer"
 
 
 const geistSans = Geist({
@@ -33,6 +34,7 @@ export default function RootLayout({ children }) {
       <body>
         <Navbar />
         <UserProvider>{children}</UserProvider>
+        <Footer />
       </body>
     </html>
   );

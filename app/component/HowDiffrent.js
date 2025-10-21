@@ -30,12 +30,12 @@ export default function HowDifferent() {
   ];
 
   return (
-    <div className="container mx-auto pt-8">
+    <div className="container mx-auto -mt-[45px] pt-8">
       <div className="mb-5">
         <h2 className="course-details-black mb-4">
-          How are we <span className="course-details-gold">Different from Others?</span>
+          How are we <span className="course-details-gold w-[60%]">Different from Others?</span>
         </h2>
-        <p className="text-gray-600 mb-10 max-w-4xl text-sm">
+        <p className="text-gray-600 mb-10 max-w-4xl text-sm w-[68%]">
           Our STEPS Robotics program offers a unique, hands-on offline learning experience that integrates 
           Robotics, Coding, Electronics, and STEM concepts — designed to build real-world skills beyond 
           traditional classes.

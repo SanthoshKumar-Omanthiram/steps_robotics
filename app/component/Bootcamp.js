@@ -10,7 +10,7 @@ export default function Bootcamp() {
     <div className="min-h-screen py-8 px-4">
       <div className="container mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          <div className="lg:col-span-2 space-y-6">
+          <div className="lg:col-span-2 space-y-6 -mt-[37px]">
         <div className="w-full rounded-xl px-[30px] pt-[30px] bg-[#FFFCE7]">
       <div className="mb-5">
         <h1 className="bootcamp-title mb-2">
@@ -123,12 +123,12 @@ export default function Bootcamp() {
                 <div className="p-6 space-y-3">
                   <div className="bg-orange-400 text-white rounded-lg overflow-hidden">
                     <div className="p-4 font-semibold">
-                      Module 1: Introduction to Robot Thinking
+                     <h3> Module 1: Introduction to Robot Thinking</h3>
                     </div>
                     <div className="bg-orange-50 text-gray-700 p-4 space-y-3">
-                      <div className="py-2 px-4 bg-white rounded">What is a Robot?</div>
-                      <div className="py-2 px-4 bg-white rounded">Touch Coding Basics</div>
-                      <div className="py-2 px-4 bg-white rounded">Directions & Sequencing</div>
+                      <div className="py-2 px-4 bg-white rounded"><p className='font-normal'>What is a Robot?</p></div>
+                      <div className="py-2 px-4 bg-white rounded"><p className='font-normal'>Touch Coding Basics</p></div>
+                      <div className="py-2 px-4 bg-white rounded"><p className='font-normal'>Directions & Sequencing</p></div>
                     </div>
                   </div>
                   {[
@@ -136,10 +136,9 @@ export default function Bootcamp() {
                     'Module 3: Coding Through Platform',
                     'Module 4: Virtual Robotics Extension',
                     'Module 5: Sensor-Based Interactions',
-                    'Module 6: Capstone Project'
                   ].map((module, index) => (
                     <div key={index} className="border border-gray-200 rounded-lg p-4 flex items-center justify-between hover:border-orange-300 transition-colors">
-                      <span className="font-medium text-gray-700">{module}</span>
+                      <h3 className="font-medium text-gray-700">{module}</h3>
                       <Plus className="w-5 h-5 text-gray-400" />
                     </div>
                   ))}
@@ -147,7 +146,7 @@ export default function Bootcamp() {
               )}
             </div>
           </div>
-          <div className="space-y-6">
+          <div className="space-y-6 -mt-[150px]">
             <div className="rounded-lg p-6 shadow-sm">
               <div className="text-center mb-4">
                 <span className="px-3 py-1 rounded-full class-instructor-text">
@@ -221,7 +220,7 @@ export default function Bootcamp() {
                   { name: 'Rajkumar', progress: 78.12 }
                 ].map((student, index) => (
                   <div key={index} className="flex items-center gap-3">
-                    <div className="w-12 h-12 bg-gray-300 rounded-full flex-shrink-0">
+                    <div className="w-[28%] h-auto rounded-full flex-shrink-0">
                        <Image
                                         src='/kids.png'
                                         alt='instructor'

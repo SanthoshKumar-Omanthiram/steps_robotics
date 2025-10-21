@@ -3,27 +3,24 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-export default function Programs() {
-  const [programs, setPrograms] = useState([]);
+export default function Contacts() {
+  const [contacts, setContacts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [showForm, setShowForm] = useState(false);
-  const [editingProgram, setEditingProgram] = useState(null);
+  const [editingContact, setEditingContact] = useState(null);
 
   const [form, setForm] = useState({
-    days: "",
-    duration: "",
-    time: "",
-    venue: "",
-    materials: "",
-    mentors: "",
-    batch_size: "",
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: "",
+    message: "",
   });
 
-  // Fetch all programs
-  const fetchPrograms = async () => {
+  const fetchContacts = async () => {
     try {
-      const res = await axios.get("/api/programs");
-      setPrograms(res.data);
+      const res = await axios.get("/api/contact");
+      setContacts(res.data);
     } catch (error) {
       console.error("Fetch error:", error);
     } finally {
@@ -32,65 +29,57 @@ export default function Programs() {
   };
 
   useEffect(() => {
-    fetchPrograms();
+    fetchContacts();
   }, []);
 
-  // Handle form field change
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  // Open add/edit form
-  const openForm = (program = null) => {
-    if (program) {
-      setEditingProgram(program);
+  const openForm = (contact = null) => {
+    if (contact) {
+      setEditingContact(contact);
       setForm({
-        days: program.days,
-        duration: program.duration,
-        time: program.time,
-        venue: program.venue,
-        materials: program.materials,
-        mentors: program.mentors,
-        batch_size: program.batch_size,
+        firstName: contact.firstname || contact.firstName,
+        lastName: contact.lastname || contact.lastName,
+        email: contact.email,
+        phone: contact.phone,
+        message: contact.message,
       });
     } else {
-      setEditingProgram(null);
+      setEditingContact(null);
       setForm({
-        days: "",
-        duration: "",
-        time: "",
-        venue: "",
-        materials: "",
-        mentors: "",
-        batch_size: "",
+        firstName: "",
+        lastName: "",
+        email: "",
+        phone: "",
+        message: "",
       });
     }
     setShowForm(true);
   };
 
-  // Add or Update program
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      if (editingProgram) {
-        await axios.put(`/api/programs/${editingProgram.id}`, form);
+      if (editingContact) {
+        await axios.put(`/api/contact/${editingContact.id}`, form);
       } else {
-        await axios.post("/api/programs", form);
+        await axios.post("/api/contact", form);
       }
       setShowForm(false);
-      fetchPrograms();
+      fetchContacts();
     } catch (error) {
       console.error(error);
       alert("Save failed");
     }
   };
 
-  // Delete program
   const handleDelete = async (id) => {
-    if (confirm("Are you sure you want to delete this program?")) {
+    if (confirm("Are you sure you want to delete this contact?")) {
       try {
-        await axios.delete(`/api/programs/${id}`);
-        fetchPrograms();
+        await axios.delete(`/api/contact/${id}`);
+        fetchContacts();
       } catch (error) {
         console.error(error);
         alert("Delete failed");
@@ -98,86 +87,70 @@ export default function Programs() {
     }
   };
 
-  return ( 
-    <div className="p-6 ml-64 admin-main">
+  return (
+    <div className="p-6 admin-main ml-64">
       {/* Header */}
       <div className="flex justify-between items-center mb-4">
-        <h1 className="text-2xl font-bold">Program Management</h1>
+        <h1 className="text-2xl font-bold">Contacts</h1>
         <button
           onClick={() => openForm()}
           className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
         >
-          Add Program
+          Add Contact
         </button>
       </div>
 
       {/* Add/Edit Form Modal */}
       {showForm && (
         <div className="fixed inset-0 bg-black bg-opacity-30 flex items-center justify-center z-50">
-          <div className="bg-white p-6 rounded-lg shadow-lg w-full max-w-2xl">
+          <div className="bg-white p-6 rounded-lg shadow-lg w-full max-w-xl">
             <h2 className="text-xl font-bold mb-4">
-              {editingProgram ? "Edit Program" : "Add Program"}
+              {editingContact ? "Edit Contact" : "Add Contact"}
             </h2>
 
             <form onSubmit={handleSubmit} className="grid grid-cols-1 gap-3">
               <input
                 type="text"
-                name="days"
-                placeholder="Days (e.g. Saturday & Sunday)"
-                value={form.days}
+                name="firstName"
+                placeholder="First Name"
+                value={form.firstName}
                 onChange={handleChange}
                 className="border rounded px-3 py-2 w-full"
                 required
               />
               <input
                 type="text"
-                name="duration"
-                placeholder="Duration (e.g. 2 Days (Weekend))"
-                value={form.duration}
+                name="lastName"
+                placeholder="Last Name"
+                value={form.lastName}
+                onChange={handleChange}
+                className="border rounded px-3 py-2 w-full"
+              />
+              <input
+                type="email"
+                name="email"
+                placeholder="Email"
+                value={form.email}
                 onChange={handleChange}
                 className="border rounded px-3 py-2 w-full"
                 required
               />
               <input
-                type="text"
-                name="time"
-                placeholder="Time (e.g. 10:00 AM – 4:00 PM)"
-                value={form.time}
+                type="tel"
+                name="phone"
+                placeholder="Phone"
+                value={form.phone}
                 onChange={handleChange}
                 className="border rounded px-3 py-2 w-full"
                 required
               />
               <textarea
-                name="venue"
-                placeholder="Venue"
-                value={form.venue}
+                name="message"
+                placeholder="Message"
+                value={form.message}
                 onChange={handleChange}
                 className="border rounded px-3 py-2 w-full"
-                required
-              />
-              <textarea
-                name="materials"
-                placeholder="Materials"
-                value={form.materials}
-                onChange={handleChange}
-                className="border rounded px-3 py-2 w-full"
-                required
-              />
-              <textarea
-                name="mentors"
-                placeholder="Mentors"
-                value={form.mentors}
-                onChange={handleChange}
-                className="border rounded px-3 py-2 w-full"
-                required
-              />
-              <textarea
-                name="batch_size"
-                placeholder="Batch Size"
-                value={form.batch_size}
-                onChange={handleChange}
-                className="border rounded px-3 py-2 w-full"
-                required
+                rows={4}
               />
 
               <div className="flex justify-end gap-2 mt-3">
@@ -192,7 +165,7 @@ export default function Programs() {
                   type="submit"
                   className="px-4 py-2 rounded ml-[10px] bg-blue-600 text-white hover:bg-blue-700"
                 >
-                  {editingProgram ? "Update" : "Add"}
+                  {editingContact ? "Update" : "Add"}
                 </button>
               </div>
             </form>
@@ -202,42 +175,42 @@ export default function Programs() {
 
       {/* Table */}
       {loading ? (
-        <p>Loading programs...</p>
+        <p>Loading contacts...</p>
       ) : (
         <div className="overflow-x-auto mt-6">
           <table className="min-w-full border border-gray-200 rounded-lg shadow-sm overflow-hidden">
             <thead className="bg-gray-100 text-gray-700">
               <tr>
                 <th className="py-3 px-4 text-left text-sm font-semibold border-b">ID</th>
-                <th className="py-3 px-4 text-left text-sm font-semibold border-b">Days</th>
-                <th className="py-3 px-4 text-left text-sm font-semibold border-b">Duration</th>
-                <th className="py-3 px-4 text-left text-sm font-semibold border-b">Venue</th>
+                <th className="py-3 px-4 text-left text-sm font-semibold border-b">First Name</th>
+                <th className="py-3 px-4 text-left text-sm font-semibold border-b">Last Name</th>
+                <th className="py-3 px-4 text-left text-sm font-semibold border-b">Email</th>
+                <th className="py-3 px-4 text-left text-sm font-semibold border-b">Phone</th>
+                <th className="py-3 px-4 text-left text-sm font-semibold border-b">Message</th>
                 <th className="py-3 px-4 text-center text-sm font-semibold border-b">Actions</th>
               </tr>
             </thead>
             <tbody>
-              {programs.map((program, index) => (
+              {contacts.map((contact, index) => (
                 <tr
-                  key={program.id}
-                  className={`${
-                    index % 2 === 0 ? "bg-white" : "bg-gray-50"
-                  } hover:bg-blue-50 transition-colors`}
+                  key={contact.id}
+                  className={`${index % 2 === 0 ? "bg-white" : "bg-gray-50"} hover:bg-blue-50 transition-colors`}
                 >
-                  <td className="py-3 px-4 border-b">{program.id}</td>
-                  <td className="py-3 px-4 border-b">{program.days}</td>
-                  <td className="py-3 px-4 border-b">{program.duration}</td>
-                  <td className="py-3 px-4 border-b truncate max-w-[300px]">
-                    {program.venue}
-                  </td>
+                  <td className="py-3 px-4 border-b">{contact.id}</td>
+                  <td className="py-3 px-4 border-b">{contact.firstname || contact.firstName}</td>
+                  <td className="py-3 px-4 border-b">{contact.lastname || contact.lastName}</td>
+                  <td className="py-3 px-4 border-b">{contact.email}</td>
+                  <td className="py-3 px-4 border-b">{contact.phone}</td>
+                  <td className="py-3 px-4 border-b truncate max-w-[300px]">{contact.message}</td>
                   <td className="py-3 px-4 border-b text-center flex justify-center gap-3">
                     <button
-                      onClick={() => openForm(program)}
+                      onClick={() => openForm(contact)}
                       className="bg-yellow-400 px-3 py-1 rounded text-sm font-medium hover:bg-yellow-500"
                     >
                       Edit
                     </button>
                     <button
-                      onClick={() => handleDelete(program.id)}
+                      onClick={() => handleDelete(contact.id)}
                       className="bg-red-500 px-3 py-1 rounded text-sm font-medium text-white hover:bg-red-600"
                     >
                       Delete

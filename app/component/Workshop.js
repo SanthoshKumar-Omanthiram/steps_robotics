@@ -19,7 +19,7 @@ export default function Workshop() {
 
   return (
     <section className="w-full program-workshop py-14">
-      <div className="container mx-auto padding-80 sm:px-6">
+      <div className="container mx-auto sm:px-6">
         {programs.map((program) => (
           <div
             key={program.id}
@@ -124,7 +124,9 @@ export default function Workshop() {
               </div>
               <div className="flex justify-center">
   <button className="w-[180px] event-enroll-btn flex items-center justify-center gap-2 bg-gradient-to-r from-yellow-400 to-orange-400 text-white py-2 rounded-full font-semibold hover:shadow-lg transition">
-    Enroll Now <ArrowRight className="w-5 h-5" />
+    Enroll Now <div className="bg-white rounded-full p-2 flex items-center justify-center shadow">
+  <ArrowRight className="w-5 h-5 text-black" />
+</div>
   </button>
 </div>
             </div>

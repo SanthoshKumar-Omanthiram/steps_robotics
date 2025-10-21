@@ -3,7 +3,7 @@ import { MapPin, Phone, Mail } from 'lucide-react';
 
 export default function ContactWay() {
   return (
-    <div className='contact-way container mx-auto padding-80'>
+    <div className='contact-way container mx-auto'>
       <div className='contact-better-main mt-[45px]'>
         <p className="contact-way-title text-3xl font-bold">
           We are here to help you

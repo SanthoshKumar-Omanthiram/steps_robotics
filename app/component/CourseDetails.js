@@ -136,9 +136,7 @@ export default function CourseDetails() {
           </div>
         </div>
 
-       {/* === Course Includes Section === */}
-<div className="bg-white shadow-lg rounded-2xl p-6 space-y-6 relative">
-  {/* Image with Offer Badge */}
+<div className="bg-white shadow-lg -mt-[120px] mb-[130px] rounded-2xl p-6 space-y-6 relative">
   <div className="relative">
     <Image
       src="/course-demo.png"

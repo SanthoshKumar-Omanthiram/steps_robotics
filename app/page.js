@@ -134,10 +134,6 @@ const features = [
 //   ]
 // ];
 
-
-
-
-
 export default function Home() {
   return (
     <div className="min-h-screen bg-white sticky top-0 z-50">

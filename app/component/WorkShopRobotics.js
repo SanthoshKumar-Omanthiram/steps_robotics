@@ -15,7 +15,6 @@ export default function WorkShopRobotics() {
 
   return (
     <section className="relative w-full h-[80vh] flex items-center justify-center overflow-hidden">
-      {/* Background Video */}
       <video
         ref={videoRef}
         className="absolute top-0 left-0 w-full h-full object-cover"
@@ -24,15 +23,9 @@ export default function WorkShopRobotics() {
         loop
         playsInline
       ></video>
-
-      {/* Dark Overlay */}
       <div className="absolute inset-0 bg-black/50"></div>
-
-      {/* Content */}
       <div className="relative z-10 text-center px-4 w-full flex flex-col items-center justify-center">
-        {/* Text Box Wrapper (for play button overlay) */}
-        <div className="relative inline-block max-w-4xl mx-auto">
-          {/* Play Button Overlapping the Top */}
+        <div className="relative inline-block container mx-auto">
           {!isPlaying && (
             <div
               onClick={handlePlayVideo}
@@ -44,8 +37,7 @@ export default function WorkShopRobotics() {
             </div>
           )}
 
-          {/* Text Box */}
-          <div className="bg-black/60 backdrop-blur-sm rounded-3xl p-6 sm:p-10 text-white">
+          <div className="bg-black/30 backdrop-blur-sm rounded-3xl p-6 sm:p-10 text-white">
             <h2 className="font-semibold leading-snug workshop-sample-title sm:text-3xl ">
               Our <span className="text-[#FFB800]">VEX GO</span> Robotics Workshop is a fun,
               <br className="hidden md:block" /> supportive way to learn STEM skills.
@@ -56,9 +48,11 @@ export default function WorkShopRobotics() {
             </p>
 
             <div className="mt-6 flex justify-center">
-              <button className="bg-[#FFB800] workshop-sample-btn hover:bg-[#ffca2c] text-white font-semibold text-lg px-8 py-3 rounded-full flex items-center gap-2 shadow-md transition-all">
+              <button className="bg-[#FFB800] workshop-sample-btn hover:bg-[#ffca2c] text-white font-semibold text-lg px-4 py-1 rounded-full flex items-center gap-2 shadow-md transition-all">
                 Enroll Now!
-                <ArrowRight className="w-5 h-5" />
+                <div className="bg-white rounded-full p-2 flex items-center justify-center shadow">
+                  <ArrowRight className="w-5 h-5 text-black" />
+                </div>
               </button>
             </div>
           </div>

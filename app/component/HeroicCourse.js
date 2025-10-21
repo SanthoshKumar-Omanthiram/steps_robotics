@@ -10,7 +10,7 @@ export default function HeroicCourse() {
   };
 
   return (
-    <div className="course-heroic p-6">
+    <div className="course-heroic mb-[25px] p-6">
       <div className="container mx-auto space-y-8">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 transition-all duration-300">
           <div className="w-full h-full">
@@ -20,7 +20,7 @@ export default function HeroicCourse() {
                 alt={course.heroictitle}
                 width={600}
                 height={484}
-                className="course-heroic-image rounded-lg"
+                className="course-heroic-image mt-[35px] rounded-lg"
               />
             ) : (
               <div className="w-full h-80 bg-gray-200 flex items-center justify-center text-gray-500">
@@ -29,7 +29,7 @@ export default function HeroicCourse() {
             )}
           </div>
           <div className="text-left">
-            <h2 className="course-heroic-title text-3xl font-semibold">
+            <h2 className="course-heroic-title !mt-[70px] text-3xl font-semibold">
               {course.heroictitle}
             </h2>
           </div>

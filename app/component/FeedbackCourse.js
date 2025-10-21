@@ -108,7 +108,7 @@ export default function FeedbackCourse() {
 
   return (
     <div className="container course-testimonial pb-[140px] mx-auto bg-white px-4">
-      <div className="max-w-7xl padding-80 sm:px-6 lg:px-8 mx-auto">
+      <div className="max-w-7xl sm:px-6 lg:px-8 mx-auto">
         <div className="flex flex-col lg:flex-row gap-10 items-center">
           <div className="w-full lg:w-[50%]">
             <h2 className="mb-4 leading-tight">

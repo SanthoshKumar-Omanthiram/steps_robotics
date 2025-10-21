@@ -54,7 +54,7 @@ export default function StemCourse() {
     }
   };
   return (
-    <div className="stem-education-course py-10">
+    <div className="stem-education-course -mt[6px] mb[40px] py-10">
       <div className="container mx-auto px-4">
         <div className="stem-education-main mb-8 mt-5 text-left">
           <p className="stem-education-title text-3xl font-bold">
@@ -67,7 +67,7 @@ export default function StemCourse() {
             Students can showcase their projects in their offline community.
           </p>
         </div>
-        <div className="flex gap-4 items-stretch overflow-x-auto pb-4">
+        <div className="flex gap-4 items-stretch">
           {courses.map((course, idx) => {
             const isActive = activeIndex === idx;
             const colors = [

@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { Mail, Phone, ArrowRight } from 'lucide-react';
 import Image from 'next/image';
+import axios from "axios";
 export default function GetInTouch() {
   const [formData, setFormData] = useState({
     firstName: '',
@@ -18,13 +19,20 @@ export default function GetInTouch() {
     });
   };
 
-  const handleSubmit = () => {
-    console.log('Form submitted:', formData);
-  };
+  const handleSubmit = async () => {
+  try {
+    const res = await axios.post("/api/contact", formData);
+    alert(res.data.message);
+    setFormData({ firstName: "", lastName: "", email: "", phone: "", message: "" });
+  } catch (error) {
+    console.error("Submit error:", error);
+    alert("Something went wrong!");
+  }
+};
 
   return (
     <div className="min-h-screen getin-touch p-4 sm:p-6 lg:p-8">
-      <div className="container mx-auto padding-40">
+      <div className="container mx-auto">
         <div className="bg-white rounded-3xl shadow-2xl overflow-hidden">
           <div className="grid lg:grid-cols-2 gap-0">
             <div className="get-in-touch-image">

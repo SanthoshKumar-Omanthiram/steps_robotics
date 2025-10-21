@@ -32,7 +32,7 @@ export default function Choose() {
 
   return (
     <div className="min-h-screen choose-section px-6 py-12 lg:px-20">
-      <div className="max-w-7xl mx-auto">
+      <div className="container mx-auto">
         <div className="mb-11 text-center lg:text-left">
           <h1 className="text-4xl lg:text-5xl font-bold choose-main-title mb-4">
             Why Choose STEPS Robotics{" "}

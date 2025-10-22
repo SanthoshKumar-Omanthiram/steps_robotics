@@ -208,7 +208,7 @@ export default function HeroSlider() {
             
 
             {/* Dots Navigation */}
-            <div className="absolute bottom-32 md:bottom-32 left-1/2 -translate-x-1/2 z-20 flex gap-3">
+            {/* <div className="absolute bottom-32 md:bottom-32 left-1/2 -translate-x-1/2 z-20 flex gap-3">
                 {slides.map((_, index) => (
                     <button
                         key={index}
@@ -220,7 +220,7 @@ export default function HeroSlider() {
                         aria-label={`Go to slide ${index + 1}`}
                     />
                 ))}
-            </div>
+            </div> */}
 
             {/* Info Cards - Desktop (4 columns) */}
             <motion.div

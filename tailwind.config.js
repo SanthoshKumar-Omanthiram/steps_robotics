@@ -10,3 +10,13 @@
 //   },
 //   plugins: [],
 // };
+// module.exports = {
+//   theme: {
+//     extend: {},
+//     screens: {
+//       'xs': '335px',
+//       'custom': '1221px',
+//       ...require('tailwindcss/defaultTheme').screens,
+//     },
+//   },
+// };

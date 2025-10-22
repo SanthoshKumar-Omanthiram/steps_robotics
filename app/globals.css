@@ -791,7 +791,8 @@ li {
   font-size: 64px;
 }
 
-.text-font-orbitron-explore, .font-orbitron {
+.text-font-orbitron-explore,
+.font-orbitron {
   font-family: var(--font-orbitron);
 }
 
@@ -827,10 +828,10 @@ li {
 /**About Image */
 .about_section {
   flex-shrink: 0;
-  object-fit:scale-down;
+  object-fit: scale-down;
 }
 
-.about_right_text h2{
+.about_right_text h2 {
   color: #040404;
   text-align: center;
   font-feature-settings: 'liga' off, 'clig' off;
@@ -843,19 +844,19 @@ li {
 
 /** font-orbitron **/
 
-.text_poppins{
+.text_poppins {
   font-family: Poppins;
 }
 
-.start_rating{
+.start_rating {
   margin-top: 100px;
 }
 
-.our_vmv_heading{
+.our_vmv_heading {
   font-size: 24px;
 }
 
-.our_vmv_para{
+.our_vmv_para {
   font-size: 14px;
 }
 
@@ -876,17 +877,20 @@ li {
   position: absolute;
   inset: 0;
   border-radius: 1rem;
-  border: 1.5px dotted #000; /* change color here */
+  border: 1.5px dotted #000;
+  /* change color here */
   pointer-events: none;
-  z-index: 1;  
+  z-index: 1;
 }
 
 
 .testimonial-wrapper {
   position: relative;
-  width: 310px;          /* outer circle size */
+  width: 310px;
+  /* outer circle size */
   height: 310px;
-  border-radius: 50%;    /* circle */
+  border-radius: 50%;
+  /* circle */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -897,24 +901,233 @@ li {
   position: absolute;
   width: 100%;
   height: 100%;
-  border: 4px dotted #A9A9A9; /* dotted border */
+  border: 4px dotted #A9A9A9;
+  /* dotted border */
   border-radius: 50%;
   box-sizing: border-box;
 }
 
 .testimonial-inner {
-  width: 280px;           /* slightly smaller to create spacing */
+  width: 280px;
+  /* slightly smaller to create spacing */
   height: 280px;
   border-radius: 50%;
   overflow: hidden;
   position: relative;
 }
 
-.talks_description p{
-  line-height:24px
+.talks_description p {
+  line-height: 24px
+}
+
+
+.rounded_image {
+  border-radius: 6%;
 }
 
 
 
+/* Responive CSS */
+/* @layer utilities {
+  @media (max-width: 1221px) {
+    .custom-shape {
+      top: 40px;
+      left: 60px;
+      width: 70px;
+      height: 70px;
+    }
+  }
+  @media (max-width: 335px) {
+    .custom-shape {
+      top: 20px;
+      left: 10px;
+      width: 40px;
+      height: 40px;
+    }
+  }
+} */
+
+/* 
+1023,*/
+
+/* why_choose_steps_ */
+
+@layer utilities {
+  @media (max-width: 1221px) {
+    .why_choose_sex_2_tale {
+      width: 130px;
+      height: 100px;
+      margin-left: 27px;
+    }
+  }
+
+  @media (max-width: 1023px) {
+    .why_choose_image_1 {
+      left: -200px;
+    }
+
+    .why_choose_image_2 {
+      left: 130px;
+    }
+  }
+
+  @media(max-width: 1267px) {
+    .why_choose_image_1 {
+      left: 40px;
+      bottom: 10px;
+    }
+
+    .why_choose_image_2 {
+      left: 45px;
+    }
+  }
+
+  @media(max-width: 1183px) {
+    .why_choose_image_2 {
+      left: 85px;
+    }
+  }
+
+  @media(max-width: 1081px) {
+    .why_choose_image_1 {
+      left: -10px;
+      bottom: 10px;
+    }
+  }
+
+  @media(max-width: 1023px) {
+    .why_choose_image_1 {
+      left: -200px;
+      bottom: 10px;
+    }
+
+    .why_choose_image_2 {
+      left: 130px;
+    }
+
+  }
+
+  @media(max-width: 767px) {
+    .why_choose_image_1 {
+      left: 200px;
+    }
+
+    .why_choose_image_2 {
+      left: 5px;
+    }
+
+  }
+
+  @media(max-width: 750px) {
+    .why_choose_image_1 {
+      left: 150px;
+    }
+
+    .why_choose_image_2 {
+      left: -35px;
+    }
+  }
+
+  @media(max-width: 716px) {
+    .why_choose_image_1 {
+      left: 140px;
+    }
+
+    .why_choose_image_2 {
+      left: -5px;
+    }
+  }
+
+  @media(max-width: 672px) {
+    .why_choose_image_1 {
+      left: 120px;
+    }
+
+    .why_choose_image_2 {
+      left: 10px;
+    }
+  }
+
+  @media(max-width: 641px) {
+    .why_choose_image_1 {
+      left: 110px;
+    }
+
+    .why_choose_image_2 {
+      left: 25px;
+    }
+  }
+
+  @media(max-width: 585px) {
+    .why_choose_image_1 {
+      left: 120px;
+    }
+
+    .why_choose_image_2 {
+      left: 15px;
+    }
+    .why_choose_sex_2_tale {
+      width: 100px;
+      height: 80px;
+      margin-left: 55px;
+    }
+    
+  }
+   @media(max-width: 507px) {
+    .why_choose_image_1 {
+      left: 75px;
+    }
+
+    .why_choose_image_2 {
+      left: 35px;
+    }
+    .why_choose_sex_2_tale {
+      width: 100px;
+      height: 80px;
+      margin-left: 55px;
+    }
+    
+  }
+   @media(max-width: 437px) {
+    .why_choose_image_1 {
+      left: 30px;
+    }
+
+    .why_choose_image_2 {
+      left: 55px;
+    }
+    .why_choose_sex_2_tale {
+      width: 100px;
+      height: 80px;
+      margin-left: 55px;
+    }
+    
+  }
+  @media(max-width: 625px) {
+    .why_choose_image_1 {
+      left: 90px;
+    }
+
+    .why_choose_image_2 {
+      left: -55px;
+    }
+    .why_choose_sex_2_tale {
+      width: 100px;
+      height: 80px;
+      margin-left: 55px;
+    }
+    
+  }
 
 
+
+
+  /* @media (max-width: 335px) {
+    .custom-shape {
+      top: 20px;
+      left: 10px;
+      width: 40px;
+      height: 40px;
+    }
+  } */
+}

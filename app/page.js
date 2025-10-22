@@ -1,32 +1,18 @@
 "use client";
 // app/page.js
 
-
 import Image from 'next/image';
-// import HeroBanner from "@/components/HeroBanner";
 import HeroSlider from './component/HeroSlider';
 import ProjectCard from "./component/ProjectCard";
 import Robot from "@/public/robot.png"
 import TestimonialsSection from './component/TestimonialsSection';
 import { motion } from 'framer-motion';
-
 import { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import WhyChooseSection from './component/WhyChooseSection';
-import Footer from './component/Footer';
-
-import { Mail, Phone, ArrowRight } from 'lucide-react';
-
-
-
-
-
-// const projects = [
-//   { image: "Swetha.png", name: "Swetha" },
-//   { image: "John.png", name: "John" },
-//   { image: "Aditi.png", name: "Aditi" },
-// ];
+import { ArrowRight } from 'lucide-react';
+import CodingAdventures from './component/CodingAdventures';
 
 const projects = [
   { image: "/Swetha.png", video: "/about/kid-1.mp4", name: "Aditi" },
@@ -55,24 +41,6 @@ const leftOfferings = [
     description: "Complete design, setup, and training for robotics labs in institutions.",
   }
 ];
-
-// const rightOfferings = [
-//   {
-//     title: "Robotics\nCompetitions",
-//     icon: "/icons/robotics.png",
-//     description: "Test skills in real-world scenarios. \n Join national-level competitions with training, support.",
-//   },
-//   {
-//     title: "Competition Coaching",
-//     icon: "/icons/competition.png",
-//     description: "Customized mentoring for WRO, FIRST, and national STEM events.",
-//   },
-//   {
-//     title: "CSR & Corporate STEM Programs",
-//     icon: "/icons/CSR.png",
-//     description: "Partner with us to bring STEM learning to underserved communities.",
-//   }
-// ];
 
 const rightOfferings = [
   {
@@ -125,39 +93,6 @@ const features = [
   },
 ];
 
-
-
-// const galleryImages = [
-//   // Column 1
-//   [
-//     { src: '/child-1.jpg', alt: 'Student building robot', height: 'h-40 w-50' },
-//     { src: '/child-1.jpg', alt: 'Teacher with students', height: 'h-100 w-50' }
-//   ],
-//   // Column 2
-//   [
-//     { src: '/child-1.jpg', alt: 'Students working on project', height: 'h-80 w-80 px-[-20]' },
-//     { src: '/child-1.jpg', alt: 'Classroom activity', height: 'h-64' }
-//   ],
-//   // Column 3
-//   [
-//     { src: '/child-1.jpg', alt: 'Science experiment', height: 'h-72' },
-//     { src: '/child-1.jpg', alt: 'Student presentation', height: 'h-80' }
-//   ],
-//   // Column 4
-//   [
-//     { src: '/child-1.jpg', alt: 'Robotics project', height: 'h-96' }
-//   ],
-//   // Column 5
-//   [
-//     { src: '/child-1.jpg', alt: 'Group learning', height: 'h-64' },
-//     { src: '/child-1.jpg', alt: 'Hands-on activity', height: 'h-80' }
-//   ]
-// ];
-
-
-
-
-
 export default function Home() {
   const [activeVideo, setActiveVideo] = useState(null);
 
@@ -202,22 +137,6 @@ export default function Home() {
           </Swiper>
 
           {/* Fullscreen Video Modal */}
-          {/* {activeVideo && (
-            <div className="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50">
-              <video
-                src={activeVideo}
-                controls
-                autoPlay
-                className="w-full max-w-4xl h-auto rounded-lg shadow-lg"
-              />
-              <button
-                onClick={() => setActiveVideo(null)}
-                className="absolute top-5 right-5 text-white text-3xl font-bold"
-              >
-                ✕
-              </button>
-            </div>
-          )} */}
           {activeVideo && (
             <div className="fixed inset-0 flex items-center justify-center z-50">
               {/* Semi-transparent overlay */}
@@ -372,139 +291,115 @@ export default function Home() {
             From structured courses to dynamic programs, STEPS Robotics offers multiple pathways for students to develop essential STEM and coding skills.
             Our approach blends theory with hands-on practice, preparing learners to thrive in the technology-driven word.
           </p>
-        </div>
 
 
-        <div className="flex flex-col lg:flex-row justify-center items-stretch gap-8 max-w-7xl mt-18 mb-20 mx-auto">
-          {/* Card 1 */}
-          <div className="relative flex-1 border-2 border-dotted border-orange-400 rounded-3xl bg-white overflow-visible flex flex-col md:flex-row items-center md:items-start md:p-8 gap-6 h-67">
-
-
-            {/* Left: Image (popped out) */}
-            <div className="absolute rounded-2xl -top-10 left-6 md:left-20">
-              <div className="p-1 bg-black w-40 h-60 md:w-50 md:h-60">
-                <div className="rounded-2xl overflow-hidden shadow-md">
+          <div className="relative flex flex-col md:flex-row justify-center items-center gap-8 p-2 border-yellow-400 rounded-2xl">
+            {/* Card 1 */}
+            <div className="relative border-yellow-400 flex flex-col w-full md:w-1/2 border-2 border-dotted rounded-2xl p-8 overflow-visible">
+              {/* Wrapper for floating image + text */}
+              <div className="flex flex-col md:flex-row relative">
+                {/* Left side image */}
+                <div className="flex-shrink-0 relative border-2 m-2 p-2 border-white shadow top-[-80px] rounded_image">
                   <Image
                     src="/program1.png"
-                    alt="Students learning robotics"
-                    fill
-                    className="object-cover"
+                    alt="Card 1"
+                    width={200}
+                    height={250}
+                    className="object-cover rounded shadow h-65 w-60 block"
                   />
                 </div>
+
+                {/* Right side text */}
+                <div className="flex-1 flex flex-col pl-4 justify-center">
+                  <h1 className="text-xl font-bold mb-3">Explore Courses</h1>
+                  <p className="text-gray-600 mb-4 leading-relaxed">
+                    Structured STEM courses combining robotics, coding, and hands-on projects to build creativity, problem-solving, and future-ready skills.
+                  </p>
+                  <ul className="steps_list_items mb-4">
+                    <li className="flex mb-2 items-center gap-2">
+                      <ArrowRight className="w-5 h-5 text-orange-500" />
+                      Interactive robotics classes
+                    </li>
+                    <li className="flex mb-2 items-center gap-2">
+                      <ArrowRight className="w-5 h-5 text-orange-500" />
+                      Project-based curriculum
+                    </li>
+                    <li className="flex mb-2 items-center gap-2">
+                      <ArrowRight className="w-5 h-5 text-orange-500" />
+                      Expert mentor guidance
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              {/* Button below both */}
+              <div className="absolute top-86 right-5 w-full flex justify-center">
+                <button className="bg-orange-500 text-white px-6 py-2 rounded hover:bg-orange-600">
+                  Explore Now
+                </button>
               </div>
             </div>
 
 
 
-            {/* Right: Text (with padding to avoid overlap) */}
-            <div className="flex-1 text-left mt-32 md:mt-0 md:ml-72">
-              <p className="text-font-orbitron-explore font-bold">
-                Explore Courses
-              </p>
-              <p className="text-gray-600 text-base md:text-lg mb-2 leading-relaxed text-font-poppins">
-                Structured STEM courses combining robotics, coding, and hands-on projects to build creativity, problem-solving, and future-ready skills.
-              </p>
-
-              <ul className="space-y-1 mb-1">
-                <li className="flex items-start gap-2">
-                  <span className="text-orange-500">→</span>
-                  <span className="text-gray-700 text-font-poppins">Interactive robotics classes</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-orange-500 ">→</span>
-                  <span className="text-gray-700 text-font-poppins">Project-based curriculum</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-orange-500">→</span>
-                  <span className="text-gray-700 text-font-poppins">Expert mentor guidance</span>
-                </li>
-              </ul>
-
-              <button className="bg-gradient-to-r from-orange-500 to-yellow-400 text-white px-6 py-3 rounded-full font-semibold flex items-center gap-2 hover:shadow-lg transition-shadow">
-                Explore More
-                <span className="text-lg">→</span>
-              </button>
-            </div>
-          </div>
 
 
-          {/* Card 2 */}
-          <div className="relative flex-1 border-2 border-dotted border-orange-400 rounded-3xl bg-white overflow-visible flex flex-col md:flex-row items-center md:items-start md:p-8 gap-6 h-67">
-
-
-            {/* Left: Image (popped out) */}
-            <div className="absolute rounded-2xl -top-10 left-6 md:left-20">
-              <div className="p-1 bg-black w-40 h-60 md:w-50 md:h-60">
-                <div className="rounded-2xl overflow-hidden shadow-md">
+            {/* Card 2 */}
+            <div className="relative border-yellow-400 flex flex-col w-full md:w-1/2 border-2 border-dotted rounded-2xl p-8 overflow-visible">
+              {/* Wrapper for floating image + text */}
+              <div className="flex flex-col md:flex-row relative">
+                {/* Left side image */}
+                <div className="flex-shrink-0 relative border-2 m-2 p-2 border-white bg-white shadow top-[-80px] rounded_image">
                   <Image
                     src="/program1.png"
-                    alt="Students learning robotics"
-                    fill
-                    className="object-cover"
+                    alt="Card 1"
+                    width={200}
+                    height={250}
+                    className="object-cover rounded shadow h-65 w-60 block"
                   />
                 </div>
+
+
+                {/* Right side text */}
+                <div className="flex-1 flex flex-col pl-4 justify-center">
+                  <h1 className="text-xl font-bold mb-3">Explore Courses</h1>
+                  <p className="text-gray-600 mb-4 leading-relaxed">
+                    Structured STEM courses combining robotics, coding, and hands-on projects to build creativity, problem-solving, and future-ready skills.
+                  </p>
+                  <ul className="steps_list_items mb-4">
+                    <li className="flex mb-2 items-center gap-2">
+                      <ArrowRight className="w-5 h-5 text-orange-500" />
+                      Interactive robotics classes
+                    </li>
+                    <li className="flex mb-2 items-center gap-2">
+                      <ArrowRight className="w-5 h-5 text-orange-500" />
+                      Project-based curriculum
+                    </li>
+                    <li className="flex mb-2 items-center gap-2">
+                      <ArrowRight className="w-5 h-5 text-orange-500" />
+                      Expert mentor guidance
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              {/* Button below both */}
+              <div className="absolute top-86 right-5 w-full flex justify-center">
+                <button className="bg-orange-500 text-white px-6 py-2 rounded hover:bg-orange-600">
+                  Explore Now
+                </button>
               </div>
             </div>
-
-
-
-            {/* Right: Text (with padding to avoid overlap) */}
-            <div className="flex-1 text-left mt-32 md:mt-0 md:ml-72">
-              <p className="text-font-orbitron-explore font-bold">
-                Explore Courses
-              </p>
-              <p className="text-gray-600 text-base md:text-lg mb-2 leading-relaxed text-font-poppins">
-                Structured STEM courses combining robotics, coding, and hands-on projects to build creativity, problem-solving, and future-ready skills.
-              </p>
-
-              <ul className="space-y-1 mb-1">
-                <li className="flex items-start gap-2">
-                  <span className="text-orange-500">→</span>
-                  <span className="text-gray-700 text-font-poppins">Interactive robotics classes</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-orange-500 ">→</span>
-                  <span className="text-gray-700 text-font-poppins">Project-based curriculum</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-orange-500">→</span>
-                  <span className="text-gray-700 text-font-poppins">Expert mentor guidance</span>
-                </li>
-              </ul>
-
-              <button className="bg-gradient-to-r from-orange-500 to-yellow-400 text-white px-6 py-3 rounded-full font-semibold flex items-center gap-2 hover:shadow-lg transition-shadow">
-                Explore More
-                <span className="text-lg">→</span>
-              </button>
-            </div>
           </div>
-        </div>
-      </section>
 
-      {/**Coding */}
-      <section className="pt-12 px-4 sm:px-8 lg:px-30 bg-cover bg-center overflow-hidden" style={{ backgroundImage: "url('/about_bg.jpg')" }}>
-        {/* Header with max-width */}
-        <div className="max-w-7xl mx-auto mb-4">
-          <h2 className="text-3xl sm:text-3xl lg:text-4xl mb-4 leading-snug text-left text-font-orbitron">
-            About <span className="text-yellow-400 text-font-orbitron">STEPS Robotics</span>
-          </h2>
-          <p className="text-gray-600 text-base md:text-lg text-font-poppins pr-40">
-            We believe that true learning begins with exploration. That's why we deliver immersive, hands-on STEM experiences that ignite creativity and build
-            real-world skills in Robotics, Artificial Intelligence, Coding, IoT and more
-          </p>
         </div>
 
-        {/* Robot Image - Full Width, No Container */}
-        <div className="w-full leading-none -mb-1 mt-[-100]">
-          <Image
-            src="/codingSteps.png"
-            alt="STEPS Robotics Robot"
-            width={2000}
-            height={600}
-            className="w-full h-auto block"
-          />
-        </div>
+
       </section>
+
+
+      {/**About STEPS Robotics */}
+      <CodingAdventures />
 
       {/**Choose STEPS Robotics */}
       <WhyChooseSection />
@@ -773,9 +668,6 @@ export default function Home() {
             Let your chile experience the magic of play based learning in this free 1:1 Live Online Class. <br />Book your slot now!
           </p>
 
-          {/* <button className="bg-yellow-500 hover:bg-yellow-600 text-white px-6 py-3 rounded-full font-semibold mb-8 transition duration-300">
-            Explore More
-          </button> */}
           <div className="flex justify-center pt-2">
             <button className="group bg-gradient-to-r mb-8 from-orange-500 to-yellow-400 text-white font-bold px-5 py-2 rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 flex items-center gap-3"
             >
@@ -799,14 +691,7 @@ export default function Home() {
 
       {/**Study Process Gallery End */}
 
-
-      {/**Footer */}
-      {/* <Footer /> */}
-
     </div>
-
-
-
 
   );
 }

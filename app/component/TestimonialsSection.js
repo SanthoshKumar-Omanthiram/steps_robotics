@@ -13,7 +13,7 @@ const testimonials = [
         rating: 4.5,
         image: '/kid1.png',
         quote: 'My students are more engaged than ever!',
-        description: 'The robotics program has transformed my classroom. Students who were previously disengaged are now excited about learning. The hands-on approach makes complex concepts accessible and fun.'
+        description: 'My Son can’t wait for class - she even codes at home!”. Before joining the program, my son was curious about technology but didn’t know where to start. Now, he’s completely hooked - coding during his free time, and fun learning environment have made a huge difference in her confidence and creativity. I’ve never seen her this excited about learning!.'
     },
     {
         id: 2,
@@ -31,7 +31,7 @@ const testimonials = [
         rating: 4.5,
         image: '/kid1.png',
         quote: 'Best investment we\'ve made for our school!',
-        description: 'Since partnering with STEPS Robotics, we\'ve seen a remarkable improvement in student engagement and STEM interest. The program aligns perfectly with our vision of preparing students for the future.'
+        description: 'My Son can’t wait for class - she even codes at home!”. Before joining the program, my son was curious about technology but didn’t know where to start. Now, he’s completely hooked - coding during his free time, and fun learning environment have made a huge difference in her confidence and creativity. I’ve never seen her this excited about learning!.'
     }
 ];
 
@@ -97,7 +97,14 @@ const TestimonialCard = ({ testimonial, isCenter, onClick }) => (
 
 export default function TestimonialsSection() {
     const [activeIndex, setActiveIndex] = useState(1); // Start with center card (index 1)
+    const [mobileIndex, setMobileIndex] = useState(0);
+    const nextSlide = () => {
+        setMobileIndex((prev) => (prev + 1) % testimonials.length);
+    };
 
+    const prevSlide = () => {
+        setMobileIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+    };
     const handleCardClick = (index) => {
         setActiveIndex(index);
     };
@@ -129,18 +136,19 @@ export default function TestimonialsSection() {
         <div className="min-h-screen bg-gradient-to-br py-10 px-5">
             <div className="max-w-7xl mx-auto">
                 {/* Header */}
-                <div className="max-w-7xl mx-auto mb-4">
-                    <h2 className="text-3xl sm:text-3xl lg:text-4xl mb-4 leading-snug text-left text-font-orbitron text-yellow-400">
+                <div className="mb-4">
+                    <h2 className="text-3xl sm:text-3xl lg:text-4xl mb-4 leading-snug text-center sm:text-left text-font-orbitron text-yellow-400">
                         STEPS Robotics <span className="text-black text-font-orbitron">Talks</span>
                     </h2>
-                    <p className="text-gray-600 text-base md:text-lg text-font-poppins pr-40">
+                    <p className="text-gray-600 text-base md:text-lg text-font-poppins">
                         We believe that true learning begins with exploration. That's why we deliver immersive, hands-on STEM experiences that ignite creativity and build
                         real-world skills in Robotics, Artificial Intelligence, Coding, IoT and more
                     </p>
                 </div>
+                
 
                 {/* Testimonials Cards */}
-                <div className="relative flex justify-center items-center gap-8 mb-10 flex-wrap lg:flex-nowrap">
+                <div className="hidden md:flex relative justify-center items-center gap-8 mb-10 flex-wrap lg:flex-nowrap">
                     {/* Left Quote */}
 
                     {cardOrder.map((testimonialIndex, position) => (
@@ -164,8 +172,8 @@ export default function TestimonialsSection() {
                     ))}
                 </div>
 
-                {/* Testimonial Text */}
-                <div className="text-center max-w-4xl mx-auto mb-8 px-5">
+                {/* 💬 Desktop Description */}
+                <div className="hidden md:block text-center max-w-4xl mx-auto mb-8 px-5">
                     <p className="text-gray-800 text-base leading-relaxed mb-4 italic font-semibold">
                         "{testimonials[activeIndex].quote}"
                     </p>
@@ -174,16 +182,15 @@ export default function TestimonialsSection() {
                     </p>
                 </div>
 
-                {/* Navigation Dots */}
-                {/* Navigation Dots */}
-                <div className="flex justify-center gap-4">
+                {/* 🟡 Navigation Dots - Desktop */}
+                <div className="hidden md:flex justify-center gap-4">
                     {testimonials.map((_, index) => (
                         <button
                             key={index}
                             onClick={() => setActiveIndex(index)}
                             className={`w-4 h-4 rounded-full transition-all duration-300 flex items-center justify-center ${index === activeIndex
-                                    ? 'border-2 border-dotted border-black bg-transparent !w-7 !h-7 p-1.5 mt-[-4]'
-                                    : 'rounded-full bg-yellow-400 bg-transparent w-4 h-4'
+                                ? 'border-2 border-dotted border-black bg-transparent !w-7 mt-[-5] !h-7 p-1.5'
+                                : 'rounded-full bg-yellow-400 bg-transparent w-4 h-4'
                                 }`}
                             aria-label={`View testimonial ${index + 1}`}
                         >
@@ -193,9 +200,59 @@ export default function TestimonialsSection() {
                         </button>
                     ))}
                 </div>
+
+
+
+
+
+                {/* 📱 Mobile Slider Version */}
+                <div className="flex flex-col items-center md:hidden mt-8">
+                    {/* Circular Image */}
+                    <div className="testimonial-wrapper bg-white">
+                        {/* Dotted Border */}
+                        <div className="testimonial-border"></div>
+
+                        {/* Image inside with spacing */}
+                        <div className="testimonial-inner">
+                            <Image
+                                src={testimonials[mobileIndex].image}
+                                alt={testimonials[mobileIndex].name}
+                                fill
+                                className="object-cover rounded-full"
+                            />
+                        </div>
+                    </div>
+
+
+
+                    {/* Quote & Description */}
+                    <div className="text-center border-2 w-[350px] h[4000px] talks_description m-[-25px] border-dotted rounded-xl p-3 bg-gradient-to-br from-white to-yellow-400 ">
+                        <p className="text-gray-800 text-base italic font-semibold mt-5 mb-3">
+                            "{testimonials[mobileIndex].quote}"
+                        </p>
+                        <p className="text-gray-600 text-sm mb-2">{testimonials[mobileIndex].description}</p>
+                        <h3 className="text-lg font-bold text-gray-800">{testimonials[mobileIndex].name}</h3>
+                        <p className="text-gray-600 text-sm mb-8">{testimonials[mobileIndex].role}</p>
+                    </div>
+
+                    {/* Navigation Buttons */}
+                    <div className="flex justify-center gap-6 mt-12">
+                        <button
+                            onClick={prevSlide}
+                            className="w-12 h-12 rounded-full bg-yellow-400 text-white flex items-center justify-center shadow-md active:scale-90 transition-transform"
+                        >
+                            ‹
+                        </button>
+                        <button
+                            onClick={nextSlide}
+                            className="w-12 h-12 rounded-full bg-yellow-400 text-white flex items-center justify-center shadow-md active:scale-90 transition-transform"
+                        >
+                            ›
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
     );
 }
-
 

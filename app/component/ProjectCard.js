@@ -1,19 +1,20 @@
 import { Play } from "lucide-react";
 
-export default function ProjectCard({ image, name }) {
+export default function ProjectCard({ image, name, onClick }) {
   return (
     <div
-      className="relative group rounded-2xl border-2 custom-dashed-border border-black-300 hover:border-yellow-400 transition-all duration-300 overflow-hidden bg-white p-3"
+      onClick={onClick}
+      className="relative group rounded-2xl border-2 custom-dashed-border border-black-300 transition-all duration-300 overflow-hidden bg-white p-3 hover:bg-yellow-50 cursor-pointer"
     >
       <img
         src={image}
         alt={name}
-        className="w-full h-64 object-cover rounded-t-2xl"
+        className="w-full h-64 object-cover rounded-2xl"
       />
 
       {/* Play button overlay */}
-      <div className="absolute inset-0 flex items-center justify-center transition-all duration-300">
-        <button className="bg-white p-4 rounded-full shadow-lg">
+      <div className="absolute inset-0 flex items-center justify-center bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-300">
+        <button className="bg-white p-4 rounded-full shadow-lg group-hover:opacity-100 transition">
           <Play className="w-6 h-6 text-gray-800" />
         </button>
       </div>
@@ -24,5 +25,9 @@ export default function ProjectCard({ image, name }) {
         </p>
       </div>
     </div>
+
+
+
+
   );
 }

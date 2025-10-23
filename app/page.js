@@ -1,21 +1,27 @@
 "use client";
 // app/page.js
 
-
 import Image from 'next/image';
-// import HeroBanner from "@/components/HeroBanner";
 import HeroSlider from './component/HeroSlider';
 import ProjectCard from "./component/ProjectCard";
 import Robot from "@/public/robot.png"
 import TestimonialsSection from './component/TestimonialsSection';
 import { motion } from 'framer-motion';
-
-
+import { useState } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import WhyChooseSection from './component/WhyChooseSection';
+import { ArrowRight } from 'lucide-react';
+import CodingAdventures from './component/CodingAdventures';
 
 const projects = [
-  { image: "Swetha.png", name: "Swetha" },
-  { image: "John.png", name: "John" },
-  { image: "Aditi.png", name: "Aditi" },
+  { image: "/Swetha.png", video: "/about/kid-1.mp4", name: "Aditi" },
+  { image: "/Sathish.png", video: "/about/kid-2.mp4", name: "Shankar" },
+  { image: "/Sandiya.png", video: "/about/kid-3.mp4", name: "Divya" },
+  { image: "/Swetha.png", video: "/about/kid-4.mp4", name: "Aditi Shakar" },
+  { image: "/Sathish.png", video: "/about/kid-5.mp4", name: "Mukesh Raj" },
+  { image: "/Sandiya.png", video: "/about/kid-1.mp4", name: "Vidhya Sree" },
+
 ];
 
 const leftOfferings = [
@@ -35,24 +41,6 @@ const leftOfferings = [
     description: "Complete design, setup, and training for robotics labs in institutions.",
   }
 ];
-
-// const rightOfferings = [
-//   {
-//     title: "Robotics\nCompetitions",
-//     icon: "/icons/robotics.png",
-//     description: "Test skills in real-world scenarios. \n Join national-level competitions with training, support.",
-//   },
-//   {
-//     title: "Competition Coaching",
-//     icon: "/icons/competition.png",
-//     description: "Customized mentoring for WRO, FIRST, and national STEM events.",
-//   },
-//   {
-//     title: "CSR & Corporate STEM Programs",
-//     icon: "/icons/CSR.png",
-//     description: "Partner with us to bring STEM learning to underserved communities.",
-//   }
-// ];
 
 const rightOfferings = [
   {
@@ -105,74 +93,86 @@ const features = [
   },
 ];
 
-
-
-// const galleryImages = [
-//   // Column 1
-//   [
-//     { src: '/child-1.jpg', alt: 'Student building robot', height: 'h-40 w-50' },
-//     { src: '/child-1.jpg', alt: 'Teacher with students', height: 'h-100 w-50' }
-//   ],
-//   // Column 2
-//   [
-//     { src: '/child-1.jpg', alt: 'Students working on project', height: 'h-80 w-80 px-[-20]' },
-//     { src: '/child-1.jpg', alt: 'Classroom activity', height: 'h-64' }
-//   ],
-//   // Column 3
-//   [
-//     { src: '/child-1.jpg', alt: 'Science experiment', height: 'h-72' },
-//     { src: '/child-1.jpg', alt: 'Student presentation', height: 'h-80' }
-//   ],
-//   // Column 4
-//   [
-//     { src: '/child-1.jpg', alt: 'Robotics project', height: 'h-96' }
-//   ],
-//   // Column 5
-//   [
-//     { src: '/child-1.jpg', alt: 'Group learning', height: 'h-64' },
-//     { src: '/child-1.jpg', alt: 'Hands-on activity', height: 'h-80' }
-//   ]
-// ];
-
 export default function Home() {
+  const [activeVideo, setActiveVideo] = useState(null);
+
   return (
-    <div className="min-h-screen bg-white sticky top-0 z-50">
-
-    {/**Navbar */}
-
-
+    <div className="min-h-screen bg-white">
       {/* Hero Section */}
       <HeroSlider />
 
       {/* Projects Section */}
       <section className="py-12 bg-white px-4 sm:px-8 lg:px-30">
         {/* Heading */}
-        <h2 className="text-2xl sm:text-3xl lg:text-4xl mb-4 leading-snug text-left text-font-orbitron">
+        <h2 className="text-2xl sm:text-3xl lg:text-4xl mb-4 leading-snug text-center sm:text-left text-font-orbitron">
           See what kids built with{" "}
           <span className="text-yellow-500 text-font-orbitron">STEPS Robotics!</span>
         </h2>
 
-        {/* Description */}
-        <p className="text-gray-600 text-sm dotted-cards sm:text-base lg:text-lg mb-10 leading-relaxed text-font-poppins text-left">
+        <p className="text-gray-600 text-sm sm:text-base lg:text-lg mb-10 leading-relaxed text-center sm:text-left text-font-poppins">
           With Steps Robotics, your child will build products in the real world to solve real world problems and become skilled in technologies
           that matter for the future. Best part — this happens while your child is playing!
         </p>
 
-        {/* Projects Grid */}
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="relative max-w-7xl mx-auto ">
+          {/* Swiper Slider */}
+          <Swiper
+            spaceBetween={20}
+            slidesPerView={1.2}
+            breakpoints={{
+              640: { slidesPerView: 2.2 },
+              1024: { slidesPerView: 3.2 },
+            }}
+            className="cursor-grab"
+          >
             {projects.map((p, i) => (
-              <ProjectCard key={i} image={p.image} name={p.name} />
+              <SwiperSlide key={i}>
+                <ProjectCard
+                  image={p.image}
+                  name={p.name}
+                  onClick={() => setActiveVideo(p.video)}
+                />
+              </SwiperSlide>
             ))}
-          </div>
+          </Swiper>
+
+          {/* Fullscreen Video Modal */}
+          {activeVideo && (
+            <div className="fixed inset-0 flex items-center justify-center z-50">
+              {/* Semi-transparent overlay */}
+              <div
+                className="absolute inset-0 bg-black opacity-70"
+                onClick={() => setActiveVideo(null)} // click outside to close
+              ></div>
+
+              {/* Video container */}
+              <div className="relative z-10 w-full max-w-4xl rounded-lg overflow-hidden shadow-lg">
+                <video
+                  src={activeVideo}
+                  controls
+                  autoPlay
+                  className="w-full h-auto"
+                />
+                <button
+                  onClick={() => setActiveVideo(null)}
+                  className="absolute top-3 right-3 text-white text-3xl font-bold bg-black bg-opacity-50 rounded-full p-1 hover:bg-opacity-75 transition"
+                >
+                  ✕
+                </button>
+              </div>
+            </div>
+          )}
+
         </div>
+
+
       </section>
 
       {/**Robot section */}
-      <section className="py-12 px-4 sm:px-8 lg:px-30">
+      <section className="py-6 px-4 sm:px-8 lg:px-30">
         <div className="max-w-7xl mx-auto">
           {/* Header */}
-          <div className="mb-20">
+          <div className="mb-10">
             <h2 className="text-3xl sm:text-3xl lg:text-4xl mb-4 leading-snug text-left text-font-orbitron">
               What We Offer <span className="text-yellow-400 text-font-orbitron">STEPS Robotics</span> for Your Child?
             </h2>
@@ -182,12 +182,21 @@ export default function Home() {
           </div>
 
           {/* Main Content - 3 Columns Layout */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-3 w-auto gap-8 items-center">
 
             {/* Left Column - 3 Offerings */}
             <div className="space-y-4 lg:ml-auto">
               {leftOfferings.map((offering, index) => (
-                <div key={index} className="flex flex-col items-start w-full max-w-[330px]">
+                <div key={index}
+                  className="
+                        flex flex-col
+                        items-start
+                        w-full          /* full width on mobile */
+                        sm:max-w-[250px] /* small screens */
+                        md:max-w-[300px] /* medium screens */
+                        lg:max-w-[330px] /* large screens */
+                      "
+                >
 
                   {/* White box with icon and heading */}
                   <div className="bg-white rounded-[3rem] px-6 py-4 shadow-md flex flex-row items-center gap-3 mb-2 w-full">
@@ -233,7 +242,16 @@ export default function Home() {
             {/* Right Column - 3 Offerings */}
             <div className="space-y-4">
               {rightOfferings.map((offering, index) => (
-                <div key={index} className="flex flex-col items-start w-full max-w-[330px]">
+                <div key={index}
+                  className="
+                        flex flex-col
+                        items-start
+                        w-full          /* full width on mobile */
+                        sm:max-w-[250px] /* small screens */
+                        md:max-w-[300px] /* medium screens */
+                        lg:max-w-[330px] /* large screens */
+                      "
+                >
                   {/* White box with icon and heading */}
                   <div className="bg-white rounded-[3rem] px-6 py-4 shadow-md flex flex-row items-center gap-3 mb-2 w-full">
                     {/* Icon on LEFT */}
@@ -273,236 +291,132 @@ export default function Home() {
             From structured courses to dynamic programs, STEPS Robotics offers multiple pathways for students to develop essential STEM and coding skills.
             Our approach blends theory with hands-on practice, preparing learners to thrive in the technology-driven word.
           </p>
-        </div>
 
 
-        <div className="flex flex-col lg:flex-row justify-center items-stretch gap-8 max-w-7xl mt-18 mb-20 mx-auto">
-          {/* Card 1 */}
-          <div className="relative flex-1 border-2 border-dotted border-orange-400 rounded-3xl bg-white overflow-visible flex flex-col md:flex-row items-center md:items-start md:p-8 gap-6 h-67">
-
-
-            {/* Left: Image (popped out) */}
-            <div className="absolute rounded-2xl -top-10 left-6 md:left-20">
-              <div className="p-1 bg-black w-40 h-60 md:w-50 md:h-60">
-                <div className="rounded-2xl overflow-hidden shadow-md">
+          <div className="relative flex flex-col md:flex-row justify-center items-center gap-8 p-2 border-yellow-400 rounded-2xl">
+            {/* Card 1 */}
+            <div className="relative border-yellow-400 flex flex-col w-full md:w-1/2 border-2 border-dotted rounded-2xl p-8 overflow-visible">
+              {/* Wrapper for floating image + text */}
+              <div className="flex flex-col md:flex-row relative">
+                {/* Left side image */}
+                <div className="flex-shrink-0 relative border-2 m-2 p-2 border-white shadow top-[-80px] rounded_image">
                   <Image
                     src="/program1.png"
-                    alt="Students learning robotics"
-                    fill
-                    className="object-cover"
+                    alt="Card 1"
+                    width={200}
+                    height={250}
+                    className="object-cover rounded shadow h-65 w-60 block"
                   />
                 </div>
+
+                {/* Right side text */}
+                <div className="flex-1 flex flex-col pl-4 justify-center">
+                  <h1 className="text-xl font-bold mb-3">Explore Courses</h1>
+                  <p className="text-gray-600 mb-4 leading-relaxed">
+                    Structured STEM courses combining robotics, coding, and hands-on projects to build creativity, problem-solving, and future-ready skills.
+                  </p>
+                  <ul className="steps_list_items mb-4">
+                    <li className="flex mb-2 items-center gap-2">
+                      <ArrowRight className="w-5 h-5 text-orange-500" />
+                      Interactive robotics classes
+                    </li>
+                    <li className="flex mb-2 items-center gap-2">
+                      <ArrowRight className="w-5 h-5 text-orange-500" />
+                      Project-based curriculum
+                    </li>
+                    <li className="flex mb-2 items-center gap-2">
+                      <ArrowRight className="w-5 h-5 text-orange-500" />
+                      Expert mentor guidance
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              {/* Button below both */}
+              <div className="absolute top-86 right-5 w-full flex justify-center">
+                <button className="bg-orange-500 text-white px-6 py-2 rounded hover:bg-orange-600">
+                  Explore Now
+                </button>
               </div>
             </div>
 
 
 
-            {/* Right: Text (with padding to avoid overlap) */}
-            <div className="flex-1 text-left mt-32 md:mt-0 md:ml-72">
-              <p className="text-font-orbitron-explore font-bold">
-                Explore Courses
-              </p>
-              <p className="text-gray-600 text-base md:text-lg mb-2 leading-relaxed text-font-poppins">
-                Structured STEM courses combining robotics, coding, and hands-on projects to build creativity, problem-solving, and future-ready skills.
-              </p>
-
-              <ul className="space-y-1 mb-1">
-                <li className="flex items-start gap-2">
-                  <span className="text-orange-500">→</span>
-                  <span className="text-gray-700 text-font-poppins">Interactive robotics classes</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-orange-500 ">→</span>
-                  <span className="text-gray-700 text-font-poppins">Project-based curriculum</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-orange-500">→</span>
-                  <span className="text-gray-700 text-font-poppins">Expert mentor guidance</span>
-                </li>
-              </ul>
-
-              <button className="bg-gradient-to-r from-orange-500 to-yellow-400 text-white px-6 py-3 rounded-full font-semibold flex items-center gap-2 hover:shadow-lg transition-shadow">
-                Explore More
-                <span className="text-lg">→</span>
-              </button>
-            </div>
-          </div>
 
 
-          {/* Card 2 */}
-          <div className="relative flex-1 border-2 border-dotted border-orange-400 rounded-3xl bg-white overflow-visible flex flex-col md:flex-row items-center md:items-start md:p-8 gap-6 h-67">
-
-
-            {/* Left: Image (popped out) */}
-            <div className="absolute rounded-2xl -top-10 left-6 md:left-20">
-              <div className="p-1 bg-black w-40 h-60 md:w-50 md:h-60">
-                <div className="rounded-2xl overflow-hidden shadow-md">
+            {/* Card 2 */}
+            <div className="relative border-yellow-400 flex flex-col w-full md:w-1/2 border-2 border-dotted rounded-2xl p-8 overflow-visible">
+              {/* Wrapper for floating image + text */}
+              <div className="flex flex-col md:flex-row relative">
+                {/* Left side image */}
+                <div className="flex-shrink-0 relative border-2 m-2 p-2 border-white bg-white shadow top-[-80px] rounded_image">
                   <Image
                     src="/program1.png"
-                    alt="Students learning robotics"
-                    fill
-                    className="object-cover"
+                    alt="Card 1"
+                    width={200}
+                    height={250}
+                    className="object-cover rounded shadow h-65 w-60 block"
                   />
                 </div>
+
+
+                {/* Right side text */}
+                <div className="flex-1 flex flex-col pl-4 justify-center">
+                  <h1 className="text-xl font-bold mb-3">Explore Courses</h1>
+                  <p className="text-gray-600 mb-4 leading-relaxed">
+                    Structured STEM courses combining robotics, coding, and hands-on projects to build creativity, problem-solving, and future-ready skills.
+                  </p>
+                  <ul className="steps_list_items mb-4">
+                    <li className="flex mb-2 items-center gap-2">
+                      <ArrowRight className="w-5 h-5 text-orange-500" />
+                      Interactive robotics classes
+                    </li>
+                    <li className="flex mb-2 items-center gap-2">
+                      <ArrowRight className="w-5 h-5 text-orange-500" />
+                      Project-based curriculum
+                    </li>
+                    <li className="flex mb-2 items-center gap-2">
+                      <ArrowRight className="w-5 h-5 text-orange-500" />
+                      Expert mentor guidance
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              {/* Button below both */}
+              <div className="absolute top-86 right-5 w-full flex justify-center">
+                <button className="bg-orange-500 text-white px-6 py-2 rounded hover:bg-orange-600">
+                  Explore Now
+                </button>
               </div>
             </div>
-
-
-
-            {/* Right: Text (with padding to avoid overlap) */}
-            <div className="flex-1 text-left mt-32 md:mt-0 md:ml-72">
-              <p className="text-font-orbitron-explore font-bold">
-                Explore Courses
-              </p>
-              <p className="text-gray-600 text-base md:text-lg mb-2 leading-relaxed text-font-poppins">
-                Structured STEM courses combining robotics, coding, and hands-on projects to build creativity, problem-solving, and future-ready skills.
-              </p>
-
-              <ul className="space-y-1 mb-1">
-                <li className="flex items-start gap-2">
-                  <span className="text-orange-500">→</span>
-                  <span className="text-gray-700 text-font-poppins">Interactive robotics classes</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-orange-500 ">→</span>
-                  <span className="text-gray-700 text-font-poppins">Project-based curriculum</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-orange-500">→</span>
-                  <span className="text-gray-700 text-font-poppins">Expert mentor guidance</span>
-                </li>
-              </ul>
-
-              <button className="bg-gradient-to-r from-orange-500 to-yellow-400 text-white px-6 py-3 rounded-full font-semibold flex items-center gap-2 hover:shadow-lg transition-shadow">
-                Explore More
-                <span className="text-lg">→</span>
-              </button>
-            </div>
           </div>
-        </div>
-      </section>
 
-      {/**Coding */}
-      <section className="pt-12 px-4 sm:px-8 lg:px-30 bg-cover bg-center overflow-hidden" style={{ backgroundImage: "url('/about_bg.jpg')" }}>
-        {/* Header with max-width */}
-        <div className="max-w-7xl mx-auto mb-4">
-          <h2 className="text-3xl sm:text-3xl lg:text-4xl mb-4 leading-snug text-left text-font-orbitron">
-            About <span className="text-yellow-400 text-font-orbitron">STEPS Robotics</span>
-          </h2>
-          <p className="text-gray-600 text-base md:text-lg text-font-poppins pr-40">
-            We believe that true learning begins with exploration. That's why we deliver immersive, hands-on STEM experiences that ignite creativity and build
-            real-world skills in Robotics, Artificial Intelligence, Coding, IoT and more
-          </p>
         </div>
 
-        {/* Robot Image - Full Width, No Container */}
-        <div className="w-full leading-none -mb-1 mt-[-100]">
-          <Image
-            src="/codingSteps.png"
-            alt="STEPS Robotics Robot"
-            width={2000}
-            height={600}
-            className="w-full h-auto block"
-          />
-        </div>
+
       </section>
+
+
+      {/**About STEPS Robotics */}
+      <CodingAdventures />
 
       {/**Choose STEPS Robotics */}
-      <section className="relative py-16" style={{
-        backgroundImage: "url('/why_choose_bg.jpg')",
-        backgroundRepeat: "no-repeat",
-      }}>
-        {/* Heading Section */}
-        <div className="max-w-7xl mx-auto mb-4">
-          <h2 className="text-3xl sm:text-3xl lg:text-4xl mb-4 leading-snug text-left text-font-orbitron">
-            Why Choose{" "}
-            <span className="text-[#F5B800]">STEPS Robotics</span> for Your Child?
-          </h2>
-          <p className="text-gray-600 mt-4 mb-8 leading-relaxed">
-            With so many options out there, finding the right course matters.
-            Our programs combine creativity, logic, and hands-on practice
-            to build real-world skills across coding, robotics, AI, and more.
-          </p>
-        </div>
-
-        {/* Content Section */}
-        <div className="container mx-auto px-4 grid grid-cols-2 md:grid-cols-2 gap-10 items-center">
-          {/* Left: Images and colored boxes */}
-          <div className="">
-            <div className='relative flex flex-col items-start'>
-              <div className="relative w-[257px] h-[257px] overflow-hidden shadow-lg mb-6 ml-12">
-                <Image
-                  src="/kid1.png"
-                  alt="Kids learning robotics"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-
-              {/* Colored boxes */}
-              <div className="absolute top-[175px] left-[315px] w-[70px] h-[70px] bg-[#66CDAA]"></div>
-              <div className="absolute top-[100px] left-[390px] w-[70px] h-[70px] bg-[#F25C5C]"></div>{/**Red Color */}
-            </div>
-
-
-
-
-            <div className='relative flex flex-col items-end'>
-              {/* Colored boxes */}
-              <div className="absolute top-[60px] left-[75px] w-[150px] h-[120px] bg-[#66CDAA]"></div>
-              <div className="absolute top-[-12px] left-[225px] w-[70px] h-[70px] bg-[#F25C5C]"></div>{/**Red Color */}
-              <div className="relative w-[257px] h-[257px] overflow-hidden shadow-lg mb-6 mt-[-22px] mr-[40px]">
-                <Image
-                  src="/kid1.png"
-                  alt="Kids learning robotics"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-
-
-
-            </div>
-          </div>
-
-          {/* Right: Feature List */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-20 mt-[-40px]">
-            {features.map((item, index) => (
-              <div key={index} className="flex items-center gap-4">
-                <div className="relative flex-shrink-0">
-                  <div className="">
-                    <Image
-                      src={item.icon}
-                      alt={item.title}
-                      width={100}
-                      height={100}
-                      className="object-contain"
-                    />
-                  </div>
-                </div>
-                <div>
-                  <h4 className="text-gray-900 font-semibold text-base">
-                    {item.title}
-                  </h4>
-                  <p className="text-gray-800 font-bold text-sm">
-                    {item.subtitle}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <WhyChooseSection />
 
       {/**STEPS Robotics Talsk */}
       <TestimonialsSection />
 
-      {/**Study Process Gallery */}
-      <section className="relative bg-gradient-to-br from-yellow-200 via-yellow-300 to-yellow-400 py-16 px-4 sm:px-8 lg:px-16 overflow-hidden" style={{
-        backgroundImage: "url('/studyProgress.png')", backgroundRepeat: "no-repeat",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-      }}>
+      {/**Study Process Gallery Start */}
+      <section
+        className="relative hidden md:block bg-gradient-to-br from-yellow-200 via-yellow-300 to-yellow-400 py-16 px-4 sm:px-8 lg:px-16 overflow-hidden"
+        style={{
+          backgroundImage: "url('/studyProgress.png')",
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      >
         {/* Geometric Pattern Background */}
         <div className="absolute inset-0 opacity-10">
           <div className="absolute top-0 left-0 w-full h-full"
@@ -729,14 +643,55 @@ export default function Home() {
           </div>
         </div>
       </section>
+      {/**Mobile View Section */}
+      <section
+        className="relative bg-gradient-to-br from-yellow-200 via-yellow-300 to-yellow-400 py-16 px-4 sm:px-8 lg:px-16 overflow-hidden"
+        style={{
+          backgroundImage: "url('/studyProgress.png')",
+          backgroundRepeat: "no-repeat",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      >
+        {/* ======= DESKTOP / TABLET GALLERY ======= */}
+        <div className="hidden md:block">
+          {/* 👉 Paste your current gallery code here exactly as you have it */}
+        </div>
 
-      {/**Footer */}
-      {/* <Footer /> */}
+        {/* ======= MOBILE SECTION ======= */}
+        <div className="block md:hidden relative z-10 text-center mt-8">
+          <h2 className="text-3xl font-bold text-gray-900 mb-3 text-font-orbitron text-white px-20">
+            Try for free Register now
+          </h2>
+
+          <p className="text-gray-800 text-base leading-relaxed mb-6 text-font-poppins px-20">
+            Let your chile experience the magic of play based learning in this free 1:1 Live Online Class. <br />Book your slot now!
+          </p>
+
+          <div className="flex justify-center pt-2">
+            <button className="group bg-gradient-to-r mb-8 from-orange-500 to-yellow-400 text-white font-bold px-5 py-2 rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 flex items-center gap-3"
+            >
+              SEND MESSAGE
+              <div className="bg-white font-bold rounded-full p-2 group-hover:translate-x-1 transition-transform">
+                <ArrowRight className="w-5 h-5 text-orange-500" />
+              </div>
+            </button>
+          </div>
+
+          <div className="relative w-72 h-72 mx-auto rounded-3xl overflow-hidden shadow-xl">
+            <Image
+              src="/child-1.jpg"
+              alt="Study process preview"
+              fill
+              className="object-cover"
+            />
+          </div>
+        </div>
+      </section>
+
+      {/**Study Process Gallery End */}
 
     </div>
-
-
-
 
   );
 }

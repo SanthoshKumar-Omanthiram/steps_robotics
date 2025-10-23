@@ -2,7 +2,14 @@ import { Orbitron, Poppins, Oxanium } from "next/font/google";
 import "./globals.css";
 import { UserProvider } from "./Context/UserContext";
 import Navbar from "./component/Navbar";
-import Footer from "./component/Footer";
+import Footer from "./component/Footer"
+
+
+const geistSans = Geist({
+  variable: "--font-geist-sans",
+  subsets: ["latin"],
+});
+
 
 const orbitron = Orbitron({
   subsets: ["latin"],

@@ -1442,6 +1442,11 @@ line-height: normal;
 }
 
 
+/* .coding_robot_image{
+  width: 200%;
+  height: 400%;
+} */
+
 
 /* Responive CSS */
 /* @layer utilities {
@@ -1634,6 +1639,7 @@ line-height: normal;
     }
     
   }
+
 
 
 

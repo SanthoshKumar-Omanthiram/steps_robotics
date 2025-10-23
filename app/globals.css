@@ -134,19 +134,20 @@ li {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  height: 345px !important;
+  height: 250px !important;
   width: 100%;
 }
 
 .course-heroic-image {
-  width: 100% !important;
-  height: auto !important;
-  object-fit: contain;
+	object-fit: contain;
+	width: 100% !important;
+	height: 283px !important;
+	margin-top: -13px;
 }
 
 .course-heroic-title {
   font-family: var(--font-orbitron), sans-serif;
-  font-size: 44px;
+  font-size: 38px;
   font-weight: 700;
   color: black;
   -webkit-text-stroke: 0.3px white;
@@ -155,7 +156,7 @@ li {
     -1px 1px 0 white,
     1px -1px 0 white,
     -1px -1px 0 white;
-  margin-top: 139px;
+  margin-top: 65px;
 }
 
 .stem-education-course {
@@ -491,7 +492,7 @@ li {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  height: 345px !important;
+  height: 250px !important;
   width: 100%;
 }
 .contact-heroic-image{
@@ -503,14 +504,13 @@ li {
 .programs-heroic-image{
 	object-fit: contain;
 	width: 100% !important;
-	height: 321px !important;
-  margin-top: 59px;
+	height: 283px !important;
 }
 .contact-heroic-image {
-  object-fit: contain;
-  margin-top: -12px;
-  width: 100% !important;
-  height: auto !important;
+	object-fit: contain;
+	margin-top: -32px;
+	width: 100% !important;
+	height: 258px !important;
 }
 
 .heroic-title {
@@ -518,7 +518,7 @@ li {
   color: #000;
   -webkit-text-stroke: .3px white;
   text-shadow: 1px 1px #fff, -1px 1px #fff, 1px -1px #fff, -1px -1px #fff;
-  margin-top: 120px;
+  margin-top: 65px;
   font-size: 38px;
   font-weight: 700;
   text-align: center;

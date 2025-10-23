@@ -16,6 +16,8 @@ export default function Courses() {
   const [courseHeroTitle, setCourseHeroTitle] = useState('');
   const [courseHeroImageFile, setCourseHeroImageFile] = useState(null);
   const [courseHeroImagePreview, setCourseHeroImagePreview] = useState('');
+  const [courseImageFile, setCourseImageFile] = useState(null);
+  const [courseImagePreview, setCourseImagePreview] = useState('');
   const [moduleTitle, setModuleTitle] = useState('');
   const [lessonTitle, setLessonTitle] = useState('');
   const [lessonContent, setLessonContent] = useState('');
@@ -30,7 +32,6 @@ export default function Courses() {
   const [showObjectives, setShowObjectives] = useState({});
   const [showHighlights, setShowHighlights] = useState({});
 
-  // Editing state
   const [editingCourseId, setEditingCourseId] = useState(null);
   const [editingCourseTitle, setEditingCourseTitle] = useState('');
   const [editingCourseDescription, setEditingCourseDescription] = useState('');
@@ -38,6 +39,9 @@ export default function Courses() {
   const [editingHeroicImageFile, setEditingHeroicImageFile] = useState(null);
   const [editingHeroicImageUrl, setEditingHeroicImageUrl] = useState('');
   const [editingHeroicImagePreview, setEditingHeroicImagePreview] = useState('');
+  const [editingCourseImageFile, setEditingCourseImageFile] = useState(null);
+  const [editingCourseImageUrl, setEditingCourseImageUrl] = useState('');
+  const [editingCourseImagePreview, setEditingCourseImagePreview] = useState('');
   const [editingModuleId, setEditingModuleId] = useState(null);
   const [editingModuleTitle, setEditingModuleTitle] = useState('');
   const [editingLessonId, setEditingLessonId] = useState(null);
@@ -69,6 +73,7 @@ export default function Courses() {
     formData.append('description', courseDescription);
     if (courseHeroTitle) formData.append('heroictitle', courseHeroTitle);
     if (courseHeroImageFile) formData.append('heroicimage', courseHeroImageFile);
+    if (courseImageFile) formData.append('image', courseImageFile);
 
     await axios.post('/api/courses', formData);
     setCourseTitle('');
@@ -76,6 +81,8 @@ export default function Courses() {
     setCourseHeroTitle('');
     setCourseHeroImageFile(null);
     setCourseHeroImagePreview('');
+    setCourseImageFile(null);
+    setCourseImagePreview('');
     setShowAddCourse(false);
     fetchCourses();
   };
@@ -264,6 +271,9 @@ export default function Courses() {
     setEditingHeroicImageUrl(course.heroicimage || '');
     setEditingHeroicImageFile(null);
     setEditingHeroicImagePreview('');
+    setEditingCourseImageUrl(course.image || '');
+    setEditingCourseImageFile(null);
+    setEditingCourseImagePreview('');
   };
 
   const cancelEditCourse = () => {
@@ -274,6 +284,9 @@ export default function Courses() {
     setEditingHeroicImageFile(null);
     setEditingHeroicImageUrl('');
     setEditingHeroicImagePreview('');
+    setEditingCourseImageFile(null);
+    setEditingCourseImageUrl('');
+    setEditingCourseImagePreview('');
   };
 
   const saveCourseEdit = async (courseId) => {
@@ -289,6 +302,12 @@ export default function Courses() {
         // Keep existing image if no new file selected
         formData.append('heroicimage', editingHeroicImageUrl);
       }
+      if (editingCourseImageFile) {
+        formData.append('image', editingCourseImageFile);
+      } else if (editingCourseImageUrl) {
+        // Keep existing image if no new file selected
+        formData.append('image', editingCourseImageUrl);
+      }
 
       await axios.put(`/api/courses/${courseId}`, formData);
       setEditingCourseId(null);
@@ -297,6 +316,8 @@ export default function Courses() {
       setEditingCourseHeroTitle('');
       setEditingHeroicImageFile(null);
       setEditingHeroicImageUrl('');
+      setEditingCourseImageFile(null);
+      setEditingCourseImageUrl('');
       fetchCourses();
     } catch (error) {
       const message = error?.response?.data?.message || error?.message || 'Failed to update course';
@@ -404,6 +425,22 @@ export default function Courses() {
                     className="block w-full text-sm text-slate-600 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"
                   />
                 </div>
+                <div className="flex items-center gap-3">
+                  {courseImagePreview && (
+                    <img src={courseImagePreview} alt="Course Image Preview" className="h-12 w-12 object-cover rounded border" />
+                  )}
+                  <input
+                    type="file"
+                    accept="image/*"
+                    onChange={(e) => {
+                      const file = e.target.files && e.target.files[0] ? e.target.files[0] : null;
+                      setCourseImageFile(file);
+                      setCourseImagePreview(file ? URL.createObjectURL(file) : '');
+                    }}
+                    className="block w-full text-sm text-slate-600 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100"
+                  />
+                  <span className="text-xs text-slate-500">Course Image</span>
+                </div>
                 <motion.button whileHover={{ scale: 1.01 }} whileTap={{ scale: 0.99 }} onClick={addCourse} className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium shadow-sm">
                   Add Course
                 </motion.button>
@@ -479,6 +516,25 @@ export default function Courses() {
                                     className="block w-full text-sm text-slate-600 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-emerald-50 file:text-emerald-700 hover:file:bg-emerald-100"
                                   />
                                 </div>
+                                <div className="flex items-center gap-3">
+                                  {editingCourseImagePreview ? (
+                                    <img src={editingCourseImagePreview} alt="Course Image Preview" className="h-12 w-12 object-cover rounded border" />
+                                  ) : (
+                                    editingCourseImageUrl && (
+                                      <img src={editingCourseImageUrl} alt="Current Course Image" className="h-12 w-12 object-cover rounded" />
+                                    )
+                                  )}
+                                  <input
+                                    type="file"
+                                    accept="image/*"
+                                    onChange={(e) => {
+                                      const file = e.target.files && e.target.files[0] ? e.target.files[0] : null;
+                                      setEditingCourseImageFile(file);
+                                      setEditingCourseImagePreview(file ? URL.createObjectURL(file) : '');
+                                    }}
+                                    className="block w-full text-sm text-slate-600 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-emerald-50 file:text-emerald-700 hover:file:bg-emerald-100"
+                                  />
+                                </div>
                                 <div className="flex gap-2">
                                   <motion.button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} onClick={() => saveCourseEdit(course.id)} className="bg-emerald-600 hover:bg-emerald-700 text-white px-3 py-2 rounded-lg text-xs font-semibold">
                                     Save
@@ -515,7 +571,7 @@ export default function Courses() {
                         </div>
                       </div>
                       <div className="flex gap-2">
-                        <motion.button whileHover={{ scale: 1.01 }} whileTap={{ scale: 0.99 }} onClick={() => deleteCourse(course.id)} className="bg-white border border-slate-300 text-slate-700 hover:bg-slate-50 px-4 py-2.5 rounded-lg text-sm font-medium">
+                        <motion.button whileHover={{ scale: 1.01 }} whileTap={{ scale: 0.99 }} onClick={() => deleteCourse(course.id)} className="bg-white ml-[15px] border border-slate-300 text-slate-700 hover:bg-slate-50 px-4 py-2.5 rounded-lg text-sm font-medium">
                           Delete
                         </motion.button>
                         <motion.button
@@ -540,13 +596,16 @@ export default function Courses() {
                     <AnimatePresence>
                       {selectedCourse === course.id && (
                         <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} exit={{ opacity: 0, height: 0 }} transition={{ duration: 0.3 }} className="mt-6 pt-6 border-t-2 border-slate-100 space-y-6">
-                          {course.heroicimage || course.heroictitle ? (
+                          {(course.heroicimage || course.heroictitle || course.image) ? (
                             <div className="bg-gradient-to-br from-emerald-50 to-teal-50 rounded-xl p-5 border border-emerald-200 flex items-center gap-4">
                               {course.heroicimage && (
                                 <img src={course.heroicimage} alt="Hero" className="h-24 w-36 object-cover rounded-lg border border-emerald-200" />
                               )}
+                              {course.image && !course.heroicimage && (
+                                <img src={course.image} alt="Course" className="h-24 w-36 object-cover rounded-lg border border-emerald-200" />
+                              )}
                               <div className="min-w-0">
-                                <h4 className="text-lg font-bold text-slate-800 truncate">{course.heroictitle || 'Hero section'}</h4>
+                                <h4 className="text-lg font-bold text-slate-800 truncate">{course.heroictitle || 'Course Image'}</h4>
                                 {course.description && (
                                   <p className="text-sm text-slate-600 mt-1 line-clamp-2">{course.description}</p>
                                 )}

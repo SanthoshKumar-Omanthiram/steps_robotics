@@ -53,7 +53,7 @@ export default function Choose() {
               <Image
                 src="/chosse_robot_bg.png"
                 alt="Teacher and student with VEX GO robot"
-                className="w-full h-[450px] object-fill rounded-2xl"
+                className="w-full h-[490px] object-contain rounded-2xl"
                 width={450}
                 height={567}
               />

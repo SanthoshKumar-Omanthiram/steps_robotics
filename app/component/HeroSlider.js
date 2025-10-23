@@ -162,20 +162,20 @@ export default function HeroSlider() {
         </div>
       </div>
 
-      {/* Modal Popup for BookTrial */}
-      {showBookTrial && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
-          <div className="relative w-full max-w-6xl p-4 md:p-8">
-            <button
-              onClick={closeModal}
-              className="absolute top-4 right-4 text-white text-2xl font-bold hover:text-gray-300"
-            >
-              &times;
-            </button>
-            <BookTrial />
-          </div>
-        </div>
-      )}
+{showBookTrial && (
+<div className="fixed inset-0 z-[9999] m-[30px] overflow-y-auto animate-fadeIn">    <button
+      onClick={closeModal}
+      className="absolute top-[60px] right-[113px] z-[10000] text-gray-300 text-4xl hover:text-gray-500"
+    >
+      &times;
+    </button>
+
+    <div className="min-h-screen flex items-center justify-center p-0">
+      <BookTrial />
+    </div>
+  </div>
+)}
+
     </section>
   );
 }

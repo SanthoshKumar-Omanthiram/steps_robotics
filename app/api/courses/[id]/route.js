@@ -4,12 +4,14 @@ import pool from '@/lib/db';
 
 export const config = { api: { bodyParser: false } };
 
+// Ensure uploads directory exists
 const ensureUploadDir = () => {
   const uploadDir = path.join(process.cwd(), '/public/uploads');
   if (!fs.existsSync(uploadDir)) fs.mkdirSync(uploadDir, { recursive: true });
   return uploadDir;
 };
 
+// Save uploaded file to /public/uploads and return the relative path
 const saveBlobToUploads = async (fileBlob) => {
   if (!fileBlob) return '';
   const uploadDir = ensureUploadDir();
@@ -21,7 +23,7 @@ const saveBlobToUploads = async (fileBlob) => {
   return `/uploads/${safeName}`;
 };
 
-
+// GET course by ID
 export async function GET(req, { params }) {
   const { id } = params;
   if (!id)
@@ -39,8 +41,12 @@ export async function GET(req, { params }) {
   }
 }
 
+// PUT course by ID (update)
 export async function PUT(req, { params }) {
   try {
+    // Ensure image column exists
+    await pool.query(`ALTER TABLE courses ADD COLUMN IF NOT EXISTS image TEXT`);
+
     const { searchParams } = new URL(req.url);
     const id = (params && params.id) || searchParams.get('id');
     if (!id) {
@@ -51,12 +57,15 @@ export async function PUT(req, { params }) {
     const title = (formData.get('title') || '').toString();
     const description = (formData.get('description') || '').toString();
     const heroictitle = (formData.get('heroictitle') || '').toString();
+
     const heroicImageField = formData.get('heroicimage');
+    const imageField = formData.get('image'); // new separate image column
 
     if (!title) {
       return new Response(JSON.stringify({ message: 'Title is required' }), { status: 400 });
     }
 
+    // Process heroicimage
     let heroicimage = '';
     if (typeof heroicImageField === 'string') {
       heroicimage = heroicImageField; // keep existing URL
@@ -64,11 +73,19 @@ export async function PUT(req, { params }) {
       heroicimage = await saveBlobToUploads(heroicImageField);
     }
 
+    // Process new image
+    let image = '';
+    if (typeof imageField === 'string') {
+      image = imageField; // keep existing URL
+    } else if (imageField && typeof imageField === 'object' && 'arrayBuffer' in imageField) {
+      image = await saveBlobToUploads(imageField);
+    }
+
     const result = await pool.query(
       `UPDATE courses
-       SET title = $1, description = $2, heroictitle = $3, heroicimage = $4
-       WHERE id = $5 RETURNING *`,
-      [title, description || '', heroictitle || '', heroicimage, id]
+       SET title = $1, description = $2, heroictitle = $3, heroicimage = $4, image = $5
+       WHERE id = $6 RETURNING *`,
+      [title, description || '', heroictitle || '', heroicimage, image, id]
     );
 
     if (result.rowCount === 0) {
@@ -82,6 +99,7 @@ export async function PUT(req, { params }) {
   }
 }
 
+// DELETE course by ID
 export async function DELETE(req, { params }) {
   const { id } = params;
 
@@ -93,6 +111,7 @@ export async function DELETE(req, { params }) {
   try {
     await client.query('BEGIN');
 
+    // Delete lessons linked to modules of this course
     await client.query(
       `DELETE FROM lessons 
        WHERE module_id IN (SELECT id FROM modules WHERE course_id = $1)`,
@@ -118,5 +137,3 @@ export async function DELETE(req, { params }) {
     client.release();
   }
 }
-
-

@@ -141,7 +141,7 @@ export default function FeedbackCourse() {
             </div>
           </div>
 
-          <div className="w-full pt-[98px] lg:w-[35%] transition-all duration-700">
+          <div className="w-full tesitimonial-box-content pt-[98px] lg:w-[35%] transition-all duration-700">
             <p className="course-testimonial-text mt-5 leading-relaxed mb-8">
               {currentTestimonial.text}
             </p>

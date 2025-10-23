@@ -43,7 +43,7 @@ export default function MightInterested() {
   ];
 
   return (
-    <section className="container mx-auto py-12 bg-[#fff]">
+    <section className="container might-intrest mx-auto py-12 bg-[#fff]">
       <h2 className="course-details-black mb-3">
         You might be{" "}
         <span className="course-details-gold">interested in</span>

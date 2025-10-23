@@ -3,9 +3,9 @@ import Image from 'next/image';
 
 export default function CourseNews() {
   return (
-    <div className='course-news-letters -mt-[130px] relative w-full min-h-screen flex p-1'>
+    <div className='course-news-letters -mt-[130px] relative w-full  flex p-1'>
       <div className='relative w-full max-w-6xl  rounded-3xl overflow-hidden'>
-        <div className='flex flex-col lg:flex-row items-stretch pt-[85px]'>
+        <div className='flex flex-col lg:flex-row items-stretch pt-[55px]'>
         <div className='w-full lg:w-[60%] relative min-h-[250px] lg:min-h-[320px]'>
             <Image 
               src='/newsletter.png' 

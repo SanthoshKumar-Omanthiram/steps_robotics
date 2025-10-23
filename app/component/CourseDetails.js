@@ -1,12 +1,28 @@
-"use client";
+'use client';
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from 'next/navigation';
 import { Clock, Users, FileText, BarChart, Monitor, Award, Facebook, Twitter, Linkedin, Share2} from "lucide-react";
 
-export default function CourseDetails() {
+export default function CourseDetails({ title }) {
   const [course, setCourse] = useState(null);
+  const pathname = usePathname();
+  const url = typeof window !== "undefined" ? `${window.location.origin}${pathname}` : "";
+
+  const handleCopyLink = () => {
+    navigator.clipboard.writeText(url);
+    alert('Link copied to clipboard!');
+  };
+
+  const openPopup = (shareUrl) => {
+    window.open(
+      shareUrl,
+      'ShareWindow',
+      'height=500,width=600,resizable=yes,scrollbars=yes'
+    );
+  };
 
   const fetchCourses = async () => {
     try {
@@ -51,7 +67,6 @@ export default function CourseDetails() {
     fetchCourses();
   }, []);
 
-  // Static icon and color configuration
   const highlightStyles = [
     { icon: Clock, bgColor: "bg-cyan-100", iconColor: "text-cyan-500",iconbgcolor:"#39B8E1" },
     { icon: Monitor, bgColor: "bg-orange-100", iconColor: "text-orange-500" ,iconbgcolor:"#F47525"},
@@ -67,8 +82,7 @@ export default function CourseDetails() {
     );
 
   return (
-    <div className="container mx-auto py-10">
-   
+    <div className="container mx-auto py-10 course-details-section">
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
         <div className="lg:col-span-2 space-y-6">
           <div className="flex items-center text-sm font-medium text-gray-700">
@@ -136,7 +150,7 @@ export default function CourseDetails() {
           </div>
         </div>
 
-<div className="bg-white shadow-lg -mt-[120px] mb-[130px] rounded-2xl p-6 space-y-6 relative">
+<div className="bg-white shadow-lg course-details-class-popup -mt-[120px] mb-[130px] rounded-2xl p-6 space-y-6 relative">
   <div className="relative">
     <Image
       src="/course-demo.png"
@@ -145,7 +159,6 @@ export default function CourseDetails() {
       height={250}
       className="rounded-xl object-cover w-full"
     />
-    {/* Offer badge */}
     <div className="absolute -right-[16px] top-[96px] sm:w-24 md:w-28">
       <div className="relative">
         <Image
@@ -208,22 +221,40 @@ export default function CourseDetails() {
 <div className="pt-1 border-t border-gray-100">
   <div className="flex social-icons-course items-center justify-between text-gray-600">
     <span className="share-icon">Share:</span>
-    <div className="flex items-center gap-2">
+  <div className="flex items-center gap-2">
+
       <Share2
-        size={15}
-        className="hover:text-yellow-500 social-icons-size cursor-pointer transition-colors"
+        size={18}
+        className="hover:text-yellow-500 cursor-pointer transition-colors"
+        onClick={handleCopyLink}
+        title="Copy link"
       />
+
       <Facebook
-        size={15}
+        size={18}
         className="hover:text-yellow-500 cursor-pointer transition-colors"
+        onClick={() =>
+          openPopup(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`)
+        }
+        title="Share on Facebook"
       />
+
       <Twitter
-        size={15}
+        size={18}
         className="hover:text-yellow-500 cursor-pointer transition-colors"
+        onClick={() =>
+          openPopup(`https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent(title)}`)
+        }
+        title="Share on Twitter"
       />
+
       <Linkedin
-        size={15}
+        size={18}
         className="hover:text-yellow-500 cursor-pointer transition-colors"
+        onClick={() =>
+          openPopup(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`)
+        }
+        title="Share on LinkedIn"
       />
     </div>
   </div>

@@ -1,4 +1,4 @@
-import { Orbitron, Poppins, Oxanium } from "next/font/google";
+import { Geist, Oxanium, Orbitron, Poppins } from "next/font/google";
 import "./globals.css";
 import { UserProvider } from "./Context/UserContext";
 import Navbar from "./component/Navbar";
@@ -17,16 +17,16 @@ const orbitron = Orbitron({
   variable: "--font-orbitron",
 });
 
-const poppins = Poppins({
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600"],
-  variable: "--font-poppins",
-});
-
 const oxanium = Oxanium({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600"],
   variable: "--font-oxanium",
+});
+
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600"],
+  variable: "--font-poppins",
 });
 
 export const metadata = {
@@ -36,7 +36,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={oxanium.className}>
+    <html lang="en" className={`${orbitron.variable} ${poppins.variable} ${oxanium.variable}`}>
       <body>
         <Navbar />
         <UserProvider>{children}</UserProvider>

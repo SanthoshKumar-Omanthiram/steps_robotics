@@ -50,16 +50,23 @@ const cards = [
     },
 ];
 
+
+  const course = {
+    heroictitle: 'Future-Ready Kids Start Here!',
+    heroicimage: '/about/about_img.png', }
+
+
 export default function Page() {
     return (
         <>
             {/* Banner Hero Section */}
-            <section
-                className="relative bg-cover bg-center bg-no-repeat px-4 md:px-8 pt-8 md:pt-28"
+            {/* <section
+                className="relative py-4 md:py-5 bg-cover bg-center bg-no-repeat px-4 md:px-8"
                 style={{ backgroundImage: "url('/about/about_banner_bg.jpg')" }}
             >
+
                 <div className="relative max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-10 md:gap-16">
-                    {/* Left Side Image */}
+                    
                     <div className="flex-1 flex">
                         <Image
                             src="/about/about_img.png"
@@ -71,7 +78,7 @@ export default function Page() {
                         />
                     </div>
 
-                    {/* Right Side Text */}
+                    
                     <div className="about_right_text flex-1 flex flex-col justify-center items-center md:items-start text-center md:text-left text-black">
                         <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 leading-tight">
                             Future-Ready Kids <br />
@@ -79,7 +86,33 @@ export default function Page() {
                         </h2>
                     </div>
                 </div>
-            </section>
+            </section> */}
+            <div className="course-heroic sm:h-[525px] mb-[25px] p-6">
+                  <div className="container mx-auto space-y-8">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 transition-all duration-300">
+                      <div className="w-118  h-full">
+                        {course.heroicimage ? (
+                          <Image
+                            src={course.heroicimage}
+                            alt={course.heroictitle}
+                            width={400}
+                            height={284}
+                            className="course-heroic-image rounded-lg"
+                          />
+                        ) : (
+                          <div className="w-full h-80 bg-gray-200 flex items-center justify-center text-gray-500">
+                            No Image
+                          </div>
+                        )}
+                      </div>
+            <div className="text-left sm:text-center">
+                        <h2 className="course-heroic-title text-3xl font-semibold">
+                          {course.heroictitle}
+                        </h2>
+                      </div>
+                    </div>
+                  </div>
+                </div>
 
             {/* About Section */}
             <section className="py-12 bg-white px-4 sm:px-8 lg:px-30">
@@ -197,12 +230,8 @@ export default function Page() {
             {/** Vision */}
             <section className="pt-10 px-4 sm:px-8 lg:px-16 bg-gray-50 relative">
                 {/* Decorative rocket element at top */}
-                <div className="absolute top-[-60] left-[-20] absolute">
+                <div className="absolute top-[-60] left-[-20]">
                     <div className="w-40 h-40">
-                        {/* Rocket icon - replace with actual rocket image */}
-                        {/* <div className="w-12 h-20 bg-orange-500 rounded-t-full mx-auto relative">
-                            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1 h-16 bg-gray-300"></div>
-                        </div> */}
                         <img src="/about/rocket_finder.gif" />
                     </div>
                 </div>
@@ -417,7 +446,7 @@ export default function Page() {
                 }}
             >
                 {/* Title and Paragraph */}
-                
+
 
                 <h2 className="text-2xl sm:text-3xl lg:text-4xl mb-4 leading-snug text-left text-font-orbitron">
                     Explore Our{" "}

@@ -16,69 +16,35 @@ import {
 export default function Footer() {
   const [boxes, setBoxes] = React.useState([]);
 
-  React.useEffect(() => {
-    const initialBoxes = Array.from({ length: 4 }, (_, i) => ({
-      id: i,
-      left: Math.random() * 100,
-      delay: Math.random() * 5,
-      duration: 8 + Math.random() * 4,
-      size: 30 + Math.random() * 30,
-      rotation: Math.random() * 360,
-      color: [
-        'bg-blue-400',
-        'bg-green-400',
-        'bg-yellow-400',
-        'bg-red-400',
-        'bg-purple-400',
-        'bg-orange-400',
-        'bg-pink-400',
-        'bg-cyan-400'
-      ][Math.floor(Math.random() * 8)]
-    }));
-    setBoxes(initialBoxes);
-  }, []);
+
+  //   const initialBoxes = Array.from({ length: 4 }, (_, i) => ({
+  //     id: i,
+  //     left: Math.random() * 100,
+  //     delay: Math.random() * 5,
+  //     duration: 8 + Math.random() * 4,
+  //     size: 30 + Math.random() * 30,
+  //     rotation: Math.random() * 360,
+  //     color: [
+  //       'bg-blue-400',
+  //       'bg-green-400',
+  //       'bg-yellow-400',
+  //       'bg-red-400',
+  //       'bg-purple-400',
+  //       'bg-orange-400',
+  //       'bg-pink-400',
+  //       'bg-cyan-400'
+  //     ][Math.floor(Math.random() * 8)]
+  //   }));
+  //   setBoxes(initialBoxes);
+  // }, []);
 
   return (
     <footer className="footer relative overflow-hidden">
-      <div className="absolute inset-0 pointer-events-none">
-        {boxes.map((box) => (
-          <div
-            key={box.id}
-            className={`absolute ${box.color} opacity-40 rounded-md`}
-            style={{
-              left: `${box.left}%`,
-              width: `${box.size}px`,
-              height: `${box.size}px`,
-              transform: `rotate(${box.rotation}deg)`,
-              animation: `fall ${box.duration}s linear ${box.delay}s infinite`
-            }}
-          />
-        ))}
-      </div>
-
-      <style jsx>{`
-        @keyframes fall {
-          0% {
-            top: -100px;
-            opacity: 0;
-          }
-          10% {
-            opacity: 0.4;
-          }
-          90% {
-            opacity: 0.4;
-          }
-          100% {
-            top: 100%;
-            opacity: 0;
-          }
-        }
-      `}</style>
-
-      <div className="container mx-auto border-t border-gray-200 relative z-10">
+      
+      <div className="container mx-auto border-gray-200 mb-8 relative z-10">
         <div className="max-w-7xl px-4 sm:px-6 lg:px-8 py-8">
           {/* 3 Columns (col-md-4 each) */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
             {/* Left Column - Logo & Address */}
             <div className="footerlogo text-center md:text-left">
               <div className="flex justify-center md:justify-start mb-4">
@@ -186,14 +152,16 @@ export default function Footer() {
                   </button>
                 </div>
 
-                <div>
-                  <h4 className="text-xl footer-links-title stem-gold mb-2">
+                <div className="relative">
+                  <h4 className="text-xl footer-links-title stem-gold">
                     Talk to us today!
                   </h4>
-                  <p className="text-gray-700 text-sm">
-                    We're happy to answer your questions and help you get
-                    started with our courses.
-                  </p>
+                  
+                  <div className="absolute">
+                    <div className="w-30 h-50 right-200">
+                      <img src="/footer.gif" />
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>

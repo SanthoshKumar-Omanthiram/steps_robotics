@@ -6,47 +6,47 @@ export default function CodingAdventures() {
         <section className="relative bg-gradient-to-br from-yellow-50 via-white to-yellow-100 py-16 px-4 sm:px-8 lg:px-16 overflow-hidden">
             {/* Title */}
             <div className="max-w-7xl mx-auto mb-4">
-                <h2 className="text-3xl sm:text-3xl lg:text-4xl mb-4 leading-snug text-left text-font-orbitron">
+                <h2 className="text-2xl sm:text-3xl lg:text-4xl mb-4 leading-snug text-center sm:text-left text-font-orbitron">
                     About <span className="text-yellow-400 text-font-orbitron">STEPS Robotics</span>
                 </h2>
-                <p className="text-gray-600 text-base md:text-lg text-font-poppins pr-40">
+                <p className="text-gray-600 text-sm sm:text-base lg:text-lg mb-10 leading-relaxed text-center sm:text-left text-font-poppins">
                     We believe that true learning begins with exploration. That's why we deliver immersive, hands-on STEM experiences that ignite creativity and build
                     real-world skills in Robotics, Artificial Intelligence, Coding, IoT and more
                 </p>
-                <h2>Coding Adventures</h2>
+                <h3 className="leading-snug text-center text-xl sm:text-center coding_adventure">Coding Adventures</h3>
             </div>
 
-            <div className="container mx-auto">
+            <div className="container mx-auto about_steps_coding">
+                {/* 1178 */}
                 {/* Floating Circles */}
-                <div className="absolute top-75 left-25 w-28 h-28 rounded-full border-[10px] border-yellow-400 flex items-center justify-center bg-white shadow-md">
+                <div className="absolute top-75 left-50 w-32 h-32 about_coding rounded-full border-[10px] border-yellow-400 flex items-center justify-center bg-white shadow-md">
                     <span className="font-semibold text-gray-700">CODING</span>
                 </div>
 
-                <div className="absolute top-120 left-60 w-22 h-22 rounded-full border-[10px] border-yellow-400 flex items-center justify-center bg-white shadow-md">
+                <div className="absolute top-120 left-25 w-28 h-28 about_AI_ML rounded-full border-[10px] border-yellow-400 flex items-center justify-center bg-white shadow-md">
                     <span className="font-semibold text-gray-700 text-sm">AI & ML</span>
                 </div>
 
-                <div className="absolute top-80 right-50 w-32 h-32 rounded-full border-[10px] border-yellow-400 flex items-center justify-center bg-white shadow-md">
+                <div className="absolute top-70 right-70 w-32 h-32 about_robotics rounded-full border-[10px] border-yellow-400 flex items-center justify-center bg-white shadow-md">
                     <span className="font-semibold text-gray-700">ROBOTICS</span>
 
                     <div className="absolute -top-22 -right-42 w-40 h-40">
                         <img src="/about_steps_rocket-v2.png" alt="Rocket" className="w-full h-full object-contain" />
                     </div>
                 </div>
-                <div className="absolute top-126 right-25 w-28 h-28 rounded-full border-[10px] border-yellow-400 flex items-center justify-center bg-white shadow-md">
+                <div className="absolute top-116 right-40 w-28 h-28 about_AI_VR rounded-full border-[10px] border-yellow-400 flex items-center justify-center bg-white shadow-md">
                     <span className="font-semibold text-gray-700 text-sm">AI & VR</span>
                 </div>
 
 
-                <div className="flex justify-center items-end mt-40 mb-20 gap-4">
-
+                <div className="flex steps_section items-end mt-40 mb-20 ml-40 gap-4">
 
                     {/* Step 1 */}
-                    <div className="relative flex flex-col items-center transform translate-y-20">
+                    <div className="relative flex  flex-col items-center transform translate-y-20">
 
                         <div className="relative">
                             {/* Shadow shape */}
-                            <div className="absolute left-[-1px] top-[5px] z-0">
+                            <div className="absolute steps_shadow left-[-1px] top-[5px] z-0">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="290" height="200" viewBox="0 0 302 207" fill="none">
                                     <path
                                         fillRule="evenodd"
@@ -64,7 +64,7 @@ export default function CodingAdventures() {
                             </div>
 
                             {/* Main box */}
-                            <div className="relative z-10">
+                            <div className="relative steps_by_step z-10">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="180" height="60" viewBox="0 0 180 60" fill="none">
                                     <rect width="180" height="60" fill="#F65A6F" />
                                     <text
@@ -82,7 +82,7 @@ export default function CodingAdventures() {
                             </div>
                         </div>
 
-                        <div className="icon_text ml-[110px] mt-[10px] mb-3">
+                        <div className="icon_text steps_icons ml-[110px] mt-[10px] mb-3">
                             {/* Your icon SVG */}
                             <svg xmlns="http://www.w3.org/2000/svg" width="55" height="59" viewBox="0 0 55 59" fill="none">
                                 <path d="M49.2612 21.8319C48.6213 22.3972 48.232 23.8051 47.4747 24.5837C44.6109 27.5168 41.1286 29.4419 36.8942 29.202L36.2863 32.327C51.693 32.743 44.6376 51.0561 35.913 56.2184C28.2336 60.7673 19.557 59.1568 13.8988 52.3147C7.82467 44.966 5.70219 31.9111 18.6878 32.327C19.4504 27.9381 15.9307 29.5326 12.6723 28.4714C8.44329 27.0901 8.49129 25.2236 6.10215 22.7758C3.34505 19.9441 -0.478632 19.1121 0.0493238 13.4593C0.534617 8.30771 3.79834 9.07031 5.75018 7.12381C6.45412 6.41987 6.56611 5.13997 8.06999 3.84408C13.8775 -1.1795 37.8648 -0.923522 44.4616 2.55885C47.0107 3.90274 47.1921 5.2573 48.8132 6.73984C50.2371 8.0464 51.645 7.79575 52.9356 10.0836C54.9887 13.7259 54.3808 18.1096 51.245 20.8933C50.5784 21.4853 49.6505 21.4959 49.2665 21.8319H49.2612ZM16.432 2.06823C7.44071 3.36945 5.20623 11.0915 6.55545 19.1335C7.06207 22.1519 10.5658 25.6769 13.3762 26.7115C16.9279 28.0181 33.3052 27.9967 37.6302 27.5274C41.9552 27.0581 47.3094 23.9384 47.9813 19.2135C48.6533 14.4885 48.0933 7.1718 43.7363 4.3507C39.1234 1.37495 22.0422 1.25763 16.432 2.06823ZM4.82759 18.7282C4.6836 15.6298 4.93425 12.494 4.82759 9.39562C1.05724 11.4968 1.17456 17.1016 4.56628 19.5228C6.19814 19.6508 4.83826 18.9735 4.82759 18.7282ZM49.6292 19.5281C53.3942 17.4109 53.2769 11.8434 49.8905 9.40095L49.6292 19.5281ZM34.6918 29.1273H20.293L21.4342 35.4521L32.452 35.4148L34.6918 29.1273ZM12.459 35.6921C9.71252 38.7638 11.3817 44.5767 13.0829 47.8031C18.6131 58.2769 31.46 60.4794 39.1767 50.9495C43.0751 46.1339 47.0641 35.5321 38.0248 34.0549C33.9772 33.3936 35.289 35.3881 33.3959 36.636C32.2653 37.3773 23.3807 37.388 21.7382 37.0146C18.9757 36.3907 19.9837 32.695 14.9334 34.1775C14.5441 34.2949 12.7256 35.3934 12.459 35.6921Z" fill="black" />
@@ -98,7 +98,7 @@ export default function CodingAdventures() {
                         </div>
 
                         {/* ✅ p tag moved outside */}
-                        <p className="text-left text-gray-800 font-medium text-sm leading-tight translate-x-20">
+                        <p className="text-left steps_text text-gray-800 font-medium text-sm leading-tight translate-x-20">
                             Prepare Students <br /> for the future
                         </p>
                     </div>
@@ -136,7 +136,7 @@ export default function CodingAdventures() {
                             </div>
 
                             {/* Main box */}
-                            <div className="relative z-10">
+                            <div className="relative steps_by_step z-10">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="180" height="60" viewBox="0 0 180 60" fill="none">
                                     <rect width="180" height="60" fill="#A6D509" />
                                     <text
@@ -231,7 +231,7 @@ export default function CodingAdventures() {
                     </div>
 
                     {/* Step 4 */}
-                    <div className="relative flex flex-col items-center transform -translate-y-25">
+                    <div className="relative flex flex-col items-center transform -translate-y-27">
 
                         <div className="relative">
                             {/* Shadow shape */}
@@ -297,8 +297,14 @@ export default function CodingAdventures() {
                         </p>
                     </div>
                 </div>
-            </div>  
-        
+
+
+            </div>
+
+            {/**Tab Responsive */}
+            
+
+
 
 
 

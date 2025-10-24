@@ -52,11 +52,14 @@ const StarRating = ({ rating }) => {
     for (let i = 1; i <= 5; i++) {
         stars.push(
             <span key={i} className={i <= Math.floor(rating) ? 'opacity-100' : 'opacity-50'}>
-                ⭐
+                <svg xmlns="http://www.w3.org/2000/svg" fill="#FACC15" viewBox="0 0 24 24" width="24" height="24">
+                    <path d="M12 .587l3.668 7.431L24 9.748l-6 5.845 1.417 8.264L12 19.771l-7.417 4.086L6 15.593 0 9.748l8.332-1.73z" />
+                </svg>
+
             </span>
         );
     }
-    return <div className="text-center mb-3 text-xl text-yellow-400">{stars}</div>;
+    return <div className="flex flex-direction-row justify-center text-center mb-3 text-xl text-yellow-400">{stars}</div>;
 };
 
 const BinderClip = () => (
@@ -85,11 +88,14 @@ const TestimonialCard = ({ testimonial, isCenter, onClick }) => (
                 className="w-full h-full object-cover"
             />
         </div>
-        <h3 className="text-2xl font-semibold text-gray-800 text-center mb-2.5">
+        <h3 className="text-2xl testmonials font-semibold text-gray-800 text-center mb-2.5">
             {testimonial.name}
         </h3>
         <StarRating rating={testimonial.rating} />
-        <p className={`text-center text-sm ${isCenter ? 'text-gray-800 font-medium' : 'text-gray-600'}`}>
+
+
+
+        <p className={`text-center testmonials text-sm ${isCenter ? 'text-gray-800 font-medium' : 'text-gray-600'}`}>
             {testimonial.role}
         </p>
     </div>
@@ -133,19 +139,25 @@ export default function TestimonialsSection() {
     const cardOrder = getCardOrder();
 
     return (
-        <div className="min-h-screen bg-gradient-to-br py-10 px-5">
+        <div className="min-h-screen bg-gray-50 pb-15 py-2 px-5 realtive">
+            <div className="absolute right-[20]">
+                <div className="w-60 h-50 mt-[-66]">
+                    <img src="/steps_robot_top.gif" />
+                </div>
+            </div>
             <div className="max-w-7xl mx-auto">
+
+
                 {/* Header */}
-                <div className="mb-4">
+                <div className="mb-4 mt-10">
                     <h2 className="text-3xl sm:text-3xl lg:text-4xl mb-4 leading-snug text-center sm:text-left text-font-orbitron text-yellow-400">
                         STEPS Robotics <span className="text-black text-font-orbitron">Talks</span>
                     </h2>
                     <p className="text-gray-600 text-base md:text-lg text-font-poppins">
-                        We believe that true learning begins with exploration. That's why we deliver immersive, hands-on STEM experiences that ignite creativity and build
-                        real-world skills in Robotics, Artificial Intelligence, Coding, IoT and more
+                        What Parent & Teachers Say About Us
                     </p>
                 </div>
-                
+
 
                 {/* Testimonials Cards */}
                 <div className="hidden md:flex relative justify-center items-center gap-8 mb-10 flex-wrap lg:flex-nowrap">
@@ -174,10 +186,10 @@ export default function TestimonialsSection() {
 
                 {/* 💬 Desktop Description */}
                 <div className="hidden md:block text-center max-w-4xl mx-auto mb-8 px-5">
-                    <p className="text-gray-800 text-base leading-relaxed mb-4 italic font-semibold">
+                    <p className="text-gray-800 text-base leading-relaxed mb-4 text-font-poppins">
                         "{testimonials[activeIndex].quote}"
                     </p>
-                    <p className="text-gray-800 text-base leading-relaxed">
+                    <p className="text-gray-800 text-base leading-relaxed text-font-poppins">
                         {testimonials[activeIndex].description}
                     </p>
                 </div>

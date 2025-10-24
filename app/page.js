@@ -102,81 +102,86 @@ export default function Home() {
       <HeroSlider />
 
       {/* Projects Section */}
-      <section className="py-12 bg-white px-4 sm:px-8 lg:px-30">
-        {/* Heading */}
-        <h2 className="text-2xl sm:text-3xl lg:text-4xl mb-4 leading-snug text-center sm:text-left text-font-orbitron">
-          See what kids built with{" "}
-          <span className="text-yellow-500 text-font-orbitron">STEPS Robotics!</span>
-        </h2>
+      <section className="py-6 px-4 mt-20 sm:px-8 lg:px-30">
+        <div className="max-w-7xl mx-auto">
+          {/* Heading */}
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl mb-4 leading-snug text-center sm:text-left text-font-orbitron">
+            See what kids built with{" "}
+            <span className="text-yellow-500 text-font-orbitron">STEPS Robotics!</span>
+          </h2>
 
-        <p className="text-gray-600 text-sm sm:text-base lg:text-lg mb-10 leading-relaxed text-center sm:text-left text-font-poppins">
-          With Steps Robotics, your child will build products in the real world to solve real world problems and become skilled in technologies
-          that matter for the future. Best part — this happens while your child is playing!
-        </p>
+          <p className="text-gray-600 text-sm sm:text-base lg:text-lg mb-10 leading-relaxed text-center sm:text-left text-font-poppins">
+            With Steps Robotics, your child will build products in the real world to solve real world problems and become skilled in technologies
+            that matter for the future. Best part — this happens while your child is playing!
+          </p>
 
-        <div className="relative max-w-7xl mx-auto ">
-          {/* Swiper Slider */}
-          <Swiper
-            spaceBetween={20}
-            slidesPerView={1.2}
-            breakpoints={{
-              640: { slidesPerView: 2.2 },
-              1024: { slidesPerView: 3.2 },
-            }}
-            className="cursor-grab"
-          >
-            {projects.map((p, i) => (
-              <SwiperSlide key={i}>
-                <ProjectCard
-                  image={p.image}
-                  name={p.name}
-                  onClick={() => setActiveVideo(p.video)}
-                />
-              </SwiperSlide>
-            ))}
-          </Swiper>
 
-          {/* Fullscreen Video Modal */}
-          {activeVideo && (
-            <div className="fixed inset-0 flex items-center justify-center z-50">
-              {/* Semi-transparent overlay */}
-              <div
-                className="absolute inset-0 bg-black opacity-70"
-                onClick={() => setActiveVideo(null)} // click outside to close
-              ></div>
 
-              {/* Video container */}
-              <div className="relative z-10 w-full max-w-4xl rounded-lg overflow-hidden shadow-lg">
-                <video
-                  src={activeVideo}
-                  controls
-                  autoPlay
-                  className="w-full h-auto"
-                />
-                <button
-                  onClick={() => setActiveVideo(null)}
-                  className="absolute top-3 right-3 text-white text-3xl font-bold bg-black bg-opacity-50 rounded-full p-1 hover:bg-opacity-75 transition"
-                >
-                  ✕
-                </button>
+          <div className="relative max-w-7xl mx-auto ">
+            {/* Swiper Slider */}
+            <Swiper
+              spaceBetween={20}
+              slidesPerView={1.2}
+              breakpoints={{
+                640: { slidesPerView: 2.2 },
+                1024: { slidesPerView: 3.2 },
+              }}
+              className="cursor-grab"
+            >
+              {projects.map((p, i) => (
+                <SwiperSlide key={i}>
+                  <ProjectCard
+                    image={p.image}
+                    name={p.name}
+                    onClick={() => setActiveVideo(p.video)}
+                  />
+                </SwiperSlide>
+              ))}
+            </Swiper>
+
+            {/* Fullscreen Video Modal */}
+            {activeVideo && (
+              <div className="fixed inset-0 flex items-center justify-center z-50">
+                {/* Semi-transparent overlay */}
+                <div
+                  className="absolute inset-0 bg-black opacity-70"
+                  onClick={() => setActiveVideo(null)} // click outside to close
+                ></div>
+
+                {/* Video container */}
+                <div className="relative z-10 w-full max-w-4xl rounded-lg overflow-hidden shadow-lg">
+                  <video
+                    src={activeVideo}
+                    controls
+                    autoPlay
+                    className="w-full h-auto"
+                  />
+                  <button
+                    onClick={() => setActiveVideo(null)}
+                    className="absolute top-3 right-3 text-white text-3xl font-bold bg-black bg-opacity-50 rounded-full p-1 hover:bg-opacity-75 transition"
+                  >
+                    ✕
+                  </button>
+                </div>
               </div>
-            </div>
-          )}
+            )}
 
+          </div>
         </div>
 
 
       </section>
 
       {/**Robot section */}
-      <section className="py-6 px-4 sm:px-8 lg:px-30">
+      <section className="py-6 px-4 mt-10 sm:px-8 lg:px-30">
         <div className="max-w-7xl mx-auto">
           {/* Header */}
           <div className="mb-10">
-            <h2 className="text-3xl sm:text-3xl lg:text-4xl mb-4 leading-snug text-left text-font-orbitron">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl mb-4 leading-snug text-center sm:text-left text-font-orbitron">
               What We Offer <span className="text-yellow-400 text-font-orbitron">STEPS Robotics</span> for Your Child?
             </h2>
-            <p className="text-gray-600 text-base md:text-lg text-font-poppins">
+
+            <p className="text-gray-600 text-sm sm:text-base lg:text-lg mb-10 leading-relaxed text-center sm:text-left text-font-poppins">
               STEPS Robotics goes beyond classrooms to bring full-spectrum robotics and STEM experiences to students, teachers, and institutions.
             </p>
           </div>
@@ -200,7 +205,7 @@ export default function Home() {
 
                   {/* White box with icon and heading */}
                   <div className="bg-white rounded-[3rem] px-6 py-4 shadow-md flex flex-row items-center gap-3 mb-2 w-full">
-                    <h3 className="text-base md:text-lg text-font-poppins font-bold break-words text-start flex-1 px-4">
+                    <h3 className="text-base steps_robotics_child_h3 md:text-lg text-font-poppins break-words text-start flex-1 px-4">
                       {offering.title}
                     </h3>
                     {/* Icon on LEFT */}
@@ -217,7 +222,7 @@ export default function Home() {
 
                   </div>
                   {/* Description text outside */}
-                  <p className="text-gray-600 text-sm leading-relaxed text-left w-full px-6 whitespace-pre-line">
+                  <p className="text-gray-600 text-sm leading-relaxed text-left w-full px-8 whitespace-pre-line">
                     {offering.description}
                   </p>
                 </div>
@@ -265,12 +270,12 @@ export default function Home() {
                       />
                     </div>
                     {/* Heading on RIGHT */}
-                    <h3 className="text-base md:text-lg text-font-poppins font-bold break-words text-end flex-1 px-4">
+                    <h3 className="text-base steps_robotics_child_h3 md:text-lg text-font-poppins font-bold break-words text-end flex-1 px-4">
                       {offering.title}
                     </h3>
                   </div>
                   {/* Description text outside */}
-                  <p className="text-gray-600 text-sm leading-relaxed text-left w-full px-6 whitespace-pre-line">
+                  <p className="text-gray-600 text-sm leading-relaxed text-right w-full px-9 whitespace-pre-line">
                     {offering.description}
                   </p>
                 </div>
@@ -282,37 +287,43 @@ export default function Home() {
       </section>
 
       {/**Explore Learning */}
-      <section className='explore_learning' style={{ backgroundImage: "url('/Explore_screen_bg.jpg')" }}>
+      <section className='explore_learning px-4 mt-5 mb-20 sm:px-8 lg:px-30' style={{ backgroundImage: "url('/Explore_screen_bg.jpg')" }}>
         <div className="max-w-7xl mx-auto mb-4">
-          <h2 className="text-3xl sm:text-3xl lg:text-4xl pt-10 mb-4 leading-snug text-left text-font-orbitron">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl mb-4 explore_learning_robotics leading-snug text-center sm:text-left text-font-orbitron">
             Explore Learning with <span className="text-yellow-400 text-font-orbitron">STEPS Robotics</span>
           </h2>
-          <p className="text-gray-600 text-base md:text-lg text-font-poppins mb-10 pr-40">
+          <p className="text-gray-600 text-sm sm:text-base lg:text-lg mb-10 leading-relaxed text-center sm:text-left text-font-poppins pr-40">
             From structured courses to dynamic programs, STEPS Robotics offers multiple pathways for students to develop essential STEM and coding skills.
             Our approach blends theory with hands-on practice, preparing learners to thrive in the technology-driven word.
           </p>
 
 
-          <div className="relative flex flex-col md:flex-row justify-center items-center gap-8 p-2 border-yellow-400 rounded-2xl">
+          <div className="relative exploring_web flex flex-col md:flex-row justify-center items-center gap-8 p-2 border-yellow-400 rounded-2xl">
             {/* Card 1 */}
-            <div className="relative border-yellow-400 flex flex-col w-full md:w-1/2 border-2 border-dotted rounded-2xl p-8 overflow-visible">
+            <div className="relative border-yellow-400 h-80 flex flex-col w-full md:w-1/2 border-2 border-dotted rounded-2xl p-8 overflow-visible"
+            >
+              {/* Blurred background layer */}
+              <div
+                className="absolute inset-0 bg-cover bg-left opacity-40 rounded-2xl z-0"
+                style={{ backgroundImage: "url('/explore_course_bg.png')" }}
+              ></div>
               {/* Wrapper for floating image + text */}
               <div className="flex flex-col md:flex-row relative">
                 {/* Left side image */}
-                <div className="flex-shrink-0 relative border-2 m-2 p-2 border-white shadow top-[-80px] rounded_image">
+                <div className="flex-shrink-0 explore_image_responsive relative border-2 m-2 p-2 border-white shadow top-[-70px] rounded_image">
                   <Image
-                    src="/program1.png"
+                    src="/explore_courses-1.gif"
                     alt="Card 1"
                     width={200}
                     height={250}
-                    className="object-cover rounded shadow h-65 w-60 block"
+                    className="object-cover  rounded shadow h-65 w-60 block"
                   />
                 </div>
 
                 {/* Right side text */}
-                <div className="flex-1 flex flex-col pl-4 justify-center">
-                  <h1 className="text-xl font-bold mb-3">Explore Courses</h1>
-                  <p className="text-gray-600 mb-4 leading-relaxed">
+                <div className="flex-1 flex flex-col mt-[-40px] explore_right_section pl-4 justify-center">
+                  <h1 className="text-xl font-bold mb-1">Explore Courses</h1>
+                  <p className="text-gray-600 mb-2 leading-relaxed">
                     Structured STEM courses combining robotics, coding, and hands-on projects to build creativity, problem-solving, and future-ready skills.
                   </p>
                   <ul className="steps_list_items mb-4">
@@ -333,9 +344,12 @@ export default function Home() {
               </div>
 
               {/* Button below both */}
-              <div className="absolute top-86 right-5 w-full flex justify-center">
-                <button className="bg-orange-500 text-white px-6 py-2 rounded hover:bg-orange-600">
-                  Explore Now
+              <div className="absolute top-70 explore_learning_button right-5 w-full flex justify-center">
+                <button className="absolute home_banner_button w-50 bg-gradient-to-r from-orange-500 to-yellow-500 text-white font-bold text-xl py-2 px-3 rounded-full flex items-center justify-center gap-3 hover:shadow-lg transition-shadow">
+                  Explore More
+                  <div className="bg-white rounded-full p-2">
+                    <ArrowRight className="w-6 h-6 text-orange-500" />
+                  </div>
                 </button>
               </div>
             </div>
@@ -345,25 +359,30 @@ export default function Home() {
 
 
             {/* Card 2 */}
-            <div className="relative border-yellow-400 flex flex-col w-full md:w-1/2 border-2 border-dotted rounded-2xl p-8 overflow-visible">
+            <div className="relative border-yellow-400 h-80 flex flex-col w-full md:w-1/2 border-2 border-dotted rounded-2xl p-8 overflow-visible"
+            >
+              {/* Blurred background layer */}
+              <div
+                className="absolute inset-0 bg-cover bg-left opacity-40 rounded-2xl z-0"
+                style={{ backgroundImage: "url('/explore_course_bg.png')" }}
+              ></div>
               {/* Wrapper for floating image + text */}
               <div className="flex flex-col md:flex-row relative">
                 {/* Left side image */}
-                <div className="flex-shrink-0 relative border-2 m-2 p-2 border-white bg-white shadow top-[-80px] rounded_image">
+                <div className="flex-shrink-0 explore_image_responsive relative border-2 m-2 p-2 border-white shadow top-[-70px] rounded_image">
                   <Image
-                    src="/program1.png"
+                    src="/explore_courses-2.gif"
                     alt="Card 1"
                     width={200}
                     height={250}
-                    className="object-cover rounded shadow h-65 w-60 block"
+                    className="object-cover  rounded shadow h-65 w-60 block"
                   />
                 </div>
 
-
                 {/* Right side text */}
-                <div className="flex-1 flex flex-col pl-4 justify-center">
-                  <h1 className="text-xl font-bold mb-3">Explore Courses</h1>
-                  <p className="text-gray-600 mb-4 leading-relaxed">
+                <div className="flex-1 flex flex-col mt-[-40px] explore_right_section pl-4 justify-center">
+                  <h1 className="text-xl font-bold mb-1">Explore Courses</h1>
+                  <p className="text-gray-600 mb-2 leading-relaxed">
                     Structured STEM courses combining robotics, coding, and hands-on projects to build creativity, problem-solving, and future-ready skills.
                   </p>
                   <ul className="steps_list_items mb-4">
@@ -384,13 +403,20 @@ export default function Home() {
               </div>
 
               {/* Button below both */}
-              <div className="absolute top-86 right-5 w-full flex justify-center">
-                <button className="bg-orange-500 text-white px-6 py-2 rounded hover:bg-orange-600">
-                  Explore Now
+              <div className="absolute top-70 explore_learning_button right-5 w-full flex justify-center">
+                <button className="absolute home_banner_button w-50 bg-gradient-to-r from-orange-500 to-yellow-500 text-white font-bold text-xl py-2 px-3 rounded-full flex items-center justify-center gap-3 hover:shadow-lg transition-shadow">
+                  Explore More
+                  <div className="bg-white rounded-full p-2">
+                    <ArrowRight className="w-6 h-6 text-orange-500" />
+                  </div>
                 </button>
               </div>
             </div>
           </div>
+
+
+
+
 
         </div>
 
@@ -398,10 +424,12 @@ export default function Home() {
       </section>
 
 
+
+
       {/**About STEPS Robotics */}
       <CodingAdventures />
 
-      {/**Choose STEPS Robotics */}
+      {/**Why Choose STEPS Robotics for your child */}
       <WhyChooseSection />
 
       {/**STEPS Robotics Talsk */}
@@ -475,7 +503,7 @@ export default function Home() {
                 transition={{ duration: 0.3 }}
               >
                 <Image
-                  src="/child-1.jpg"
+                  src="/Study_Gallery/gallery_img1.jpg"
                   alt="Student building robot"
                   fill
                   className="object-cover transition-transform duration-300 group-hover:scale-110"
@@ -493,7 +521,7 @@ export default function Home() {
                 transition={{ duration: 0.3 }}
               >
                 <Image
-                  src="/child-1.jpg"
+                  src="/Study_Gallery/gif/gif-1-2.gif"
                   alt="Teacher with students"
                   fill
                   className="object-cover transition-transform duration-300 group-hover:scale-110"
@@ -514,7 +542,7 @@ export default function Home() {
                 transition={{ duration: 0.3 }}
               >
                 <Image
-                  src="/child-1.jpg"
+                  src="/Study_Gallery/gallery_img2.png"
                   alt="Students working on project"
                   fill
                   className="object-cover transition-transform duration-300 group-hover:scale-110"
@@ -532,7 +560,7 @@ export default function Home() {
                 transition={{ duration: 0.3 }}
               >
                 <Image
-                  src="/child-1.jpg"
+                  src="/Study_Gallery/gif/gif-1.gif"
                   alt="Classroom activity"
                   fill
                   className="object-cover transition-transform duration-300 group-hover:scale-110"
@@ -553,7 +581,7 @@ export default function Home() {
                 transition={{ duration: 0.3 }}
               >
                 <Image
-                  src="/child-1.jpg"
+                  src="/Study_Gallery/gif/gif-3-1.gif"
                   alt="Science experiment"
                   fill
                   className="object-cover transition-transform duration-300 group-hover:scale-110"
@@ -571,7 +599,7 @@ export default function Home() {
                 transition={{ duration: 0.3 }}
               >
                 <Image
-                  src="/child-1.jpg"
+                  src="/Study_Gallery/gif/gif-3-2.gif"
                   alt="Student presentation"
                   fill
                   className="object-cover transition-transform duration-300 group-hover:scale-110"
@@ -592,7 +620,7 @@ export default function Home() {
                 transition={{ duration: 0.3 }}
               >
                 <Image
-                  src="/child-1.jpg"
+                  src="/Study_Gallery/gallery_img3.png"
                   alt="Robotics project"
                   fill
                   className="object-cover transition-transform duration-300 group-hover:scale-110"
@@ -613,7 +641,7 @@ export default function Home() {
                 transition={{ duration: 0.3 }}
               >
                 <Image
-                  src="/child-1.jpg"
+                  src="/Study_Gallery/gif/gif-4-1.gif"
                   alt="Group learning"
                   fill
                   className="object-cover transition-transform duration-300 group-hover:scale-110"
@@ -631,7 +659,7 @@ export default function Home() {
                 transition={{ duration: 0.3 }}
               >
                 <Image
-                  src="/child-1.jpg"
+                  src="/Study_Gallery/gallery_img4.png"
                   alt="Hands-on activity"
                   fill
                   className="object-cover transition-transform duration-300 group-hover:scale-110"
@@ -643,9 +671,11 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      
       {/**Mobile View Section */}
       <section
-        className="relative bg-gradient-to-br from-yellow-200 via-yellow-300 to-yellow-400 py-16 px-4 sm:px-8 lg:px-16 overflow-hidden"
+        className="relative bg-gradient-to-br from-yellow-200 via-yellow-300 to-yellow-400 overflow-hidden"
         style={{
           backgroundImage: "url('/studyProgress.png')",
           backgroundRepeat: "no-repeat",
@@ -659,7 +689,7 @@ export default function Home() {
         </div>
 
         {/* ======= MOBILE SECTION ======= */}
-        <div className="block md:hidden relative z-10 text-center mt-8">
+        <div className="block md:hidden relative z-10 text-center">
           <h2 className="text-3xl font-bold text-gray-900 mb-3 text-font-orbitron text-white px-20">
             Try for free Register now
           </h2>

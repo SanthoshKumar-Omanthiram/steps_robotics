@@ -7,22 +7,24 @@ import ProjectCard from "./component/ProjectCard";
 import Robot from "@/public/robot.png"
 import TestimonialsSection from './component/TestimonialsSection';
 import { motion } from 'framer-motion';
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import WhyChooseSection from './component/WhyChooseSection';
 import { ArrowRight } from 'lucide-react';
 import CodingAdventures from './component/CodingAdventures';
+import { fetchExploreCourses } from "@/app/utils/fetchData";
 
-const projects = [
-  { image: "/Swetha.png", video: "/about/kid-1.mp4", name: "Aditi" },
-  { image: "/Sathish.png", video: "/about/kid-2.mp4", name: "Shankar" },
-  { image: "/Sandiya.png", video: "/about/kid-3.mp4", name: "Divya" },
-  { image: "/Swetha.png", video: "/about/kid-4.mp4", name: "Aditi Shakar" },
-  { image: "/Sathish.png", video: "/about/kid-5.mp4", name: "Mukesh Raj" },
-  { image: "/Sandiya.png", video: "/about/kid-1.mp4", name: "Vidhya Sree" },
 
-];
+
+// const projects = [
+//   { image: "/Swetha.png", video: "/about/kid-1.mp4", name: "Aditi" },
+//   { image: "/Sathish.png", video: "/about/kid-2.mp4", name: "Shankar" },
+//   { image: "/Sandiya.png", video: "/about/kid-3.mp4", name: "Divya" },
+//   { image: "/Swetha.png", video: "/about/kid-4.mp4", name: "Aditi Shakar" },
+//   { image: "/Sathish.png", video: "/about/kid-5.mp4", name: "Mukesh Raj" },
+//   { image: "/Sandiya.png", video: "/about/kid-1.mp4", name: "Vidhya Sree" },
+// ];
 
 const leftOfferings = [
   {
@@ -95,6 +97,36 @@ const features = [
 
 export default function Home() {
   const [activeVideo, setActiveVideo] = useState(null);
+  const [projects, setProjects] = useState([]);
+  // Fetch data from your API (See What kids built with STEPS Robotics)
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const res = await fetch("/api/home/steps_robotics");
+        const data = await res.json();
+        setProjects(data);
+      } catch (error) {
+        console.error("❌ Error fetching steps robotics:", error);
+      }
+    }
+    fetchData();
+  }, []);
+
+
+  const [courses, setCourses] = useState([]);
+  useEffect(() => {
+    async function loadCourses() {
+      try {
+        const data = await fetchExploreCourses();
+        setCourses(data);
+      } catch (err) {
+        console.error("❌ Failed to load explore courses:", err);
+      }
+    }
+    loadCourses();
+  }, []);
+
+
 
   return (
     <div className="min-h-screen bg-white">
@@ -128,12 +160,12 @@ export default function Home() {
               }}
               className="cursor-grab"
             >
-              {projects.map((p, i) => (
-                <SwiperSlide key={i}>
+              {projects.map((item) => (
+                <SwiperSlide key={item.id}>
                   <ProjectCard
-                    image={p.image}
-                    name={p.name}
-                    onClick={() => setActiveVideo(p.video)}
+                    image={item.image}
+                    name={item.title}
+                    onClick={() => setActiveVideo(item.video)}
                   />
                 </SwiperSlide>
               ))}
@@ -299,118 +331,66 @@ export default function Home() {
 
 
           <div className="relative exploring_web flex flex-col md:flex-row justify-center items-center gap-8 p-2 border-yellow-400 rounded-2xl">
-            {/* Card 1 */}
-            <div className="relative border-yellow-400 h-80 flex flex-col w-full md:w-1/2 border-2 border-dotted rounded-2xl p-8 overflow-visible"
-            >
-              {/* Blurred background layer */}
-              <div
-                className="absolute inset-0 bg-cover bg-left opacity-40 rounded-2xl z-0"
-                style={{ backgroundImage: "url('/explore_course_bg.png')" }}
-              ></div>
-              {/* Wrapper for floating image + text */}
-              <div className="flex flex-col md:flex-row relative">
-                {/* Left side image */}
-                <div className="flex-shrink-0 explore_image_responsive relative border-2 m-2 p-2 border-white shadow top-[-70px] rounded_image">
-                  <Image
-                    src="/explore_courses-1.gif"
-                    alt="Card 1"
-                    width={200}
-                    height={250}
-                    className="object-cover  rounded shadow h-65 w-60 block"
-                  />
-                </div>
+            <div className="flex flex-col md:flex-row gap-6">
+              {courses.map((course, index) => (
+                <div
+                  key={course.id}
+                  className="relative border-yellow-400 h-80 flex flex-col w-full md:w-1/2 border-2 border-dotted rounded-2xl p-8 overflow-visible"
+                >
+                  {/* Blurred background layer */}
+                  <div
+                    className="absolute inset-0 bg-cover bg-left opacity-40 rounded-2xl z-0"
+                    style={{ backgroundImage: "url('/explore_course_bg.png')" }}
+                  ></div>
 
-                {/* Right side text */}
-                <div className="flex-1 flex flex-col mt-[-40px] explore_right_section pl-4 justify-center">
-                  <h1 className="text-xl font-bold mb-1">Explore Courses</h1>
-                  <p className="text-gray-600 mb-2 leading-relaxed">
-                    Structured STEM courses combining robotics, coding, and hands-on projects to build creativity, problem-solving, and future-ready skills.
-                  </p>
-                  <ul className="steps_list_items mb-4">
-                    <li className="flex mb-2 items-center gap-2">
-                      <ArrowRight className="w-5 h-5 text-orange-500" />
-                      Interactive robotics classes
-                    </li>
-                    <li className="flex mb-2 items-center gap-2">
-                      <ArrowRight className="w-5 h-5 text-orange-500" />
-                      Project-based curriculum
-                    </li>
-                    <li className="flex mb-2 items-center gap-2">
-                      <ArrowRight className="w-5 h-5 text-orange-500" />
-                      Expert mentor guidance
-                    </li>
-                  </ul>
-                </div>
-              </div>
+                  {/* Wrapper for floating image + text */}
+                  <div className="flex flex-col md:flex-row relative">
+                    {/* Left side image */}
+                    <div className="flex-shrink-0 explore_image_responsive relative border-2 m-2 p-2 border-white shadow top-[-70px] rounded_image">
+                      <Image
+                        src={course.image || "/placeholder.png"}
+                        alt={course.title}
+                        width={200}
+                        height={250}
+                        className="object-cover rounded shadow h-65 w-60 block"
+                      />
+                    </div>
 
-              {/* Button below both */}
-              <div className="absolute top-70 explore_learning_button right-5 w-full flex justify-center">
-                <button className="absolute home_banner_button w-50 bg-gradient-to-r from-orange-500 to-yellow-500 text-white font-bold text-xl py-2 px-3 rounded-full flex items-center justify-center gap-3 hover:shadow-lg transition-shadow">
-                  Explore More
-                  <div className="bg-white rounded-full p-2">
-                    <ArrowRight className="w-6 h-6 text-orange-500" />
+                    {/* Right side text */}
+                    <div className="flex-1 flex flex-col mt-[-40px] explore_right_section pl-4 justify-center">
+                      <h1 className="text-xl font-bold mb-1">{course.title}</h1>
+                      <p className="text-gray-600 mb-2 leading-relaxed">
+                        {course.description}
+                      </p>
+
+                      <ul className="steps_list_items mb-4">
+                        {course.list_items?.map((item, i) => (
+                          <li key={i} className="flex mb-2 items-center gap-2">
+                            <ArrowRight className="w-5 h-5 text-orange-500" />
+                            {item}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
                   </div>
-                </button>
-              </div>
-            </div>
 
-
-
-
-
-            {/* Card 2 */}
-            <div className="relative border-yellow-400 h-80 flex flex-col w-full md:w-1/2 border-2 border-dotted rounded-2xl p-8 overflow-visible"
-            >
-              {/* Blurred background layer */}
-              <div
-                className="absolute inset-0 bg-cover bg-left opacity-40 rounded-2xl z-0"
-                style={{ backgroundImage: "url('/explore_course_bg.png')" }}
-              ></div>
-              {/* Wrapper for floating image + text */}
-              <div className="flex flex-col md:flex-row relative">
-                {/* Left side image */}
-                <div className="flex-shrink-0 explore_image_responsive relative border-2 m-2 p-2 border-white shadow top-[-70px] rounded_image">
-                  <Image
-                    src="/explore_courses-2.gif"
-                    alt="Card 1"
-                    width={200}
-                    height={250}
-                    className="object-cover  rounded shadow h-65 w-60 block"
-                  />
-                </div>
-
-                {/* Right side text */}
-                <div className="flex-1 flex flex-col mt-[-40px] explore_right_section pl-4 justify-center">
-                  <h1 className="text-xl font-bold mb-1">Explore Courses</h1>
-                  <p className="text-gray-600 mb-2 leading-relaxed">
-                    Structured STEM courses combining robotics, coding, and hands-on projects to build creativity, problem-solving, and future-ready skills.
-                  </p>
-                  <ul className="steps_list_items mb-4">
-                    <li className="flex mb-2 items-center gap-2">
-                      <ArrowRight className="w-5 h-5 text-orange-500" />
-                      Interactive robotics classes
-                    </li>
-                    <li className="flex mb-2 items-center gap-2">
-                      <ArrowRight className="w-5 h-5 text-orange-500" />
-                      Project-based curriculum
-                    </li>
-                    <li className="flex mb-2 items-center gap-2">
-                      <ArrowRight className="w-5 h-5 text-orange-500" />
-                      Expert mentor guidance
-                    </li>
-                  </ul>
-                </div>
-              </div>
-
-              {/* Button below both */}
-              <div className="absolute top-70 explore_learning_button right-5 w-full flex justify-center">
-                <button className="absolute home_banner_button w-50 bg-gradient-to-r from-orange-500 to-yellow-500 text-white font-bold text-xl py-2 px-3 rounded-full flex items-center justify-center gap-3 hover:shadow-lg transition-shadow">
-                  Explore More
-                  <div className="bg-white rounded-full p-2">
-                    <ArrowRight className="w-6 h-6 text-orange-500" />
+                  {/* Button below both */}
+                  <div className="absolute top-70 explore_learning_button right-5 w-full flex justify-center">
+                    <button
+                      onClick={() =>
+                        course.button_link &&
+                        window.open(course.button_link, "_blank")
+                      }
+                      className="absolute home_banner_button w-50 bg-gradient-to-r from-orange-500 to-yellow-500 text-white font-bold text-xl py-2 px-3 rounded-full flex items-center justify-center gap-3 hover:shadow-lg transition-shadow"
+                    >
+                      {course.button_text || "Explore More"}
+                      <div className="bg-white rounded-full p-2">
+                        <ArrowRight className="w-6 h-6 text-orange-500" />
+                      </div>
+                    </button>
                   </div>
-                </button>
-              </div>
+                </div>
+              ))}
             </div>
           </div>
 
@@ -672,7 +652,7 @@ export default function Home() {
         </div>
       </section>
 
-      
+
       {/**Mobile View Section */}
       <section
         className="relative bg-gradient-to-br from-yellow-200 via-yellow-300 to-yellow-400 overflow-hidden"

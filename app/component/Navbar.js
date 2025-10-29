@@ -1,19 +1,58 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { fetchLogo, fetchNavbar } from "@/app/utils/fetchData"; // ✅ import from utils
+
 
 const Navbar = () => {
-    
+
     const pathname = usePathname();
 
     const [isOpen, setIsOpen] = useState(false);
     const [openDropdown, setOpenDropdown] = useState('');
-
     const toggleDropdown = (menu) => {
         setOpenDropdown(openDropdown === menu ? '' : menu);
     };
+
+    // Fetch the Logo and Menu Items
+    const [logo, setLogo] = useState("");
+    const [menuItems, setMenuItems] = useState([]);
+
+    useEffect(() => {
+        async function loadData() {
+            try {
+                const [logoUrl, navbarItems] = await Promise.all([
+                    fetchLogo(),
+                    fetchNavbar(),
+                ]);
+
+                // Define the desired order
+                const order = ["Home", "Courses", "Programs", "About Us", "Contact"];
+
+                // Sort items according to that order
+                const sortedItems = navbarItems.sort(
+                    (a, b) => order.indexOf(a.label) - order.indexOf(b.label)
+                );
+
+                setLogo(logoUrl);
+                setMenuItems(sortedItems);
+            } catch (err) {
+                console.error("Data fetch error:", err);
+            }
+        }
+
+        loadData();
+    }, []);
+
+
+
+    useEffect(() => {
+        if (menuItems.length > 0) {
+            console.log("Updated menu items:", menuItems);
+        }
+    }, [menuItems]);
 
     return (
         <nav className="bg-white header_part shadow-sm sticky top-0 left-0 right-0 z-50">
@@ -22,7 +61,7 @@ const Navbar = () => {
                     {/* Logo */}
                     <div className="flex items-center">
                         <Image
-                            src="/logo.png"
+                            src={logo}
                             alt="Steps Robotics Logo"
                             width={250}
                             height={60}
@@ -31,7 +70,7 @@ const Navbar = () => {
                     </div>
 
                     {/* Desktop Navigation */}
-                    <div className="hidden md:flex items-center space-x-8">
+                    {/* <div className="hidden md:flex items-center space-x-8">
                         <Link href="/" className="nav-link text-gray-700 hover:text-yellow-500">
                             Home
                         </Link>
@@ -53,7 +92,41 @@ const Navbar = () => {
                         <Link href="/contacts" className="nav-link text-gray-700 hover:text-yellow-500">
                             Contact
                         </Link>
+                    </div> */}
+                    <div className="hidden md:flex items-center space-x-8">
+                        {menuItems
+                            .filter((item) => item.visible) // ✅ show only visible ones
+                            .map((item) => (
+                                <Link
+                                    key={item.id}
+                                    href={item.href}
+                                    className="nav-link text-gray-700 hover:text-yellow-500 flex items-center"
+                                >
+                                    {item.label}
+
+                                    {/* Optional: Add dropdown arrow for certain menus */}
+                                    {(item.label.toLowerCase() === "courses" ||
+                                        item.label.toLowerCase() === "programs") && (
+                                            <svg
+                                                className="w-4 h-4 ml-1"
+                                                fill="none"
+                                                stroke="currentColor"
+                                                viewBox="0 0 24 24"
+                                            >
+                                                <path
+                                                    strokeLinecap="round"
+                                                    strokeLinejoin="round"
+                                                    strokeWidth={2}
+                                                    d="M19 9l-7 7-7-7"
+                                                />
+                                            </svg>
+                                        )}
+                                </Link>
+                            ))}
                     </div>
+
+
+
 
                     {/* Right Side Icons (Visible always) */}
                     <div className="flex items-center space-x-3">
@@ -170,8 +243,8 @@ const Navbar = () => {
                                     href="/"
                                     onClick={() => setIsOpen(false)}
                                     className={`px-6 py-4 border-l-4 font-semibold transition-colors duration-200 ${pathname === "/"
-                                            ? "bg-yellow-50 border-yellow-400 text-yellow-600"
-                                            : "border-transparent text-gray-800 hover:bg-yellow-50 hover:border-yellow-400 hover:text-yellow-600"
+                                        ? "bg-yellow-50 border-yellow-400 text-yellow-600"
+                                        : "border-transparent text-gray-800 hover:bg-yellow-50 hover:border-yellow-400 hover:text-yellow-600"
                                         }`}
                                 >
                                     Home
@@ -247,8 +320,8 @@ const Navbar = () => {
                                     href="/about"
                                     onClick={() => setIsOpen(false)}
                                     className={`px-6 py-4 border-l-4 font-semibold transition-colors duration-200 ${pathname === "/about"
-                                            ? "bg-yellow-50 border-yellow-400 text-yellow-600"
-                                            : "border-transparent text-gray-800 hover:bg-yellow-50 hover:border-yellow-400 hover:text-yellow-600"
+                                        ? "bg-yellow-50 border-yellow-400 text-yellow-600"
+                                        : "border-transparent text-gray-800 hover:bg-yellow-50 hover:border-yellow-400 hover:text-yellow-600"
                                         }`}
                                 >
                                     About Us
@@ -259,8 +332,8 @@ const Navbar = () => {
                                     href="/contacts"
                                     onClick={() => setIsOpen(false)}
                                     className={`px-6 py-4 border-l-4 font-semibold transition-colors duration-200 ${pathname === "/contacts"
-                                            ? "bg-yellow-50 border-yellow-400 text-yellow-600"
-                                            : "border-transparent text-gray-800 hover:bg-yellow-50 hover:border-yellow-400 hover:text-yellow-600"
+                                        ? "bg-yellow-50 border-yellow-400 text-yellow-600"
+                                        : "border-transparent text-gray-800 hover:bg-yellow-50 hover:border-yellow-400 hover:text-yellow-600"
                                         }`}
                                 >
                                     Contact

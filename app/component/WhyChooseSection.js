@@ -1,41 +1,59 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import Image from 'next/image';
-const features = [
-  {
-    icon: "/icons/1.png",
-    title: "Holistic 360° Skill Development",
-    // subtitle: "Development",
-  },
-  {
-    icon: "/icons/2.png",
-    title: "48+ Hours of Structured Learning",
-    // subtitle: "Structured Learning",
-  },
-  {
-    icon: "/icons/3.png",
-    title: "Progressive Learning Path",
-    // subtitle: "Learning Path",
-  },
-  {
-    icon: "/icons/4.png",
-    title: "Customized & Guided Training",
-    // subtitle: "Guided Training",
-  },
-  {
-    icon: "/icons/5.png",
-    title: "Experienced Industry Mentors",
-    // subtitle: "Industry Mentors",
-  },
-  {
-    icon: "/icons/6.png",
-    title: "Flexible Learning Modes",
-    // subtitle: "Modes",
-  },
-];
+import { whyChooseSTEPS } from '../utils/fetchData';
+// const features = [
+//   {
+//     icon: "/icons/1.png",
+//     title: "Holistic 360° Skill Development",
+//     // subtitle: "Development",
+//   },
+//   {
+//     icon: "/icons/2.png",
+//     title: "48+ Hours of Structured Learning",
+//     // subtitle: "Structured Learning",
+//   },
+//   {
+//     icon: "/icons/3.png",
+//     title: "Progressive Learning Path",
+//     // subtitle: "Learning Path",
+//   },
+//   {
+//     icon: "/icons/4.png",
+//     title: "Customized & Guided Training",
+//     // subtitle: "Guided Training",
+//   },
+//   {
+//     icon: "/icons/5.png",
+//     title: "Experienced Industry Mentors",
+//     // subtitle: "Industry Mentors",
+//   },
+//   {
+//     icon: "/icons/6.png",
+//     title: "Flexible Learning Modes",
+//     // subtitle: "Modes",
+//   },
+// ];
 export default function WhyChooseSection() {
+  const [sectionData, setSectionData] = useState({});
+  const { features = [], image_one, image_two } = sectionData;
+
+  useEffect(() => {
+    async function loadData() {
+      try {
+        const data = await whyChooseSTEPS();
+        console.log("✅ API Full Response:", data);
+
+        // ✅ Adjust according to structure
+        setSectionData(data?.section_data || {});
+      } catch (err) {
+        console.error("❌ Failed to load Why Choose STEPS data:", err);
+      }
+    }
+    loadData();
+  }, []);
   return (
     <section className='explore_learning px-4 pt-15 mb-10 sm:px-8 lg:px-30' style={{ backgroundImage: "url('/why_choose_steps_bg.jpg')", backgroundRepeat: "no-repeat", backgroundSize: "cover" }}>
-        <div className="max-w-7xl mx-auto mb-4">
+      <div className="max-w-7xl mx-auto mb-4">
         <div className="mb-8 md:mb-12 lg:mb-16">
           <h2 className="text-2xl sm:text-3xl lg:text-4xl mb-4 leading-snug text-center sm:text-left text-font-orbitron">
             Why Choose{" "}
@@ -54,7 +72,7 @@ export default function WhyChooseSection() {
             <div className="relative flex justify-start md:justify-center lg:justify-start">
               <div className="relative why_choose_image_1">
                 <Image
-                  src="/kid1.png"
+                  src={image_one}
                   alt="Kids with mentor"
                   width={148}
                   height={148}
@@ -67,7 +85,7 @@ export default function WhyChooseSection() {
             <div className="relative flex justify-end right-25 xs:right-30 -top-8 md:justify-center lg:justify-end">
               <div className="relative why_choose_image_2">
                 <Image
-                  src="/kid1.png"
+                  src={image_two}
                   alt="Kids with mentor"
                   width={148}
                   height={148}

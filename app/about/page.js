@@ -60,33 +60,7 @@ export default function Page() {
     return (
         <>
             {/* Banner Hero Section */}
-            {/* <section
-                className="relative py-4 md:py-5 bg-cover bg-center bg-no-repeat px-4 md:px-8"
-                style={{ backgroundImage: "url('/about/about_banner_bg.jpg')" }}
-            >
-
-                <div className="relative max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-10 md:gap-16">
-                    
-                    <div className="flex-1 flex">
-                        <Image
-                            src="/about/about_img.png"
-                            alt="Future-Ready Kids"
-                            width={400}
-                            height={100}
-                            className="object-contain w-full max-w-[450px] h-auto"
-                            priority
-                        />
-                    </div>
-
-                    
-                    <div className="about_right_text flex-1 flex flex-col justify-center items-center md:items-start text-center md:text-left text-black">
-                        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 leading-tight">
-                            Future-Ready Kids <br />
-                            Start Here!
-                        </h2>
-                    </div>
-                </div>
-            </section> */}
+            
             <div className="course-heroic sm:h-[525px] mb-[25px] p-6">
                   <div className="container mx-auto space-y-8">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 transition-all duration-300">
@@ -194,7 +168,7 @@ export default function Page() {
                         <h3 className="text-2xl pr-10 font-semibold text-gray-800 font-orbitron">
                             From Curiosity to Certainty — Shaping the Future with AI & Robotics
                         </h3>
-                        <p className="text-gray-600 text-lg font-poppins">
+                        <p className="text-gray-600 text-lg about_STEPS font-poppins">
                             At STEPS Robotics, we're on a mission to turn young curiosity into
                             groundbreaking innovation. We create hands-on, playful learning
                             spaces where children dive into STEM, coding, robotics, AI, ML, IoT,
@@ -228,7 +202,7 @@ export default function Page() {
             </section>
 
             {/** Vision */}
-            <section className="pt-10 px-4 sm:px-8 lg:px-16 bg-gray-50 relative">
+            <section className="pt-10  px-4 sm:px-8 lg:px-16 bg-gray-50 relative">
                 {/* Decorative rocket element at top */}
                 <div className="absolute top-[-60] left-[-20]">
                     <div className="w-40 h-40">
@@ -236,7 +210,7 @@ export default function Page() {
                     </div>
                 </div>
 
-                <div className="max-w-7xl mx-auto relative">
+                <div className="max-w-7xl pt-18 pb-25 mx-auto relative">
                     {/* Main Yellow Container */}
                     <div className="bg-gradient-to-r from-yellow-400 to-yellow-500 rounded-[3rem] px-8 pt-10 relative overflow-hidden">
 

@@ -3,7 +3,8 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { fetchLogo, fetchNavbar } from "@/app/utils/fetchData"; // ✅ import from utils
+// import { fetchLogo, fetchNavbar } from "@/app/utils/fetchData";
+import { getNavbarData } from "../utils/menuItems";
 
 
 const Navbar = () => {
@@ -23,51 +24,35 @@ const Navbar = () => {
     useEffect(() => {
         async function loadData() {
             try {
-                const [logoUrl, navbarItems] = await Promise.all([
-                    fetchLogo(),
-                    fetchNavbar(),
-                ]);
-
-                // Define the desired order
-                const order = ["Home", "Courses", "Programs", "About Us", "Contact"];
-
-                // Sort items according to that order
-                const sortedItems = navbarItems.sort(
-                    (a, b) => order.indexOf(a.label) - order.indexOf(b.label)
-                );
-
+                const { logoUrl, sortedItems } = await getNavbarData();
                 setLogo(logoUrl);
                 setMenuItems(sortedItems);
             } catch (err) {
-                console.error("Data fetch error:", err);
+                console.error("Navbar data fetch error:", err);
             }
         }
-
         loadData();
     }, []);
 
 
-
-    useEffect(() => {
-        if (menuItems.length > 0) {
-            console.log("Updated menu items:", menuItems);
-        }
-    }, [menuItems]);
-
     return (
-        <nav className="bg-white header_part shadow-sm sticky top-0 left-0 right-0 z-50">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <nav className="bg-white header_part shadow-sm fixed top-0 left-0 right-0 z-50">
+
+
+            <div className="container-custom">
                 <div className="flex justify-between items-center h-24">
                     {/* Logo */}
-                    <div className="flex items-center">
-                        <Image
-                            src={logo}
-                            alt="Steps Robotics Logo"
-                            width={250}
-                            height={60}
-                            className="h-16 w-auto"
-                        />
-                    </div>
+                    <Link href="/">
+                        <div className="flex items-center">
+                            <Image
+                                src={logo}
+                                alt="Steps Robotics Logo"
+                                width={250}
+                                height={60}
+                                className="h-16 w-auto"
+                            />
+                        </div>
+                    </Link>
 
                     {/* Desktop Navigation */}
                     {/* <div className="hidden md:flex items-center space-x-8">

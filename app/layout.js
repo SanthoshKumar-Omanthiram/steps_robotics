@@ -1,9 +1,14 @@
-import { Geist, Oxanium, Orbitron, Poppins } from "next/font/google";
+import { Geist, Oxanium, Orbitron, Poppins, Audiowide } from "next/font/google";
 import "./globals.css";
 import { UserProvider } from "./Context/UserContext";
 import Navbar from "./component/Navbar";
 import Footer from "./component/Footer"
 
+const audiowide = Audiowide({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-audiowide",
+});
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -36,7 +41,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${orbitron.variable} ${poppins.variable} ${oxanium.variable}`}>
+    <html lang="en" className={`${orbitron.variable} ${poppins.variable} ${oxanium.variable} ${audiowide.variable}`}>
       <body>
         <Navbar />
         <UserProvider>{children}</UserProvider>

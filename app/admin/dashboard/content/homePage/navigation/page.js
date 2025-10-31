@@ -4,16 +4,19 @@ import Image from "next/image";
 import { fetchLogo, fetchNavbar } from "@/app/utils/fetchData"; // ✅ import from utils
 
 export default function AdminPage() {
-    
+
     const [isPopupOpen, setIsPopupOpen] = useState(false);
     const [file, setFile] = useState(null);
     const [newMenu, setNewMenu] = useState({ label: "", href: "" });
 
-    
-    
+    const [editingItem, setEditingItem] = useState(null);
+    const [editData, setEditData] = useState({ label: "", href: "" });
+
+
+
     const [logo, setLogo] = useState("");
     const [menuItems, setMenuItems] = useState([]);
-    
+
     useEffect(() => {
         async function loadData() {
             try {
@@ -28,7 +31,7 @@ export default function AdminPage() {
             }
         }
         loadData();
-    }, []);
+    }, [menuItems, editingItem]);
 
 
     // ✅ Upload Logo
@@ -44,6 +47,7 @@ export default function AdminPage() {
             setLogo(data.fileUrl);
             setIsPopupOpen(false);
             setFile(null);
+            alert('Header Logo updated!')
         } else alert("Upload failed!");
     }
 
@@ -75,7 +79,14 @@ export default function AdminPage() {
                 visible: !item.visible,
             }),
         });
+        if (res.ok) {
+            alert("✅ Visibility updated successfully!");
+            await fetchNavbar(); // Refresh data
+        } else {
+            alert("❌ Failed to update visibility.");
+        }
         fetchNavbar();
+
     }
 
     // ✅ Delete Item
@@ -109,8 +120,7 @@ export default function AdminPage() {
     }
 
 
-    const [editingItem, setEditingItem] = useState(null);
-    const [editData, setEditData] = useState({ label: "", href: "" });
+
 
 
     return (
@@ -263,7 +273,7 @@ export default function AdminPage() {
 
                 {/* ✅ Logo Upload Popup */}
                 {isPopupOpen && (
-                    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+                    <div className="fixed inset-0 bg-opacity-50 flex items-center justify-center z-50">
                         <div className="bg-white rounded-xl shadow-lg w-[400px] p-6">
                             <h2 className="text-xl font-semibold mb-4">Upload New Logo</h2>
                             <input

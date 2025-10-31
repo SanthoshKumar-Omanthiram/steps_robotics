@@ -3,12 +3,19 @@
 :root {
   --font-orbitron: 'Orbitron';
   --font-poppins: 'Poppins';
+  --font-audiowide: 'Audiowide';
 }
 
 /* Use Orbitron for all headings */
 /* h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-orbitron);
 } */
+
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
 
 /* Use Poppins for normal text */
 p,
@@ -80,6 +87,10 @@ li {
 
 .f-poppins {
   font-family: var(--font-poppins), sans-serif;
+}
+
+.f-audiowide {
+  font-family: var(--font-audiowide);
 }
 
 .role-sigin-btn {
@@ -472,7 +483,7 @@ li {
 }
 
 .footer {
-  background-image: url('/footer-bg.jpg');
+  background-image: url('/Footer_bg.png');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -1545,7 +1556,11 @@ li {
   /* 27.2px */
 }
 
-.explore_learning_robotics{
+/* .header_part {
+  position: fixed !important;
+} */
+
+.explore_learning_robotics {
   padding-top: 50px;
 }
 
@@ -1567,25 +1582,182 @@ li {
   line-height: normal;
 }
 
-.explore_right_section h1, p, li{
+.explore_right_section h1,
+p,
+li {
   font-family: Poppins;
 }
-.coding_adventure{
+
+.coding_adventure {
   font-family: Oxanium;
 }
 
-.explore_right_section p{
+.explore_right_section p {
   font-size: 14px;
 }
 
-.testmonials{
+.testmonials {
   font-family: Oxanium;
 }
 
-.about_STEPS{
+.about_STEPS {
   font-size: 14px;
   font-weight: 400;
 }
+
+
+/*Container*/
+.container-custom {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.container-spacing{
+  margin-top: 97px;
+}
+
+
+@media (min-width: 540px) {
+  .container-custom {
+    max-width: 540px;
+  }
+
+  .class-instructor-popup {
+    margin-top: 0;
+  }
+
+  .steps-robotics-points {
+    padding-left: 60px;
+    padding-right: 60px;
+  }
+
+  .steps-robotics-others {
+    padding-left: 60px;
+    padding-right: 60px;
+  }
+
+  .course-heroic {
+    height: auto;
+  }
+
+  .maps {
+    margin: -40px 0 0 0;
+  }
+}
+
+@media (min-width: 720px) {
+  .container-custom {
+    max-width: 720px;
+  }
+
+  .class-instructor-popup {
+    margin-top: 0;
+  }
+}
+
+@media (min-width: 960px) {
+  .container-custom {
+    max-width: 960px;
+  }
+
+  .how-diffrent-others {
+    margin-top: -120px;
+  }
+
+  .mt-bootcamp {
+    margin-top: -40px;
+  }
+
+  .class-instructor-popup {
+    margin-top: 0;
+  }
+
+  .steps-robotics-points {
+    padding-left: 15px;
+    padding-right: 17px;
+  }
+
+  .steps-robotics-others {
+    padding-left: 15px;
+    padding-right: 17px;
+  }
+}
+
+@media (min-width: 1140px) {
+  .container-custom {
+    max-width: 1140px;
+  }
+
+  .how-diffrent-others {
+    margin-top: -80px;
+  }
+
+  .steps-robotics-points {
+    padding-left: 36px;
+    padding-right: 39px;
+  }
+
+  .steps-robotics-others {
+    padding-left: 36px;
+    padding-right: 39px;
+  }
+
+  .class-instructor-popup {
+    margin-top: -150px;
+  }
+}
+
+@media (min-width: 1320px) {
+  .container-custom {
+    max-width: 1320px;
+  }
+
+
+  .mt-bootcamp {
+    margin-top: -107px;
+  }
+
+  .steps-robotics-points {
+    padding-left: 70px;
+    padding-right: 67px;
+  }
+
+  .steps-robotics-others {
+    padding-left: 70px;
+    padding-right: 67px;
+  }
+
+  .steps-robotics-robot {
+    margin-right: 15px;
+  }
+
+  .how-diffrent-others {
+    margin-top: -230px;
+  }
+
+  .choose-section {
+    height: 110vh !important;
+  }
+
+  .workshop-robotics {
+    height: 60vh !important;
+  }
+
+  .maps {
+    margin: -280px 0 0 0 !important;
+  }
+}
+
+
+
+
+
+
+
+
 
 
 
@@ -1891,16 +2063,6 @@ li {
 
 
   /* steps_shadow, steps_by_step, steps_icons, steps_text */
-
-
-
-
-
-
-
-
-
-
 
   /* @media (max-width: 335px) {
     .custom-shape {

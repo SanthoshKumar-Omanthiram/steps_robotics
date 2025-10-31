@@ -58,7 +58,7 @@ const cards = [
 
 export default function Page() {
     return (
-        <>
+        <div className="container-spacing">
             {/* Banner Hero Section */}
             
             <div className="course-heroic sm:h-[525px] mb-[25px] p-6">
@@ -485,6 +485,6 @@ export default function Page() {
 
 
 
-        </>
+        </div>
     );
 }

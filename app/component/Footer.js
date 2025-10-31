@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import {
   Facebook,
@@ -12,44 +12,64 @@ import {
   ArrowUp,
   Send,
 } from "lucide-react";
+import { footer } from "../utils/fetchData";
+import { getNavbarData } from "../utils/menuItems";
 
 export default function Footer() {
   const [boxes, setBoxes] = React.useState([]);
+  const [menuItems, setMenuItems] = useState([]);
 
 
-  //   const initialBoxes = Array.from({ length: 4 }, (_, i) => ({
-  //     id: i,
-  //     left: Math.random() * 100,
-  //     delay: Math.random() * 5,
-  //     duration: 8 + Math.random() * 4,
-  //     size: 30 + Math.random() * 30,
-  //     rotation: Math.random() * 360,
-  //     color: [
-  //       'bg-blue-400',
-  //       'bg-green-400',
-  //       'bg-yellow-400',
-  //       'bg-red-400',
-  //       'bg-purple-400',
-  //       'bg-orange-400',
-  //       'bg-pink-400',
-  //       'bg-cyan-400'
-  //     ][Math.floor(Math.random() * 8)]
-  //   }));
-  //   setBoxes(initialBoxes);
-  // }, []);
+
+  const [sectionData, setSectionData] = useState({});
+  useEffect(() => {
+    async function loadData() {
+      try {
+        const data = await footer();
+        console.log("✅ API Data for the Footer:", data);
+
+        // ✅ Adjust according to structure
+        setSectionData(data);
+
+
+      } catch (err) {
+        console.error("❌ Failed to load Why Choose STEPS data:", err);
+      }
+    }
+    loadData();
+  }, []);
+
+
+
+  useEffect(() => {
+    async function loadData() {
+      try {
+        const { sortedItems } = await getNavbarData();
+        setMenuItems(sortedItems);
+      } catch (err) {
+        console.error("Footer data fetch error:", err);
+      }
+    }
+    loadData();
+  }, []);
+
+
+
+
 
   return (
+
     <footer className="footer relative overflow-hidden">
-      
+
       <div className="container mx-auto border-gray-200 mb-8 relative z-10">
-        <div className="max-w-7xl px-4 sm:px-6 lg:px-8 py-8">
+        <div className="container-custom px-4 py-8">
           {/* 3 Columns (col-md-4 each) */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
             {/* Left Column - Logo & Address */}
             <div className="footerlogo text-center md:text-left">
               <div className="flex justify-center md:justify-start mb-4">
                 <Image
-                  src="/footer-logo.png"
+                  src={sectionData.logo_url}
                   alt="Steps Robotics Logo"
                   width={194}
                   height={104}
@@ -58,7 +78,7 @@ export default function Footer() {
                 />
               </div>
 
-              <div className="text-sm text-gray-700 space-y-1 mb-4">
+              {/* <div className="text-sm text-gray-700 space-y-1 mb-4">
                 <p className="footer-address-company">
                   TVH Agnito Park, Rajiv Gandhi Salai
                 </p>
@@ -66,21 +86,38 @@ export default function Footer() {
                 <p className="footer-address-company">
                   Chennai, Tamil Nadu 600096
                 </p>
+              </div> */}
+              <div className="text-sm text-gray-700 space-y-1 mb-4">
+                {sectionData.address
+                  ?.split("|")
+                  .map((line, i) => (
+                    <p key={i} className="footer-address-company">
+                      {line.trim()}
+                    </p>
+                  ))}
               </div>
 
+
               <div className="flex justify-center md:justify-start space-x-2">
-                {[Facebook, Twitter, Instagram, Youtube, Linkedin].map(
-                  (Icon, i) => (
-                    <a
-                      key={i}
-                      href="#"
-                      className="w-8 h-8 bg-yellow-400 rounded-full flex items-center justify-center hover:bg-yellow-500 transition"
-                    >
-                      <Icon className="w-5 h-5 text-black" />
-                    </a>
-                  )
-                )}
+                {[
+                  { Icon: Facebook, link: sectionData.facebook },
+                  { Icon: Twitter, link: sectionData.twitter },
+                  { Icon: Instagram, link: sectionData.instagram },
+                  { Icon: Youtube, link: sectionData.youtube },
+                  { Icon: Linkedin, link: sectionData.linkedin },
+                ].map(({ Icon, link }, i) => (
+                  <a
+                    key={i}
+                    href={link || "#"}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-8 h-8 bg-yellow-400 rounded-full flex items-center justify-center hover:bg-yellow-500 transition"
+                  >
+                    <Icon className="w-5 h-5 text-black" />
+                  </a>
+                ))}
               </div>
+
             </div>
 
             {/* Middle Column - Links + Let's Connect (side by side) */}
@@ -92,18 +129,13 @@ export default function Footer() {
                     Links
                   </h3>
                   <ul className="space-y-3">
-                    {["Home", "Courses", "Programs", "About Us", "Contact"].map(
-                      (item) => (
-                        <li key={item}>
-                          <a
-                            href="#"
-                            className="footer-links hover:text-yellow-500 transition"
-                          >
-                            {item}
-                          </a>
-                        </li>
-                      )
-                    )}
+                    {menuItems.map((item) => (
+                      <li key={item.label}>
+                        <a href={item.href || "#"} className="footer-links hover:text-yellow-500 transition">
+                          {item.label}
+                        </a>
+                      </li>
+                    ))}
                   </ul>
                 </div>
 
@@ -120,7 +152,7 @@ export default function Footer() {
                           Mobile
                         </span>
                       </div>
-                      <p className="footer-links">+91 97876 16940</p>
+                      <p className="footer-links">{sectionData.mobile}</p>
                     </div>
 
                     <div>
@@ -128,7 +160,7 @@ export default function Footer() {
                         <Mail className="w-5 h-5" />
                         <span className="footer-sub-title stem-gold">Email</span>
                       </div>
-                      <p className="footer-links">info@stepsroboticsedu.io</p>
+                      <p className="footer-links">{sectionData.email}</p>
                     </div>
                   </div>
                 </div>
@@ -157,10 +189,10 @@ export default function Footer() {
                   <h4 className="text-xl footer-links-title stem-gold">
                     Talk to us today!
                   </h4>
-                  
+
                   <div className="absolute">
                     <div className="w-30 h-50 right-200">
-                      <img src="/footer.gif" />
+                      <img src={sectionData.talk_image} />
                     </div>
                   </div>
                 </div>
@@ -184,7 +216,7 @@ export default function Footer() {
       </div>
 
       {/* Footer Bottom */}
-      <div className="w-full flex flex-col sm:flex-row text-sm relative z-10">
+      <div className="w-full  flex flex-col sm:flex-row text-sm relative z-10">
         <div className="relative bg-[#FFD700] sm:w-[40%] w-full flex justify-center items-center h-10 sm:h-8">
           <div className="flex space-x-2 text-black">
             <a href="#" className="hover:underline footer-bottom-text">
@@ -212,5 +244,6 @@ export default function Footer() {
         </div>
       </div>
     </footer>
+
   );
 }

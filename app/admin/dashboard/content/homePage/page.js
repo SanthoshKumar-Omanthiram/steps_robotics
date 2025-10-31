@@ -79,7 +79,7 @@ const page = () => {
                         </li>
                     </Link>
 
-                    <Link href="/admin/dashboard/content/homePage/robotics" className="nav-link text-gray-700 ">
+                    <Link href="/admin/dashboard/content/homePage/testimonials" className="nav-link text-gray-700 ">
                         <li className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
                             <div className="flex items-center gap-4">
                                 <div className="w-10 h-10 bg-red-100 text-red-600 flex items-center justify-center rounded-full font-semibold">
@@ -93,6 +93,48 @@ const page = () => {
                             
                         </li>
                     </Link>
+                    <Link href="/admin/dashboard/content/homePage/study_progress_gallery" className="nav-link text-gray-700 ">
+                        <li className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+                            <div className="flex items-center gap-4">
+                                <div className="w-10 h-10 bg-blue-300 text-blue-600 flex items-center justify-center rounded-full font-semibold">
+                                    7
+                                </div>
+                                <h2 className="text-lg font-semibold text-gray-700">Study Progress Gallery</h2>
+                            </div>
+                            <p className="mt-3 mb-4 text-gray-500 text-sm leading-relaxed">
+                                Add / Update the Study Progress Gallery
+                            </p>
+                            
+                        </li>
+                    </Link>
+                    <Link href="/admin/dashboard/content/homePage/why-choose-steps" className="nav-link text-gray-700 ">
+                        <li className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+                            <div className="flex items-center gap-4">
+                                <div className="w-10 h-10 bg-blue-300 text-blue-600 flex items-center justify-center rounded-full font-semibold">
+                                    8
+                                </div>
+                                <h2 className="text-lg font-semibold text-gray-700">Why Choose STEPS Robotics</h2>
+                            </div>
+                            <p className="mt-3 mb-4 text-gray-500 text-sm leading-relaxed">
+                                Add / Update the Study Progress Gallery
+                            </p>
+                            
+                        </li>
+                    </Link>
+                    <Link href="/admin/dashboard/content/homePage/footer" className="nav-link text-gray-700 ">
+                        <li className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+                            <div className="flex items-center gap-4">
+                                <div className="w-10 h-10 bg-purple-100 text-purple-600 flex items-center justify-center rounded-full font-semibold">
+                                    9
+                                </div>
+                                <h2 className="text-lg font-semibold text-gray-700">Footer Page</h2>
+                            </div>
+                            <p className="mt-3 text-gray-500 text-sm leading-relaxed">
+                                Handle footer section
+                            </p>
+                        </li>
+                    </Link>
+
                 </ul>
             </div>
         </section>

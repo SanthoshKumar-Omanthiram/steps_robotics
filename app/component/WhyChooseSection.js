@@ -1,38 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import Image from 'next/image';
 import { whyChooseSTEPS } from '../utils/fetchData';
-// const features = [
-//   {
-//     icon: "/icons/1.png",
-//     title: "Holistic 360° Skill Development",
-//     // subtitle: "Development",
-//   },
-//   {
-//     icon: "/icons/2.png",
-//     title: "48+ Hours of Structured Learning",
-//     // subtitle: "Structured Learning",
-//   },
-//   {
-//     icon: "/icons/3.png",
-//     title: "Progressive Learning Path",
-//     // subtitle: "Learning Path",
-//   },
-//   {
-//     icon: "/icons/4.png",
-//     title: "Customized & Guided Training",
-//     // subtitle: "Guided Training",
-//   },
-//   {
-//     icon: "/icons/5.png",
-//     title: "Experienced Industry Mentors",
-//     // subtitle: "Industry Mentors",
-//   },
-//   {
-//     icon: "/icons/6.png",
-//     title: "Flexible Learning Modes",
-//     // subtitle: "Modes",
-//   },
-// ];
+
 export default function WhyChooseSection() {
   const [sectionData, setSectionData] = useState({});
   const { features = [], image_one, image_two } = sectionData;
@@ -52,8 +21,8 @@ export default function WhyChooseSection() {
     loadData();
   }, []);
   return (
-    <section className='explore_learning px-4 pt-15 mb-10 sm:px-8 lg:px-30' style={{ backgroundImage: "url('/why_choose_steps_bg.jpg')", backgroundRepeat: "no-repeat", backgroundSize: "cover" }}>
-      <div className="max-w-7xl mx-auto mb-4">
+    <section className='explore_learning px-4 pt-15 mb-10' style={{ backgroundImage: "url('/why_choose_steps_bg.jpg')", backgroundRepeat: "no-repeat", backgroundSize: "cover" }}>
+      <div className="container-custom mb-4">
         <div className="mb-8 md:mb-12 lg:mb-16">
           <h2 className="text-2xl sm:text-3xl lg:text-4xl mb-4 leading-snug text-center sm:text-left text-font-orbitron">
             Why Choose{" "}

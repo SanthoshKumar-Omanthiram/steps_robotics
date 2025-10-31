@@ -65,3 +65,19 @@ export async function fetchTestimonials() {
   const data = await res.json();
   return Array.isArray(data) ? data : [];
 }
+
+// Fetch Why Choose STEPS
+export async function fetchWhyChoose() {
+  const res = await fetch("/api/home/why_choose", { cache: "no-store" });
+  if (!res.ok) throw new Error("Failed to fetch Why Choose STEPS");
+  const data = await res.json();
+  return data;
+}
+
+//Footer
+export async function footer(){
+  const res = await fetch("/api/home/footer", {cache: "no-store"});
+  if(!res.ok) throw new Error("Failed to fetch Footer")
+  const data = await res.json()
+  return data
+}

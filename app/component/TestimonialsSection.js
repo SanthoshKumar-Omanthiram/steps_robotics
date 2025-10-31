@@ -110,98 +110,102 @@ export default function TestimonialsSection() {
     );
 
     return (
-        <div className="min-h-screen bg-gray-50 pb-15 py-2 px-5 realtive">
-            <div className="absolute right-[20]">
-                <div className="w-60 h-50 mt-[-66]">
-                    <img src="/steps_robot_top.gif" />
-                </div>
-            </div>
-            <div className="max-w-7xl mx-auto">
 
-                {/* Header */}
-                <div className="mb-4 mt-10">
-                    <h2 className="text-3xl sm:text-3xl lg:text-4xl mb-4 leading-snug text-center sm:text-left text-font-orbitron text-yellow-400">
-                        STEPS Robotics <span className="text-black text-font-orbitron">Talks</span>
-                    </h2>
-                    <p className="text-gray-600 text-base md:text-lg text-font-poppins">
-                        What Parent & Teachers Say About Us
-                    </p>
-                </div>
-
-                {/* Cards */}
-                <div className="hidden md:flex relative justify-center items-center gap-8 mb-10 flex-wrap lg:flex-nowrap">
-                    {cardOrder.map((testimonialIndex, position) => (
-                        <div key={testimonials[testimonialIndex].id} className="relative">
-                            {position === 1 && (
-                                <>
-                                    <div className="absolute -left-6 mt-65 top-1/2 transform -translate-y-1/2 text-7xl text-black font-serif font-bold pointer-events-non">"</div>
-                                    <div className="absolute -right-6 top-1/3 transform -translate-y-1/2 text-7xl text-black font-serif font-bold pointer-events-non">"</div>
-                                </>
-                            )}
-                            <TestimonialCard
-                                testimonial={testimonials[testimonialIndex]}
-                                isCenter={position === 1}
-                                onClick={() => handleCardClick(testimonialIndex)}
-                            />
-                        </div>
-                    ))}
-                </div>
-
-                {/* 💬 Desktop Description */}
-                <div className="hidden md:block text-center max-w-4xl mx-auto mb-8 px-5">
-                    <p className="text-gray-800 text-base leading-relaxed mb-4 text-font-poppins">
-                        "{testimonials[activeIndex].quote}"
-                    </p>
-                    <p className="text-gray-800 text-base leading-relaxed text-font-poppins">
-                        {testimonials[activeIndex].description}
-                    </p>
-                </div>
-
-                {/* 🟡 Dots */}
-                <div className="hidden md:flex justify-center gap-4">
-                    {testimonials.map((_, index) => (
-                        <button
-                            key={index}
-                            onClick={() => setActiveIndex(index)}
-                            className={`w-4 h-4 rounded-full transition-all duration-300 flex items-center justify-center ${index === activeIndex
-                                ? 'border-2 border-dotted border-black bg-transparent !w-7 mt-[-5] !h-7 p-1.5'
-                                : 'rounded-full bg-yellow-400 bg-transparent w-4 h-4'
-                                }`}
-                        >
-                            {index === activeIndex && <div className="w-full h-full rounded-full bg-yellow-400"></div>}
-                        </button>
-                    ))}
-                </div>
-
-                {/* 📱 Mobile Slider */}
-                <div className="flex flex-col items-center md:hidden mt-8">
-                    <div className="testimonial-wrapper bg-white">
-                        <div className="testimonial-border"></div>
-                        <div className="testimonial-inner">
-                            <Image
-                                src={testimonials[mobileIndex].image}
-                                alt={testimonials[mobileIndex].name}
-                                fill
-                                className="object-cover rounded-full"
-                            />
-                        </div>
+        <div className="bg-gray-50 pb-15 py-2 px-5 realtive">
+            <div className='container-custom'>
+                <div className="absolute right-[20]">
+                    <div className="w-60 h-50 mt-[-66]">
+                        <img src="/steps_robot_top.gif" />
                     </div>
+                </div>
+                <div className="max-w-7xl mx-auto">
 
-                    <div className="text-center border-2 w-[350px] h[4000px] talks_description m-[-25px] border-dotted rounded-xl p-3 bg-gradient-to-br from-white to-yellow-400 ">
-                        <p className="text-gray-800 text-base italic font-semibold mt-5 mb-3">
-                            "{testimonials[mobileIndex].quote}"
+                    {/* Header */}
+                    <div className="mb-4 mt-10">
+                        <h2 className="text-3xl sm:text-3xl lg:text-4xl mb-4 leading-snug text-center sm:text-left text-font-orbitron text-yellow-400">
+                            STEPS Robotics <span className="text-black text-font-orbitron">Talks</span>
+                        </h2>
+                        <p className="text-gray-600 text-base md:text-lg text-font-poppins">
+                            What Parent & Teachers Say About Us
                         </p>
-                        <p className="text-gray-600 text-sm mb-2">{testimonials[mobileIndex].description}</p>
-                        <h3 className="text-lg font-bold text-gray-800">{testimonials[mobileIndex].name}</h3>
-                        <p className="text-gray-600 text-sm mb-8">{testimonials[mobileIndex].role}</p>
                     </div>
 
-                    <div className="flex justify-center gap-6 mt-12">
-                        <button onClick={prevSlide} className="w-12 h-12 rounded-full bg-yellow-400 text-white flex items-center justify-center shadow-md active:scale-90 transition-transform">‹</button>
-                        <button onClick={nextSlide} className="w-12 h-12 rounded-full bg-yellow-400 text-white flex items-center justify-center shadow-md active:scale-90 transition-transform">›</button>
+                    {/* Cards */}
+                    <div className="hidden md:flex relative justify-center items-center gap-8 mb-10 flex-wrap lg:flex-nowrap">
+                        {cardOrder.map((testimonialIndex, position) => (
+                            <div key={testimonials[testimonialIndex].id} className="relative">
+                                {position === 1 && (
+                                    <>
+                                        <div className="absolute -left-6 mt-65 top-1/2 transform -translate-y-1/2 text-7xl text-black font-serif font-bold pointer-events-non">"</div>
+                                        <div className="absolute -right-6 top-1/3 transform -translate-y-1/2 text-7xl text-black font-serif font-bold pointer-events-non">"</div>
+                                    </>
+                                )}
+                                <TestimonialCard
+                                    testimonial={testimonials[testimonialIndex]}
+                                    isCenter={position === 1}
+                                    onClick={() => handleCardClick(testimonialIndex)}
+                                />
+                            </div>
+                        ))}
+                    </div>
+
+                    {/* 💬 Desktop Description */}
+                    <div className="hidden md:block text-center max-w-4xl mx-auto mb-8 px-5">
+                        <p className="text-gray-800 text-base leading-relaxed mb-4 text-font-poppins">
+                            "{testimonials[activeIndex].quote}"
+                        </p>
+                        <p className="text-gray-800 text-base leading-relaxed text-font-poppins">
+                            {testimonials[activeIndex].description}
+                        </p>
+                    </div>
+
+                    {/* 🟡 Dots */}
+                    <div className="hidden md:flex justify-center gap-4">
+                        {testimonials.map((_, index) => (
+                            <button
+                                key={index}
+                                onClick={() => setActiveIndex(index)}
+                                className={`w-4 h-4 rounded-full transition-all duration-300 flex items-center justify-center ${index === activeIndex
+                                    ? 'border-2 border-dotted border-black bg-transparent !w-7 mt-[-5] !h-7 p-1.5'
+                                    : 'rounded-full bg-yellow-400 bg-transparent w-4 h-4'
+                                    }`}
+                            >
+                                {index === activeIndex && <div className="w-full h-full rounded-full bg-yellow-400"></div>}
+                            </button>
+                        ))}
+                    </div>
+
+                    {/* 📱 Mobile Slider */}
+                    <div className="flex flex-col items-center md:hidden mt-8">
+                        <div className="testimonial-wrapper bg-white">
+                            <div className="testimonial-border"></div>
+                            <div className="testimonial-inner">
+                                <Image
+                                    src={testimonials[mobileIndex].image}
+                                    alt={testimonials[mobileIndex].name}
+                                    fill
+                                    className="object-cover rounded-full"
+                                />
+                            </div>
+                        </div>
+
+                        <div className="text-center border-2 w-[350px] h[4000px] talks_description m-[-25px] border-dotted rounded-xl p-3 bg-gradient-to-br from-white to-yellow-400 ">
+                            <p className="text-gray-800 text-base italic font-semibold mt-5 mb-3">
+                                "{testimonials[mobileIndex].quote}"
+                            </p>
+                            <p className="text-gray-600 text-sm mb-2">{testimonials[mobileIndex].description}</p>
+                            <h3 className="text-lg font-bold text-gray-800">{testimonials[mobileIndex].name}</h3>
+                            <p className="text-gray-600 text-sm mb-8">{testimonials[mobileIndex].role}</p>
+                        </div>
+
+                        <div className="flex justify-center gap-6 mt-12">
+                            <button onClick={prevSlide} className="w-12 h-12 rounded-full bg-yellow-400 text-white flex items-center justify-center shadow-md active:scale-90 transition-transform">‹</button>
+                            <button onClick={nextSlide} className="w-12 h-12 rounded-full bg-yellow-400 text-white flex items-center justify-center shadow-md active:scale-90 transition-transform">›</button>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+
     );
 }

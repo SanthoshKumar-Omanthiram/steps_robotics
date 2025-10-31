@@ -100,96 +100,99 @@ export default function HeroSlider() {
   };
 
   return (
-    <section className="relative h-[600px] md:h-[600px]">
+    <section className="relative container-spacing container-custom-banner h-[600px] md:h-[600px]">
       {/* Slider */}
-      {banners.length > 0 && (
-        <AnimatePresence initial={false} custom={direction} mode="wait">
-          <motion.div
-            key={currentSlide}
-            custom={direction}
-            variants={{
-              enter: (direction) => ({ opacity: 0, x: direction > 0 ? 100 : -100 }),
-              center: { opacity: 1, x: 0 },
-              exit: (direction) => ({ opacity: 0, x: direction < 0 ? 100 : -100 }),
-            }}
-            initial="enter"
-            animate="center"
-            exit="exit"
-            transition={{ duration: 0.6 }}
-            className="absolute inset-0"
-          >
-            {/* 🖼 Banner Image */}
-            <div className="absolute inset-0">
-              <Image
-                src={banners[currentSlide].image}
-                alt={banners[currentSlide].banner_title1}
-                fill
-                className="object-cover"
-                priority
-              />
-            </div>
-
-            {/* ✨ Banner Text */}
-            <div className="relative z-10 container mx-auto px-4 h-full flex flex-col justify-center">
-              <div className="max-w-2xl banner-text">
-                <motion.h1
-                  className="text-5xl md:text-6xl lg:text-7xl font-bold text-gray-900 mb-8"
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.2 }}
-                >
-                  {banners[currentSlide].banner_title1}
-                </motion.h1>
-
-                <motion.h2
-                  className="text-5xl md:text-6xl lg:text-7xl font-bold text-orange-500 mb-8"
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.3 }}
-                >
-                  {banners[currentSlide].banner_title2}
-                </motion.h2>
-
-                <motion.p
-                  className="text-lg md:text-xl text-gray-900 mb-8 max-w-xl"
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.4 }}
-                >
-                  {banners[currentSlide].paragraph}
-                </motion.p>
-
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.5 }}
-                >
-                  <button
-                    onClick={() =>
-                      (window.location.href = banners[currentSlide].button_link || "/")
-                    }
-                    className="absolute home_banner_button w-50 bg-gradient-to-r from-orange-500 to-yellow-500 text-white font-bold text-xl py-2 px-3 rounded-full flex items-center justify-center gap-3 hover:shadow-lg transition-shadow"
-                  >
-                    {banners[currentSlide].button_name || "Get Started"}
-                    <div className="bg-white rounded-full p-2">
-                      <ArrowRight className="w-6 h-6 text-orange-500" />
-                    </div>
-                  </button>
-                </motion.div>
+        <div className="container-custom-banner">
+        {banners.length > 0 && (
+          <AnimatePresence initial={false} custom={direction} mode="wait">
+            <motion.div
+              key={currentSlide}
+              custom={direction}
+              variants={{
+                enter: (direction) => ({ opacity: 0, x: direction > 0 ? 100 : -100 }),
+                center: { opacity: 1, x: 0 },
+                exit: (direction) => ({ opacity: 0, x: direction < 0 ? 100 : -100 }),
+              }}
+              initial="enter"
+              animate="center"
+              exit="exit"
+              transition={{ duration: 0.6 }}
+              className="absolute inset-0"
+            >
+              {/* 🖼 Banner Image */}
+              <div className="absolute inset-0">
+                <Image
+                  src={banners[currentSlide].image}
+                  alt={banners[currentSlide].banner_title1}
+                  fill
+                  className="object-cover"
+                  priority
+                />
               </div>
-            </div>
-          </motion.div>
-        </AnimatePresence>
-      )}
+
+              {/* ✨ Banner Text */}
+              <div className="relative container mx-auto h-120 flex flex-col justify-center">
+                <div className="max-w-2xl banner-text">
+                  <motion.h1
+                    className="text-5xl md:text-6xl lg:text-7xl font-bold text-gray-900 mb-8"
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.2 }}
+                  >
+                    {banners[currentSlide].banner_title1}
+                  </motion.h1>
+
+                  <motion.h2
+                    className="text-5xl md:text-6xl lg:text-7xl font-bold text-orange-500 mb-8"
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.3 }}
+                  >
+                    {banners[currentSlide].banner_title2}
+                  </motion.h2>
+
+                  <motion.p
+                    className="text-lg md:text-xl text-gray-900 mb-8 max-w-xl"
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.4 }}
+                  >
+                    {banners[currentSlide].paragraph}
+                  </motion.p>
+
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.5 }}
+                  >
+                    <button
+                      onClick={() =>
+                        (window.location.href = banners[currentSlide].button_link || "/")
+                      }
+                      className="absolute home_banner_button  bg-gradient-to-r from-orange-500 to-yellow-500 text-white font-bold text-xl py-2 px-3 rounded-full flex items-center hover:shadow-lg transition-shadow"
+                    >
+                      <span className="ml-2">{banners[currentSlide].button_name || "Get Started"}</span>
+                      <span className="relative bg-white ml-4 rounded-full ml-4 p-2"><ArrowRight className="w-6 h-6 text-black" /></span>
+
+                    </button>
+                  </motion.div>
+
+                </div>
+              </div>
+            </motion.div>
+          </AnimatePresence>
+        )}
+        </div>
+
 
 
       {/* Info Cards */}
-      <div className="absolute bottom-[-50px] left-0 right-0 z-20">
+      <div className="absolute bottom-[-50px] container-custom  left-0 right-0 z-20">
         <div className="container mx-auto">
           {/* Outer white container */}
           <div className="bg-white p-2 rounded-t-3xl ">
             {/* Inner gray/yellow section */}
-            <div className="grid grid-cols-2 md:grid-cols-4 bg-gradient-to-b from-gray-100 to-white gap-6 rounded-2xl py-4  px-4">
+            <div className="grid grid-cols-2 md:grid-cols-4 container-custom bg-gradient-to-b from-gray-100 to-white gap-6 rounded-2xl py-4  px-4">
               {infoCards.map((card, index) => (
                 <div
                   key={index}
@@ -199,8 +202,8 @@ export default function HeroSlider() {
                     <Image src={card.image} alt={card.title} fill className="object-contain" />
                   </div>
                   <div className="text-left">
-                    <div className="text-gray-700 font-medium text-sm">{card.title}</div>
-                    <div className="text-xl font-bold text-gray-900">{card.subtitle}</div>
+                    <div className="text-gray-700 font-medium text-sm"><p>{card.title}</p></div>
+                    <div className="text-xl  font-bold text-gray-900"><p className="f-audiowide">{card.subtitle}</p></div>
                   </div>
                 </div>
               ))}

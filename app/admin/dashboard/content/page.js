@@ -2,35 +2,16 @@ import React from 'react'
 import Image from "next/image";
 import Link from "next/link";
 
+
 const cards = [
     {
         title: "Home Page",
         description:
             "Home page content changes",
-        image: "/../public/kid1.png",
+        image: "/home_page.svg",
         href: "/admin/dashboard/content/homePage"
     },
-    {
-        title: "AI & Machine Learning",
-        description:
-            "Explore artificial intelligence with beginner to advanced real-world projects.",
-        image: "/images/ai.jpg",
-        href: "/admin/dashboard/content/homePage"
-    },
-    {
-        title: "Coding Bootcamp",
-        description:
-            "Master coding fundamentals through fun, interactive, and challenging lessons.",
-        image: "/images/coding.jpg",
-        href: "/admin/dashboard/content/homePage"
-    },
-    {
-        title: "STEM Workshops",
-        description:
-            "Participate in STEM sessions designed to spark scientific curiosity and teamwork.",
-        image: "/images/stem.jpg",
-        href: "/admin/dashboard/content/homePage"
-    },
+    
     
 ];
 
@@ -74,7 +55,7 @@ const page = () => {
                             <div className="px-6 pb-6">
                                 <Link href={card.href}>
                                     <button className="mt-4 bg-yellow-500 text-white text-sm px-4 py-2 rounded-full shadow-md hover:bg-yellow-600 transition">
-                                        Learn More →
+                                        Click →
                                     </button>
                                 </Link>
                             </div>

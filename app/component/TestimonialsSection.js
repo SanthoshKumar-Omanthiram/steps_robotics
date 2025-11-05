@@ -59,31 +59,38 @@ export default function TestimonialsSection() {
     const cardOrder = getCardOrder();
 
     // ✅ Keep your existing components here
-    const StarRating = ({ rating }) => {
+    const StarRating = ({ rating, center }) => {
         const stars = [];
         for (let i = 1; i <= 5; i++) {
             stars.push(
                 <span key={i} className={i <= Math.floor(rating) ? 'opacity-100' : 'opacity-50'}>
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="#FACC15" viewBox="0 0 24 24" width="24" height="24">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill={center ? "#000" : "#FACC15"} viewBox="0 0 24 24" width="24" height="24">
                         <path d="M12 .587l3.668 7.431L24 9.748l-6 5.845 1.417 8.264L12 19.771l-7.417 4.086L6 15.593 0 9.748l8.332-1.73z" />
                     </svg>
                 </span>
             );
         }
-        return <div className="flex flex-direction-row justify-center text-center mb-3 text-xl text-yellow-400">{stars}</div>;
+        return <div className="flex flex-direction-row justify-center text-center mb-3 text-xl">{stars}</div>;
     };
 
     const BinderClip = () => (
         <div className="absolute top-[-20px] left-1/2 transform -translate-x-1/2 w-10 h-10 z-10">
-            <div className="absolute w-7 h-9 bg-gray-800 rounded-t-md left-1.5"></div>
-            <div className="absolute w-5 h-5 bg-gray-600 rounded-full left-2.5 top-1"></div>
+            {/* <div className="absolute w-7 h-9 bg-gray-800 rounded-t-md left-1.5"></div>
+            <div className="absolute w-5 h-5 bg-gray-600 rounded-full left-2.5 top-1"></div> */}
+            <Image
+                src="/pin.png"
+                alt="pin"
+                fill
+                className="object-cover rounded-full"
+            />
         </div>
+
     );
 
     const TestimonialCard = ({ testimonial, isCenter, onClick }) => (
         <div
             onClick={onClick}
-            className={`relative rounded-2xl p-8 w-80 shadow-xl transition-all duration-500 cursor-pointer ${isCenter
+            className={`relative rounded-2xl p-5 w-80 shadow-xl transition-all duration-500 cursor-pointer ${isCenter
                 ? 'bg-[#f5b800] scale-90 z-20 hover:-translate-y-3 mt-30'
                 : 'bg-gray-100 scale-90 opacity-100 hover:opacity-100 hover:scale-95 z-10'
                 }`}
@@ -102,7 +109,7 @@ export default function TestimonialsSection() {
             <h3 className="text-2xl testmonials font-semibold text-gray-800 text-center mb-2.5">
                 {testimonial.name}
             </h3>
-            <StarRating rating={testimonial.rating} />
+            <StarRating rating={testimonial.rating} center={isCenter} />
             <p className={`text-center testmonials text-sm ${isCenter ? 'text-gray-800 font-medium' : 'text-gray-600'}`}>
                 {testimonial.role}
             </p>
@@ -111,18 +118,27 @@ export default function TestimonialsSection() {
 
     return (
 
-        <div className="bg-gray-50 pb-15 py-2 px-5 realtive">
-            <div className='container-custom'>
+        <div className="pb-15 py-2 px-5 realtive"
+
+            style={{
+                backgroundImage: "url('/talks_bg.jpg')",
+                backgroundRepeat: "no-repeat",
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+            }}
+
+        >
+            <div className='container-customs'>
                 <div className="absolute right-[20]">
-                    <div className="w-60 h-50 mt-[-66]">
+                    <div className="w-60 h-50 mt-[-120]">
                         <img src="/steps_robot_top.gif" />
                     </div>
                 </div>
                 <div className="max-w-7xl mx-auto">
 
                     {/* Header */}
-                    <div className="mb-4 mt-10">
-                        <h2 className="text-3xl sm:text-3xl lg:text-4xl mb-4 leading-snug text-center sm:text-left text-font-orbitron text-yellow-400">
+                    <div className="mb-4 mt-12">
+                        <h2 className="text-3xl sm:text-3xl font-[500] lg:text-4xl mb-4 leading-snug text-center sm:text-left text-font-orbitron text-yellow-400">
                             STEPS Robotics <span className="text-black text-font-orbitron">Talks</span>
                         </h2>
                         <p className="text-gray-600 text-base md:text-lg text-font-poppins">
@@ -131,13 +147,30 @@ export default function TestimonialsSection() {
                     </div>
 
                     {/* Cards */}
-                    <div className="hidden md:flex relative justify-center items-center gap-8 mb-10 flex-wrap lg:flex-nowrap">
+                    <div className="hidden md:flex relative justify-center items-center gap-8 mb-10 lg:flex-nowrap">
                         {cardOrder.map((testimonialIndex, position) => (
                             <div key={testimonials[testimonialIndex].id} className="relative">
                                 {position === 1 && (
                                     <>
-                                        <div className="absolute -left-6 mt-65 top-1/2 transform -translate-y-1/2 text-7xl text-black font-serif font-bold pointer-events-non">"</div>
-                                        <div className="absolute -right-6 top-1/3 transform -translate-y-1/2 text-7xl text-black font-serif font-bold pointer-events-non">"</div>
+                                        <div className="absolute -left-6 top-1/2 transform -translate-y-1/2 pointer-events-none">
+                                            <div className="relative w-8 h-8 mt-[480px]">
+                                                <Image
+                                                    src="/comma_right.png"
+                                                    alt="pin"
+                                                    fill
+                                                />
+                                            </div>
+                                        </div>
+
+                                        <div className="absolute -right-6 transform -translate-y-1/2 pointer-events-none">
+                                            <div className="relative w-8 h-8 mt-[280px]">
+                                                <Image
+                                                    src="/comma_left.png"
+                                                    alt="pin"
+                                                    fill
+                                                />
+                                            </div>
+                                        </div>
                                     </>
                                 )}
                                 <TestimonialCard

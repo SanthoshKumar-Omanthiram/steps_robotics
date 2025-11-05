@@ -78,15 +78,7 @@ export default function Footer() {
                 />
               </div>
 
-              {/* <div className="text-sm text-gray-700 space-y-1 mb-4">
-                <p className="footer-address-company">
-                  TVH Agnito Park, Rajiv Gandhi Salai
-                </p>
-                <p className="footer-address-company">PTK Nagar, Thiruvanmiyur,</p>
-                <p className="footer-address-company">
-                  Chennai, Tamil Nadu 600096
-                </p>
-              </div> */}
+
               <div className="text-sm text-gray-700 space-y-1 mb-4">
                 {sectionData.address
                   ?.split("|")
@@ -216,9 +208,11 @@ export default function Footer() {
       </div>
 
       {/* Footer Bottom */}
-      <div className="w-full  flex flex-col sm:flex-row text-sm relative z-10">
+
+      <div className="w-full flex flex-col sm:flex-row text-sm relative z-10">
+        
         <div className="relative bg-[#FFD700] sm:w-[40%] w-full flex justify-center items-center h-10 sm:h-8">
-          <div className="flex space-x-2 text-black">
+          <div className="flex container-custom space-x-2 text-black">
             <a href="#" className="hover:underline footer-bottom-text">
               Privacy Policy
             </a>

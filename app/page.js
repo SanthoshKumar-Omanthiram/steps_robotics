@@ -163,7 +163,7 @@ export default function Home() {
       <section className="py-6 px-4 mt-20">
         <div className="container-custom">
           {/* Heading */}
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl mb-4 leading-snug text-center sm:text-left text-font-orbitron">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl mb-4 leading-snug text-center font-[500] sm:text-left text-font-orbitron">
             See what kids built with{" "}
             <span className="text-yellow-500 text-font-orbitron">STEPS Robotics!</span>
           </h2>
@@ -232,7 +232,7 @@ export default function Home() {
 
       {/**Robot section */}
       <section className="py-6 px-4 mt-10">
-        <div className="container-custom">
+        <div className=" container-custom">
           {/* Header */}
           <div className="mb-10">
             <h2 className="text-2xl sm:text-3xl lg:text-4xl mb-4 leading-snug text-center sm:text-left text-font-orbitron">
@@ -245,13 +245,13 @@ export default function Home() {
           </div>
 
           {/* Main Content - 3 Columns Layout */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 w-auto gap-8 items-center">
+          <div className="mr-10 grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-3 w-auto gap-8 items-center">
 
             {/* --- LEFT SIDE (3 fixed items) --- */}
             <div className="space-y-4 lg:ml-auto">
               {/* 1 */}
-              <div className="flex flex-col items-start w-full sm:max-w-[300px] lg:max-w-[330px]">
-                <div className="bg-white rounded-[3rem] px-6 py-4 shadow-md flex flex-row items-center gap-3 mb-2 w-full">
+              <div className="flex flex-col items-start w-full sm:max-w-[800px] lg:max-w-[330px]">
+                <div className="bg-white  rounded-[3rem] px-6 py-4 shadow-md flex flex-row items-center gap-3 mb-2 w-full">
                   <h3 className="text-base steps_robotics_child_h3 md:text-lg text-font-poppins break-words text-start flex-1 px-4">
                     {left[0]?.heading}
                   </h3>
@@ -271,7 +271,7 @@ export default function Home() {
               </div>
 
               {/* 2 */}
-              <div className="flex flex-col items-start w-full sm:max-w-[300px] lg:max-w-[330px]">
+              <div className="flex flex-col items-start w-full sm:max-w-[800px] lg:max-w-[330px]">
                 <div className="bg-white rounded-[3rem] px-6 py-4 shadow-md flex flex-row items-center gap-3 mb-2 w-full">
                   <h3 className="text-base steps_robotics_child_h3 md:text-lg text-font-poppins break-words text-start flex-1 px-4">
                     {left[1]?.heading}
@@ -292,7 +292,7 @@ export default function Home() {
               </div>
 
               {/* 3 */}
-              <div className="flex flex-col items-start w-full sm:max-w-[300px] lg:max-w-[330px]">
+              <div className="flex flex-col items-start w-full sm:max-w-[800px] lg:max-w-[330px]">
                 <div className="bg-white rounded-[3rem] px-6 py-4 shadow-md flex flex-row items-center gap-3 mb-2 w-full">
                   <h3 className="text-base steps_robotics_child_h3 md:text-lg text-font-poppins break-words text-start flex-1 px-4">
                     {left[2]?.heading}
@@ -314,7 +314,7 @@ export default function Home() {
             </div>
 
             {/* --- CENTER (Robot Image) --- */}
-            <div className="flex justify-center items-center">
+            <div className="flex robot_center_image justify-center items-center">
               <div className="relative">
                 <div className="w-100 h-100 md:w-110 md:h-110 ">
                   <Image
@@ -331,7 +331,7 @@ export default function Home() {
             {/* --- RIGHT SIDE (3 fixed items) --- */}
             <div className="space-y-4">
               {/* 1 */}
-              <div className="flex flex-col items-start w-full sm:max-w-[300px] lg:max-w-[330px]">
+              <div className="flex flex-col items-start w-full sm:max-w-[800px] lg:max-w-[330px]">
                 <div className="bg-white rounded-[3rem] px-6 py-4 shadow-md flex flex-row items-center gap-3 mb-2 w-full">
                   <div className="flex-shrink-0">
                     <Image
@@ -352,7 +352,7 @@ export default function Home() {
               </div>
 
               {/* 2 */}
-              <div className="flex flex-col items-start w-full sm:max-w-[300px] lg:max-w-[330px]">
+              <div className="flex flex-col items-start w-full sm:max-w-[800px] lg:max-w-[330px]">
                 <div className="bg-white rounded-[3rem] px-6 py-4 shadow-md flex flex-row items-center gap-3 mb-2 w-full">
                   <div className="flex-shrink-0">
                     <Image
@@ -373,7 +373,7 @@ export default function Home() {
               </div>
 
               {/* 3 */}
-              <div className="flex flex-col items-start w-full sm:max-w-[300px] lg:max-w-[330px]">
+              <div className="flex flex-col items-start w-full sm:max-w-[800px] lg:max-w-[330px]">
                 <div className="bg-white rounded-[3rem] px-6 py-4 shadow-md flex flex-row items-center gap-3 mb-2 w-full">
                   <div className="flex-shrink-0">
                     <Image
@@ -397,35 +397,36 @@ export default function Home() {
         </div>
       </section>
 
+
       {/**Explore Learning */}
-      <section className='explore_learning px-4 mt-5 mb-20' style={{ backgroundImage: "url('/Explore_screen_bg.jpg')" }}>
+      <section className='explore_learning px-4 mt-5 mb-15' style={{ backgroundImage: "url('/Explore_screen_bg.jpg')" }}>
         <div className="container-custom mb-4">
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl mb-4 explore_learning_robotics leading-snug text-center sm:text-left text-font-orbitron">
+          <h2 className="text-2xl sm:text-3xl font-[500] lg:text-4xl mb-4 explore_learning_robotics leading-snug text-center sm:text-left text-font-orbitron">
             Explore Learning with <span className="text-yellow-400 text-font-orbitron">STEPS Robotics</span>
           </h2>
-          <p className="text-gray-600 text-sm sm:text-base lg:text-lg mb-10 leading-relaxed text-center sm:text-left text-font-poppins pr-40">
+          <p className="text-gray-600 text-sm sm:text-base lg:text-lg mb-10 leading-relaxed text-center  text-font-poppins">
             From structured courses to dynamic programs, STEPS Robotics offers multiple pathways for students to develop essential STEM and coding skills.
             Our approach blends theory with hands-on practice, preparing learners to thrive in the technology-driven word.
           </p>
 
 
-          <div className="relative exploring_web flex flex-col md:flex-row justify-center items-center gap-8 p-2 border-yellow-400 rounded-2xl">
-            <div className="flex flex-col md:flex-row gap-6">
+          <div className="relative exploring_web flex flex-col justify-center items-center gap-8 p-2 border-yellow-400 rounded-2xl">
+            <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-6 w-full">
               {courses.map((course, index) => (
                 <div
                   key={course.id}
-                  className="relative border-yellow-400 h-80 flex flex-col w-full md:w-1/2 border-2 border-dotted rounded-2xl p-8 overflow-visible"
+                  className="relative border-yellow-400 exploring_card h-auto flex flex-col border-2 border-dotted rounded-2xl p-6 overflow-visible"
                 >
-                  {/* Blurred background layer */}
+                  {/* Blurred background */}
                   <div
                     className="absolute inset-0 bg-cover bg-left opacity-40 rounded-2xl z-0"
                     style={{ backgroundImage: "url('/explore_course_bg.png')" }}
                   ></div>
 
-                  {/* Wrapper for floating image + text */}
+                  {/* Floating image + text */}
                   <div className="flex flex-col md:flex-row relative">
                     {/* Left side image */}
-                    <div className="flex-shrink-0 explore_image_responsive relative border-2 m-2 p-2 border-white shadow top-[-70px] rounded_image">
+                    <div className="flex-shrink-0 explore_image_responsive relative border-2 m-2 p-2 border-white shadow md:top-[-70px] rounded_image mx-auto md:mx-0">
                       <Image
                         src={course.image || "/placeholder.png"}
                         alt={course.title}
@@ -436,7 +437,7 @@ export default function Home() {
                     </div>
 
                     {/* Right side text */}
-                    <div className="flex-1 flex flex-col mt-[-40px] explore_right_section pl-4 justify-center">
+                    <div className="flex-1 flex flex-col mt-4 md:mt-[-40px] course_heading_des explore_right_section pl-0 md:pl-4 justify-center text-center md:text-left">
                       <h1 className="text-xl font-bold mb-1">{course.title}</h1>
                       <p className="text-gray-600 mb-2 leading-relaxed">
                         {course.description}
@@ -444,7 +445,7 @@ export default function Home() {
 
                       <ul className="steps_list_items mb-4">
                         {course.list_items?.map((item, i) => (
-                          <li key={i} className="flex mb-2 items-center gap-2">
+                          <li key={i} className="flex mb-2 items-center gap-2 justify-center md:justify-start">
                             <ArrowRight className="w-5 h-5 text-orange-500" />
                             {item}
                           </li>
@@ -453,25 +454,30 @@ export default function Home() {
                     </div>
                   </div>
 
-                  {/* Button below both */}
-                  <div className="absolute top-70 explore_learning_button right-5 w-full flex justify-center">
+                  {/* Button below */}
+                  <div className="absolute left-1/2 transform responisve_explore -translate-x-1/2 translate-y-1/2 mt-68">
                     <button
                       onClick={() =>
-                        course.button_link &&
-                        window.open(course.button_link, "_blank")
+                        course.button_link && window.open(course.button_link, "_blank")
                       }
-                      className="absolute home_banner_button w-50 bg-gradient-to-r from-orange-500 to-yellow-500 text-white font-bold text-xl py-2 px-3 rounded-full flex items-center justify-center gap-3 hover:shadow-lg transition-shadow"
+                      className="home_banner_button bg-gradient-to-r from-orange-500 to-yellow-500 text-white font-bold text-xl py-1 px-2 rounded-full flex items-center justify-center gap-3 hover:shadow-lg transition-all"
                     >
-                      {course.button_text || "Explore More"}
-                      <div className="bg-white rounded-full p-2">
+                      <p className='ml-4'>{course.button_text || "Explore More"}</p>
+                      {/* <div className="bg-white rounded-full p-2">
                         <ArrowRight className="w-6 h-6 text-orange-500" />
-                      </div>
+                      </div> */}
+                      <span className="relative bg-white rounded-full p-2"><ArrowRight className="w-6 h-6 text-black" /></span>
+
                     </button>
+
                   </div>
+
+
                 </div>
               ))}
             </div>
           </div>
+
 
 
 

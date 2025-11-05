@@ -27,6 +27,7 @@ const Navbar = () => {
                 const { logoUrl, sortedItems } = await getNavbarData();
                 setLogo(logoUrl);
                 setMenuItems(sortedItems);
+
             } catch (err) {
                 console.error("Navbar data fetch error:", err);
             }
@@ -37,6 +38,9 @@ const Navbar = () => {
 
     return (
         <nav className="bg-white header_part shadow-sm fixed top-0 left-0 right-0 z-50">
+            <header className="w-full h-[5px] bg-black relative overflow-hidden">
+                <div className="absolute top-0 left-0 w-100 h-full bg-yellow-400 [clip-path:polygon(0_0,94%_0,100%_100%,0%_100%)]"></div>
+            </header>
 
 
             <div className="container-custom">
@@ -116,9 +120,11 @@ const Navbar = () => {
                     {/* Right Side Icons (Visible always) */}
                     <div className="flex items-center space-x-3">
                         <button className="w-10 h-10 bg-black rounded-full flex items-center justify-center text-white hover:bg-gray-800 transition">
+
                             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                             </svg>
+
                         </button>
                         <button className="w-10 h-10 bg-black rounded-full flex items-center justify-center text-white hover:bg-gray-800 transition">
                             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

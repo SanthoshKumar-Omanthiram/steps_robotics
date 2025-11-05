@@ -8,7 +8,7 @@ export async function getNavbarData() {
   ]);
 
   // Define the desired order
-  const order = ["Home", "Courses", "Programs", "About Us", "Contact"];
+  const order = ["Home", "Courses", "Programs", "About Us", "Contacts"];
 
   // Sort according to that order
   const sortedItems = navbarItems.sort(

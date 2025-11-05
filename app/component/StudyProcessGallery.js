@@ -81,7 +81,7 @@ export default function StudyProcessGallery() {
                             viewport={{ once: true }}
                             transition={{ duration: 0.6 }}
                         >
-                            <h2 className="text-4xl md:text-5xl  text-gray-900 mb-4 text-font-orbitron">
+                            <h2 className="text-4xl md:text-5xl font-[500] text-gray-900 mb-4 text-font-orbitron">
                                 Study Process Gallery
                             </h2>
                             <p className="text-gray-800 text-lg leading-relaxed text-font-poppins">

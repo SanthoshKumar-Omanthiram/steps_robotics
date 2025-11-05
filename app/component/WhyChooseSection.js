@@ -21,10 +21,17 @@ export default function WhyChooseSection() {
     loadData();
   }, []);
   return (
-    <section className='explore_learning px-4 pt-15 mb-10' style={{ backgroundImage: "url('/why_choose_steps_bg.jpg')", backgroundRepeat: "no-repeat", backgroundSize: "cover" }}>
-      <div className="container-custom mb-4">
+    <section className='explore_learning px-4 pt-15' 
+    style={{ 
+      backgroundImage: "url('/why_choose_steps_bg.jpg')", 
+      backgroundRepeat: "no-repeat", 
+      backgroundSize: "cover",
+      backgroundPosition: "center",
+     }}
+    >
+      <div className="container-custom -mb-4 pb-10">
         <div className="mb-8 md:mb-12 lg:mb-16">
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl mb-4 leading-snug text-center sm:text-left text-font-orbitron">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-[500] mb-4 leading-snug text-center sm:text-left text-font-orbitron">
             Why Choose{" "}
             <span className="text-yellow-500 text-font-orbitron">STEPS Robotics</span> for Your Child?
           </h2>
@@ -67,7 +74,7 @@ export default function WhyChooseSection() {
               </div>
             </div>
           </div>
-          <div className="grid grid-cols-1 steps_robotics_righttext sm:grid-cols-2 gap-6 md:gap-8 lg:gap-12">
+          <div className="grid grid-cols-1 sm:grid-cols-2 mb-5 gap-6 md:gap-8 lg:gap-12">
             {features.map((item, index) => (
               <div key={index} className="flex items-center gap-4">
                 <img
@@ -88,6 +95,7 @@ export default function WhyChooseSection() {
           </div>
         </div>
       </div>
+      
     </section>
   );
 }

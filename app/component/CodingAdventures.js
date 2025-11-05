@@ -7,7 +7,7 @@ export default function CodingAdventures() {
             <section className="relative bg-gradient-to-br from-yellow-50 via-white to-yellow-100 py-16 px-4 overflow-hidden">
                 {/* Title */}
                 <div className="container-custom">
-                    <h2 className="text-2xl sm:text-3xl lg:text-4xl mb-4 leading-snug text-center sm:text-left text-font-orbitron">
+                    <h2 className="text-2xl sm:text-3xl lg:text-4xl mb-4 font-[500] leading-snug text-center sm:text-left text-font-orbitron">
                         About <span className="text-yellow-400 text-font-orbitron">STEPS Robotics</span>
                     </h2>
                     <p className="text-gray-600 text-sm sm:text-base lg:text-lg mb-10 leading-relaxed text-center sm:text-left text-font-poppins">

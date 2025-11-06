@@ -82,7 +82,7 @@ const Navbar = () => {
                             Contact
                         </Link>
                     </div> */}
-                    <div className="hidden md:flex items-center space-x-8">
+                    <div className="hidden navbar md:flex items-center space-x-8">
                         {menuItems
                             .filter((item) => item.visible) // ✅ show only visible ones
                             .map((item) => (
@@ -119,22 +119,25 @@ const Navbar = () => {
 
                     {/* Right Side Icons (Visible always) */}
                     <div className="flex items-center space-x-3">
-                        <button className="w-10 h-10 bg-black rounded-full flex items-center justify-center text-white hover:bg-gray-800 transition">
+
+                        <button className="cursor-pointer w-10 h-10 bg-black rounded-full flex items-center justify-center text-white hover:bg-gray-800 transition">
 
                             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                             </svg>
+                        </button>
 
-                        </button>
-                        <button className="w-10 h-10 bg-black rounded-full flex items-center justify-center text-white hover:bg-gray-800 transition">
-                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                            </svg>
-                        </button>
+                        <Link href="/login" className="">
+                            <button className="cursor-pointer w-10 h-10 bg-black rounded-full flex items-center justify-center text-white hover:bg-gray-800 transition">
+                                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                                </svg>
+                            </button>
+                        </Link>
 
                         {/* Hamburger Icon (only visible on mobile) */}
                         <button
-                            className="md:hidden w-10 h-10 bg-black rounded-full flex items-center justify-center text-white hover:bg-gray-800 transition"
+                            className="cursor-pointer md:hidden w-10 h-10 bg-black rounded-full flex items-center justify-center text-white hover:bg-gray-800 transition"
                             onClick={() => setIsOpen(!isOpen)}
                         >
                             {isOpen ? (
@@ -184,160 +187,162 @@ const Navbar = () => {
             </button> */}
 
             {/* Mobile Menu Overlay */}
-            {isOpen && (
-                <div className="md:hidden fixed inset-0 z-50 bg-white">
-                    <div className="flex flex-col h-full">
+            {
+                isOpen && (
+                    <div className="md:hidden fixed inset-0 z-50 bg-white">
+                        <div className="flex flex-col h-full">
 
-                        {/* Header with Logo, Icons and Close Button */}
-                        <div className="flex items-center justify-between p-4 border-b border-gray-200">
-                            <Image
-                                src="/logo.png"
-                                alt="STEPS Robotics"
-                                width={150}
-                                height={40}
-                                className="object-contain"
-                            />
+                            {/* Header with Logo, Icons and Close Button */}
+                            <div className="flex items-center justify-between p-4 border-b border-gray-200">
+                                <Image
+                                    src="/logo.png"
+                                    alt="STEPS Robotics"
+                                    width={150}
+                                    height={40}
+                                    className="object-contain"
+                                />
 
-                            <div className="flex items-center gap-3">
-                                {/* Search Icon */}
-                                <button className="w-10 h-10 rounded-full bg-black text-white flex items-center justify-center">
-                                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                                    </svg>
-                                </button>
-
-                                {/* User Icon */}
-                                <button className="w-10 h-10 rounded-full bg-black text-white flex items-center justify-center">
-                                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                                    </svg>
-                                </button>
-
-                                {/* Close Button - Now beside user icon */}
-                                <button
-                                    onClick={() => setIsOpen(false)}
-                                    className="w-10 h-10 rounded-full border-2 border-yellow-400 bg-yellow-50 flex items-center justify-center hover:bg-yellow-100 transition-colors"
-                                >
-                                    <svg className="w-5 h-5 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                                    </svg>
-                                </button>
-                            </div>
-                        </div>
-
-                        {/* Menu Items */}
-                        <div className="flex-1 overflow-y-auto">
-                            <div className="flex flex-col">
-
-                                {/* Home - Highlighted */}
-                                <Link
-                                    href="/"
-                                    onClick={() => setIsOpen(false)}
-                                    className={`px-6 py-4 border-l-4 font-semibold transition-colors duration-200 ${pathname === "/"
-                                        ? "bg-yellow-50 border-yellow-400 text-yellow-600"
-                                        : "border-transparent text-gray-800 hover:bg-yellow-50 hover:border-yellow-400 hover:text-yellow-600"
-                                        }`}
-                                >
-                                    Home
-                                </Link>
-
-                                {/* Courses - Dropdown */}
-                                <div className="border-b border-gray-200">
-                                    <button
-                                        onClick={() => toggleDropdown('courses')}
-                                        className="w-full px-6 py-4 flex items-center justify-between text-gray-800 font-medium hover:bg-gray-50"
-                                    >
-                                        <span>Courses</span>
-                                        <svg
-                                            className={`w-5 h-5 transition-transform ${openDropdown === 'courses' ? 'rotate-180' : ''}`}
-                                            fill="none"
-                                            stroke="currentColor"
-                                            viewBox="0 0 24 24"
-                                        >
-                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                <div className="flex items-center gap-3">
+                                    {/* Search Icon */}
+                                    <button className="w-10 h-10 rounded-full bg-black text-white flex items-center justify-center">
+                                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                                         </svg>
                                     </button>
 
-                                    {openDropdown === 'courses' && (
-                                        <div className="bg-gray-50">
-                                            {['VEX 123', 'VEX GO', 'VEX IQ', 'VEX AIM'].map((course) => (
-                                                <Link
-                                                    key={course}
-                                                    href={`/courses/${course.toLowerCase().replace(' ', '-')}`}
-                                                    onClick={() => setIsOpen(false)}
-                                                    className={`block px-10 py-3 text-sm ${course === 'VEX GO'
-                                                        ? 'bg-yellow-200 text-gray-800 font-semibold'
-                                                        : 'text-gray-700 hover:bg-yellow-100'
-                                                        }`}
-                                                >
-                                                    {course}
+                                    {/* User Icon */}
+                                    <button className="w-10 h-10 rounded-full bg-black text-white flex items-center justify-center">
+                                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                                        </svg>
+                                    </button>
+
+                                    {/* Close Button - Now beside user icon */}
+                                    <button
+                                        onClick={() => setIsOpen(false)}
+                                        className="w-10 h-10 rounded-full border-2 border-yellow-400 bg-yellow-50 flex items-center justify-center hover:bg-yellow-100 transition-colors"
+                                    >
+                                        <svg className="w-5 h-5 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+
+                            {/* Menu Items */}
+                            <div className="flex-1 overflow-y-auto">
+                                <div className="flex flex-col">
+
+                                    {/* Home - Highlighted */}
+                                    <Link
+                                        href="/"
+                                        onClick={() => setIsOpen(false)}
+                                        className={`px-6 py-4 border-l-4 font-semibold transition-colors duration-200 ${pathname === "/"
+                                            ? "bg-yellow-50 border-yellow-400 text-yellow-600"
+                                            : "border-transparent text-gray-800 hover:bg-yellow-50 hover:border-yellow-400 hover:text-yellow-600"
+                                            }`}
+                                    >
+                                        Home
+                                    </Link>
+
+                                    {/* Courses - Dropdown */}
+                                    <div className="border-b border-gray-200">
+                                        <button
+                                            onClick={() => toggleDropdown('courses')}
+                                            className="w-full px-6 py-4 flex items-center justify-between text-gray-800 font-medium hover:bg-gray-50"
+                                        >
+                                            <span>Courses</span>
+                                            <svg
+                                                className={`w-5 h-5 transition-transform ${openDropdown === 'courses' ? 'rotate-180' : ''}`}
+                                                fill="none"
+                                                stroke="currentColor"
+                                                viewBox="0 0 24 24"
+                                            >
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                            </svg>
+                                        </button>
+
+                                        {openDropdown === 'courses' && (
+                                            <div className="bg-gray-50">
+                                                {['VEX 123', 'VEX GO', 'VEX IQ', 'VEX AIM'].map((course) => (
+                                                    <Link
+                                                        key={course}
+                                                        href={`/courses/${course.toLowerCase().replace(' ', '-')}`}
+                                                        onClick={() => setIsOpen(false)}
+                                                        className={`block px-10 py-3 text-sm ${course === 'VEX GO'
+                                                            ? 'bg-yellow-200 text-gray-800 font-semibold'
+                                                            : 'text-gray-700 hover:bg-yellow-100'
+                                                            }`}
+                                                    >
+                                                        {course}
+                                                    </Link>
+                                                ))}
+                                            </div>
+                                        )}
+                                    </div>
+
+                                    {/* Programs - Dropdown */}
+                                    <div className="border-b border-gray-200">
+                                        <button
+                                            onClick={() => toggleDropdown('programs')}
+                                            className="w-full px-6 py-4 flex items-center justify-between text-gray-800 font-medium hover:bg-gray-50"
+                                        >
+                                            <span>Programs</span>
+                                            <svg
+                                                className={`w-5 h-5 transition-transform ${openDropdown === 'programs' ? 'rotate-180' : ''}`}
+                                                fill="none"
+                                                stroke="currentColor"
+                                                viewBox="0 0 24 24"
+                                            >
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                            </svg>
+                                        </button>
+
+                                        {openDropdown === 'programs' && (
+                                            <div className="bg-gray-50">
+                                                <Link href="/programs/bootcamp" onClick={() => setIsOpen(false)} className="block px-10 py-3 text-sm text-gray-700 hover:bg-yellow-100">
+                                                    Bootcamp
                                                 </Link>
-                                            ))}
-                                        </div>
-                                    )}
-                                </div>
+                                                <Link href="/programs/workshops" onClick={() => setIsOpen(false)} className="block px-10 py-3 text-sm text-gray-700 hover:bg-yellow-100">
+                                                    Workshops
+                                                </Link>
+                                            </div>
+                                        )}
+                                    </div>
 
-                                {/* Programs - Dropdown */}
-                                <div className="border-b border-gray-200">
-                                    <button
-                                        onClick={() => toggleDropdown('programs')}
-                                        className="w-full px-6 py-4 flex items-center justify-between text-gray-800 font-medium hover:bg-gray-50"
+                                    {/* About us - Dropdown */}
+                                    <Link
+                                        href="/about"
+                                        onClick={() => setIsOpen(false)}
+                                        className={`px-6 py-4 border-l-4 font-semibold transition-colors duration-200 ${pathname === "/about"
+                                            ? "bg-yellow-50 border-yellow-400 text-yellow-600"
+                                            : "border-transparent text-gray-800 hover:bg-yellow-50 hover:border-yellow-400 hover:text-yellow-600"
+                                            }`}
                                     >
-                                        <span>Programs</span>
-                                        <svg
-                                            className={`w-5 h-5 transition-transform ${openDropdown === 'programs' ? 'rotate-180' : ''}`}
-                                            fill="none"
-                                            stroke="currentColor"
-                                            viewBox="0 0 24 24"
-                                        >
-                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                                        </svg>
-                                    </button>
+                                        About Us
+                                    </Link>
 
-                                    {openDropdown === 'programs' && (
-                                        <div className="bg-gray-50">
-                                            <Link href="/programs/bootcamp" onClick={() => setIsOpen(false)} className="block px-10 py-3 text-sm text-gray-700 hover:bg-yellow-100">
-                                                Bootcamp
-                                            </Link>
-                                            <Link href="/programs/workshops" onClick={() => setIsOpen(false)} className="block px-10 py-3 text-sm text-gray-700 hover:bg-yellow-100">
-                                                Workshops
-                                            </Link>
-                                        </div>
-                                    )}
+                                    {/* Contact - Dropdown */}
+                                    <Link
+                                        href="/contacts"
+                                        onClick={() => setIsOpen(false)}
+                                        className={`px-6 py-4 border-l-4 font-semibold transition-colors duration-200 ${pathname === "/contacts"
+                                            ? "bg-yellow-50 border-yellow-400 text-yellow-600"
+                                            : "border-transparent text-gray-800 hover:bg-yellow-50 hover:border-yellow-400 hover:text-yellow-600"
+                                            }`}
+                                    >
+                                        Contact
+                                    </Link>
+
                                 </div>
-
-                                {/* About us - Dropdown */}
-                                <Link
-                                    href="/about"
-                                    onClick={() => setIsOpen(false)}
-                                    className={`px-6 py-4 border-l-4 font-semibold transition-colors duration-200 ${pathname === "/about"
-                                        ? "bg-yellow-50 border-yellow-400 text-yellow-600"
-                                        : "border-transparent text-gray-800 hover:bg-yellow-50 hover:border-yellow-400 hover:text-yellow-600"
-                                        }`}
-                                >
-                                    About Us
-                                </Link>
-
-                                {/* Contact - Dropdown */}
-                                <Link
-                                    href="/contacts"
-                                    onClick={() => setIsOpen(false)}
-                                    className={`px-6 py-4 border-l-4 font-semibold transition-colors duration-200 ${pathname === "/contacts"
-                                        ? "bg-yellow-50 border-yellow-400 text-yellow-600"
-                                        : "border-transparent text-gray-800 hover:bg-yellow-50 hover:border-yellow-400 hover:text-yellow-600"
-                                        }`}
-                                >
-                                    Contact
-                                </Link>
-
                             </div>
+
                         </div>
-
                     </div>
-                </div>
-            )}
+                )
+            }
 
-        </nav>
+        </nav >
     );
 };
 

@@ -1,9 +1,10 @@
 import { writeFile } from "fs/promises";
 import path from "path";
 import pool from "@/lib/db";
+import fs from "fs";
 
 export async function PUT(req, { params }) {
-  const { id } = params;
+  const id = params.id;
   const formData = await req.formData();
 
   const bannerTitle1 = formData.get("bannerTitle1");
@@ -12,42 +13,70 @@ export async function PUT(req, { params }) {
   const buttonName = formData.get("buttonName");
   const buttonLink = formData.get("buttonLink");
   const image = formData.get("image"); // may be null
+  const b_image = formData.get("b_image"); // new file input
 
   try {
     let imageUrl = null;
+    let bImageUrl = null;
 
-    // 🖼 If user uploaded a new image file
+    const uploadDir = path.join(process.cwd(), "public/uploads");
+
+    // 🖼 Upload main image if provided
     if (image && typeof image === "object" && image.name) {
       const bytes = await image.arrayBuffer();
       const buffer = Buffer.from(bytes);
-
-      const uploadDir = path.join(process.cwd(), "public/uploads");
-      const filePath = path.join(uploadDir, image.name);
-
-      // Save file to /public/uploads
+      const fileName = `${Date.now()}-${image.name}`;
+      const filePath = path.join(uploadDir, fileName);
       await writeFile(filePath, buffer);
+      imageUrl = `/uploads/${fileName}`;
+    }
 
-      // Set image URL relative to public
-      imageUrl = `/uploads/${image.name}`;
+    // 🖼 Upload background image if provided
+    if (b_image && typeof b_image === "object" && b_image.name) {
+      const bytes = await b_image.arrayBuffer();
+      const buffer = Buffer.from(bytes);
+      const fileName = `${Date.now()}-${b_image.name}`;
+      const filePath = path.join(uploadDir, fileName);
+      await writeFile(filePath, buffer);
+      bImageUrl = `/uploads/${fileName}`;
+    }
 
-      // ✅ Update everything including image
+    // ✅ Build SQL dynamically depending on what was uploaded
+    if (imageUrl && bImageUrl) {
       await pool.query(
         `UPDATE banners
-         SET banner_title1 = $1, banner_title2 = $2, paragraph = $3,
-             button_name = $4, button_link = $5, image = $6
-         WHERE id = $7`,
+         SET banner_title1=$1, banner_title2=$2, paragraph=$3,
+             button_name=$4, button_link=$5, image=$6, b_image=$7
+         WHERE id=$8`,
+        [bannerTitle1, bannerTitle2, paragraph, buttonName, buttonLink, imageUrl, bImageUrl, id]
+      );
+    } else if (imageUrl) {
+      await pool.query(
+        `UPDATE banners
+         SET banner_title1=$1, banner_title2=$2, paragraph=$3,
+             button_name=$4, button_link=$5, image=$6
+         WHERE id=$7`,
         [bannerTitle1, bannerTitle2, paragraph, buttonName, buttonLink, imageUrl, id]
       );
-    } else {
-      // ✅ Update only text fields
+    } else if (bImageUrl) {
       await pool.query(
         `UPDATE banners
-         SET banner_title1 = $1, banner_title2 = $2, paragraph = $3,
-             button_name = $4, button_link = $5
-         WHERE id = $6`,
+         SET banner_title1=$1, banner_title2=$2, paragraph=$3,
+             button_name=$4, button_link=$5, b_image=$6
+         WHERE id=$7`,
+        [bannerTitle1, bannerTitle2, paragraph, buttonName, buttonLink, bImageUrl, id]
+      );
+    } else {
+      // ✅ Only text updates
+      await pool.query(
+        `UPDATE banners
+         SET banner_title1=$1, banner_title2=$2, paragraph=$3,
+             button_name=$4, button_link=$5
+         WHERE id=$6`,
         [bannerTitle1, bannerTitle2, paragraph, buttonName, buttonLink, id]
       );
     }
+
 
     return Response.json({ success: true });
   } catch (err) {

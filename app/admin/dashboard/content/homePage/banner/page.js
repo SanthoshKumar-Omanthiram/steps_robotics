@@ -49,7 +49,10 @@ export default function Banner() {
                         <textarea name="paragraph" placeholder="Paragraph" className="border p-2 w-full" required />
                         <input name="buttonName" placeholder="Button Name" className="border p-2 w-full" required />
                         <input name="buttonLink" placeholder="Button Link" className="border p-2 w-full" required />
+                        <h1>Background Image:</h1>
                         <input type="file" name="image" accept="image/*" className="border p-2 w-full" required />
+                        <h1>Banner Image:</h1>
+                        <input type="file" name="b_image" accept="image/*" className="border p-2 w-full" required />
                         <button type="submit" className="bg-blue-600 text-white px-4 py-2 rounded-md">
                             Add Banner
                         </button>
@@ -82,6 +85,11 @@ export default function Banner() {
                                         <div>
                                             <img src={b.image} alt={b.banner_title1} className="w-full h-40 object-cover rounded-md mb-2" />
                                             <input type="file" name="image" accept="image/*" className="border p-2 w-full rounded" />
+                                        </div>
+
+                                        <div>
+                                            <img src={b.b_image} alt={b.banner_title1} className="w-full h-40 object-cover rounded-md mb-2" />
+                                            <input type="file" name="b_image" accept="image/*" className="border p-2 w-full rounded" />
                                         </div>
 
                                         <div className="flex gap-2 mt-2">

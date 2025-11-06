@@ -21,8 +21,9 @@ export async function POST(req) {
     const buttonName = formData.get("buttonName");
     const buttonLink = formData.get("buttonLink");
     const file = formData.get("image");
+    const bFile = formData.get("b_image"); // ✅ New b_image field
 
-    // handle file upload
+    // handle file upload (main image)
     let imagePath = null;
     if (file && file.name) {
       const uploadDir = path.join(process.cwd(), "public/uploads");
@@ -35,12 +36,26 @@ export async function POST(req) {
       imagePath = `/uploads/${fileName}`;
     }
 
+    // handle b_image upload
+    let bImagePath = null;
+    if (bFile && bFile.name) {
+      const uploadDir = path.join(process.cwd(), "public/uploads");
+      if (!fs.existsSync(uploadDir)) fs.mkdirSync(uploadDir, { recursive: true });
+
+      const fileName = `${Date.now()}-${bFile.name}`;
+      const buffer = Buffer.from(await bFile.arrayBuffer());
+      const fullPath = path.join(uploadDir, fileName);
+      fs.writeFileSync(fullPath, buffer);
+      bImagePath = `/uploads/${fileName}`;
+    }
+
+    // ✅ Insert both image paths into DB
     const result = await pool.query(
       `INSERT INTO banners 
-       (banner_title1, banner_title2, paragraph, button_name, button_link, image) 
-       VALUES ($1, $2, $3, $4, $5, $6)
+       (banner_title1, banner_title2, paragraph, button_name, button_link, image, b_image) 
+       VALUES ($1, $2, $3, $4, $5, $6, $7)
        RETURNING *`,
-      [bannerTitle1, bannerTitle2, paragraph, buttonName, buttonLink, imagePath]
+      [bannerTitle1, bannerTitle2, paragraph, buttonName, buttonLink, imagePath, bImagePath]
     );
 
     return Response.json(result.rows[0], { status: 201 });
@@ -49,3 +64,4 @@ export async function POST(req) {
     return Response.json({ error: err.message }, { status: 500 });
   }
 }
+

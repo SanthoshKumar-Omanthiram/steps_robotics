@@ -160,7 +160,7 @@ export default function Home() {
       <HeroSlider />
 
       {/* Projects Section */}
-      <section className="py-6 px-4 mt-20">
+      <section className="py-6 kids_build px-4 mt-20">
         <div className="container-custom">
           {/* Heading */}
           <h2 className="text-2xl sm:text-3xl lg:text-4xl mb-4 leading-snug text-center font-[500] sm:text-left text-font-orbitron">
@@ -399,12 +399,18 @@ export default function Home() {
 
 
       {/**Explore Learning */}
-      <section className='explore_learning px-4 mt-5 mb-15' style={{ backgroundImage: "url('/Explore_screen_bg.jpg')" }}>
+      <section className='explore_learning pb-16 py-2 px-5 relative' style={{
+        backgroundImage: "url('/Explore_screen_bg-v1.jpg')",
+                backgroundRepeat: "no-repeat",
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+      }}>
         <div className="container-custom mb-4">
           <h2 className="text-2xl sm:text-3xl font-[500] lg:text-4xl mb-4 explore_learning_robotics leading-snug text-center sm:text-left text-font-orbitron">
             Explore Learning with <span className="text-yellow-400 text-font-orbitron">STEPS Robotics</span>
           </h2>
-          <p className="text-gray-600 text-sm sm:text-base lg:text-lg mb-10 leading-relaxed text-center  text-font-poppins">
+
+          <p className="text-gray-600 text-sm sm:text-base lg:text-lg mb-10 leading-relaxed text-center sm:text-left text-font-poppins">
             From structured courses to dynamic programs, STEPS Robotics offers multiple pathways for students to develop essential STEM and coding skills.
             Our approach blends theory with hands-on practice, preparing learners to thrive in the technology-driven word.
           </p>
@@ -460,7 +466,7 @@ export default function Home() {
                       onClick={() =>
                         course.button_link && window.open(course.button_link, "_blank")
                       }
-                      className="home_banner_button bg-gradient-to-r from-orange-500 to-yellow-500 text-white font-bold text-xl py-1 px-2 rounded-full flex items-center justify-center gap-3 hover:shadow-lg transition-all"
+                      className="explore_button bg-gradient-to-r from-orange-500 to-yellow-500 text-white font-bold text-xl py-1 px-2 rounded-full flex items-center justify-center gap-3 hover:shadow-lg transition-all"
                     >
                       <p className='ml-4'>{course.button_text || "Explore More"}</p>
                       {/* <div className="bg-white rounded-full p-2">

@@ -59,36 +59,34 @@ export default function Footer() {
 
   return (
 
-    <footer className="footer relative overflow-hidden">
-
-      <div className="container mx-auto border-gray-200 mb-8 relative z-10">
+    <footer className="footer relative overflow-hidden bg-white">
+      <div className="container mx-auto border-gray-200 -mb-20 relative z-10">
         <div className="container-custom px-4 py-8">
-          {/* 3 Columns (col-md-4 each) */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-2">
-            {/* Left Column - Logo & Address */}
-            <div className="footerlogo text-center md:text-left">
-              <div className="flex justify-center md:justify-start mb-4">
+
+          {/* Grid - 3 columns on desktop, stack on mobile */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 text-center md:text-left items-start">
+
+
+            {/* LEFT COLUMN */}
+            <div className="footerlogo flex flex-col items-center md:items-start">
+              <div className="mb-4">
                 <Image
                   src={sectionData.logo_url}
                   alt="Steps Robotics Logo"
                   width={194}
                   height={104}
-                  className="object-contain"
+                  className="object-contain mx-auto md:mx-0"
                   priority
                 />
               </div>
 
-
               <div className="text-sm text-gray-700 space-y-1 mb-4">
-                {sectionData.address
-                  ?.split("|")
-                  .map((line, i) => (
-                    <p key={i} className="footer-address-company">
-                      {line.trim()}
-                    </p>
-                  ))}
+                {sectionData.address?.split("|").map((line, i) => (
+                  <p key={i} className="footer-address-company">
+                    {line.trim()}
+                  </p>
+                ))}
               </div>
-
 
               <div className="flex justify-center md:justify-start space-x-2">
                 {[
@@ -109,17 +107,15 @@ export default function Footer() {
                   </a>
                 ))}
               </div>
-
             </div>
 
-            {/* Middle Column - Links + Let's Connect (side by side) */}
-            <div className="text-center md:text-left">
-              <div className="flex flex-col lg:flex-row justify-between gap-10">
-                {/* Links Section */}
-                <div className="flex-1">
-                  <h3 className="text-xl footer-links-title stem-gold mb-6">
-                    Links
-                  </h3>
+            {/* MIDDLE COLUMN */}
+            <div className="flex flex-col items-center md:items-start">
+              <div className="flex flex-col lg:flex-row flex-wrap justify-between gap-10 w-full">
+
+                {/* Links */}
+                <div className="flex-1 w-full md:w-1/2 text-center md:text-left">
+                  <h3 className="text-xl footer-links-title stem-gold mb-4">Links</h3>
                   <ul className="space-y-3">
                     {menuItems.map((item) => (
                       <li key={item.label}>
@@ -131,7 +127,7 @@ export default function Footer() {
                   </ul>
                 </div>
 
-                {/* Let's Connect Section */}
+                {/* Let's Connect */}
                 <div className="flex-1">
                   <h3 className="text-xl footer-links-title stem-gold mb-6">
                     Let's Connect
@@ -156,17 +152,17 @@ export default function Footer() {
                     </div>
                   </div>
                 </div>
-
               </div>
+
             </div>
 
-            {/* Right Column - Write to Us */}
-            <div className="text-center md:text-left">
-              <h3 className="text-xl footer-links-title stem-gold mb-6">
+            {/* RIGHT COLUMN */}
+            <div className="flex flex-col items-center md:items-start">
+              <h3 className="text-xl footer-links-title stem-gold mb-4">
                 Write to Us
               </h3>
-              <div className="space-y-4">
-                <div className="relative mx-auto md:mx-0 max-w-xs md:max-w-none">
+              <div className="space-y-4 w-full max-w-xs md:max-w-none">
+                <div className="relative">
                   <input
                     type="email"
                     placeholder="Email address"
@@ -177,15 +173,16 @@ export default function Footer() {
                   </button>
                 </div>
 
-                <div className="relative">
-                  <h4 className="text-xl footer-links-title stem-gold">
+                <div className="relative text-center md:text-left">
+                  <h4 className="text-xl footer-links-title stem-gold mb-2">
                     Talk to us today!
                   </h4>
-
-                  <div className="absolute">
-                    <div className="w-30 h-50 right-200">
-                      <img src={sectionData.talk_image} />
-                    </div>
+                  <div className="flex justify-center md:justify-start">
+                    <img
+                      src={sectionData.talk_image}
+                      alt="Talk to us"
+                      className="w-40 h-auto object-contain"
+                    />
                   </div>
                 </div>
               </div>
@@ -193,7 +190,7 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Scroll to Top Button */}
+        {/* Scroll to Top */}
         <button
           onClick={() =>
             window.scrollTo({
@@ -207,12 +204,10 @@ export default function Footer() {
         </button>
       </div>
 
-      {/* Footer Bottom */}
-
-      <div className="w-full flex flex-col sm:flex-row text-sm relative z-10">
-        
-        <div className="relative bg-[#FFD700] sm:w-[40%] w-full flex justify-center items-center h-10 sm:h-8">
-          <div className="flex container-custom space-x-2 text-black">
+      {/* FOOTER BOTTOM */}
+      <div className="w-full mt-20 flex flex-col sm:flex-row text-sm relative z-10">
+        <div className="bg-[#FFD700] sm:w-[40%] w-full flex justify-center items-center h-10 sm:h-8">
+          <div className="flex space-x-2 text-black">
             <a href="#" className="hover:underline footer-bottom-text">
               Privacy Policy
             </a>
@@ -224,20 +219,21 @@ export default function Footer() {
         </div>
 
         <div
-          className="bg-black sm:w-[64%] w-full flex flex-col sm:flex-row justify-between items-center text-white px-3 sm:px-4 h-10 sm:h-8 sm:-ml-[30px]"
+          className="bg-black  sm:w-[64%] w-full flex flex-col sm:flex-row justify-center sm:justify-between items-center text-white px-3 sm:px-4 h-auto py-2 sm:h-8 sm:-ml-[30px] text-center"
           style={{
             clipPath: "polygon(30px 0, 100% 0, 100% 100%, 0 100%)",
           }}
         >
-          <p className="text-center sm:text-left footer-bottom-text text-xs sm:text-sm leading-tight sm:ml-[65px]">
+          <p className="text-xs sm:text-sm ml-20 leading-tight">
             Copyright STEPS Robotics 2025. All rights reserved.
           </p>
-          <p className="text-center sm:text-right footer-bottom-text text-xs sm:text-sm leading-tight sm:mr-[30px] mt-1 sm:mt-0">
+          <p className="text-xs sm:text-sm  leading-tight mt-1 sm:mt-0">
             Powered by: <span className="font-medium">Redant Labs</span>
           </p>
         </div>
       </div>
     </footer>
+
 
   );
 }

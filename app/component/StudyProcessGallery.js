@@ -118,7 +118,7 @@ export default function StudyProcessGallery() {
                             </div>
 
                             {/* COLUMN 2 */}
-                            <div className="flex section_2 flex-col gap-4 ml-[-40px]">
+                            <div className="flex section_2 flex-col gap-4 ml-[-10px]">
                                 {/* Image 1 */}
                                 <div className="relative h-95 rounded-2xl overflow-hidden shadow-lg group cursor-pointer transform transition-transform duration-300 hover:scale-105">
                                     <Image

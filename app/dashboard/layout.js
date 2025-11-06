@@ -1,4 +1,5 @@
 'use client';
+import { useRouter } from "next/navigation";
 
 import { useState } from 'react';
 import { Menu, Bell, User } from 'lucide-react';
@@ -13,12 +14,22 @@ export default function Layout({ children }) {
   const displayName = user?.full_name || "Loading...";
   const displayDept = user?.department || "Loading...";
 
+  const router = useRouter();
+
+  const handleLogout = async () => {
+    try {
+      await fetch("/api/logout", { method: "POST" });
+      localStorage.removeItem('role');
+      router.push("/login");
+    } catch (err) {
+      console.error("Logout failed:", err);
+    }
+  };
+
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* HEADER */}
       <header className="bg-white shadow-sm border-b border-gray-200 fixed w-full top-0 z-30">
         <div className="flex items-center justify-between px-4 py-3">
-          {/* Mobile Sidebar Button */}
           <button
             onClick={() => setSidebarOpen(true)}
             className="lg:hidden p-2 rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-100"
@@ -72,7 +83,7 @@ export default function Layout({ children }) {
                     </li>
                     <li
                       className="px-4 py-2 text-sm text-red-600 hover:bg-gray-100 cursor-pointer"
-                      onClick={() => alert('Logout Clicked')}
+                      onClick={handleLogout}
                     >
                       Logout
                     </li>
@@ -84,7 +95,6 @@ export default function Layout({ children }) {
         </div>
       </header>
 
-      {/* SIDEBAR */}
       <Sidebar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
 
       {/* MAIN CONTENT */}

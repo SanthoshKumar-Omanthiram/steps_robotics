@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import Loader from "../components/Loader";
+import { icons } from "lucide-react";
 
 export default function Sidebar({ collapsed, setCollapsed }) {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -21,7 +22,7 @@ export default function Sidebar({ collapsed, setCollapsed }) {
   };
   useEffect(() => {
     const role = localStorage.getItem("role");
-    if ( role !== "admin") {
+    if (role !== "admin") {
       router.push("/unauthorized");
       return;
     }
@@ -30,20 +31,42 @@ export default function Sidebar({ collapsed, setCollapsed }) {
     return () => clearTimeout(timer);
   }, []);
 
+  // const menuItems = [
+  //   { href: "/admin/dashboard", label: "Dashboard", icon: "/dashboard.svg" },
+  //   { href: "/admin/add-users", label: "Users", icon: "/user.svg" },
+  //   { href: "/admin/dashboard/courses", label: "LMS", icon: "/lms.svg" },
+  //   {
+  //     href: "/admin/tasks",
+  //     label: "Classroom & Timetable",
+  //     icon: "/class.svg",
+  //   },
+  //   { href: "/admin/dashboard/programs", label: "Programs", icon: "/exam.svg" },
+  //   {href: "/admin/dashboard/content", label: "Content", icon: "/exam.svg"},
+  //   { href: "/admin/analytics", label: "Attendance", icon: "/attendance.svg" },
+  //   { href: "/admin/reports", label: "Exams & Results", icon: "/exam.svg" },
+  //   { href: "/admin/dashboard/roles", label: "Roles", icon: "/user.svg" },
+  //   { href: "/admin/dashboard/contacts", label: "Contact Info", icon: "/user.svg" },
+  //   { href: "/admin/settings", label: "Settings", icon: "/settings.svg" },
+  // ];
   const menuItems = [
     { href: "/admin/dashboard", label: "Dashboard", icon: "/dashboard.svg" },
-    { href: "/admin/users", label: "Users", icon: "/user.svg" },
-    { href: "/admin/projects", label: "LMS", icon: "/lms.svg" },
+    { href: "/admin/add-users", label: "Users", icon: "/user.svg" },
+    { href: "/admin/dashboard/courses", label: "Courses", icon: "/lms.svg" },
+    { href: "/admin/dashboard/courses", label: "Courses", icon: "/lms.svg" },
     {
       href: "/admin/tasks",
       label: "Classroom & Timetable",
       icon: "/class.svg",
     },
-    { href: "/admin/analytics", label: "Attendance", icon: "/attendance.svg" },
+    { href: "/admin/dashboard/programs", label: "Programs", icon: "/exam.svg" },
+    { href: "/admin/dashboard/content", label: "Content", icon: "/exam.svg" },
+    { href: "/admin/dashboard/feedbackcourse", label: "Course Feedback", icon: "/attendance.svg" },
     { href: "/admin/reports", label: "Exams & Results", icon: "/exam.svg" },
-     { href: "/admin/dashboard/roles", label: "Roles", icon: "/user.svg" },
+    { href: "/admin/dashboard/roles", label: "Roles", icon: "/user.svg" },
+    { href: "/admin/dashboard/contacts", label: "Contact Info", icon: "/user.svg" },
     { href: "/admin/settings", label: "Settings", icon: "/settings.svg" },
   ];
+
 
   if (loading) return <Loader />;
   if (!authorized) return null;
@@ -66,9 +89,8 @@ export default function Sidebar({ collapsed, setCollapsed }) {
       >
         {/* Header */}
         <div
-          className={`p-4 border-b border-gray-200 flex items-center ${
-            collapsed ? "lg:justify-center" : "justify-between"
-          }`}
+          className={`p-4 border-b border-gray-200 flex items-center ${collapsed ? "lg:justify-center" : "justify-between"
+            }`}
         >
           <div className={`flex items-center ${collapsed ? "lg:hidden" : ""}`}>
             <h1 className="text-xl text-black font-bold">Steps Admin</h1>
@@ -90,18 +112,16 @@ export default function Sidebar({ collapsed, setCollapsed }) {
         <div className="hidden lg:block p-3 border-b border-gray-100">
           <button
             onClick={() => setCollapsed(!collapsed)}
-            className={`w-full p-3 text-gray-600 hover:bg-teal-50 hover:text-teal-700 rounded-lg transition-all duration-200 flex items-center ${
-              collapsed ? "justify-center" : "justify-between"
-            } group`}
+            className={`w-full p-3 text-gray-600 hover:bg-teal-50 hover:text-teal-700 rounded-lg transition-all duration-200 flex items-center ${collapsed ? "justify-center" : "justify-between"
+              } group`}
             title={collapsed ? "Expand sidebar" : "Collapse sidebar"}
           >
             <span className={`${collapsed ? "hidden" : "text-sm font-medium"}`}>
               Toggle Menu
             </span>
             <span
-              className={`transform transition-transform duration-300 text-lg ${
-                collapsed ? "" : "group-hover:translate-x-1"
-              }`}
+              className={`transform transition-transform duration-300 text-lg ${collapsed ? "" : "group-hover:translate-x-1"
+                }`}
             >
               {collapsed ? "▶️" : "◀️"}
             </span>
@@ -114,9 +134,8 @@ export default function Sidebar({ collapsed, setCollapsed }) {
             <Link
               key={item.href}
               href={item.href}
-              className={`flex items-center px-3 py-3 rounded-lg hover:bg-teal-50 hover:text-teal-700 transition-all duration-200 group relative transform hover:scale-105 ${
-                collapsed ? "lg:justify-center lg:px-2" : ""
-              }`}
+              className={`flex items-center px-3 py-3 rounded-lg hover:bg-teal-50 hover:text-teal-700 transition-all duration-200 group relative transform hover:scale-105 ${collapsed ? "lg:justify-center lg:px-2" : ""
+                }`}
               onClick={() => setMobileOpen(false)}
               title={collapsed ? item.label : ""}
             >
@@ -128,9 +147,8 @@ export default function Sidebar({ collapsed, setCollapsed }) {
                 className="min-w-[28px] transition-transform duration-200 group-hover:scale-110"
               />
               <span
-                className={`ml-3 font-medium transition-all duration-200 ${
-                  collapsed ? "lg:hidden" : ""
-                }`}
+                className={`ml-3 font-medium transition-all duration-200 ${collapsed ? "lg:hidden" : ""
+                  }`}
               >
                 {item.label}
               </span>
@@ -140,9 +158,8 @@ export default function Sidebar({ collapsed, setCollapsed }) {
           {/* Logout */}
           <button
             onClick={handleLogout}
-            className={`w-full flex items-center px-3 py-3 rounded-lg hover:bg-red-50 hover:text-red-600 transition-all duration-200 group relative ${
-              collapsed ? "lg:justify-center lg:px-2" : ""
-            }`}
+            className={`w-full flex items-center px-3 py-3 rounded-lg hover:bg-red-50 hover:text-red-600 transition-all duration-200 group relative ${collapsed ? "lg:justify-center lg:px-2" : ""
+              }`}
           >
             <Image
               src="/logout.svg"
@@ -152,9 +169,8 @@ export default function Sidebar({ collapsed, setCollapsed }) {
               className="min-w-[28px] transition-transform duration-200 group-hover:scale-110"
             />
             <span
-              className={`ml-3 font-medium transition-all duration-200 ${
-                collapsed ? "lg:hidden" : ""
-              }`}
+              className={`ml-3 font-medium transition-all duration-200 ${collapsed ? "lg:hidden" : ""
+                }`}
             >
               Logout
             </span>
@@ -163,14 +179,12 @@ export default function Sidebar({ collapsed, setCollapsed }) {
 
         {/* Footer user info */}
         <div
-          className={`p-4 border-t border-gray-200 mt-auto ${
-            collapsed ? "lg:px-2" : ""
-          } bg-gray-50`}
+          className={`p-4 border-t border-gray-200 mt-auto ${collapsed ? "lg:px-2" : ""
+            } bg-gray-50`}
         >
           <div
-            className={`flex items-center ${
-              collapsed ? "lg:justify-center" : ""
-            }`}
+            className={`flex items-center ${collapsed ? "lg:justify-center" : ""
+              }`}
           >
             <div className="w-10 h-10 bg-gradient-to-br from-teal-400 to-teal-600 rounded-full flex items-center justify-center shadow-md">
               <span className="text-white font-bold">U</span>

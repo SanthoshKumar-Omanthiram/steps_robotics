@@ -14,19 +14,17 @@ import WhyChooseSection from './component/WhyChooseSection';
 import StudyProcessGallery from './component/StudyProcessGallery';
 import { ArrowRight } from 'lucide-react';
 import CodingAdventures from './component/CodingAdventures';
-import { fetchExploreCourses } from "@/app/utils/fetchData";
-import { fetchWhyChoose } from "@/app/utils/fetchData";
+import Enquiry from './component/Enquiry';
 
+const projects = [
+  { image: "/Swetha.png", video: "/about/kid-1.mp4", name: "Aditi" },
+  { image: "/Sathish.png", video: "/about/kid-2.mp4", name: "Shankar" },
+  { image: "/Sandiya.png", video: "/about/kid-3.mp4", name: "Divya" },
+  { image: "/Swetha.png", video: "/about/kid-4.mp4", name: "Aditi Shakar" },
+  { image: "/Sathish.png", video: "/about/kid-5.mp4", name: "Mukesh Raj" },
+  { image: "/Sandiya.png", video: "/about/kid-1.mp4", name: "Vidhya Sree" },
 
-
-// const projects = [
-//   { image: "/Swetha.png", video: "/about/kid-1.mp4", name: "Aditi" },
-//   { image: "/Sathish.png", video: "/about/kid-2.mp4", name: "Shankar" },
-//   { image: "/Sandiya.png", video: "/about/kid-3.mp4", name: "Divya" },
-//   { image: "/Swetha.png", video: "/about/kid-4.mp4", name: "Aditi Shakar" },
-//   { image: "/Sathish.png", video: "/about/kid-5.mp4", name: "Mukesh Raj" },
-//   { image: "/Sandiya.png", video: "/about/kid-1.mp4", name: "Vidhya Sree" },
-// ];
+];
 
 const leftOfferings = [
   {

@@ -1,13 +1,48 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 // import { fetchLogo, fetchNavbar } from "@/app/utils/fetchData";
 import { getNavbarData } from "../utils/menuItems";
 
+import axios from "axios";
 
 const Navbar = () => {
+  const [courses, setCourses] = useState([]);
+  const [showDropdown, setShowDropdown] = useState(false);
+  const dropdownRef = useRef(null);
+
+  useEffect(() => {
+    const fetchCourses = async () => {
+      try {
+        const res = await axios.get("/api/courses");
+        const data = Array.isArray(res.data) ? res.data : [];
+        setCourses(data);
+      } catch (err) {
+        console.error("Failed to fetch courses:", err);
+      }
+    };
+    fetchCourses();
+  }, []);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setShowDropdown(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  const pathname = usePathname();
+  const [isOpen, setIsOpen] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState("");
+
+  const toggleDropdown = (menu) => {
+    setOpenDropdown(openDropdown === menu ? "" : menu);
+  };
 
     const pathname = usePathname();
 
@@ -36,26 +71,26 @@ const Navbar = () => {
     }, []);
 
 
-    return (
-        <nav className="bg-white header_part shadow-sm fixed top-0 left-0 right-0 z-50">
-            <header className="w-full h-[5px] bg-black relative overflow-hidden">
+  return (
+    <nav className="bg-white header_part shadow-sm fixed top-0 left-0 right-0 z-50">
+      <header className="w-full h-[5px] bg-black relative overflow-hidden">
                 <div className="absolute top-0 left-0 w-100 h-full bg-yellow-400 [clip-path:polygon(0_0,94%_0,100%_100%,0%_100%)]"></div>
             </header>
 
 
             <div className="container-custom">
-                <div className="flex justify-between items-center h-24">
-                    {/* Logo */}
+        <div className="flex justify-between items-center h-24">
+          {/* Logo */}
                     <Link href="/">
-                        <div className="flex items-center">
-                            <Image
-                                src={logo}
-                                alt="Steps Robotics Logo"
-                                width={250}
-                                height={60}
-                                className="h-16 w-auto"
-                            />
-                        </div>
+              <div className="flex items-center">
+                <Image
+                  src={logo}
+                  alt="Steps Robotics Logo"
+                  width={250}
+                  height={60}
+                  className="h-16 w-auto"
+                />
+              </div>
                     </Link>
 
                     {/* Desktop Navigation */}
@@ -117,42 +152,52 @@ const Navbar = () => {
 
 
 
-                    {/* Right Side Icons (Visible always) */}
-                    <div className="flex items-center space-x-3">
+          {/* Right Side Icons */}
+          <div className="flex items-center space-x-3">
 
-                        <button className="cursor-pointer w-10 h-10 bg-black rounded-full flex items-center justify-center text-white hover:bg-gray-800 transition">
+            <button className="cursor-pointer w-10 h-10 bg-black rounded-full flex items-center justify-center text-white hover:bg-gray-800 transition">
 
-                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                            </svg>
-                        </button>
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                />
+              </svg>
+            </button>
 
                         <Link href="/login" className="">
-                            <button className="cursor-pointer w-10 h-10 bg-black rounded-full flex items-center justify-center text-white hover:bg-gray-800 transition">
-                                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                                </svg>
-                            </button>
+                <button className="cursor-pointer w-10 h-10 bg-black rounded-full flex items-center justify-center text-white hover:bg-gray-800 transition">
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+                />
+                  </svg>
+                </button>
                         </Link>
 
-                        {/* Hamburger Icon (only visible on mobile) */}
-                        <button
-                            className="cursor-pointer md:hidden w-10 h-10 bg-black rounded-full flex items-center justify-center text-white hover:bg-gray-800 transition"
-                            onClick={() => setIsOpen(!isOpen)}
-                        >
-                            {isOpen ? (
-                                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                                </svg>
-                            ) : (
-                                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16m-7 6h7" />
-                                </svg>
-                            )}
-                        </button>
-                    </div>
-                </div>
-            </div>
+            {/* Hamburger Icon */}
+            <button
+              className="cursor-pointer md:hidden w-10 h-10 bg-black rounded-full flex items-center justify-center text-white hover:bg-gray-800 transition"
+              onClick={() => setIsOpen(!isOpen)}
+            >
+              {isOpen ? (
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              ) : (
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+              )}
+            </button>
+          </div>
+        </div>
+      </div>
 
             {/* Mobile Menu */}
             {/* {isOpen && (
@@ -281,69 +326,34 @@ const Navbar = () => {
                                         )}
                                     </div>
 
-                                    {/* Programs - Dropdown */}
-                                    <div className="border-b border-gray-200">
-                                        <button
-                                            onClick={() => toggleDropdown('programs')}
-                                            className="w-full px-6 py-4 flex items-center justify-between text-gray-800 font-medium hover:bg-gray-50"
-                                        >
-                                            <span>Programs</span>
-                                            <svg
-                                                className={`w-5 h-5 transition-transform ${openDropdown === 'programs' ? 'rotate-180' : ''}`}
-                                                fill="none"
-                                                stroke="currentColor"
-                                                viewBox="0 0 24 24"
-                                            >
-                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                                            </svg>
-                                        </button>
-
-                                        {openDropdown === 'programs' && (
-                                            <div className="bg-gray-50">
-                                                <Link href="/programs/bootcamp" onClick={() => setIsOpen(false)} className="block px-10 py-3 text-sm text-gray-700 hover:bg-yellow-100">
-                                                    Bootcamp
-                                                </Link>
-                                                <Link href="/programs/workshops" onClick={() => setIsOpen(false)} className="block px-10 py-3 text-sm text-gray-700 hover:bg-yellow-100">
-                                                    Workshops
-                                                </Link>
-                                            </div>
-                                        )}
-                                    </div>
-
-                                    {/* About us - Dropdown */}
-                                    <Link
-                                        href="/about"
-                                        onClick={() => setIsOpen(false)}
-                                        className={`px-6 py-4 border-l-4 font-semibold transition-colors duration-200 ${pathname === "/about"
-                                            ? "bg-yellow-50 border-yellow-400 text-yellow-600"
-                                            : "border-transparent text-gray-800 hover:bg-yellow-50 hover:border-yellow-400 hover:text-yellow-600"
-                                            }`}
-                                    >
-                                        About Us
-                                    </Link>
-
-                                    {/* Contact - Dropdown */}
-                                    <Link
-                                        href="/contacts"
-                                        onClick={() => setIsOpen(false)}
-                                        className={`px-6 py-4 border-l-4 font-semibold transition-colors duration-200 ${pathname === "/contacts"
-                                            ? "bg-yellow-50 border-yellow-400 text-yellow-600"
-                                            : "border-transparent text-gray-800 hover:bg-yellow-50 hover:border-yellow-400 hover:text-yellow-600"
-                                            }`}
-                                    >
-                                        Contact
-                                    </Link>
-
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-                )
-            }
-
-        </nav >
-    );
+                <Link
+                  href="/programs"
+                  onClick={() => setIsOpen(false)}
+                  className="px-6 py-4 text-gray-800 font-semibold hover:bg-yellow-50"
+                >
+                  Programs
+                </Link>
+                <Link
+                  href="/about"
+                  onClick={() => setIsOpen(false)}
+                  className="px-6 py-4 text-gray-800 font-semibold hover:bg-yellow-50"
+                >
+                  About Us
+                </Link>
+                <Link
+                  href="/contacts"
+                  onClick={() => setIsOpen(false)}
+                  className="px-6 py-4 text-gray-800 font-semibold hover:bg-yellow-50"
+                >
+                  Contact
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+    </nav>
+  );
 };
 
 export default Navbar;

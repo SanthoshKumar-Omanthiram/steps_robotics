@@ -4,12 +4,17 @@ import axios from "axios";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from 'next/navigation';
-import { Clock, Users, FileText, BarChart, Monitor, Award, Facebook, Twitter, Linkedin, Share2} from "lucide-react";
+import Enquiry from "./Enquiry";
+import { Clock, Users, FileText, ArrowRight ,BarChart, Monitor, Award, Facebook, Twitter, Linkedin, Share2} from "lucide-react";
 
 export default function CourseDetails({ title }) {
   const [course, setCourse] = useState(null);
   const pathname = usePathname();
   const url = typeof window !== "undefined" ? `${window.location.origin}${pathname}` : "";
+   const [showBookTrial, setShowBookTrial] = useState(false);
+
+  const handleRegisterClick = () => setShowBookTrial(true);
+  const closeModal = () => setShowBookTrial(false);
 
   const handleCopyLink = () => {
     navigator.clipboard.writeText(url);
@@ -82,13 +87,14 @@ export default function CourseDetails({ title }) {
     );
 
   return (
-    <div className="container mx-auto py-10 course-details-section">
+    <div className="course-details-section">
+    <div className="container-custom py-10">
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
         <div className="lg:col-span-2 space-y-6">
           <div className="flex items-center text-sm font-medium text-gray-700">
-            <span className="border-hr-text hover:text-yellow-500 transition">Courses</span>
+            <Link href='/courses' className="border-hr-text hover:text-yellow-500 transition">Courses</Link>
             <span className="mx-2 border-hr-text">›</span>
-            <span className="text-yellow-500 border-hr-text !font-semibold">{course.title}</span>
+            <span className="text-yellow-500 border-hr-text">{course.title}</span>
           </div>
           <hr className="mt-3 border-t-2 border-hr-breadcrumb border-dashed border-yellow-400" />
 
@@ -133,7 +139,7 @@ export default function CourseDetails({ title }) {
       className={`rounded-sm p-3 flex items-center gap-4 hover:shadow-md transition-all duration-300 ${style.bgColor}`}
     >
     <div
-  className="rounded-full p-3 flex items-center justify-center"
+  className="rounded-full hvr-grow p-3 flex items-center justify-center"
   style={{ backgroundColor: style.iconbgcolor }}
 >
 <IconComponent
@@ -150,16 +156,16 @@ export default function CourseDetails({ title }) {
           </div>
         </div>
 
-<div className="bg-white shadow-lg course-details-class-popup -mt-[120px] mb-[130px] rounded-2xl p-6 space-y-6 relative">
+<div className="bg-white shadow-lg course-details-class-popup -mt-[120px] mb-[130px] rounded-2xl px-3 py-4 space-y-6 relative">
   <div className="relative">
     <Image
       src="/course-demo.png"
       alt={course.title}
       width={400}
       height={250}
-      className="rounded-xl object-cover w-full"
+      className="rounded-2xl object-cover w-full"
     />
-    <div className="absolute -right-[16px] top-[96px] sm:w-24 md:w-28">
+    <div className="absolute right-[5px] top-[182px] sm:w-24 md:w-28">
       <div className="relative">
         <Image
           src="/offers.png"
@@ -173,13 +179,20 @@ export default function CourseDetails({ title }) {
   </div>
 
   <div>
-    <h2 className="text-lg font-semibold text-gray-800 mb-3 border-b border-gray-100 pb-2">
+    <h2 className="text-lg font-semibold font-orbitron text-gray-800 mb-3 px-3 border-b border-gray-100 pb-2">
       Course Includes
     </h2>
-    <div className="space-y-3 text-gray-700 text-sm">
+    <div className="space-y-3  px-3 text-gray-700 text-sm">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <Users className="text-yellow-500" size={18} />
+     <Image
+  src="/user-star-line.svg"
+  alt="Steps Robotics"
+  width={18}
+  height={18}
+  className="object-contain inline-block text-yellow-500"
+  priority
+/>
           <span className="course-include-title">Batch of Students:</span>
         </div>
         <span className="course-include-description">50 Students</span>
@@ -187,7 +200,14 @@ export default function CourseDetails({ title }) {
 
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <FileText className="text-yellow-500" size={18} />
+              <Image
+  src="/book-3-line.svg"
+  alt="Steps Robotics"
+  width={18}
+  height={18}
+  className="object-contain inline-block text-yellow-500"
+  priority
+/>
           <span className="course-include-title">Lessons:</span>
         </div>
         <span className="course-include-description">{course.lessons || "12 Lessons"}</span>
@@ -218,71 +238,76 @@ export default function CourseDetails({ title }) {
       </div>
     </div>
   </div>
-<div className="pt-1 border-t border-gray-100">
+<div className="pt-1">
   <div className="flex social-icons-course items-center justify-between text-gray-600">
     <span className="share-icon">Share:</span>
   <div className="flex items-center gap-2">
+  {/* Copy Link */}
+ <Image
+    src="/icons/fb-icon.png"
+    alt="Share on Facebook"
+    width={18}
+    height={18}
+    title="Share on Facebook"
+    onClick={() =>
+      openPopup(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`)
+    }
+    className="cursor-pointer transition-all duration-200 inline-block hover:brightness-125 hover:scale-110"
+  />
 
-      <Share2
-        size={18}
-        className="hover:text-yellow-500 cursor-pointer transition-colors"
-        onClick={handleCopyLink}
-        title="Copy link"
-      />
-
-      <Facebook
-        size={18}
-        className="hover:text-yellow-500 cursor-pointer transition-colors"
-        onClick={() =>
-          openPopup(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`)
-        }
-        title="Share on Facebook"
-      />
-
-      <Twitter
-        size={18}
-        className="hover:text-yellow-500 cursor-pointer transition-colors"
-        onClick={() =>
-          openPopup(`https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent(title)}`)
-        }
-        title="Share on Twitter"
-      />
-
-      <Linkedin
-        size={18}
-        className="hover:text-yellow-500 cursor-pointer transition-colors"
-        onClick={() =>
-          openPopup(`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`)
-        }
-        title="Share on LinkedIn"
-      />
+  <Image
+    src="/icons/twitter-icon.png"
+    alt="Share on Twitter"
+    width={18}
+    height={18}
+    title="Share on Facebook"
+    onClick={() =>
+      openPopup(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`)
+    }
+    className="cursor-pointer transition-all duration-200 inline-block hover:brightness-125 hover:scale-110"
+  />
+   <Image
+    src="/icons/pinterest-line.png"
+    alt="Share on Twitter"
+    width={18}
+    height={18}
+    title="Share on Facebook"
+    onClick={() =>
+      openPopup(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`)
+    }
+    className="cursor-pointer transition-all duration-200 inline-block hover:brightness-125 hover:scale-110"
+  />
+   <Image
+    src="/icons/linkedin-icon.png"
+    alt="Share on Twitter"
+    width={18}
+    height={18}
+    title="Share on Facebook"
+    onClick={() =>
+      openPopup(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`)
+    }
+    className="cursor-pointer transition-all duration-200 inline-block hover:brightness-125 hover:scale-110"
+  />
     </div>
   </div>
 </div>
-   <div className="flex justify-center">
-                        <Link
-                          href={`/courses/${course.slug || course.id || "#"}`}
-                          className="inline-flex items-center gap-3 text-white px-3 py-1 rounded-full transition-all shadow-lg hover:shadow-xl bg-gradient-to-r from-[#FF6F28] to-[#FFCF20] hover:from-[#FFCF20] hover:to-[#FF6F28]"
-                        >
-Enroll Now                          <span className="text-xl leading-none flex items-center justify-center w-7 h-7 rounded-full bg-white text-[#FF6F28] shadow-md">
-                            <svg
-                              className="w-5 h-5"
-                              fill="none"
-                              stroke="currentColor"
-                              viewBox="0 0 24 24"
-                              strokeWidth="3"
-                            >
-                              <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                d="M13 7l5 5m0 0l-5 5m5-5H6"
-                              />
-                            </svg>
-                          </span>
-                        </Link>
-                      </div>
+                <div className="flex justify-center">
+  <button onClick={handleRegisterClick} className="event-enroll-btn flex items-center justify-center gap-3 bg-gradient-to-r from-[#FF6F28] to-[#FFCF20] text-white pl-[20px] pr-[7px] pt-[7px] pb-[7px] rounded-full font-semibold hover:shadow-lg transition">
+    Enroll Now <div className="bg-white rounded-full p-2 flex items-center justify-center shadow">
+  <ArrowRight className="w-4 h-4 text-black" />
+</div>
+  </button>
+</div>
 </div>
       </div>
+          {showBookTrial && (
+        <div className="fixed inset-0 z-[9999] m-[30px] animate-fadeIn">
+          <div className="min-h-screen flex items-center justify-center p-0">
+            <Enquiry onClose={closeModal} />  {/* pass the handler here */}
+          </div>
+        </div>
+      )}
+    </div>
     </div>
   );
 }

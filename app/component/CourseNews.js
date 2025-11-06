@@ -7,19 +7,25 @@ export default function CourseNews() {
       <div className='relative w-full max-w-6xl  rounded-3xl overflow-hidden'>
         <div className='flex flex-col lg:flex-row items-stretch pt-[55px]'>
         <div className='w-full lg:w-[60%] relative min-h-[250px] lg:min-h-[320px]'>
-            <Image 
-              src='/newsletter.png' 
-              alt='Happy people celebrating' 
-              className='w-full h-full object-cover'
-              width={320}
-              height={190}
-              
-            />
+         <video 
+  src="/video3.mp4" 
+  className="w-full h-full object-cover rounded-2xl" 
+  width={320} 
+  height={190} 
+  autoPlay 
+  loop 
+  muted 
+  playsInline
+/>
             <div className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2'>
-              <div className='bg-purple-600 rounded-full w-20 h-20 flex items-center justify-center shadow-lg'>
-                <svg className='w-10 h-10 text-white' fill='currentColor' viewBox='0 0 20 20'>
-                  <path d='M2 6a2 2 0 012-2h6a2 2 0 012 2v8a2 2 0 01-2 2H4a2 2 0 01-2-2V6zm12.553 1.106A1 1 0 0014 8v4a1 1 0 00.553.894l2 1A1 1 0 0018 13V7a1 1 0 00-1.447-.894l-2 1z' />
-                </svg>
+              <div className='rounded-full flex items-center justify-center'>
+                   <Image
+                     src="/workshopplay.gif"
+                     alt="WorkshopPlay"
+                     className="w-full h-[139px] rounded-[30px]"
+                     width={139}
+                     height={139}
+                   />
               </div>
             </div>
           </div>

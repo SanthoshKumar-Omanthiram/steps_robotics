@@ -51,16 +51,7 @@ export default function Sidebar({ collapsed, setCollapsed }) {
   const menuItems = [
     { href: "/admin/dashboard", label: "Dashboard", icon: "/dashboard.svg" },
     { href: "/admin/add-users", label: "Users", icon: "/user.svg" },
-    {
-      href: "/admin/dashboard/courses",
-      label: "LMS",
-      icon: "/lms.svg",
-      children: [
-        { href: "/admin/dashboard/courses/overview", label: "Overview" },
-        { href: "/admin/dashboard/courses/modules", label: "Modules" },
-        { href: "/admin/dashboard/courses/quizzes", label: "Quizzes" },
-      ],
-    },
+    { href: "/admin/dashboard/courses", label: "Courses", icon: "/lms.svg" },
     {
       href: "/admin/tasks",
       label: "Classroom & Timetable",
@@ -68,7 +59,7 @@ export default function Sidebar({ collapsed, setCollapsed }) {
     },
     { href: "/admin/dashboard/programs", label: "Programs", icon: "/exam.svg" },
     { href: "/admin/dashboard/content", label: "Content", icon: "/exam.svg" },
-    { href: "/admin/analytics", label: "Attendance", icon: "/attendance.svg" },
+    { href: "/admin/dashboard/feedbackcourse", label: "Course Feedback", icon: "/attendance.svg" },
     { href: "/admin/reports", label: "Exams & Results", icon: "/exam.svg" },
     { href: "/admin/dashboard/roles", label: "Roles", icon: "/user.svg" },
     { href: "/admin/dashboard/contacts", label: "Contact Info", icon: "/user.svg" },

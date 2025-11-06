@@ -3,11 +3,11 @@ import { MapPin, Phone, Mail } from 'lucide-react';
 
 export default function ContactWay() {
   return (
-    <div className='contact-way container mx-auto'>
+    <div className='contact-way container-custom'>
       <div className='contact-better-main mt-[45px]'>
         <p className="contact-way-title text-3xl font-bold">
           We are here to help you
-          <span className="stem-gold pl-2">know us in a better way</span>
+          <span className="stem-gold contact-way-title pl-2">know us in a better way</span>
         </p>
         <p className="contact-model-title mt-3 text-gray-700 max-w-4xl">
           Whether you're a parent exploring courses for your child, a student eager to learn, a professional interested in our franchise opportunities, or someone looking to join our team of trainers, we'd love to hear from you. Our team is always approachable and committed to responding promptly.
@@ -15,10 +15,10 @@ export default function ContactWay() {
       </div>
 
 
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-10">
-      <div className="bg-yellow-50 border-1 shadow border-yellow-200 pt-[5px] pr-[10px] pb-[10px] pl-[10px] rounded-3xl flex flex-row items-start">
-        <div className="w-1/3 flex justify-center mt-[21px]">
-          <div className="bg-gradient-to-b from-yellow-100 to-yellow-400 w-16 h-16 rounded-2xl flex items-center justify-center">
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-[25px]">
+      <div className="bg-gradient-to-r from-[#FFFFFF] to-[#FFFAEA] p-[18px_10px_13px_10px] border-1 shadow-[0_0_19.3px_0_rgba(0,0,0,0.11)] border-yellow-200 rounded-3xl flex flex-row items-start">
+        <div className="w-1/3 mr-[-20px] ml-[5px] flex  mt-[21px]">
+          <div className="bg-[#FFD02B] shadow-[inset_3px_1px_3.9px_0_rgba(0,0,0,0.37)] w-[60px] h-[57px] rounded-2xl flex items-center justify-center">
             <MapPin className="w-8 h-8 text-gray-800" />
           </div>
         </div>
@@ -32,9 +32,9 @@ export default function ContactWay() {
         </div>
       </div>
 
-      <div className="bg-yellow-50 border-1 shadow border-yellow-200 rounded-3xl pt-[5px] pr-[10px] pb-[10px] pl-[10px] flex flex-row items-start">
-        <div className="w-1/3 flex justify-center mt-[21px]">
-          <div className="bg-gradient-to-b from-yellow-100 to-yellow-400 w-16 h-16 rounded-2xl flex items-center justify-center">
+      <div className="bg-gradient-to-r from-[#FFFFFF] to-[#FFFAEA] p-[18px_10px_13px_10px] border-1 shadow-[0_0_19.3px_0_rgba(0,0,0,0.11)] border-yellow-200 rounded-3xl flex flex-row items-start">
+        <div className="w-1/3 mr-[-20px] ml-[5px] flex  mt-[21px]">
+          <div className="bg-[#FFD02B] shadow-[inset_3px_1px_3.9px_0_rgba(0,0,0,0.37)] w-[60px] h-[57px] rounded-2xl flex items-center justify-center">
             <Phone className="w-8 h-8 text-gray-800" />
           </div>
         </div>
@@ -49,10 +49,10 @@ export default function ContactWay() {
         </div>
       </div>
 
-      <div className="bg-yellow-50 border-1 shadow border-yellow-200 rounded-3xl pt-[5px] pr-[10px] pb-[10px] pl-[10px] flex flex-row items-start">
-        <div className="w-1/3 flex justify-center mt-[21px]">
-          <div className="bg-gradient-to-b from-yellow-100 to-yellow-400 w-16 h-16 rounded-2xl flex items-center justify-center">
-            <Mail className="w-8 h-8 text-gray-800" />
+      <div className="bg-gradient-to-r from-[#FFFFFF] to-[#FFFAEA] p-[18px_10px_13px_10px] border-1 shadow-[0_0_19.3px_0_rgba(0,0,0,0.11)] border-yellow-200 rounded-3xl  flex flex-row items-start">
+        <div className="w-1/3 mr-[-20px] ml-[5px] flex mt-[21px]">
+          <div className="bg-[#FFD02B] shadow-[inset_3px_1px_3.9px_0_rgba(0,0,0,0.37)] w-[60px] h-[57px] rounded-2xl flex items-center justify-center">
+            <Mail className="w-8 h-8 text-gray-700" />
           </div>
         </div>
 

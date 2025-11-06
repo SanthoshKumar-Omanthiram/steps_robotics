@@ -7,6 +7,10 @@ import Image from "next/image";
 
 export default function StemList() {
   const [courses, setCourses] = useState([]);
+  const [filteredCourses, setFilteredCourses] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [activeFilter, setActiveFilter] = useState("All");
+  const itemsPerPage = 4;
 
   useEffect(() => {
     fetchCourses();
@@ -17,53 +21,88 @@ export default function StemList() {
       const res = await axios.get("/api/courses");
       const data = Array.isArray(res.data) ? res.data : [];
       setCourses(data);
+      setFilteredCourses(data);
     } catch (err) {
       console.error("Failed to fetch courses:", err);
     }
   };
 
-  const borderColors = [
-    "border-purple-300",
-    "border-purple-400",
-    "border-teal-400",
-    "border-teal-400"
-  ];
+  const handleFilter = (grade) => {
+    setActiveFilter(grade);
+    setCurrentPage(1);
+    if (grade === "All") {
+      setFilteredCourses(courses);
+    } else {
+      const filtered = courses.filter(
+        (course) => course.gradeRange && course.gradeRange.includes(grade)
+      );
+      setFilteredCourses(filtered);
+    }
+  };
 
   const truncateDescription = (text = "", limit = 170) => {
     if (text.length <= limit) return text;
     return text.slice(0, limit) + "...";
   };
 
+  // Pagination logic
+  const totalPages = Math.ceil(filteredCourses.length / itemsPerPage);
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const currentCourses = filteredCourses.slice(startIndex, startIndex + itemsPerPage);
+
+  const handlePrev = () => currentPage > 1 && setCurrentPage((p) => p - 1);
+  const handleNext = () => currentPage < totalPages && setCurrentPage((p) => p + 1);
+
   return (
-    <section className="py-10 bg-white">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-         <div className="stem-education-main mb-8 mt-5 text-left">
+    <section className="py-10 main-courses bg-white">
+      <div className="container-custom px-4 sm:px-6 lg:px-8">
+        <div className="stem-education-main mb-8 mt-5 text-left">
           <p className="stem-education-title text-3xl font-bold">
-            We Are <span className="stem-education-title stem-gold">Much Experience</span> in
+            We Are <span className="stem-education-title stem-gold">Much Experience</span> to
             Learning <span className="stem-education-title stem-gold">STEM Education</span>
           </p>
           <p className="course-model-title mt-3">
-            The course gives students an excellent platform to create and
-            program their stories, interactive games, music, and animation.
-            Students can showcase their projects in their offline community.
+            STEM robotics sessions that teach students to think, build, and innovate through practical learning.
           </p>
         </div>
+
+        <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-5 mb-10">
+          <div className="bg-[#f6f6f6] rounded-full">
+          {["All", "Grade 3–5", "Grade 6–8", "Grade 9–12"].map((grade) => (
+            <button
+              key={grade}
+              onClick={() => handleFilter(grade)}
+              className={`px-[57px] filter-course-btn py-[9px] rounded-full text-base font-medium transition-all duration-300
+                ${
+                  activeFilter === grade
+                    ? "bg-[#FFD400] rounded-full text-black shadow-md scale-105"
+                    : "bg-[#f6f6f6] text-gray-700 hover:bg-gray-100"
+                }`}
+            >
+              {grade}
+            </button>
+          ))}
+          </div>
+        </div>
+
         <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
-          {courses.map((course, idx) => (
+          {currentCourses.map((course, idx) => (
             <div
               key={idx}
-              className={`flex flex-col md:flex-row bg-white rounded-3xl overflow-hidden border-4 border-dashed ${borderColors[idx % borderColors.length]} transition-all duration-300 hover:shadow-xl`}
-            >
-              <div className="relative flex w-full md:w-1/2 h-60 md:h-auto">
-                <div className="bg-black w-16 md:w-[80px] flex flex-col items-center justify-between py-6 relative z-10">
+              className={`flex flex-col md:flex-row bg-white rounded-xl overflow-hidden border-stem-list transition-all duration-300 hover:shadow-xl 
+              h-auto sm:h-[300px]`}
+            >              <div className="group relative flex w-full md:w-1/2 h-60 md:h-auto">
+                <div className="relative bg-black w-16 md:w-[80px] flex flex-col items-center justify-between py-6 z-10">
+                  <svg className="top-triangle" width="30" height="35" viewBox="0 0 30 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      className="fill-black group-hover:fill-[#000] transition-all duration-300 group-hover:drop-shadow-[0_0_0px_#000]"
+                      d="M14.5833 -3.59241e-07L0 17.206L14.5833 34.412L29.1665 17.206L14.5833 -3.59241e-07Z"
+                      fill="black"
+                    />
+                  </svg>
+
                   <div className="w-10 h-10 rounded-lg flex items-center justify-center">
-                    <svg
-                      width="33"
-                      height="33"
-                      viewBox="0 0 33 33"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
+                    <svg width="33" height="33" viewBox="0 0 33 33" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path
                         d="M24.4445 0.847168H5.78013C3.12504 0.847168 0.972656 2.99819 0.972656 5.65162V24.3042C0.972656 26.9576 3.12504 29.1086 5.78013 29.1086H24.4445C27.0996 29.1086 29.2519 26.9576 29.2519 24.3042V5.65162C29.2519 2.99819 27.0996 0.847168 24.4445 0.847168Z"
                         fill="#EFBC08"
@@ -78,51 +117,46 @@ export default function StemList() {
                       />
                     </svg>
                   </div>
+
                   <div className="flex-1 flex items-center justify-center">
-                        <Image
-                    src={
-                      course.image ||
-                      "/images/course-placeholder.jpg"
-                    }
-                    width={350}
-                    height={350}
-                    alt={course.title}
-                    className="w-[25px] h-auto"
-                  />
+                    <Image
+                      src={course.image || "/images/course-placeholder.jpg"}
+                      width={350}
+                      height={350}
+                      alt={course.title}
+                      className="w-[25px] h-auto"
+                    />
                   </div>
                 </div>
 
-                <div className="relative w-full h-full">
+                <div className="relative w-full h-full right-triangle">
                   <Image
-                    src={
-                      course.heroicimage ||
-                      "/images/course-placeholder.jpg"
-                    }
+                    src={course.heroicimage || "/images/course-placeholder.jpg"}
                     width={350}
                     height={350}
                     alt={course.title}
-                    className="w-full h-full object-cover rounded-tr-3xl md:rounded-tr-none md:rounded-l-3xl"
+                    className="w-full h-full object-cover"
                   />
                 </div>
               </div>
 
               <div className="py-4 px-4 md:py-6 md:px-6 flex flex-col justify-between w-full md:w-1/2">
                 <div>
-<h3 className="stem-list-title mb-1">
-  {(() => {
-    const title = course.title || "VEX 123 Robotics Course Advanced";
-    const words = title.split(" ");
-    const firstTwo = words.slice(0, 2).join(" ");
-    const remaining = words.slice(2).join(" ");
-    return (
-      <>
-        {firstTwo}{" "}
-        {remaining && <span className="text-yellow-400">{remaining}</span>}
-      </>
-    );
-  })()}
-</h3>
-                  <p className="stem-list-subtitle mb-3">
+                  <h3 className="stem-list-title mb-1">
+                    {(() => {
+                      const title = course.title || "VEX 123 Robotics Course Advanced";
+                      const words = title.split(" ");
+                      const firstTwo = words.slice(0, 2).join(" ");
+                      const remaining = words.slice(2).join(" ");
+                      return (
+                        <>
+                          {firstTwo}{" "}
+                          {remaining && <span className="stem-list-title !text-yellow-400">{remaining}</span>}
+                        </>
+                      );
+                    })()}
+                  </h3>
+                  <p className="stem-list-subtitle relative inline-block after:content-[''] after:block after:w-12 after:h-[2px] after:bg-[#FDB618] after:mt-1 mb-3">
                     {course.subtitle || "For grade 1 and 2"}
                   </p>
                   <p
@@ -131,20 +165,16 @@ export default function StemList() {
                   >
                     {truncateDescription(
                       course.description ||
-                        "Give your child a head start in technology! With the VEX 123 kit, kids learn coding, problem-solving, and creativity through fun, hands-on play.",
-                      170
+                        "Introduces children aged 5–7 to robotics through fun, hands-on activities, sparking curiosity, creativity, and a love for STEM",
+                      150
                     )}
-                  </p>
-                  <p className="stem-list-hint">
-                    {course.features ||
-                      "Touch coding, coder cards, and VEXcode platform"}
                   </p>
                 </div>
 
-                <div className="mt-4 text-center md:text-left">
+                <div className="text-center md:text-left">
                   <Link
                     href={`/courses/${course.slug || course.id || "#"}`}
-                    className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-[#FF8533] to-[#FFB84D] hover:from-[#FFB84D] hover:to-[#FF8533] text-white font-bold pl-4 pr-1 py-1 rounded-full shadow-lg transition-all hover:scale-105"
+                    className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-[#FF6F28] to-[#FFCF20] hover:from-[#FFB84D] hover:to-[#FF8533] text-white text-base font-medium pl-4 pr-1 py-1 rounded-full shadow-lg transition-all hover:scale-105"
                   >
                     View More
                     <div className="bg-white rounded-full p-2 flex items-center justify-center shadow">
@@ -156,6 +186,28 @@ export default function StemList() {
             </div>
           ))}
         </div>
+
+        {/* ✅ Pagination */}
+        {totalPages > 1 && (
+          <div className="flex items-center justify-center gap-3 mt-10">
+            {Array.from({ length: totalPages }, (_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentPage(index + 1)}
+                className={`transition-all duration-300 ${
+                  index + 1 === currentPage
+                    ? "w-7 h-7 rounded-full border border-dashed border-[#000000] flex items-center justify-center"
+                    : "w-3 h-3 rounded-full bg-gray-800"
+                }`}
+                aria-label={`Go to slide ${index + 1}`}
+              >
+                {index + 1 === currentPage && (
+                  <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
+                )}
+              </button>
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );

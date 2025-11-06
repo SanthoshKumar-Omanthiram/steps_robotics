@@ -4,7 +4,7 @@ import Image from 'next/image';
 export default function CourseWorks() {
   return (
     <div className="course-works py-16">
-      <div className="container mx-auto lg:px-8">
+      <div className="container-custom lg:px-8">
         <div className="mb-16 text-center sm:text-left ">
           <h2 className="course-work-h2">
             How It <span className="stem-gold">Works</span>

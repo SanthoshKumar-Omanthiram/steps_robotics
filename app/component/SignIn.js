@@ -181,11 +181,11 @@ export default function SignIn() {
       <div className="flex justify-center">
         <button
           type="submit"
-          className="group bg-gradient-to-r from-orange-500 to-yellow-400 text-white font-bold px-5 py-1 rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 flex items-center gap-3"
+          className="group bg-gradient-to-r from-orange-500 to-yellow-400 text-white font-bold px-[6px] py-[5px] pl-[19px] text-[18px] font-[poppins] rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 flex items-center gap-3"
         >
           Sign In
           <div className="bg-white font-bold rounded-full p-2 group-hover:translate-x-1 transition-transform">
-            <ArrowRight className="w-5 h-5 text-orange-500" />
+            <ArrowRight className="w-3 h-3 text-orange-500" />
           </div>
         </button>
       </div>

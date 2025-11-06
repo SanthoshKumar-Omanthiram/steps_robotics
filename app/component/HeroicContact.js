@@ -12,7 +12,7 @@ export default function HeroicContact() {
 
   return (
     <div className="contacts p-6">
-      <div className="container mx-auto space-y-8">
+      <div className="container-custom space-y-8">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 transition-all duration-300">
           <div className="w-full h-full">
             {course.heroicimage ? (
@@ -32,7 +32,7 @@ export default function HeroicContact() {
 
           <div className="text-left">
             <h2 className="heroic-title text-3xl font-semibold">
-              {course.heroictitle || 'Untitled'}
+              Future-Ready Kids <br></br> Started Here!
             </h2>
           </div>
         </div>

@@ -261,15 +261,13 @@ line-height: 150%; /* 21px */
   width: 100%;
 }
 
+/* 🔹 Make second line align right */
 .upcoming-course-venue {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start; /* Default left alignment */
+    text-align: left !important; /* only first line aligns left */
+  display: block;
 }
 
-.upcoming-course-venue::first-line {
-  align-self: flex-end; /* Right align first line */
-}
+
 .course-border{
   border-bottom: 1px dashed #969696;
 }
@@ -619,12 +617,30 @@ line-height: 150%; /* 21px */
 }
 
 .contacts {
-  background-image: url('/banner.jpg');
+  background-image: url('/contact_banner_bg.jpg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   height: 280px !important;
   width: 100%;
+}
+.getin-touch {
+  background-image: url('/contact_bg_bottom.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 40px 0 80px 0;
+  background-size: cover;
+  height: auto !important;
+  width: 100%;
+}
+.contact-way{
+    background-image: url('/contact_bg_top.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: auto !important;
+  width: 100%;
+  padding-top: 1px;
 }
 
 .contact-heroic-image {
@@ -636,7 +652,7 @@ line-height: 150%; /* 21px */
 .programs-heroic-image {
   object-fit: contain;
   width: 100% !important;
-  height: 283px !important;
+  height: 311px !important;
 }
 
 .contact-heroic-image {
@@ -729,7 +745,7 @@ line-height: 150%; /* 21px */
   font-family: var(--font-poppins), sans-serif;
   font-size: 12px;
   font-style: normal;
-  text-align: right;
+  text-align: center;
   font-weight: 400;
   line-height: 120%;
   /* 16.8px */
@@ -795,9 +811,6 @@ line-height: 150%; /* 21px */
   color: #000 !important;
 }
 
-.getin-touch {
-  margin: 40px 0;
-}
 
 .maps {
   margin: 40px 0 0 0;
@@ -1596,11 +1609,29 @@ line-height: 150%; /* 30px */
 }
 .enquiry-model-box{
   border-radius: 36px;
-border: 1px solid #FFF;
 margin: 0 10px;
   padding: 20px 0 5px 0px;
 background: linear-gradient(0deg, rgba(255, 255, 255, 0.00) 0%, rgba(255, 255, 255, 0.47) 100%);
 box-shadow: 0 -4px 4.8px 0 rgba(0, 0, 0, 0.13);
+}
+.enquiry-model-box::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 36px;
+  padding: 1px; /* border thickness */
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 1) 0%,     /* Top 100% */
+    rgba(255, 255, 255, 0.5) 50%,  /* Left & right ~50% */
+    rgba(255, 255, 255, 0) 100%    /* Bottom 0% */
+  );
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
 }
 .enquiry-contact-box{
   border-radius: 15px;

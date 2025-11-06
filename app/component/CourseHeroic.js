@@ -38,7 +38,7 @@ export default function HeroicCourse() {
 
   return (
     <div className="course-heroic p-6">
-      <div className="container mx-auto space-y-8">
+      <div className="container-custom space-y-8">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 transition-all duration-300">
           <div className="w-full h-full">
             {course.heroicimage ? (
@@ -57,8 +57,8 @@ export default function HeroicCourse() {
           </div>
           <div className=" text-left ">
             <h2 className="course-heroic-title text-3xl font-semibold">
-              {course.heroictitle || 'Untitled'}
-            </h2>
+ Future-Ready Kids <br></br> Start Here!
+             </h2>
           </div>
         </div>
       </div>

@@ -1,6 +1,6 @@
 'use client';
 import React, { useState } from 'react';
-import { Mail, Phone, ArrowRight } from 'lucide-react';
+import { Mail, Phone, ArrowRight, CheckCircle } from 'lucide-react';
 import Image from 'next/image';
 import axios from "axios";
 
@@ -14,6 +14,8 @@ export default function GetInTouch() {
   });
 
   const [errors, setErrors] = useState({});
+  const [modalVisible, setModalVisible] = useState(false);
+  const [modalMessage, setModalMessage] = useState("");
 
   const handleChange = (e) => {
     setFormData({
@@ -45,20 +47,22 @@ export default function GetInTouch() {
 
     try {
       const res = await axios.post("/api/contact", formData);
-      alert(res.data.message);
+      setModalMessage(res.data.message || "Your message has been sent successfully!");
+      setModalVisible(true);
       setFormData({ firstName: "", lastName: "", email: "", phone: "", message: "" });
       setErrors({});
     } catch (error) {
       console.error("Submit error:", error);
-      alert("Something went wrong!");
+      setModalMessage("Something went wrong! Please try again later.");
+      setModalVisible(true);
     }
   };
 
   return (
     <div className="min-h-screen getin-touch p-4 sm:p-6 lg:p-8">
-      <div className="container mx-auto">
+      <div className="container-custom">
         <div className="bg-white rounded-3xl shadow-2xl overflow-hidden">
-          <div className="grid lg:grid-cols-2 gap-0">
+          <div className="grid lg:grid-cols-[40%_60%] gap-0">
             <div className="get-in-touch-image">
               <div className="relative w-full max-w-md">
                 <Image 
@@ -71,7 +75,7 @@ export default function GetInTouch() {
                 />
               </div>
             </div>
-            <div className="p-5 get-in-touch-form">
+            <div className="pt-[35px] pb-[18px] px-[45px] get-in-touch-form">
               <h2 className="text-4xl get-in-touch-title font-bold mb-4">
                 Get In Touch
               </h2>
@@ -204,6 +208,21 @@ export default function GetInTouch() {
           </div>
         </div>
       </div>
+      {modalVisible && (
+        <div className="fixed inset-0 flex justify-center items-center z-50 px-4">
+          <div className="bg-white rounded-2xl shadow-2xl p-6 max-w-sm w-full text-center relative">
+            <CheckCircle className="mx-auto w-12 h-12 text-green-500 mb-4" />
+            <h3 className="text-xl font-semibold mb-2">Thank You!</h3>
+            <p className="text-gray-600 mb-4">{modalMessage}</p>
+            <button
+              onClick={() => setModalVisible(false)}
+              className="bg-gradient-to-r from-orange-500 to-yellow-400 text-white px-5 py-2 rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

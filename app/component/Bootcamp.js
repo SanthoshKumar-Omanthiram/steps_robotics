@@ -1,20 +1,37 @@
 'use client';
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
-import { useParams } from "next/navigation";
+import { useParams,usePathname } from "next/navigation";
 import axios from 'axios';
 import { Clock, Calendar, Share2, Facebook, Twitter, Linkedin } from 'lucide-react';
+import UpcomingCourses from './UpcomingCourses';
 
-export default function Bootcamp() {
+export default function Bootcamp({title}) {
   const [activeTab, setActiveTab] = useState('course');
   const [modules, setModules] = useState([]);
   const [lessons, setLessons] = useState({});
   const [openModule, setOpenModule] = useState(null); 
   const params = useParams();
   const id = params.id;
+ const pathname = usePathname();
+  const url = typeof window !== "undefined" ? `${window.location.origin}${pathname}` : "";
 
+  const handleCopyLink = () => {
+    navigator.clipboard.writeText(url);
+    alert('Link copied to clipboard!');
+  };
+
+  const openPopup = (shareUrl) => {
+    window.open(
+      shareUrl,
+      'ShareWindow',
+      'height=500,width=600,resizable=yes,scrollbars=yes'
+    );
+  };
   useEffect(() => {
     fetchModules();
+    const width = window.innerWidth;
+console.log("Current width:", width, "px");
   }, []);
 
  const fetchModules = async () => {
@@ -42,10 +59,10 @@ export default function Bootcamp() {
 
 
   return (
-    <div className="min-h-screen py-8 px-4">
-      <div className="container mx-auto">
+    <div className="min-h-screen bootcamp-section pt-8 pb-5 px-4">
+      <div className="container-custom">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          <div className="lg:col-span-2 space-y-6 -mt-[37px]">
+          <div className="lg:col-span-2 space-y-6 -mt-[37px]  sm:-mt-[150px] md:-mt-[155px] lg:-mt-[37px] mt-bootcamp">
             <div className="w-full rounded-xl px-[30px] pt-[30px] bg-[#FFFCE7]">
               <div className="mb-5">
                 <h1 className="bootcamp-title mb-2">
@@ -125,7 +142,7 @@ export default function Bootcamp() {
                     onClick={() => setActiveTab(tab)}
                     className={`flex-1 py-4 px-6 font-semibold transition-colors ${
                       activeTab === tab
-                        ? 'text-orange-500 border-b-4 border-orange-500'
+                        ? 'text-[#FFA91E] border-b-6 border-[#FFA91E]'
                         : 'text-gray-600 hover:text-gray-900'
                     }`}
                   >
@@ -190,8 +207,8 @@ export default function Bootcamp() {
             </div>
           </div>
 
-           <div className="space-y-6 -mt-[150px] class-instructor-popup">
-            <div className="rounded-lg p-6 shadow-sm">
+           <div className="space-y-6 -mt-[180px] class-instructor-popup">
+            <div className="rounded-lg p-6 shadow-xl">
               <div className="text-center mb-4">
                 <span className="px-3 py-1 rounded-full class-instructor-text">
                   Class <span className='class-instructor-gold'>Instructor</span>
@@ -230,87 +247,61 @@ export default function Bootcamp() {
                 </p>
               </div>
 
-              <div className="pt-1 border-t border-gray-100">
+              <div className="pt-1">
   <div className="flex social-icons-course items-center justify-between text-gray-600">
     <span className="share-icon">Share:</span>
     <div className="flex items-center gap-2">
-      <Share2
-        size={15}
-        className="hover:text-yellow-500 social-icons-size cursor-pointer transition-colors"
-      />
-      <Facebook
-        size={15}
-        className="hover:text-yellow-500 cursor-pointer transition-colors"
-      />
-      <Twitter
-        size={15}
-        className="hover:text-yellow-500 cursor-pointer transition-colors"
-      />
-      <Linkedin
-        size={15}
-        className="hover:text-yellow-500 cursor-pointer transition-colors"
-      />
-    </div>
+     {/* Copy Link */}
+    <Image
+       src="/icons/fb-icon.png"
+       alt="Share on Facebook"
+       width={18}
+       height={18}
+       title="Share on Facebook"
+       onClick={() =>
+         openPopup(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`)
+       }
+       className="cursor-pointer transition-all duration-200 inline-block hover:brightness-125 hover:scale-110"
+     />
+   
+     <Image
+       src="/icons/twitter-icon.png"
+       alt="Share on Twitter"
+       width={18}
+       height={18}
+       title="Share on Facebook"
+       onClick={() =>
+         openPopup(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`)
+       }
+       className="cursor-pointer transition-all duration-200 inline-block hover:brightness-125 hover:scale-110"
+     />
+      <Image
+       src="/icons/pinterest-line.png"
+       alt="Share on Twitter"
+       width={18}
+       height={18}
+       title="Share on Facebook"
+       onClick={() =>
+         openPopup(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`)
+       }
+       className="cursor-pointer transition-all duration-200 inline-block hover:brightness-125 hover:scale-110"
+     />
+      <Image
+       src="/icons/linkedin-icon.png"
+       alt="Share on Twitter"
+       width={18}
+       height={18}
+       title="Share on Facebook"
+       onClick={() =>
+         openPopup(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`)
+       }
+       className="cursor-pointer transition-all duration-200 inline-block hover:brightness-125 hover:scale-110"
+     />
+       </div>
   </div>
-   <div className="bg-white rounded-lg">
-<hr className="course-hr-border" />
-              <h3 className="font-bold text-gray-900 mb-2">Students List</h3>
-              <p className="text-sm text-gray-600 mb-4">There are 3 students who are learning in this course.</p>
-
-              <div className="space-y-4">
-                {[
-                  { name: 'Albert', progress: 30.77 },
-                  { name: 'Preethi', progress: 60.34 },
-                  { name: 'Rajkumar', progress: 78.12 }
-                ].map((student, index) => (
-                  <div key={index} className="flex items-center gap-3">
-                    <div className="w-[28%] h-auto rounded-full flex-shrink-0">
-                       <Image
-                                        src='/kids.png'
-                                        alt='instructor'
-                                        width={600}
-                                        height={484}
-                                        className="w-full rounded-lg"
-                                      /> 
-                    </div>
-                    <div className="flex-1">
-                      <div className="font-semibold text-gray-900 text-sm mb-1">{student.name}</div>
-                      <div className="text-xs text-gray-600 mb-1">Progress {student.progress}%</div>
-                      <div className="w-full bg-gray-200 rounded-full h-2">
-                        <div
-                          className="bg-gradient-to-r from-yellow-400 to-orange-400 h-2 rounded-full"
-                          style={{ width: `${student.progress}%` }}
-                        ></div>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
+  <UpcomingCourses />
 </div>
             </div>           
-            <div className="bg-gradient-to-br from-yellow-50 feature-course-review to-orange-50 rounded-lg p-6 border-2 border-yellow-300">
-              <h3 className="text-center feature-review-title mb-3">Featured Review</h3>
-              <p className="feature-review-description text-center mb-4 leading-relaxed">
-                This course covers a wide range of topics, from the basics of design principles to advanced techniques in creating design software. The structured method make it easy to follow along and gradually build your skills.
-              </p>
-              <div className="flex justify-center gap-1">
-                {[1, 2, 3, 4].map((star) => (
-                  <span key={star} className="text-yellow-400 text-2xl">★</span>
-                ))}
-                <span className="text-gray-300 text-2xl">★</span>
-              </div>
-
-              <div className="justify-center gap-2">
-                <Image
-                                        src='/rocket.png'
-                                        alt='Rocket'
-                                        width={600}
-                                        height={120}
-                                        className="w-full h-[140px] rounded-lg"
-                                      /> 
-              </div>
-            </div>
           </div>
 
         </div>

@@ -181,7 +181,6 @@ export default function Contacts() {
           <table className="min-w-full border border-gray-200 rounded-lg shadow-sm overflow-hidden">
             <thead className="bg-gray-100 text-gray-700">
               <tr>
-                <th className="py-3 px-4 text-left text-sm font-semibold border-b">ID</th>
                 <th className="py-3 px-4 text-left text-sm font-semibold border-b">First Name</th>
                 <th className="py-3 px-4 text-left text-sm font-semibold border-b">Last Name</th>
                 <th className="py-3 px-4 text-left text-sm font-semibold border-b">Email</th>
@@ -196,7 +195,6 @@ export default function Contacts() {
                   key={contact.id}
                   className={`${index % 2 === 0 ? "bg-white" : "bg-gray-50"} hover:bg-blue-50 transition-colors`}
                 >
-                  <td className="py-3 px-4 border-b">{contact.id}</td>
                   <td className="py-3 px-4 border-b">{contact.firstname || contact.firstName}</td>
                   <td className="py-3 px-4 border-b">{contact.lastname || contact.lastName}</td>
                   <td className="py-3 px-4 border-b">{contact.email}</td>

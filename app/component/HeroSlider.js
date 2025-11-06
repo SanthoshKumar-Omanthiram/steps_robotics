@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import BookTrial from "./BookTrail";
+import Enquiry from "./Enquiry";
 
 const slides = [
   {
@@ -25,7 +26,11 @@ const slides = [
 ];
 
 const infoCards = [
-  { image: "/banner_icons/student.png", title: "For Students", subtitle: "Age 3-17" },
+  {
+    image: "/banner_icons/student.png",
+    title: "For Students",
+    subtitle: "Age 3-17",
+  },
   { image: "/banner_icons/platform.png", title: "Platform", subtitle: "VEX" },
   { image: "/banner_icons/courses.png", title: "Courses", subtitle: "12+" },
   { image: "/banner_icons/tools.png", title: "Tools & Kit", subtitle: "25+" },
@@ -148,13 +153,25 @@ export default function HeroSlider() {
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 bg-white rounded-t-3xl shadow-lg py-6 px-4">
             {infoCards.map((card, index) => (
-              <div key={index} className="flex items-center justify-center gap-4">
+              <div
+                key={index}
+                className="flex items-center justify-center gap-4"
+              >
                 <div className="w-12 h-12 relative">
-                  <Image src={card.image} alt={card.title} fill className="object-contain" />
+                  <Image
+                    src={card.image}
+                    alt={card.title}
+                    fill
+                    className="object-contain"
+                  />
                 </div>
                 <div className="text-left">
-                  <div className="text-gray-800 font-medium text-sm">{card.title}</div>
-                  <div className="text-xl font-bold text-gray-900">{card.subtitle}</div>
+                  <div className="text-gray-800 font-medium text-sm">
+                    {card.title}
+                  </div>
+                  <div className="text-xl font-bold text-gray-900">
+                    {card.subtitle}
+                  </div>
                 </div>
               </div>
             ))}
@@ -162,20 +179,13 @@ export default function HeroSlider() {
         </div>
       </div>
 
-{showBookTrial && (
-<div className="fixed inset-0 z-[9999] m-[30px] overflow-y-auto animate-fadeIn">    <button
-      onClick={closeModal}
-      className="absolute top-[60px] right-[113px] z-[10000] text-gray-300 text-4xl hover:text-gray-500"
-    >
-      &times;
-    </button>
-
+    {showBookTrial && (
+  <div className="fixed inset-0 z-[9999] m-[30px] animate-fadeIn">
     <div className="min-h-screen flex items-center justify-center p-0">
-      <BookTrial />
+      <Enquiry onClose={closeModal} />  {/* pass the handler here */}
     </div>
   </div>
 )}
-
     </section>
   );
 }

@@ -1,5 +1,8 @@
 import React from 'react';
 import { Check, X } from 'lucide-react';
+import Image from 'next/image';
+import { Play, ArrowRight } from "lucide-react";
+
 
 export default function HowDifferent() {
   const stepsFeatures = [
@@ -30,7 +33,7 @@ export default function HowDifferent() {
   ];
 
   return (
-<div className="container mx-auto pt-8 -mt-[45px] how-diffrent-others">
+<div className="container-custom mx-auto pt-8 -mt-[20px] how-diffrent-others">
         <div className="mb-5">
         <h2 className="course-details-black mb-4">
           How are we <span className="course-details-gold w-[60%]">Different from Others?</span>
@@ -40,34 +43,44 @@ export default function HowDifferent() {
           Robotics, Coding, Electronics, and STEM concepts — designed to build real-world skills beyond 
           traditional classes.
         </p>
-
-        <div className="grid md:grid-cols-3 gap-6">
-          <div className="rounded-[40px] steps-robotics-points pt-[25px] pr-[25px] pb-[10px] pl-[28px] relative overflow-hidden">
-           <div className='diffrent-section'  style={{
-    background: "linear-gradient(135deg, #f6f6f6, #f2f2f2)",
+        <div className="grid md:grid-cols-3 gap-2">
+         <div className="rounded-[40px] steps-robotics-points -ml-[0px] sm:-ml-[20px] pt-[17px]  pb-[10px] relative overflow-hidden">
+  <div className="absolute top-[45px] ml-[22px] -mr-[21px] -mt-[7px] right-[65px] text-7xl  text-black opacity-20 z-10 pointer-events-none steps-robotics-robot"> 
+    <Image 
+                src="/stepsanim.gif" 
+                alt="StepsAnim"
+                className="object-contain"
+                width={50}
+                height={50}
+                priority
+              /></div>
+<div
+  className="diffrent-section !px-[11px] !py-[40px] sm:!px-[12px] sm:!pt-[28px] sm:!pb-[52px] relative flex flex-col justify-start items-start shadow-sm"
+  style={{
+    background: "#fff",
     clipPath: "polygon(0 0, 40% 0, 100% 38%, 100% 100%, 0 100%, 0 0)",
     borderRadius: "16px",
-  }}>
-             <div className="absolute top-6 right-6 text-7xl transform rotate-12">🤖</div>
-            <h3 className="steps-robotics-points-titile mb-8">STEPS<br />Robotics</h3>
-            <div className="space-y-3">
-              {stepsFeatures.map((feature, index) => (
-                <div key={index} className="flex items-start gap-3">
-                  <div className="bg-green-500 rounded-full p-1 mt-0.5 flex-shrink-0">
-                    <Check className="w-4 h-4 text-white" />
-                  </div>
-                  <span className="feature-font leading-relaxed">{feature}</span>
-                </div>
-              ))}
-            </div>
-           </div>
+  }}
+>
+    <h3 className="steps-robotics-points-titile mb-[50px]">STEPS<br />Robotics</h3>
+    <div className="space-y-3">
+      {stepsFeatures.map((feature, index) => (
+        <div key={index} className="flex items-start gap-3">
+          <div className="bg-green-500 rounded-full p-1 mt-0.5 flex-shrink-0">
+            <Check className="w-4 h-4 text-white" />
           </div>
-          <div className="rounded-[40px] steps-robotics-others pt-[25px] pr-[25px] pb-[10px] pl-[28px] relative overflow-hidden">
-                     <div className='diffrent-section shadow-sm'>
+          <span className="feature-font leading-relaxed">{feature}</span>
+        </div>
+      ))}
+    </div>
+  </div>
+</div>
+          <div className="rounded-[40px] steps-robotics-others pt-[17px]  pb-[10px] relative overflow-hidden">
+             <div className="diffrent-section shadow-sm !px-[11px] !py-[40px] sm:!px-[12px] sm:!pt-[28px] sm:!pb-[52px] ">
             <div className="absolute top-4 right-4 bg-pink-500 text-white px-4 py-1 rounded-full text-sm font-bold">
               Robotics
             </div>
-            <h3 className="steps-robotics-points-titile mb-8 text-black">Other<br />Classes</h3>
+            <h3 className="steps-robotics-points-titile mb-[50px] text-black">Other<br />Classes</h3>
             <div className="space-y-3">
               {otherFeatures.map((feature, index) => (
                 <div key={index} className="flex items-start gap-3">
@@ -80,18 +93,54 @@ export default function HowDifferent() {
             </div>
           </div>
           </div>
-          <div className="bg-white rounded-3xl p-6 shadow-[0_-4px_8px_rgba(0,0,0,0.1)] border border-gray-100">
-            <h3 className="text-2xl font-bold mb-6">
-              Course <span className="class-instructor-gold">Gallery</span>
-            </h3>
-            <div className="grid grid-cols-3 gap-3">
-              {galleryImages.map((img, index) => (
-                <div key={index} className="rounded-2xl overflow-hidden bg-gray-100">
-                  <img src={img} alt={`Student ${index + 1}`} className="w-full h-full object-cover" />
-                </div>
-              ))}
-            </div>
-          </div>
+  <div className="relative mt-0 sm:-mt-[180px] ml-0 sm:ml-[15px] feature-course-review rounded-2xl p-6 border-2 border-yellow-300 shadow-md flex flex-col justify-between">
+      <div>
+        <h3 className="upcoming-title sm:text-2xl text-center leading-tight">
+          NEP-Aligned for Future <br />
+          <span className="!text-[#FA9A00] upcoming-title">- Ready Learning</span>
+        </h3>
+
+      <div className="text-center mb-3 mt-3 flex justify-center">
+  <Image 
+    src="/nap-govt.png" 
+    alt="StepsAnim"
+    className="object-contain mx-auto"
+    width={204}
+    height={206}
+    priority
+  />
+</div>
+<p className='nep-govt-subpoints'>STEPS Robotics delivers a hands-on, future-ready learning experience that naturally aligns with the principles of the National Education Policy.</p>
+        <ul className="mt-5 space-y-3 text-[15px] sm:text-[16px] text-gray-700">
+          <li className="flex nep-learn-points items-start">
+            <span className="text-[#EF9E08] mr-2">➜</span>
+Promotes experiential learning through hands-on STEM projects.
+          </li>
+          <li className="flex nep-learn-points items-start">
+            <span className="text-[#EF9E08] mr-2">➜</span>
+Builds creativity, critical thinking, communication, and collaboration skills.
+          </li>
+        </ul>
+      </div>
+
+      <div className="flex flex-col items-center mt-6">
+           <button className="bg-gradient-to-r text-[14px] from-[#FF6F28] to-[#FFCF20] py-1 hover:from-orange-500 hover:to-orange-600 text-white text-xs font-semibold pl-4 pr-1 rounded-full flex items-center gap-1 transition-all">
+                      More Info
+                      <div className="bg-white rounded-full p-2 flex items-center justify-center shadow">
+                        <ArrowRight className="w-3 h-3 text-black" />
+                      </div>
+                    </button>
+        <div className="relative nep-rocket top-[-60px] mb-[-115px] left-[40px] mt-4">
+          <Image
+            src="/rocket.png"
+            alt="Rocket"
+            width={180}
+            height={80}
+            className="mx-auto"
+          />
+        </div>
+      </div>
+    </div>
         </div>
       </div>
     </div>

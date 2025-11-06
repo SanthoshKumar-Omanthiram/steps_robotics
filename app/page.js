@@ -13,6 +13,7 @@ import "swiper/css";
 import WhyChooseSection from './component/WhyChooseSection';
 import { ArrowRight } from 'lucide-react';
 import CodingAdventures from './component/CodingAdventures';
+import Enquiry from './component/Enquiry';
 
 const projects = [
   { image: "/Swetha.png", video: "/about/kid-1.mp4", name: "Aditi" },

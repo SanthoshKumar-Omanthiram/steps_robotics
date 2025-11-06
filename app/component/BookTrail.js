@@ -23,7 +23,7 @@ export default function BookTrial() {
   };
 
   return (
-<div className="min-h-screen  w-full p-4 md:p-8 lg:p-12 flex items-center justify-center">
+<div className="min-h-screen w-full p-4 md:p-8 lg:p-12 flex items-center justify-center">
   <div className="w-full max-w-7xl book-trail-popup rounded-3xl shadow-2xl overflow-hidden">
         <div className="text-center pt-8 mt-6 pb-6 booktrail-shadow mx-[100px] px-4">
           <h1 className="book-trail-title mb-2">

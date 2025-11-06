@@ -52,6 +52,7 @@ export default function Sidebar({ collapsed, setCollapsed }) {
     { href: "/admin/dashboard", label: "Dashboard", icon: "/dashboard.svg" },
     { href: "/admin/add-users", label: "Users", icon: "/user.svg" },
     { href: "/admin/dashboard/courses", label: "Courses", icon: "/lms.svg" },
+    { href: "/admin/dashboard/courses", label: "Courses", icon: "/lms.svg" },
     {
       href: "/admin/tasks",
       label: "Classroom & Timetable",

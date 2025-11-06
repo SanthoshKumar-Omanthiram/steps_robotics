@@ -36,13 +36,9 @@ const Navbar = () => {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  const pathname = usePathname();
-  const [isOpen, setIsOpen] = useState(false);
-  const [openDropdown, setOpenDropdown] = useState("");
 
-  const toggleDropdown = (menu) => {
-    setOpenDropdown(openDropdown === menu ? "" : menu);
-  };
+
+
 
     const pathname = usePathname();
 
@@ -94,29 +90,7 @@ const Navbar = () => {
                     </Link>
 
                     {/* Desktop Navigation */}
-                    {/* <div className="hidden md:flex items-center space-x-8">
-                        <Link href="/" className="nav-link text-gray-700 hover:text-yellow-500">
-                            Home
-                        </Link>
-                        <Link href="/courses/4" className="nav-link text-gray-700 hover:text-yellow-500 flex items-center">
-                            Courses
-                            <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                            </svg>
-                        </Link>
-                        <Link href="/programs" className="nav-link text-gray-700 hover:text-yellow-500 flex items-center">
-                            Programs
-                            <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                            </svg>
-                        </Link>
-                        <Link href="/about" className="nav-link text-gray-700 hover:text-yellow-500">
-                            About us
-                        </Link>
-                        <Link href="/contacts" className="nav-link text-gray-700 hover:text-yellow-500">
-                            Contact
-                        </Link>
-                    </div> */}
+                    
                     <div className="hidden navbar md:flex items-center space-x-8">
                         {menuItems
                             .filter((item) => item.visible) // ✅ show only visible ones

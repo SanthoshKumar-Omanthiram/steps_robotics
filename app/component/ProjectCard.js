@@ -14,17 +14,21 @@ export default function ProjectCard({ image, name, onClick }) {
 
       {/* Play button overlay */}
       <div className="absolute inset-0 flex items-center justify-center bg-opacity-0 group-hover:bg-opacity-30 transition-all duration-300">
-        <button className="bg-white p-4 rounded-full shadow-lg group-hover:opacity-100 transition">
+        <button
+          className="bg-white p-4 rounded-full shadow-lg group-hover:opacity-100 transition"
+          onClick={onClick}
+        >
           <Play className="w-6 h-6 text-gray-800" />
         </button>
       </div>
 
       <div className="text-center pt-3">
-        <p className="text-lg font-semibold text-gray-800">
+        <p className="text-lg">
           STEPS Robotics Project – {name}
         </p>
       </div>
     </div>
+
 
 
 

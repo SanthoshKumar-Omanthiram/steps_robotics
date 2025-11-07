@@ -54,23 +54,23 @@ export default function WhyChooseSection() {
                   height={148}
                   className="w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 object-cover relative z-10"
                 />
-                <div className="absolute bottom-4 -right-18 w-16 h-16 sm:w-20 sm:bottom-1 sm:h-20 bg-teal-400 sm:-right-22"></div>
-                <div className="absolute top-[45] section_1_red -right-35 w-16 h-16 sm:w-20 sm:h-20 sm:-right-43 sm:top-23 bg-red-400 z-0"></div>
+                <div className="absolute why_choose_tale_1_1 bottom-4 -right-18 w-16 h-16 top-46 bg-teal-400"></div>
+                <div className="absolute  why_choose_tale_1_2 top-[115px] section_1_red -right-35 w-16 h-16 bg-red-400 z-0"></div>
               </div>
             </div>
-            <div className="relative flex justify-end right-25 xs:right-30 -top-8 md:justify-center lg:justify-end">
+            <div className="relative flex justify-end right-10  -top-8 md:justify-center lg:justify-end">
               <div className="relative why_choose_image_2">
                 <Image
                   src={image_two}
                   alt="Kids with mentor"
                   width={148}
                   height={148}
-                  className="w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 object-cover shadow-lg relative z-10"
+                  className="w-48 h-48 sm:w-56 sm:h-56 sm:w-56 md:w-64 md:h-64 object-cover shadow-lg relative z-10"
                 />
 
 
-                <div className="flex why_choose_sex_2_tale absolute top-20 -left-57 w-16 h-16 sm:w-40 sm:h-20 sm:-left-62 sm:top-22 md:w-40 sm:h-34 bg-yellow-500  z-0"></div>
-                <div className="absolute top-4 -left-18 w-15 h-15 sm:-left-22 sm:w-20 sm:h-20 sm:top-2 bg-red-400  z-0"></div>
+                <div className="flex why_choose_sex_2_tale absolute top-21 -left-54 w-35 h-30 bg-yellow-500  z-0"></div>
+                <div className="absolute top-4 why_choose_sex_2_tale_1 -left-18 w-16 h-16 bg-red-400  z-0"></div>
               </div>
             </div>
           </div>

@@ -60,8 +60,35 @@ export default function Page() {
     return (
         <div className="container-spacing">
             {/* Banner Hero Section */}
+            <div className="contacts container-spacing p-6">
+                  <div className="container-custom space-y-8">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 transition-all duration-300">
+                      <div className="w-full h-full">
+                        {course.heroicimage ? (
+                          <Image
+                            src={course.heroicimage}
+                            alt={course.heroictitle || 'Course image'}
+                            width={600}
+                            height={484}
+                            className="programs-about-image rounded-lg"
+                          />
+                        ) : (
+                          <div className="w-full h-80 bg-gray-200 flex items-center justify-center text-gray-500">
+                            No Image
+                          </div>
+                        )}
+                      </div>
             
-            <div className="course-heroic sm:h-[525px] mb-[25px] p-6">
+                      <div className="text-left">
+                        <h2 className="heroic-title text-3xl font-semibold">
+                          Future-Ready Kids <br></br> Started Here!
+                        </h2>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            
+            {/* <div className="course-heroic sm:h-[525px] mb-[25px] p-6">
                   <div className="container mx-auto space-y-8">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 transition-all duration-300">
                       <div className="w-118  h-full">
@@ -86,7 +113,7 @@ export default function Page() {
                       </div>
                     </div>
                   </div>
-                </div>
+                </div> */}
 
             {/* About Section */}
             <section className="py-12 bg-white px-4 sm:px-8 lg:px-30">

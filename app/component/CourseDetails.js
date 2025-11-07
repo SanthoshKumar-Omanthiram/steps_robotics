@@ -165,7 +165,7 @@ export default function CourseDetails({ title }) {
       height={250}
       className="rounded-2xl object-cover w-full"
     />
-    <div className="absolute right-[5px] top-[182px] sm:w-24 md:w-28">
+    <div className="absolute right-[5px] top-[155px] sm:w-24 md:w-28">
       <div className="relative">
         <Image
           src="/offers.png"

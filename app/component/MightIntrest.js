@@ -43,7 +43,8 @@ export default function MightInterested() {
   ];
 
   return (
-    <section className="container-custom might-intrest py-12 bg-[#fff]">
+    <section className="might-intrest py-12 bg-[#fff]">
+      <div className="container-custom">
       <h2 className="course-details-black mb-3">
         You might be{" "}
         <span className="course-details-gold">interested in</span>
@@ -112,6 +113,7 @@ export default function MightInterested() {
             </div>
           </div>
         ))}
+      </div>
       </div>
     </section>
   );

@@ -59,7 +59,8 @@ export default function GetInTouch() {
   };
 
   return (
-    <div className="min-h-screen getin-touch p-4 sm:p-6 lg:p-8">
+    <div className='getin-touch'>
+    <div className="min-h-screen p-4 sm:p-6 lg:p-8">
       <div className="container-custom">
         <div className="bg-white rounded-3xl shadow-2xl overflow-hidden">
           <div className="grid lg:grid-cols-[40%_60%] gap-0">
@@ -75,10 +76,9 @@ export default function GetInTouch() {
                 />
               </div>
             </div>
+
             <div className="pt-[35px] pb-[18px] px-[45px] get-in-touch-form">
-              <h2 className="text-4xl get-in-touch-title font-bold mb-4">
-                Get In Touch
-              </h2>
+              <h2 className="text-4xl get-in-touch-title font-bold mb-4">Get In Touch</h2>
               <p className="get-in-touch-subtitle mb-2 leading-relaxed">
                 It is a long established fact that a reader will be distracted by the readable content of a page randomised words which don't look even slightly when looking at its layout.
               </p>
@@ -103,7 +103,10 @@ export default function GetInTouch() {
                     >
                       First Name <span className="text-red-500">*</span>
                     </label>
-                    {errors.firstName && <p className="text-red-500 text-sm mt-1">{errors.firstName}</p>}
+                    {/* Error message spacing ensures icon alignment consistency */}
+                    <p className="text-red-500 text-sm mt-1 min-h-[20px]">
+                      {errors.firstName || ''}
+                    </p>
                   </div>
 
                   <div className="relative mt-6">
@@ -124,51 +127,56 @@ export default function GetInTouch() {
                     >
                       Last Name
                     </label>
+                    <p className="text-transparent text-sm mt-1 min-h-[20px]">.</p>
                   </div>
                 </div>
 
                 <div className="relative mt-6">
-                  <input
-                    type="email"
-                    name="email"
-                    id="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    placeholder="yourmail@gmail.com"
-                    className={`peer w-full px-4 py-2 pr-12 border rounded-lg contact-field-placeholder focus:outline-none focus:ring-2 focus:ring-orange-400 focus:border-transparent ${errors.email ? 'border-red-500' : 'border-gray-300'}`}
-                  />
-                  <label
-                    htmlFor="email"
-                    className="form-contact-label absolute left-0 ml-1 bg-white px-1 text-sm duration-100 ease-linear
-                      peer-placeholder-shown:translate-y-0 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-500
-                      peer-focus:ml-1 peer-focus:px-1 peer-focus:text-sm"
-                  >
-                    E-mail <span className="text-red-500">*</span>
-                  </label>
-                  <Mail className="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-yellow-500" />
-                  {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
+                  <div className="relative">
+                    <input
+                      type="email"
+                      name="email"
+                      id="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      placeholder="yourmail@gmail.com"
+                      className={`peer w-full px-4 py-2 pr-12 border rounded-lg contact-field-placeholder focus:outline-none focus:ring-2 focus:ring-orange-400 focus:border-transparent ${errors.email ? 'border-red-500' : 'border-gray-300'}`}
+                    />
+                    <label
+                      htmlFor="email"
+                      className="form-contact-label absolute left-0 ml-1 bg-white px-1 text-sm duration-100 ease-linear
+                        peer-placeholder-shown:translate-y-0 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-500
+                        peer-focus:ml-1 peer-focus:px-1 peer-focus:text-sm"
+                    >
+                      E-mail <span className="text-red-500">*</span>
+                    </label>
+                    <Mail className="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-yellow-500 pointer-events-none" />
+                  </div>
+                  <p className="text-red-500 text-sm mt-1 min-h-[20px]">{errors.email || ''}</p>
                 </div>
 
                 <div className="relative mt-6">
-                  <input
-                    type="tel"
-                    name="phone"
-                    id="phone"
-                    value={formData.phone}
-                    onChange={handleChange}
-                    placeholder="+91 9787616940"
-                    className={`peer w-full px-4 py-2 pr-12 border rounded-lg contact-field-placeholder focus:outline-none focus:ring-2 focus:ring-orange-400 focus:border-transparent ${errors.phone ? 'border-red-500' : 'border-gray-300'}`}
-                  />
-                  <label
-                    htmlFor="phone"
-                    className="form-contact-label absolute left-0 ml-1 bg-white px-1 text-sm duration-100 ease-linear
-                      peer-placeholder-shown:translate-y-0 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-500
-                      peer-focus:ml-1 peer-focus:px-1 peer-focus:text-sm"
-                  >
-                    Phone <span className="text-red-500">*</span>
-                  </label>
-                  <Phone className="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-yellow-500" />
-                  {errors.phone && <p className="text-red-500 text-sm mt-1">{errors.phone}</p>}
+                  <div className="relative">
+                    <input
+                      type="tel"
+                      name="phone"
+                      id="phone"
+                      value={formData.phone}
+                      onChange={handleChange}
+                      placeholder="+91 9787616940"
+                      className={`peer w-full px-4 py-2 pr-12 border rounded-lg contact-field-placeholder focus:outline-none focus:ring-2 focus:ring-orange-400 focus:border-transparent ${errors.phone ? 'border-red-500' : 'border-gray-300'}`}
+                    />
+                    <label
+                      htmlFor="phone"
+                      className="form-contact-label absolute left-0 ml-1 bg-white px-1 text-sm duration-100 ease-linear
+                        peer-placeholder-shown:translate-y-0 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-500
+                        peer-focus:ml-1 peer-focus:px-1 peer-focus:text-sm"
+                    >
+                      Phone <span className="text-red-500">*</span>
+                    </label>
+                    <Phone className="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-yellow-500 pointer-events-none" />
+                  </div>
+                  <p className="text-red-500 text-sm mt-1 min-h-[20px]">{errors.phone || ''}</p>
                 </div>
 
                 <div className="relative mt-6">
@@ -194,9 +202,9 @@ export default function GetInTouch() {
                 <div className="flex justify-center pt-2">
                   <button
                     onClick={handleSubmit}
-                    className="group bg-gradient-to-r from-orange-500 to-yellow-400 text-white font-bold px-5 py-2 rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 flex items-center gap-3"
+                    className="group bg-gradient-to-r from-orange-500 to-yellow-400 text-white font-bold pl-5 pr-1 py-[5px] rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 flex items-center gap-3"
                   >
-                    SEND MESSAGE
+                    Send Message
                     <div className="bg-white font-bold rounded-full p-2 group-hover:translate-x-1 transition-transform">
                       <ArrowRight className="w-5 h-5 text-orange-500" />
                     </div>
@@ -208,6 +216,7 @@ export default function GetInTouch() {
           </div>
         </div>
       </div>
+
       {modalVisible && (
         <div className="fixed inset-0 flex justify-center items-center z-50 px-4">
           <div className="bg-white rounded-2xl shadow-2xl p-6 max-w-sm w-full text-center relative">
@@ -223,6 +232,7 @@ export default function GetInTouch() {
           </div>
         </div>
       )}
+    </div>
     </div>
   );
 }

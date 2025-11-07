@@ -7,9 +7,11 @@ import ProjectCard from "./component/ProjectCard";
 import Robot from "@/public/robot.png"
 import TestimonialsSection from './component/TestimonialsSection';
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
+import { Navigation } from "swiper/modules";
+import "swiper/css/navigation";
 import WhyChooseSection from './component/WhyChooseSection';
 import StudyProcessGallery from './component/StudyProcessGallery';
 import { ArrowRight } from 'lucide-react';
@@ -100,6 +102,13 @@ const features = [
 export default function Home() {
   const [activeVideo, setActiveVideo] = useState(null);
   const [projects, setProjects] = useState([]);
+
+  const prevRef = useRef(null);
+  const nextRef = useRef(null);
+
+  const [canPrev, setCanPrev] = useState(false);
+  const [canNext, setCanNext] = useState(true);
+
   // Fetch data from your API (See What kids built with STEPS Robotics)
   useEffect(() => {
     async function fetchData() {
@@ -176,8 +185,27 @@ export default function Home() {
 
 
           <div className="relative max-w-7xl mx-auto ">
+            {/* Always render buttons (Swiper binds to these refs) */}
+            <button
+              ref={prevRef}
+              className={`absolute bg-yellow-400 left-[-20px] top-1/2 -translate-y-1/2 z-20 bg-white shadow-lg p-2 rounded-full
+                   ${!canPrev ? "invisible pointer-events-none opacity-0" : ""}`}
+              aria-label="Previous"
+            >
+              ←
+            </button>
+
+            <button
+              ref={nextRef}
+              className={`absolute bg-yellow-400 right-[-20px] top-1/2 -translate-y-1/2 z-20 bg-white shadow-lg p-2 rounded-full
+                   ${!canNext ? "invisible pointer-events-none opacity-0" : ""}`}
+              aria-label="Next"
+            >
+              →
+            </button>
             {/* Swiper Slider */}
             <Swiper
+              modules={[Navigation]}
               spaceBetween={20}
               slidesPerView={1.2}
               breakpoints={{
@@ -185,6 +213,27 @@ export default function Home() {
                 1024: { slidesPerView: 3.2 },
               }}
               className="cursor-grab"
+
+              // Give Swiper the button nodes BEFORE init
+              onBeforeInit={(swiper) => {
+                swiper.params.navigation.prevEl = prevRef.current;
+                swiper.params.navigation.nextEl = nextRef.current;
+              }}
+
+              // Init + update nav once refs are set
+              onInit={(swiper) => {
+                swiper.navigation.init();
+                swiper.navigation.update();
+                setCanPrev(!swiper.isBeginning);
+                setCanNext(!swiper.isEnd);
+              }}
+
+              // Update button visibility as user scrolls
+              onSlideChange={(swiper) => {
+                setCanPrev(!swiper.isBeginning);
+                setCanNext(!swiper.isEnd);
+              }}
+
             >
               {projects.map((item) => (
                 <SwiperSlide key={item.id}>
@@ -196,6 +245,7 @@ export default function Home() {
                 </SwiperSlide>
               ))}
             </Swiper>
+
 
             {/* Fullscreen Video Modal */}
             {activeVideo && (
@@ -231,7 +281,7 @@ export default function Home() {
       </section>
 
       {/**Robot section */}
-      <section className="py-6 px-4 mt-10">
+      < section className="py-6 px-4 mt-10" >
         <div className=" container-custom">
           {/* Header */}
           <div className="mb-10">
@@ -395,16 +445,17 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </section>
+      </section >
 
 
       {/**Explore Learning */}
-      <section className='explore_learning pb-16 py-2 px-5 relative' style={{
+      < section className='explore_learning pb-16 py-2 px-5 relative' style={{
         backgroundImage: "url('/Explore_screen_bg-v1.jpg')",
-                backgroundRepeat: "no-repeat",
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-      }}>
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }
+      }>
         <div className="container-custom mb-4">
           <h2 className="text-2xl sm:text-3xl font-[500] lg:text-4xl mb-4 explore_learning_robotics leading-snug text-center sm:text-left text-font-orbitron">
             Explore Learning with <span className="text-yellow-400 text-font-orbitron">STEPS Robotics</span>
@@ -421,7 +472,7 @@ export default function Home() {
               {courses.map((course, index) => (
                 <div
                   key={course.id}
-                  className="relative border-yellow-400 exploring_card h-auto flex flex-col border-2 border-dotted rounded-2xl p-6 overflow-visible"
+                  className="relative border-yellow-400 exploring_card h-80 flex flex-col border-2 border-dotted rounded-2xl p-6 overflow-visible"
                 >
                   {/* Blurred background */}
                   <div
@@ -438,14 +489,14 @@ export default function Home() {
                         alt={course.title}
                         width={200}
                         height={250}
-                        className="object-cover rounded shadow h-65 w-60 block"
+                        className="object-cover rounded shadow h-65 w-60"
                       />
                     </div>
 
                     {/* Right side text */}
                     <div className="flex-1 flex flex-col mt-4 md:mt-[-40px] course_heading_des explore_right_section pl-0 md:pl-4 justify-center text-center md:text-left">
                       <h1 className="text-xl font-bold mb-1">{course.title}</h1>
-                      <p className="text-gray-600 mb-2 leading-relaxed">
+                      <p className="text-gray-600 mb-2 steps_list_desc leading-relaxed">
                         {course.description}
                       </p>
 
@@ -461,7 +512,7 @@ export default function Home() {
                   </div>
 
                   {/* Button below */}
-                  <div className="absolute left-1/2 transform responisve_explore -translate-x-1/2 translate-y-1/2 mt-68">
+                  <div className="absolute left-1/2 transform responisve_explore -translate-x-1/2 translate-y-1/2 mt-61">
                     <button
                       onClick={() =>
                         course.button_link && window.open(course.button_link, "_blank")
@@ -492,25 +543,25 @@ export default function Home() {
         </div>
 
 
-      </section>
+      </section >
 
 
 
 
       {/**About STEPS Robotics */}
-      <CodingAdventures />
+      < CodingAdventures />
 
       {/**Why Choose STEPS Robotics for your child */}
-      <WhyChooseSection />
+      < WhyChooseSection />
 
       {/**STEPS Robotics Talsk */}
-      <TestimonialsSection />
+      < TestimonialsSection />
 
       {/**Study Progress Gallery */}
-      <StudyProcessGallery />
+      < StudyProcessGallery />
 
 
-    </div>
+    </div >
 
   );
 }

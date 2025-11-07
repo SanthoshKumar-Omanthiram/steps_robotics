@@ -113,7 +113,7 @@ console.log("Current width:", width, "px");
                           'Exclusive STEPS Boot Camp Badge',
                           'Light refreshments provided both days'
                         ].map((item, i) => (
-                          <div key={i} className="flex items-start pt-[5px] gap-3">
+                          <div key={i} className="flex items-start pt-[5px] gap-3 pb-[11px] sm:pb-0">
                             <span className="text-orange-500 -mt-[10px] text-xl font-bold">→</span>
                             <span className="bootcamp-details-description">{item}</span>
                           </div>
@@ -122,7 +122,7 @@ console.log("Current width:", width, "px");
                     </div>
                   </div>
 
-                  <div className="w-full md:w-[30%] flex items-end justify-center p-8 md:p-0">
+<div className="w-full md:w-[30%] flex items-end justify-center p-8 md:p-0 mt-[-20px] md:mt-0">
                     <Image
                       src="/child-course.png"
                       alt="child with robotics"
@@ -154,56 +154,60 @@ console.log("Current width:", width, "px");
                   </button>
                 ))}
               </div>
-              {activeTab === 'course' && (
-                <div className="p-6 space-y-3">
-                  {modules.map((module, i) => {
-                    const isActive = module.id === openModule;
-                    return (
-                      <div key={module.id} className="rounded-lg overflow-hidden">
-                        <button
-                          onClick={() =>
-                            setOpenModule(isActive ? null : module.id)
-                          }
-                          className={`w-full flex justify-between items-center p-4 font-semibold transition-colors ${
-                            isActive
-                              ? 'bg-[#FFCE64] text-white'
-                              : 'bg-gray-50 text-gray-800 hover:bg-gray-200'
-                          }`}
-                        >
-                          <span className='course-detail-module'>{`Module ${i + 1}: ${module.title}`}</span>
-                          <span
-                            className={`transition-transform ${
-                              isActive ? 'rotate-180' : ''
-                            }`}
-                          >
-                            +
-                          </span>
-                        </button>
-                        {isActive && (
-                          <div className="bg-white text-gray-700 p-4 space-y-3 animate-fadeIn">
-                            {lessons[module.id]?.length > 0 ? (
-                              lessons[module.id].map((lesson) => (
-                                <div
-                                  key={lesson.id}
-                                  className="py-2 px-4 pb-2 model-lesson-accordian bg-white rounded hover:bg-orange-100 transition-colors"
-                                >
-                                  <p className="font-normal">{lesson.title}</p>
-                                </div>
-                              ))
-                            ) : (
-                              <div className="py-2 px-4 bg-white rounded">
-                                <p className="font-normal text-gray-400">
-                                  No lessons available
-                                </p>
-                              </div>
-                            )}
-                          </div>
-                        )}
-                      </div>
-                    );
-                  })}
+          {activeTab === 'course' && (
+  <div className="p-6 space-y-3">
+    {modules.map((module, i) => {
+      const isActive = module.id === openModule;
+      return (
+        <div key={module.id} className="rounded-lg overflow-hidden">
+          <button
+            onClick={() =>
+              setOpenModule(isActive ? null : module.id)
+            }
+            className={`w-full flex justify-between items-center p-4 font-semibold transition-colors ${
+              isActive
+                ? 'bg-[#FFCE64] text-white'
+                : 'bg-gray-50 text-gray-800 hover:bg-gray-200'
+            }`}
+          >
+            <span className="course-detail-module text-left flex-1 pr-4">
+              {`Module ${i + 1}: ${module.title}`}
+            </span>
+            <span
+              className={`text-2xl leading-none transition-transform duration-300 ${
+                isActive ? 'rotate-45' : ''
+              }`}
+            >
+              +
+            </span>
+          </button>
+
+          {isActive && (
+            <div className="bg-white text-gray-700 p-4 space-y-3 animate-fadeIn">
+              {lessons[module.id]?.length > 0 ? (
+                lessons[module.id].map((lesson) => (
+                  <div
+                    key={lesson.id}
+                    className="py-2 px-4 pb-2 model-lesson-accordian bg-white rounded hover:bg-orange-100 transition-colors"
+                  >
+                    <p className="font-normal">{lesson.title}</p>
+                  </div>
+                ))
+              ) : (
+                <div className="py-2 px-4 bg-white rounded">
+                  <p className="font-normal text-gray-400">
+                    No lessons available
+                  </p>
                 </div>
               )}
+            </div>
+          )}
+        </div>
+      );
+    })}
+  </div>
+)}
+
             </div>
           </div>
 

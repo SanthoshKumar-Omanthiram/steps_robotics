@@ -1,6 +1,25 @@
 import { NextResponse } from 'next/server';
 import { jwtVerify } from 'jose';
 export async function middleware(request) {
+  if (process.env.NODE_ENV === 'development') {
+    const { pathname } = request.nextUrl;
+    const allow =
+      pathname.startsWith('/dev-login') ||
+      pathname.startsWith('/api/dev-login') ||
+      pathname.startsWith('/api/dev-logout') ||
+      pathname.startsWith('/_next') ||
+      pathname === '/favicon.ico' ||
+      pathname.startsWith('/api'); // do not block existing APIs in dev
+
+    if (!allow) {
+      const devToken = request.cookies.get('dev_session')?.value;
+      if (!devToken) {
+        const url = new URL('/dev-login', request.url);
+        return NextResponse.redirect(url);
+      }
+    }
+  }
+
   const protectedPaths = ['/dashboard', '/api/protected'];
   const { pathname } = request.nextUrl;
   if (protectedPaths.some((path) => pathname.startsWith(path))) {
@@ -20,5 +39,6 @@ export async function middleware(request) {
 }
 
 export const config = {
-  matcher: ['/dashboard/:path*', '/api/protected/:path*'],
+  // Run on all routes so dev-gate applies consistently; internal checks scope JWT paths
+  matcher: ['/:path*'],
 };

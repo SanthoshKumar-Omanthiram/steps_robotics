@@ -65,25 +65,25 @@ export default function StemList() {
             STEM robotics sessions that teach students to think, build, and innovate through practical learning.
           </p>
         </div>
+<div className="flex flex-wrap items-center justify-center gap-3 sm:gap-5 mb-10">
+  <div className="bg-[#f6f6f6] rounded-full flex flex-wrap justify-center w-full sm:w-auto px-2 sm:px-0">
+    {["All", "Grade 3–5", "Grade 6–8", "Grade 9–12"].map((grade) => (
+      <button
+        key={grade}
+        onClick={() => handleFilter(grade)}
+        className={`px-5 sm:px-[57px] filter-course-btn py-[9px] rounded-full text-sm sm:text-base font-medium transition-all duration-300
+          ${
+            activeFilter === grade
+              ? "bg-[#FFD400] rounded-full text-black shadow-md scale-105"
+              : "bg-[#f6f6f6] text-gray-700 hover:bg-[#FFD400]"
+          }`}
+      >
+        {grade}
+      </button>
+    ))}
+  </div>
+</div>
 
-        <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-5 mb-10">
-          <div className="bg-[#f6f6f6] rounded-full">
-          {["All", "Grade 3–5", "Grade 6–8", "Grade 9–12"].map((grade) => (
-            <button
-              key={grade}
-              onClick={() => handleFilter(grade)}
-              className={`px-[57px] filter-course-btn py-[9px] rounded-full text-base font-medium transition-all duration-300
-                ${
-                  activeFilter === grade
-                    ? "bg-[#FFD400] rounded-full text-black shadow-md scale-105"
-                    : "bg-[#f6f6f6] text-gray-700 hover:bg-gray-100"
-                }`}
-            >
-              {grade}
-            </button>
-          ))}
-          </div>
-        </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
           {currentCourses.map((course, idx) => (

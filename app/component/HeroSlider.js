@@ -57,15 +57,24 @@ export default function HeroSlider() {
   const [direction, setDirection] = useState(1);
 
   useEffect(() => {
-    async function loadBanners() {
+    async function fetchBanners() {
       try {
-        const data = await fetchBanners();
-        setBanners(data);
+        const res = await fetch("/api/banners");
+        const data = await res.json();
+
+        // ✅ ensure structure is consistent
+        const formatted = data.map((b) => ({
+          ...b,
+          sideImage: b.b_image   // rename field
+        }));
+
+        setBanners(formatted);
       } catch (err) {
         console.error("Failed to fetch banners:", err);
       }
     }
-    loadBanners();
+
+    fetchBanners();
   }, []);
 
   useEffect(() => {
@@ -92,14 +101,26 @@ export default function HeroSlider() {
     return () => clearInterval(timer);
   }, [currentSlide]);
 
+  // const nextSlide = () => {
+  //   setDirection(1);
+  //   setCurrentSlide((prev) => (prev + 1) % slides.length);
+  // };
+
+  // const prevSlide = () => {
+  //   setDirection(-1);
+  //   setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
+  // };
+
   const nextSlide = () => {
+    if (banners.length === 0) return;
     setDirection(1);
-    setCurrentSlide((prev) => (prev + 1) % slides.length);
+    setCurrentSlide((prev) => (prev + 1) % banners.length);
   };
 
   const prevSlide = () => {
+    if (banners.length === 0) return;
     setDirection(-1);
-    setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
+    setCurrentSlide((prev) => (prev - 1 + banners.length) % banners.length);
   };
 
   const slideVariants = {
@@ -109,7 +130,7 @@ export default function HeroSlider() {
   };
 
   return (
-    <section className="relative container-spacing banner_h  h-[600px] md:h-[700px]">
+    <section className="relative container-spacing banner_h  h-[600px] md:h-[550px]">
       {/* Slider */}
       {banners.length > 0 && (
         <AnimatePresence initial={false} custom={direction} mode="wait">
@@ -137,11 +158,11 @@ export default function HeroSlider() {
 
             {/* Text + Right-side Image */}
             {/* Text + Right-side Image */}
-            <div className="relative z-10 container-custom mx-auto px-4 h-full flex flex-col md:flex-row items-center justify-between">
+            <div className="relative z-10 mx-auto container-custom  px-4 h-full flex flex-col md:flex-row items-center justify-between">
 
               {/* LEFT SIDE - TEXT */}
               <div className="relative z-10 container mx-auto px-2 h-full flex flex-col justify-center">
-                <div className="max-w-3xl banner-text">
+                <div className="max-w-3xl  banner-text">
                   <motion.h1
                     className="text-5xl md:text-6xl lg:text-7xl font-bold text-gray-900 mb-4"
                     initial={{ opacity: 0, y: 30 }}
@@ -164,7 +185,7 @@ export default function HeroSlider() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.4 }}
                   >
-                    {slides[currentSlide].description}
+                    {banners[currentSlide].paragraph}
                   </motion.p>
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
@@ -184,10 +205,10 @@ export default function HeroSlider() {
               </div>
 
               {/* RIGHT SIDE - IMAGE */}
-              {slides[currentSlide].sideImage && (
-                <div className="relative banner_RTL_image w-[750px] h-[750px] md:w-[1500px] md:h-[1500px] md:mt-0 flex justify-center md:justify-end">
+              {banners[currentSlide].b_image && (
+                <div className="relative banner_RTL_image w-[750px] h-[750px] md:mt-0 flex justify-center md:justify-end">
                   <Image
-                    src={slides[currentSlide].sideImage}
+                    src={banners[currentSlide].sideImage}
                     alt="Side illustration"
                     fill
                     className="object-contain"
@@ -203,10 +224,14 @@ export default function HeroSlider() {
 
 
       {/* Info Cards */}
-      <div className="absolute bottom-[-40px] info_card container-custom left-0 right-0 z-20">
-        <div className="container mx-auto">
+      <div className="absolute bottom-[-40px] left-0 right-0 z-20 
+    container-custom 
+    rounded-t-3xl 
+    
+    ">
+        <div className="container rounded-t-3xl shadow-[-1px_-14px_10px_rgba(0,0,0,0.12)] mx-auto">
           {/* Outer white container */}
-          <div className="bg-white p-2 rounded-t-3xl ">
+          <div className="bg-white rounded-t-3xl p-2  ">
             {/* Inner gray/yellow section */}
             <div
               className="grid grid-cols-2 md:grid-cols-4 container-custom bg-gradient-to-b from-gray-100 to-white gap-6 rounded-2xl py-4  px-4">
@@ -232,13 +257,13 @@ export default function HeroSlider() {
 
       </div>
 
-    {showBookTrial && (
-  <div className="fixed inset-0 z-[9999] m-[30px] animate-fadeIn">
-    <div className="min-h-screen flex items-center justify-center p-0">
-      <Enquiry onClose={closeModal} />  {/* pass the handler here */}
-    </div>
-  </div>
-)}
+      {showBookTrial && (
+        <div className="fixed inset-0 z-[9999] m-[30px] animate-fadeIn">
+          <div className="min-h-screen flex items-center justify-center p-0">
+            <Enquiry onClose={closeModal} />  {/* pass the handler here */}
+          </div>
+        </div>
+      )}
     </section>
 
   );

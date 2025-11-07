@@ -171,7 +171,7 @@ export default function TestimonialsSection() {
                 </div>
 
                 {/* 💬 Desktop Description */}
-                <div className="hidden md:block text-center max-w-4xl mx-auto mb-8 px-5">
+                <div className="hidden md:block testmonial_text text-center max-w-4xl mx-auto mb-8 px-5">
                     <p className="text-gray-800 text-base leading-relaxed mb-4 text-font-poppins">
                         "{testimonials[activeIndex].quote}"
                     </p>
@@ -224,7 +224,7 @@ export default function TestimonialsSection() {
                         isCenter={true}
                         onClick={() => { }}
                     />
-                    <p className="text-gray-800 text-base leading-relaxed mt-4 px-3">
+                    <p className="text-gray-800 leading-relaxed mt-4 px-3">
                         "{testimonials[mobileIndex].quote}"
                     </p>
                     <p className="text-gray-800 text-base leading-relaxed mt-2 px-3">

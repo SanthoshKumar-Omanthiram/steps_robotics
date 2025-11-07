@@ -69,9 +69,17 @@ const Navbar = () => {
 
   return (
     <nav className="bg-white header_part shadow-sm fixed top-0 left-0 right-0 z-50">
-      <header className="w-full h-[5px] bg-black relative overflow-hidden">
-        <div className="absolute top-0 left-0 w-100 h-full bg-yellow-400 [clip-path:polygon(0_0,94%_0,100%_100%,0%_100%)]"></div>
-      </header>
+
+
+      {/* TOP STRIP */}
+      <div className="relative w-full h-[8px]">
+        <div className="absolute inset-0 bg-[#094b23] z-0"></div>
+        <div className="absolute inset-0 bg-yellow-400 z-20 "></div>
+      </div>
+
+
+
+
 
 
       <div className="container-custom">
@@ -82,7 +90,7 @@ const Navbar = () => {
               <Image
                 src={logo}
                 alt="Steps Robotics Logo"
-                width={250}
+                width={700}
                 height={60}
                 className="h-16 w-auto"
               />

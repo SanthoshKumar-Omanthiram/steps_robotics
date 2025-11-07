@@ -10,7 +10,7 @@ export default function HeroicCourse() {
   };
 
   return (
-    <div className="course-heroic sm:h-[525px] mb-[25px] p-6">
+    <div className="course-heroic container-spacing sm:h-[525px] mb-[25px] p-6">
       <div className="container-custom space-y-8">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 transition-all duration-300">
           <div className="w-full h-full">

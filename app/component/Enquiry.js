@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { X } from "lucide-react";
+import  "./css/Enquiry.css";
 
 export default function Enquiry({ onClose }) {
   const [isOpen, setIsOpen] = useState(true);
@@ -21,7 +22,7 @@ export default function Enquiry({ onClose }) {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center px-4 sm:px-0">
+    <div className="min-h-screen popup-min-heigh flex items-center justify-center px-4 sm:px-0">
       <div className="relative w-full max-w-3xl book-trail-popup rounded-[24px] sm:rounded-[32px] shadow-2xl overflow-hidden backdrop-blur-md">
         <div className="text-center px-4 sm:px-6 pt-8 sm:pt-10 pb-4">
           <div className="enquiry-model-box relative">
@@ -64,19 +65,19 @@ export default function Enquiry({ onClose }) {
           </div>
           <div className="flex flex-col items-center justify-center text-center space-y-3 sm:space-y-4 md:order-2 order-1">
             <div className="enquiry-contact-box py-3 px-6 sm:px-8 shadow-md w-full max-w-sm">
-              <p className="text-orange-600 font-semibold text-sm">
+              <p className="text-black-600 italic font-semibold text-sm">
                 Contact Mobile
               </p>
-              <p className="text-gray-900 font-medium text-base sm:text-lg">
+              <p className="text-gray-900 italic font-medium text-base sm:text-lg">
                 +91 91234 56789
               </p>
             </div>
 
             <div className="enquiry-contact-box py-3 px-6 sm:px-8 shadow-md w-full max-w-sm">
-              <p className="text-orange-600 font-semibold text-sm">
+              <p className="text-black-600 italic font-semibold text-sm">
                 Email Address
               </p>
-              <p className="text-gray-900 font-medium text-base sm:text-lg">
+              <p className="text-gray-900 italic font-medium text-base sm:text-lg">
                 enquiry@stepsrobotics.com
               </p>
             </div>

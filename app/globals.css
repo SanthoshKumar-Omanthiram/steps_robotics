@@ -1330,7 +1330,7 @@ background: linear-gradient(180deg, rgba(255, 246, 204, 0.80) 0%, rgba(255, 209,
 
 
 .steps-robotics-points {
-  background-image: url('/steps.png');
+  background-image: url('/steps.svg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
@@ -1340,7 +1340,7 @@ background: linear-gradient(180deg, rgba(255, 246, 204, 0.80) 0%, rgba(255, 209,
 }
 
 .steps-robotics-others {
-  background-image: url('/others.png');
+  background-image: url('/others.svg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
@@ -1348,6 +1348,14 @@ background: linear-gradient(180deg, rgba(255, 246, 204, 0.80) 0%, rgba(255, 209,
   width: 342px;
 }
 
+.might-intrest {
+  background-image: url('/releted_courses_bg.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: auto !important;
+  width: 100%;
+}
 .diffrent-section {
   background: #fff !important;
   padding: 30px;

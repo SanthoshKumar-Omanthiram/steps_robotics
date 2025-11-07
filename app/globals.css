@@ -2969,6 +2969,11 @@ li {
     .explore_learning_button {
       margin-top: 75px;
     }
+       .top-triangle {
+	position: absolute;
+	top: 27px;
+	left: 40px !important;
+}
   }
 
   @media (max-width: 1156px) {
@@ -2997,11 +3002,21 @@ li {
     .exploring_card {
       min-height: 600px;
     }
-
+    .course-heroic{
+  height: 538px !important;
+}
+    .course-heroic{
+  height: 538px !important;
+}
     .responisve_explore {
       bottom: 10px !important;
       top: auto !important;
     }
+    .top-triangle {
+	position: absolute;
+	top: 27px;
+	left: 40px !important;
+}
   }
 
 
@@ -3356,6 +3371,11 @@ filter: drop-shadow(0 5px 14px rgba(253, 182, 24, 0.18));
   .container-custom {
     max-width: 1140px;
   }
+     .top-triangle {
+	position: absolute;
+	top: 27px;
+	left: 40px !important;
+}
 
   .steps-robotics-points {
     padding-left: 36px;
@@ -3366,7 +3386,11 @@ filter: drop-shadow(0 5px 14px rgba(253, 182, 24, 0.18));
     padding-left: 36px;
     padding-right: 39px;
   }
-
+.top-triangle {
+	position: absolute;
+	top: 27px;
+	left: 43px !important;
+}
   .class-instructor-popup {
     margin-top: -180px;
   }

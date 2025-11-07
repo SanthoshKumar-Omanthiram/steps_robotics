@@ -28,7 +28,7 @@ export default function WorkShopRobotics() {
   };
 
   return (
-    <section className="relative workshop-robotics w-full h-[464px] flex items-center justify-center overflow-hidden">
+    <section className="relative workshop-robotics w-full h-[550px] md:h-[464px] flex items-center justify-center overflow-hidden">
       {/* Background autoplay video */}
       <video
         ref={videoRef}

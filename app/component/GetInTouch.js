@@ -103,7 +103,6 @@ export default function GetInTouch() {
                     >
                       First Name <span className="text-red-500">*</span>
                     </label>
-                    {/* Error message spacing ensures icon alignment consistency */}
                     <p className="text-red-500 text-sm mt-1 min-h-[20px]">
                       {errors.firstName || ''}
                     </p>

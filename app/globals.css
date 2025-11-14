@@ -1530,7 +1530,7 @@ button {
   background-repeat: no-repeat;
   background-size: contain;
   height: auto !important;
-  width: 342px;
+  width: 360px !important;
 
 }
 
@@ -1540,7 +1540,7 @@ button {
   background-repeat: no-repeat;
   background-size: contain;
   height: auto !important;
-  width: 342px;
+  width: 360px !important;
 }
 
 .might-intrest {
@@ -1558,7 +1558,7 @@ button {
   border-radius: 16px;
   border: 4px solid #f1f1f1 !important;
   padding: 28px 12px;
-  margin: 0 -6px 5px -6px;
+  margin: 0 !important;
   clip-path: polygon(0 0, 46% 0, 100% 38%, 100% 100%, 0 100%, 0 0);
 }
 
@@ -1935,6 +1935,7 @@ button {
     margin-top: 0;
     padding-right: 30px;
     padding-left: 30px;
+    width: 421px !important;
   }
 
   .how-diffrent-others-description {
@@ -2253,6 +2254,19 @@ li {
   margin-top: 102px;
 }
 
+@media screen and (max-width: 524px) {
+     .steps-robotics-points {
+  padding-left: 32px;
+    padding-right: 30px;
+    width: 360px !important;
+  }
+
+  .steps-robotics-others {
+  padding-left: 32px;
+    padding-right: 30px;
+    width: 360px !important;
+  }
+}
 
 @media (min-width: 540px) {
   .container-custom {
@@ -2263,16 +2277,6 @@ li {
     margin-top: 0;
   }
 
-  .steps-robotics-points {
-    padding-left: 60px;
-    padding-right: 60px;
-  }
-
-  .steps-robotics-others {
-    padding-left: 60px;
-    padding-right: 60px;
-  }
-
   .course-heroic {
     height: auto;
   }
@@ -2280,6 +2284,7 @@ li {
   .maps {
     margin: -40px 0 0 0;
   }
+  
 }
 
 @media (min-width: 720px) {
@@ -2304,20 +2309,6 @@ li {
   .mt-bootcamp {
     margin-top: -40px;
   }
-
-  .class-instructor-popup {
-    margin-top: 0;
-  }
-
-  .steps-robotics-points {
-    padding-left: 15px;
-    padding-right: 17px;
-  }
-
-  .steps-robotics-others {
-    padding-left: 15px;
-    padding-right: 17px;
-  }
 }
 
 @media (min-width: 1140px) {
@@ -2326,17 +2317,17 @@ li {
   }
 
   .how-diffrent-others {
-    margin-top: -80px;
+    margin-top: -21px;
   }
 
-  .steps-robotics-points {
-    padding-left: 36px;
-    padding-right: 39px;
+ .steps-robotics-points {
+    padding-left: 15px;
+    padding-right: 17px;
   }
 
   .steps-robotics-others {
-    padding-left: 36px;
-    padding-right: 39px;
+    padding-left: 15px;
+    padding-right: 17px;
   }
 
   .class-instructor-popup {
@@ -2362,18 +2353,14 @@ li {
   }
 
 
-  .mt-bootcamp {
-    margin-top: -107px;
-  }
-
-  .steps-robotics-points {
-    padding-left: 70px;
-    padding-right: 67px;
+   .steps-robotics-points {
+    padding-left: 36px;
+    padding-right: 39px;
   }
 
   .steps-robotics-others {
-    padding-left: 70px;
-    padding-right: 67px;
+    padding-left: 36px;
+    padding-right: 39px;
   }
 
   .steps-robotics-robot {
@@ -2381,7 +2368,7 @@ li {
   }
 
   .how-diffrent-others {
-    margin-top: -230px;
+    margin-top: -21px;
   }
 
   .choose-section {
@@ -2544,17 +2531,6 @@ li {
   overflow: visible !important;
 }
 
-
-
-
-
-
-
-
-
-
-
-
 .steps_robotics_child_h3 {
   color: var(--Black, #1A202C);
   font-family: Poppins;
@@ -2689,14 +2665,6 @@ li {
   }
 }
 
-
-
-
-
-
-
-
-/*Container*/
 .container-custom {
   width: 100%;
   margin-left: auto;
@@ -2719,14 +2687,8 @@ li {
     margin-top: 0;
   }
 
-  .steps-robotics-points {
-    padding-left: 60px;
-    padding-right: 60px;
-  }
-
-  .steps-robotics-others {
-    padding-left: 60px;
-    padding-right: 60px;
+  .feature-course-review{
+    margin-top: 0px !important;
   }
 
   .course-heroic {
@@ -2754,7 +2716,7 @@ li {
   }
 
   .how-diffrent-others {
-    margin-top: -120px;
+    margin-top: 5px !important;
   }
 
   .mt-bootcamp {
@@ -2762,17 +2724,7 @@ li {
   }
 
   .class-instructor-popup {
-    margin-top: 0;
-  }
-
-  .steps-robotics-points {
-    padding-left: 15px;
-    padding-right: 17px;
-  }
-
-  .steps-robotics-others {
-    padding-left: 15px;
-    padding-right: 17px;
+    margin-top: -160px !important;
   }
 }
 
@@ -2782,16 +2734,16 @@ li {
   }
 
   .how-diffrent-others {
-    margin-top: -80px;
+    margin-top: -25px;
   }
 
   .steps-robotics-points {
-    padding-left: 36px;
+    padding-left: 45px;
     padding-right: 39px;
   }
 
   .steps-robotics-others {
-    padding-left: 36px;
+    padding-left: 45px;
     padding-right: 39px;
   }
 
@@ -2817,11 +2769,6 @@ li {
     max-width: 1320px;
   }
 
-
-  .mt-bootcamp {
-    margin-top: -107px;
-  }
-
   .steps-robotics-points {
     padding-left: 70px;
     padding-right: 67px;
@@ -2837,7 +2784,7 @@ li {
   }
 
   .how-diffrent-others {
-    margin-top: -230px;
+    margin-top: -21px;
   }
 
   .choose-section {
@@ -2942,16 +2889,6 @@ li {
 .footer {
   overflow: visible !important;
 }
-
-
-
-
-
-
-
-
-
-
 
 
 @layer utilities {
@@ -3531,6 +3468,8 @@ li {
 
 }
 
+
+
 @media (min-width: 960px) {
   .container-custom {
     max-width: 960px;
@@ -3540,18 +3479,18 @@ li {
     margin-top: -40px;
   }
 
-  .class-instructor-popup {
-    margin-top: 0;
-  }
-
   .steps-robotics-points {
     padding-left: 15px;
+    padding-bottom: -3px;
     padding-right: 17px;
+    width: 100% !important;
   }
 
   .steps-robotics-others {
-    padding-left: 15px;
+   padding-left: 15px;
+    padding-bottom: -3px;
     padding-right: 17px;
+    width: 100% !important;
   }
 }
 
@@ -3572,7 +3511,7 @@ li {
   }
 
   .steps-robotics-others {
-    padding-left: 36px;
+    padding-left: 45px;
     padding-right: 39px;
   }
 
@@ -3586,24 +3525,76 @@ li {
     margin-top: -180px;
   }
 }
+@media screen and (min-width: 980px) and (max-width: 1317px) {
+  .steps-robotics-points{
+        width: 100% !important;
+    height: 504px !important;
+  }
+  .steps-robotics-others{
+        width: 100% !important;
+    height: 504px !important;
+  }
+}
+
+@media screen and (min-width: 998px) and (max-width: 1140px) {
+    .steps-robotics-points{
+        width: 321px !important;
+    height: 504px !important;
+  }
+  .steps-robotics-others{
+        width: 321px !important;
+    height: 504px !important;
+  }
+}
+
+@media screen and (min-width: 954px) and (max-width: 978px) {
+     .steps-robotics-points{
+         width: 320px !important;
+    height: 506px !important;
+  }
+  .steps-robotics-others{
+        width: 320px !important;
+    height: 506px !important;
+  }
+}
+
+@media screen and (min-width: 769px) and (max-width: 954px) {
+     .steps-robotics-points{
+         width: 320px !important;
+    height: 506px !important;
+  }
+  .steps-robotics-others{
+        width: 320px !important;
+    height: 506px !important;
+  }
+}
+
+@media screen and (min-width: 1028px) and (max-width: 1320px) {
+   .feature-course-review{
+    margin-top: -160px !important;
+  }
+}
+
 
 @media (min-width: 1320px) {
   .container-custom {
     max-width: 1180px;
   }
 
-  .mt-bootcamp {
-    margin-top: 40px;
-  }
-
   .steps-robotics-points {
-    padding-left: 36px;
-    padding-right: 39px;
+    padding-left: 30px !important;
+    padding-top: 30px !important;
+    padding-right: 30px !important;
+    width: 360px !important;
+    height: 504px !important;
   }
 
   .steps-robotics-others {
-    padding-left: 36px;
-    padding-right: 39px;
+      padding-left: 30px !important;
+    padding-top: 30px !important;
+    padding-right: 30px !important;
+     width: 360px !important;
+    height: 504px !important;
   }
 
   .steps-robotics-robot {
@@ -3616,10 +3607,6 @@ li {
 
   .workshop-robotics {
     height: 60vh !important;
-  }
-
-  .mt-bootcamp {
-    margin-top: -110px;
   }
 
   .maps {

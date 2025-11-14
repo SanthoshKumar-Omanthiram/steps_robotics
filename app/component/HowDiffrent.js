@@ -55,7 +55,7 @@ export default function HowDifferent() {
                 priority
               /></div>
 <div
-  className="diffrent-section !px-[11px] !py-[40px] sm:!px-[12px] sm:!pt-[28px] sm:!pb-[52px] relative flex flex-col justify-start items-start shadow-sm"
+  className="diffrent-section !px-[11px] !py-[40px] sm:!px-[12px] sm:!pb-[52px] relative flex flex-col justify-start items-start shadow-sm"
   style={{
     background: "#fff",
     clipPath: "polygon(0 0, 40% 0, 100% 38%, 100% 100%, 0 100%, 0 0)",
@@ -63,7 +63,7 @@ export default function HowDifferent() {
   }}
 >
     <h3 className="steps-robotics-points-titile mb-[50px]">STEPS<br />Robotics</h3>
-    <div className="space-y-3">
+    <div className="space-y-3 diffrent-bullets">
       {stepsFeatures.map((feature, index) => (
         <div key={index} className="flex items-start gap-3">
           <div className="bg-green-500 rounded-full p-1 mt-0.5 flex-shrink-0">
@@ -76,12 +76,12 @@ export default function HowDifferent() {
   </div>
 </div>
           <div className="rounded-[40px] steps-robotics-others pt-[17px]  pb-[10px] relative overflow-hidden">
-             <div className="diffrent-section shadow-sm !px-[11px] !py-[40px] sm:!px-[12px] sm:!pt-[28px] sm:!pb-[52px] ">
+             <div className="diffrent-section shadow-sm !px-[11px] !py-[40px] sm:!px-[12px] sm:!pb-[52px] ">
             <div className="absolute top-4 right-4 bg-pink-500 text-white px-4 py-1 rounded-full text-sm font-bold">
               Robotics
             </div>
             <h3 className="steps-robotics-points-titile mb-[50px] text-black">Other<br />Classes</h3>
-            <div className="space-y-3">
+            <div className="space-y-3 diffrent-bullets">
               {otherFeatures.map((feature, index) => (
                 <div key={index} className="flex items-start gap-3">
                   <div className="bg-red-700 rounded-full p-1 mt-0.5 flex-shrink-0">

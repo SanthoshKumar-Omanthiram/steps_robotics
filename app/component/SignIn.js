@@ -75,7 +75,7 @@ export default function SignIn() {
   };
 
   return (
-    <div className="signin-component">
+    <div className="signin-component container-spacing">
       <div className="w-full signin flex justify-center">
         <div className="w-full container-custom py-8 md:py-10 grid grid-cols-1 md:grid-cols-2 gap-8 items-center min-h-screen">
                     <div className="text-white flex flex-col hidden md:flex">

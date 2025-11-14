@@ -26,7 +26,7 @@ export default function StudyProcessGallery() {
         <section
             className="relative bg-gradient-to-br from-yellow-200 via-yellow-300 to-yellow-400 py-12 md:py-16 lg:py-20 px-4 overflow-hidden"
             style={{
-                backgroundImage: "url('/studyProgress.png')",
+                backgroundImage: "url('/studyProgress.jpg')",
                 backgroundRepeat: "no-repeat",
                 backgroundSize: "cover",
                 backgroundPosition: "center",
@@ -48,7 +48,7 @@ export default function StudyProcessGallery() {
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.5, delay: 0.3 }}
                 >
-                    <div className="w-16 h-16 md:w-24 md:h-24 lg:w-28 lg:h-28 relative transform rotate-6 hover:rotate-3 transition-transform">
+                    <div className="w-16 h-16 md:w-24 md:h-24 lg:w-28 lg:h-28 relative study_process_youtube transform rotate-6 hover:rotate-3 transition-transform">
                         <Image
                             src="/youtube.gif"
                             alt="YouTube"
@@ -73,7 +73,7 @@ export default function StudyProcessGallery() {
                     </p>
                 </motion.div>
                 {/* Gallery Grid */}
-                <div className="relative z-10">
+                <div className="relative z-10 gallery_section">
                     {/* Mobile & Tablet: 2 columns */}
                     <div className="grid grid-cols-2 gap-3 md:gap-4 md:hidden">
                         {gallery.slice(0, 8).map((item, index) => (
@@ -81,7 +81,7 @@ export default function StudyProcessGallery() {
                                 key={index}
                                 src={item.image}
                                 alt={item.alt || `gallery_${index}`}
-                                height={index % 3 === 0 ? "h-48" : index % 2 === 0 ? "h-56" : "h-52"}
+                                height={index % 3 === 0 ? "h-48" : index % 2 === 0 ? "h-48" : "h-48"}
                             />
                         ))}
                     </div>
@@ -92,7 +92,7 @@ export default function StudyProcessGallery() {
                                 key={index}
                                 src={item.image}
                                 alt={item.alt || `gallery_${index}`}
-                                height={index % 3 === 0 ? "h-64" : index % 2 === 0 ? "h-72" : "h-60"}
+                                height={index % 3 === 0 ? "h-64" : index % 2 === 0 ? "h-64" : "h-64"}
                             />
                         ))}
                     </div>

@@ -2,10 +2,16 @@ import { Play } from "lucide-react";
 
 export default function ProjectCard({ image, name, onClick }) {
   return (
+
+    // <div
+    //   onClick={onClick}
+    //   className="relative group rounded-2xl flex flex-col justify-between border-2 custom-dashed-border border-black-300 transition-all duration-300 overflow-hidden bg-white p-3 hover:bg-yellow-50 cursor-pointer"
+    // >
     <div
       onClick={onClick}
-      className="relative group rounded-2xl border-2 custom-dashed-border border-black-300 transition-all duration-300 overflow-hidden bg-white p-3 hover:bg-yellow-50 cursor-pointer"
+      className="relative group rounded-2xl h-full border-2 custom-dashed-border border-black-300 transition-all duration-300 overflow-hidden bg-white p-3 hover:bg-yellow-50 cursor-pointer"
     >
+
       <img
         src={image}
         alt={name}
@@ -22,16 +28,12 @@ export default function ProjectCard({ image, name, onClick }) {
         </button>
       </div>
 
-      <div className="text-center pt-3">
+      <div className="text-center childerns_name pt-3">
         <p className="text-lg">
           STEPS Robotics Project – {name}
         </p>
       </div>
     </div>
-
-
-
-
 
   );
 }

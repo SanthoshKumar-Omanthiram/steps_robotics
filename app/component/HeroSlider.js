@@ -7,6 +7,8 @@ import BookTrial from "./BookTrail";
 import { ArrowRight } from 'lucide-react';
 import { fetchBanners } from "@/app/utils/fetchData"; // ✅ import from utils
 import Enquiry from "./Enquiry";
+import SkeletonHero from "./SkeletonHero";
+
 
 const slides = [
   {
@@ -51,10 +53,13 @@ const infoCards = [
   { image: "/banner_icons/tools.png", title: "Tools & Kit", subtitle: "25+" },
 ];
 
+
 export default function HeroSlider() {
   const [banners, setBanners] = useState([]);
   const [currentSlide, setCurrentSlide] = useState(0);
   const [direction, setDirection] = useState(1);
+
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     async function fetchBanners() {
@@ -71,6 +76,8 @@ export default function HeroSlider() {
         setBanners(formatted);
       } catch (err) {
         console.error("Failed to fetch banners:", err);
+      } finally {
+        setLoading(false);
       }
     }
 
@@ -101,15 +108,7 @@ export default function HeroSlider() {
     return () => clearInterval(timer);
   }, [currentSlide]);
 
-  // const nextSlide = () => {
-  //   setDirection(1);
-  //   setCurrentSlide((prev) => (prev + 1) % slides.length);
-  // };
 
-  // const prevSlide = () => {
-  //   setDirection(-1);
-  //   setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
-  // };
 
   const nextSlide = () => {
     if (banners.length === 0) return;
@@ -129,9 +128,11 @@ export default function HeroSlider() {
     exit: { opacity: 0 },
   };
 
+
   return (
     <section className="relative container-spacing banner_h  h-[600px] md:h-[550px]">
       {/* Slider */}
+
       {banners.length > 0 && (
         <AnimatePresence initial={false} custom={direction} mode="wait">
           <motion.div
@@ -152,16 +153,16 @@ export default function HeroSlider() {
                 fill
                 className="object-cover"
                 priority
+                unoptimized
               />
               <div className="absolute inset-0 to-transparent"></div>
             </div>
 
             {/* Text + Right-side Image */}
-            {/* Text + Right-side Image */}
             <div className="relative z-10 mx-auto container-custom  px-4 h-full flex flex-col md:flex-row items-center justify-between">
 
               {/* LEFT SIDE - TEXT */}
-              <div className="relative z-10 container mx-auto px-2 h-full flex flex-col justify-center">
+              <div className="relative z-10 container mx-auto px-4 h-full flex flex-col justify-center">
                 <div className="max-w-3xl  banner-text">
                   <motion.h1
                     className="text-5xl md:text-6xl lg:text-7xl font-bold text-gray-900 mb-4"
@@ -170,6 +171,7 @@ export default function HeroSlider() {
                     transition={{ duration: 0.6, delay: 0.2 }}
                   >
                     {banners[currentSlide].banner_title1}
+
                   </motion.h1>
                   <motion.h2
                     className="text-5xl md:text-6xl lg:text-7xl font-bold text-orange-500 mb-6"
@@ -192,21 +194,34 @@ export default function HeroSlider() {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.5 }}
                   >
-                    <button
+                    {/* <button
                       onClick={handleRegisterClick}
                       className="absolute home_banner_button  bg-gradient-to-r from-orange-500 to-yellow-500 text-white font-bold text-xl py-2 px-3 rounded-full flex items-center hover:shadow-lg transition-shadow"
                     >
                       <span className="ml-2">{banners[currentSlide].button_name || "Get Started"}</span>
                       <span className="relative bg-white ml-4 rounded-full ml-4 p-2"><ArrowRight className="w-6 h-6 text-black" /></span>
+                    </button> */}
+                    {banners[currentSlide].button_name !== "dont show" && (
+                      <button
+                        onClick={handleRegisterClick}
+                        className="absolute home_banner_button bg-gradient-to-r from-orange-500 to-yellow-500 text-white font-bold text-xl py-2 px-3 rounded-full flex items-center hover:shadow-lg transition-shadow"
+                      >
+                        <span className="ml-2">
+                          {banners[currentSlide].button_name || "Get Started"}
+                        </span>
 
-                    </button>
+                        <span className="relative bg-white ml-4 rounded-full p-2">
+                          <ArrowRight className="w-6 h-6 text-black" />
+                        </span>
+                      </button>
+                    )}
                   </motion.div>
                 </div>
               </div>
 
               {/* RIGHT SIDE - IMAGE */}
               {banners[currentSlide].b_image && (
-                <div className="relative banner_RTL_image w-[750px] h-[750px] md:mt-0 flex justify-center md:justify-end">
+                <div className="relative banner_RTL_image w-[750px] h-[750px] ml-[120px] md:mt-0 flex justify-center md:justify-end">
                   <Image
                     src={banners[currentSlide].sideImage}
                     alt="Side illustration"
@@ -224,7 +239,7 @@ export default function HeroSlider() {
 
 
       {/* Info Cards */}
-      <div className="absolute bottom-[-40px] left-0 right-0 z-20 
+      <div className="absolute bottom-[-40px] banner_info_sec left-0 right-0 z-20 
     container-custom 
     rounded-t-3xl 
     
@@ -244,7 +259,7 @@ export default function HeroSlider() {
                     <div className="text-gray-700 font-medium text-sm">
                       <p>{card.title}</p>
                     </div>
-                    <div className="text-xl  font-bold text-gray-900">
+                    <div className="text-xl text-gray-900">
                       <p className="f-audiowide">{card.subtitle}</p>
                     </div>
                   </div>

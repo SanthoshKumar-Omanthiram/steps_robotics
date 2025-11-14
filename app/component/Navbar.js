@@ -5,26 +5,133 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 // import { fetchLogo, fetchNavbar } from "@/app/utils/fetchData";
 import { getNavbarData } from "../utils/menuItems";
-
 import axios from "axios";
+import { useRouter } from "next/navigation";
+
 
 const Navbar = () => {
   const [courses, setCourses] = useState([]);
   const [showDropdown, setShowDropdown] = useState(false);
   const dropdownRef = useRef(null);
 
+  const [query, setQuery] = useState("");
+  const [results, setResults] = useState([]);
+  const router = useRouter();
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+
+  const [objectives, setObjectives] = useState([]);
+  const [highlights, setHighlights] = useState([]);
+
+
+  // useEffect(() => {
+  //   const fetchCourses = async () => {
+  //     try {
+  //       const res = await axios.get("/api/courses");
+  //       const data = Array.isArray(res.data) ? res.data : [];
+  //       setCourses(data);
+  //     } catch (err) {
+  //       console.error("Failed to fetch courses:", err);
+  //     }
+  //   };
+  //   fetchCourses();
+  // }, []);
+
+  // 🧠 Fetch all data
   useEffect(() => {
-    const fetchCourses = async () => {
+    const fetchAllData = async () => {
       try {
-        const res = await axios.get("/api/courses");
-        const data = Array.isArray(res.data) ? res.data : [];
-        setCourses(data);
+        const { data: courseList } = await axios.get("/api/courses");
+        setCourses(courseList);
+
+        const allObjectives = [];
+        const allHighlights = [];
+
+        // Loop through each course
+        for (const course of courseList) {
+          const [objRes, highRes] = await Promise.all([
+            axios.get(`/api/courses/objectives?courseId=${course.id}`),
+            axios.get(`/api/courses/highlights?courseId=${course.id}`),
+          ]);
+          allObjectives.push(...objRes.data);
+          allHighlights.push(...highRes.data);
+        }
+
+        setObjectives(allObjectives);
+        setHighlights(allHighlights);
+        console.log("✅ Loaded data:", { courses: courseList.length, allObjectives, allHighlights });
       } catch (err) {
-        console.error("Failed to fetch courses:", err);
+        console.error("❌ Failed to fetch data:", err);
       }
     };
-    fetchCourses();
+
+    fetchAllData();
   }, []);
+
+  // 🔍 Search
+  const handleSearch = (value) => {
+    setQuery(value);
+    if (!value.trim()) {
+      setResults([]);
+      return;
+    }
+
+    const term = value.toLowerCase();
+
+    const matchCourses = courses.filter(
+      (c) =>
+        c.title?.toLowerCase().includes(term) ||
+        c.description?.toLowerCase().includes(term)
+    );
+
+    const matchedCourseIdsFromObjectives = objectives
+      .filter((o) => o.objective?.toLowerCase().includes(term))
+      .map((o) => o.course_id);
+
+    const matchedCourseIdsFromHighlights = highlights
+      .filter((h) => h.highlight?.toLowerCase().includes(term))
+      .map((h) => h.course_id);
+
+    const allMatchedIds = [
+      ...new Set([
+        ...matchCourses.map((c) => c.id),
+        ...matchedCourseIdsFromObjectives,
+        ...matchedCourseIdsFromHighlights,
+      ]),
+    ];
+
+    const finalMatches = courses.filter((c) => allMatchedIds.includes(c.id));
+
+    console.log("✅ Search matches:", finalMatches);
+    setResults(finalMatches);
+  };
+
+  // ✅ Highlight the search term inside text
+  const getSnippetWithHighlight = (text, term, contextLength = 40) => {
+    if (!term || !text) return null;
+    const lowerText = text.toLowerCase();
+    const lowerTerm = term.toLowerCase();
+    const index = lowerText.indexOf(lowerTerm);
+
+    if (index === -1) return null; // no match
+
+    // Get context around the match
+    const start = Math.max(0, index - contextLength);
+    const end = Math.min(text.length, index + term.length + contextLength);
+    const snippet = text.substring(start, end);
+
+    // Highlight matched term
+    const regex = new RegExp(`(${term})`, "gi");
+    const highlighted = snippet.replace(
+      regex,
+      `<span class="text-yellow-500 font-semibold">$1</span>`
+    );
+
+    return `${start > 0 ? "..." : ""}${highlighted}${end < text.length ? "..." : ""}`;
+  };
+
+
+
+
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -35,6 +142,8 @@ const Navbar = () => {
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
+
+
 
 
 
@@ -72,15 +181,44 @@ const Navbar = () => {
 
 
       {/* TOP STRIP */}
-      <div className="relative w-full h-[8px]">
+      <div className="w-full flex flex-col sm:flex-row text-sm relative z-10">
+
+        <div className="bg-[#FFD700] sm:w-[40%] w-full flex justify-center items-center h-4 sm:h-2">
+          <div className="flex space-x-2 text-black">
+          </div>
+        </div>
+
+        <div className="bg-black sm:w-[64%] w-full flex justify-center items-center h-2 
+                  
+                 
+                  sm:-ml-[30px]
+                                
+                  sm:[clip-path:polygon(20px_0,100%_0,100%_100%,0_100%)]">
+          <div className="flex space-x-2 text-black">
+          </div>
+        </div>
+
+        {/* <div
+          className="
+                  bg-black  
+                  sm:w-[64%] w-full 
+                  flex flex-col sm:flex-row 
+                  justify-center sm:justify-between 
+                  items-center text-white 
+                  px-3 sm:px-4 
+                  h-1 py-2 -sm:h-2
+                  sm:-ml-[30px]
+                  text-center
+                  sm:[clip-path:polygon(30px_0,100%_0,100%_100%,0_100%)]
+                "
+        >
+        </div> */}
+
+      </div>
+      {/* <div className="relative w-full h-[8px]">
         <div className="absolute inset-0 bg-[#094b23] z-0"></div>
         <div className="absolute inset-0 bg-yellow-400 z-20 "></div>
-      </div>
-
-
-
-
-
+      </div> */}
 
       <div className="container-custom">
         <div className="flex justify-between items-center h-24">
@@ -102,73 +240,83 @@ const Navbar = () => {
           <div className="hidden navbar md:flex items-center space-x-8">
             {menuItems
               .filter((item) => item.visible)
-              .map((item) => (
-                <div
-                  key={item.id}
-                  className="relative"
-                  ref={item.label.toLowerCase() === "courses" ? dropdownRef : null}
-                  onMouseEnter={() => item.label.toLowerCase() === "courses" && setShowDropdown(true)}
-                  onMouseLeave={() => item.label.toLowerCase() === "courses" && setShowDropdown(false)}
-                >
-                  {item.label.toLowerCase() === "courses" ? (
-                    // Courses with dropdown
-                    <>
+              .map((item) => {
+                // const isActive = pathname.startsWith(item.href);
+                const isActive =
+                  item.href === "/"
+                    ? pathname === "/" // ✅ Home active only on root
+                    : pathname.startsWith(item.href); // ✅ Subpages highlight parent
+                const isCourses = item.label.toLowerCase() === "courses";
+
+                return (
+                  <div
+                    key={item.id}
+                    className="relative"
+                    ref={isCourses ? dropdownRef : null}
+                    onMouseEnter={() => isCourses && setShowDropdown(true)}
+                    onMouseLeave={() => isCourses && setShowDropdown(false)}
+                  >
+                    {isCourses ? (
+                      <>
+                        <Link
+                          href={item.href}
+                          className={`nav-link flex items-center ${isActive
+                            ? "text-gray-700 text-yellow-500"
+                            : "text-gray-700 hover:text-yellow-500"
+                            }`}
+                        >
+                          {item.label}
+                          <svg
+                            className={`w-4 h-4 ml-1 transition-transform ${showDropdown ? "rotate-180" : ""
+                              }`}
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M19 9l-7 7-7-7"
+                            />
+                          </svg>
+                        </Link>
+
+                        {/* Dropdown Menu */}
+                        {showDropdown && courses.length > 0 && (
+                          <div className="absolute top-full left-0 w-64 bg-white rounded-lg shadow-xl border border-gray-100 py-2 z-50">
+                            {courses.map((course) => (
+                              <Link
+                                key={course.id}
+                                href={`/courses/${course.id}`}
+                                className="block px-4 py-3 text-gray-700 hover:bg-yellow-50 hover:text-yellow-500 transition-colors"
+                              >
+                                {course.title}
+                              </Link>
+                            ))}
+                          </div>
+                        )}
+                      </>
+                    ) : (
                       <Link
                         href={item.href}
-                        className="nav-link text-gray-700 hover:text-yellow-500 flex items-center"
+                        className={`nav-link flex items-center ${isActive
+                          ? "text-gray-700 text-yellow-500"
+                          : "text-gray-700 hover:text-yellow-500"
+                          }`}
                       >
                         {item.label}
-                        <svg
-                          className={`w-4 h-4 ml-1 transition-transform ${showDropdown ? 'rotate-180' : ''}`}
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M19 9l-7 7-7-7"
-                          />
-                        </svg>
                       </Link>
-
-                      {/* Dropdown Menu */}
-                      {showDropdown && courses.length > 0 && (
-                        <div className="absolute top-full left-0  w-64 bg-white rounded-lg shadow-xl border border-gray-100 py-2 z-50">
-                          {courses.map((course) => (
-                            <Link
-                              key={course.id}
-                              href={`/courses/${course.id}`}
-                              className="block px-4 py-3 text-gray-700 hover:bg-yellow-50 hover:text-yellow-500 transition-colors"
-                            >
-                              {course.title}
-                            </Link>
-                          ))}
-                        </div>
-                      )}
-                    </>
-                  ) : (
-                    // Regular menu items
-                    <Link
-                      href={item.href}
-                      className="nav-link text-gray-700 hover:text-yellow-500 flex items-center"
-                    >
-                      {item.label}
-                    </Link>
-                  )}
-                </div>
-              ))}
+                    )}
+                  </div>
+                );
+              })}
           </div>
-
-
-
 
           {/* Right Side Icons */}
           <div className="flex items-center space-x-3">
 
-            <button className="cursor-pointer w-10 h-10 bg-black rounded-full flex items-center justify-center text-white hover:bg-gray-800 transition">
-
+            {/* <button className="cursor-pointer w-10 h-10 bg-black rounded-full flex items-center justify-center text-white hover:bg-gray-800 transition">
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path
                   strokeLinecap="round"
@@ -177,7 +325,87 @@ const Navbar = () => {
                   d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
                 />
               </svg>
+            </button> */}
+            {/* 🔍 Button */}
+            <button
+              onClick={() => setIsSearchOpen(true)}
+              className="cursor-pointer w-10 h-10 bg-black rounded-full flex items-center justify-center text-white hover:bg-gray-800 transition"
+            >
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+              </svg>
             </button>
+
+            {/* 🪄 Fullscreen popup */}
+            {isSearchOpen && (
+              <div className="fixed inset-0 bg-white z-50 flex flex-col items-center justify-start pt-24 p-4 overflow-y-auto">
+                <button
+                  onClick={() => setIsSearchOpen(false)}
+                  className="absolute top-6 right-6 text-gray-800 hover:text-black text-3xl font-light"
+                >
+                  ✕
+                </button>
+
+                {/* Input */}
+                <input
+                  type="text"
+                  value={query}
+                  onChange={(e) => handleSearch(e.target.value)}
+                  placeholder="Search courses..."
+                  autoFocus
+                  className="w-full max-w-lg border border-gray-300 rounded-full px-5 py-3 shadow-md focus:outline-none focus:ring-2 focus:ring-yellow-500 text-gray-700 text-lg"
+                />
+
+                {/* Results */}
+                <div className="mt-6 w-full max-w-lg space-y-3">
+                  {results.length > 0 ? (
+                    results.map((course) => (
+                      <div
+                        key={course.id}
+                        onClick={() => {
+                          setIsSearchOpen(false);
+                          router.push(`/courses/${course.id}`);
+                        }}
+                        className="cursor-pointer bg-gray-100 hover:bg-gray-200 rounded-lg p-4 shadow-sm transition"
+                      >
+                        {/* <h3 className="font-semibold text-lg text-gray-800">{course.title}</h3>
+                        <p className="text-gray-600 text-sm line-clamp-2">{course.description}</p> */}
+
+                        <h3
+                          className="font-semibold text-lg text-gray-800"
+                          dangerouslySetInnerHTML={{
+                            __html:
+                              getSnippetWithHighlight(course.title, query) ||
+                              course.title,
+                          }}
+                        ></h3>
+
+                        <p
+                          className="text-gray-600 text-sm"
+                          dangerouslySetInnerHTML={{
+                            __html:
+                              getSnippetWithHighlight(course.description, query) ||
+                              getSnippetWithHighlight(
+                                objectives.find((o) => o.course_id === course.id)?.objective,
+                                query
+                              ) ||
+                              getSnippetWithHighlight(
+                                highlights.find((h) => h.course_id === course.id)?.highlight,
+                                query
+                              ) ||
+                              course.description,
+                          }}
+                        ></p>
+
+
+                      </div>
+                    ))
+                  ) : (
+                    query && <p className="text-gray-500 text-center mt-4">No results found.</p>
+                  )}
+                </div>
+              </div>
+            )}
 
             <Link href="/login" className="">
               <button className="cursor-pointer w-10 h-10 bg-black rounded-full flex items-center justify-center text-white hover:bg-gray-800 transition">

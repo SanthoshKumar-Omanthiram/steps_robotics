@@ -3,10 +3,11 @@ import "./globals.css";
 import { UserProvider } from "./Context/UserContext";
 import Navbar from "./component/Navbar";
 import Footer from "./component/Footer"
+import SkeletonHero from "./component/SkeletonHero";
 
 const audiowide = Audiowide({
   subsets: ["latin"],
-  weight: "400",
+  weight: ["400"],
   variable: "--font-audiowide",
 });
 

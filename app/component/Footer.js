@@ -111,15 +111,18 @@ export default function Footer() {
 
             {/* MIDDLE COLUMN */}
             <div className="flex flex-col items-center md:items-start">
-              <div className="flex flex-col lg:flex-row flex-wrap justify-between gap-10 w-full">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-10 w-full">
 
                 {/* Links */}
-                <div className="flex-1 w-full md:w-1/2 text-center md:text-left">
+                <div>
                   <h3 className="text-xl footer-links-title stem-gold mb-4">Links</h3>
                   <ul className="space-y-3">
                     {menuItems.map((item) => (
                       <li key={item.label}>
-                        <a href={item.href || "#"} className="footer-links hover:text-yellow-500 transition">
+                        <a
+                          href={item.href || "#"}
+                          className="footer-links hover:text-yellow-500 transition"
+                        >
                           {item.label}
                         </a>
                       </li>
@@ -128,17 +131,16 @@ export default function Footer() {
                 </div>
 
                 {/* Let's Connect */}
-                <div className="flex-1">
+                <div>
                   <h3 className="text-xl footer-links-title stem-gold mb-6">
                     Let's Connect
                   </h3>
+
                   <div className="space-y-4">
                     <div>
                       <div className="flex justify-center md:justify-start items-center space-x-2 text-yellow-500 mb-2">
                         <Phone className="w-5 h-5" />
-                        <span className="footer-sub-title stem-gold">
-                          Mobile
-                        </span>
+                        <span className="footer-sub-title stem-gold">Mobile</span>
                       </div>
                       <p className="footer-links">{sectionData.mobile}</p>
                     </div>
@@ -152,9 +154,10 @@ export default function Footer() {
                     </div>
                   </div>
                 </div>
-              </div>
 
+              </div>
             </div>
+
 
             {/* RIGHT COLUMN */}
             <div className="flex flex-col items-center md:items-start">
@@ -205,7 +208,7 @@ export default function Footer() {
       </div>
 
       {/* FOOTER BOTTOM */}
-      <div className="w-full mt-20 flex flex-col sm:flex-row text-sm relative z-10">
+      {/* <div className="w-full mt-20 flex flex-col sm:flex-row text-sm relative z-10">
         <div className="bg-[#FFD700] sm:w-[40%] w-full flex justify-center items-center h-10 sm:h-8">
           <div className="flex space-x-2 text-black">
             <a href="#" className="hover:underline footer-bottom-text">
@@ -219,7 +222,7 @@ export default function Footer() {
         </div>
 
         <div
-          className="bg-black  sm:w-[64%] w-full flex flex-col sm:flex-row justify-center sm:justify-between items-center text-white px-3 sm:px-4 h-auto py-2 sm:h-8 sm:-ml-[30px] text-center"
+          className="bg-black  sm:w-[64%] w-full flex flex-col sm:flex-row justify-center sm:justify-between items-center text-white px-3 sm:px-4 h-auto py-2 sm:h-8 sm:-ml-[30px] text-center sm:[clip-path:polygon(30px_0,100%_0,100%_100%,0_100%)]"
           style={{
             clipPath: "polygon(30px 0, 100% 0, 100% 100%, 0 100%)",
           }}
@@ -231,7 +234,45 @@ export default function Footer() {
             Powered by: <span className="font-medium">Redant Labs</span>
           </p>
         </div>
+      </div> */}
+      <div className="w-full mt-20 flex flex-col sm:flex-row text-sm relative z-10">
+
+        <div className="bg-[#FFD700] sm:w-[40%] w-full flex justify-center items-center h-10 sm:h-8">
+          <div className="flex space-x-2 text-black">
+            <a href="#" className="hover:underline footer-bottom-text">
+              Privacy Policy
+            </a>
+            <span>|</span>
+            <a href="#" className="hover:underline footer-bottom-text">
+              Terms of Use
+            </a>
+          </div>
+        </div>
+
+        <div
+          className="
+                  bg-black  
+                  sm:w-[64%] w-full 
+                  flex flex-col sm:flex-row 
+                  justify-center sm:justify-between 
+                  items-center text-white 
+                  px-3 sm:px-4 
+                  h-auto py-2 sm:h-8 
+                  sm:-ml-[30px]
+                  text-center
+                  sm:[clip-path:polygon(30px_0,100%_0,100%_100%,0_100%)]
+                "
+        >
+          <p className="text-xs sm:text-sm leading-tight sm:pl-20">
+            Copyright STEPS Robotics 2025. All rights reserved.
+          </p>
+          <p className="text-xs sm:text-sm leading-tight mt-1 sm:mt-0">
+            Powered by: <span className="font-medium">Redant Labs</span>
+          </p>
+        </div>
+
       </div>
+
     </footer>
 
 

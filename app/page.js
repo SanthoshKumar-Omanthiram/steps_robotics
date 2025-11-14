@@ -18,6 +18,7 @@ import { ArrowRight } from 'lucide-react';
 import CodingAdventures from './component/CodingAdventures';
 import { fetchExploreCourses } from "@/app/utils/fetchData";
 import { fetchWhyChoose } from "@/app/utils/fetchData";
+import Navbar from './component/Navbar';
 
 
 
@@ -164,6 +165,9 @@ export default function Home() {
 
 
   return (
+    <>
+    {/* <Navbar /> */}
+   
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
       <HeroSlider />
@@ -188,7 +192,7 @@ export default function Home() {
             {/* Always render buttons (Swiper binds to these refs) */}
             <button
               ref={prevRef}
-              className={`absolute bg-yellow-400 left-[-20px] top-1/2 -translate-y-1/2 z-20 bg-white shadow-lg p-2 rounded-full
+              className={`absolute bg-yellow-400 left-[-20px] top-1/2 -translate-y-1/2 z-20 bg-white shadow-lg p-2 rounded-full h-10 w-10
                    ${!canPrev ? "invisible pointer-events-none opacity-0" : ""}`}
               aria-label="Previous"
             >
@@ -197,7 +201,7 @@ export default function Home() {
 
             <button
               ref={nextRef}
-              className={`absolute bg-yellow-400 right-[-20px] top-1/2 -translate-y-1/2 z-20 bg-white shadow-lg p-2 rounded-full
+              className={`absolute bg-yellow-400 right-[-20px] top-1/2 -translate-y-1/2 z-20 bg-white shadow-lg p-2 rounded-full h-10 w-10
                    ${!canNext ? "invisible pointer-events-none opacity-0" : ""}`}
               aria-label="Next"
             >
@@ -281,11 +285,11 @@ export default function Home() {
       </section>
 
       {/**Robot section */}
-      < section className="py-6 px-4 mt-10" >
+      < section className="py-6 px-4 mt-10 mb-10" >
         <div className=" container-custom">
           {/* Header */}
           <div className="mb-10">
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl mb-4 leading-snug text-center sm:text-left text-font-orbitron">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl mb-4 leading-snug text-center font-[500] sm:text-left text-font-orbitron">
               What We Offer <span className="text-yellow-400 text-font-orbitron">STEPS Robotics</span> for Your Child?
             </h2>
 
@@ -545,9 +549,6 @@ export default function Home() {
 
       </section >
 
-
-
-
       {/**About STEPS Robotics */}
       < CodingAdventures />
 
@@ -559,9 +560,9 @@ export default function Home() {
 
       {/**Study Progress Gallery */}
       < StudyProcessGallery />
-
-
+      
     </div >
+     </>
 
   );
 }

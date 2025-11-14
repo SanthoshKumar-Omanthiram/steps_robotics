@@ -51,77 +51,55 @@ const cards = [
 ];
 
 
-  const course = {
+const course = {
     heroictitle: 'Future-Ready Kids Start Here!',
-    heroicimage: '/about/about_img.png', }
+    heroicimage: '/about/about_img.png',
+}
 
 
 export default function Page() {
     return (
-        <div className="container-spacing">
+        <div className="container-spacing ">
             {/* Banner Hero Section */}
-            <div className="contacts container-spacing p-6">
-                  <div className="container-custom space-y-8">
+            <div className="about container-spacing p-6">
+                <div className="container-custom space-y-8 ">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 transition-all duration-300">
-                      <div className="w-full h-full">
-                        {course.heroicimage ? (
-                          <Image
-                            src={course.heroicimage}
-                            alt={course.heroictitle || 'Course image'}
-                            width={600}
-                            height={484}
-                            className="programs-about-image rounded-lg"
-                          />
-                        ) : (
-                          <div className="w-full h-80 bg-gray-200 flex items-center justify-center text-gray-500">
-                            No Image
-                          </div>
-                        )}
-                      </div>
-            
-                      <div className="text-left">
-                        <h2 className="heroic-title text-3xl font-semibold">
-                          Future-Ready Kids <br></br> Started Here!
-                        </h2>
-                      </div>
+                        <div className="w-full h-full">
+                            {course.heroicimage ? (
+                                <Image
+                                    src={course.heroicimage}
+                                    alt={course.heroictitle || 'Course image'}
+                                    width={600}
+                                    height={484}
+                                    className="programs-about-image rounded-lg"
+                                />
+                            ) : (
+                                <div className="w-full h-80 bg-gray-200 flex items-center justify-center text-gray-500">
+                                    No Image
+                                </div>
+                            )}
+                        </div>
+
+                        <div className="text-left about_banner_heading">
+                            <h2 className="heroic-title text-3xl font-semibold">
+                                Future-Ready Kids <br></br> Started Here!
+                            </h2>
+                        </div>
                     </div>
-                  </div>
                 </div>
-            
-            {/* <div className="course-heroic sm:h-[525px] mb-[25px] p-6">
-                  <div className="container mx-auto space-y-8">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 transition-all duration-300">
-                      <div className="w-118  h-full">
-                        {course.heroicimage ? (
-                          <Image
-                            src={course.heroicimage}
-                            alt={course.heroictitle}
-                            width={400}
-                            height={284}
-                            className="course-heroic-image rounded-lg"
-                          />
-                        ) : (
-                          <div className="w-full h-80 bg-gray-200 flex items-center justify-center text-gray-500">
-                            No Image
-                          </div>
-                        )}
-                      </div>
-            <div className="text-left sm:text-center">
-                        <h2 className="course-heroic-title text-3xl font-semibold">
-                          {course.heroictitle}
-                        </h2>
-                      </div>
-                    </div>
-                  </div>
-                </div> */}
+            </div>
+
+
 
             {/* About Section */}
-            <section className="py-12 bg-white px-4 sm:px-8 lg:px-30">
+            <section className="py-12 bg-white px-4 sm:px-8 lg:px-30 container-custom">
 
                 <h2 className="text-2xl sm:text-3xl lg:text-4xl mb-4 leading-snug text-left text-font-orbitron">
                     About{" "}
                     <span className="text-yellow-500 font-orbitron">STEPS Robotics</span>
                 </h2>
+
+
 
                 {/* Description */}
                 <p className="text-gray-600 text-sm dotted-cards sm:text-base lg:text-lg mb-10 leading-relaxed text-font-poppins text-left">
@@ -133,7 +111,7 @@ export default function Page() {
 
                 <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                     {/* LEFT SIDE IMAGES */}
-                    <div className="grid grid-cols-2 gap-4 p-4 items-center relative">
+                    <div className="grid grid-cols-2 gap-4 p-4 items-center about_steps_robotics relative">
                         {/* Left Column (two stacked images) */}
                         <div className="flex flex-col gap-4">
                             <div style={{ backgroundColor: "#0FB5ED" }} className="rounded-[10px]">
@@ -161,7 +139,7 @@ export default function Page() {
 
                         <div className="flex flex-col items-start">
                             {/* Image container */}
-                            <div style={{ backgroundColor: "#FFB43F" }} className="rounded-[10px] w-65 h-65">
+                            <div style={{ backgroundColor: "#FFB43F" }} className="rounded-[10px] w-65 h-65 about-img3">
                                 <Image
                                     src="/about/about-2.png"
                                     alt="Image 2"
@@ -172,7 +150,7 @@ export default function Page() {
                             </div>
 
                             {/* Star Rating Card */}
-                            <div className="bg-white shadow-md rounded-[12px] bottom-15 right-35 p-4 flex items-start gap-3 max-w-md absolute">
+                            <div className="bg-white flex flex-shrink about_five_start shadow-md rounded-[12px] bottom-15 right-35 p-4 flex items-start gap-3 max-w-md absolute">
                                 <div className="flex-shrink-0 mt-1">
                                     <Star className="w-6 h-6 text-yellow-500 fill-yellow-400" />
                                 </div>
@@ -229,7 +207,7 @@ export default function Page() {
             </section>
 
             {/** Vision */}
-            <section className="pt-10  px-4 sm:px-8 lg:px-16 bg-gray-50 relative">
+            <section className="pt-10 px-4 sm:px-8 lg:px-16 bg-gray-50 relative ">
                 {/* Decorative rocket element at top */}
                 <div className="absolute top-[-60] left-[-20]">
                     <div className="w-40 h-40">
@@ -237,26 +215,26 @@ export default function Page() {
                     </div>
                 </div>
 
-                <div className="max-w-7xl pt-18 pb-25 mx-auto relative">
+                <div className="max-w-7xl pt-18 pb-25 mx-auto relative container-custom">
                     {/* Main Yellow Container */}
                     <div className="bg-gradient-to-r from-yellow-400 to-yellow-500 rounded-[3rem] px-8 pt-10 relative overflow-hidden">
 
                         {/* Content Grid - Changed to 60/40 split */}
-                        <div className="grid grid-cols-1 lg:grid-cols-[60%_40%] gap-8 lg:gap-12">
+                        <div className="grid grid-cols-1 about_VMV lg:grid-cols-[60%_40%] gap-8 lg:gap-12">
 
                             {/* Left Column - Text Content (60%) */}
                             <div className="space-y-8 lg:space-y-10">
 
                                 {/* Vision */}
                                 <div className="flex gap-4 items-start">
-                                    <div className="flex-shrink-0 w-25 h-25 bg-white rounded-2xl flex items-center justify-center shadow-lg">
+                                    <div className="flex-shrink-0 w-20 h-20 bg-white rounded-2xl flex items-center justify-center shadow-lg">
                                         {/* Eye Icon */}
                                         <Image
                                             src="/about/our_vision.png"
                                             alt="Girl with STEPS Robotics and Robot"
                                             width={300}
                                             height={300}
-                                            className="object-contain w-80 h-80"
+                                            className="object-contain w-30 h-30"
                                             priority
                                         />
                                     </div>
@@ -272,7 +250,7 @@ export default function Page() {
 
                                 {/* Mission */}
                                 <div className="flex gap-4 items-start">
-                                    <div className="flex-shrink-0 w-25 h-25 bg-white rounded-2xl flex items-center justify-center shadow-lg">
+                                    <div className="flex-shrink-0 w-20 h-20 bg-white rounded-2xl flex items-center justify-center shadow-lg">
                                         {/* Target Icon */}
                                         <Image
                                             src="/about/our_mission.png"
@@ -295,7 +273,7 @@ export default function Page() {
 
                                 {/* Values */}
                                 <div className="flex gap-4 items-start">
-                                    <div className="flex-shrink-0 w-25 h-25 bg-white rounded-2xl flex items-center justify-center shadow-lg">
+                                    <div className="flex-shrink-0 w-20 h-20 bg-white rounded-2xl flex items-center justify-center shadow-lg">
                                         {/* Heart Hand Icon */}
                                         <Image
                                             src="/about/our_values.png"
@@ -320,13 +298,13 @@ export default function Page() {
 
                             {/* Right Column - Image (40%) */}
                             <div className="relative flex items-center justify-center">
-                                <div className="relative w-full max-w-md lg:max-w-lg flex justify-center">
+                                <div className="relative about_VMV_img w-full max-w-md lg:max-w-lg flex justify-center">
                                     <Image
                                         src="/about/vision.png"
                                         alt="Girl with STEPS Robotics and Robot"
                                         width={300}
                                         height={300}
-                                        className="object-contain w-auto h-auto"
+                                        className="object-contain w-80 h-auto"
                                         priority
                                     />
                                 </div>
@@ -342,99 +320,102 @@ export default function Page() {
             {/**Projects */}
             <section className="py-12 bg-white px-4 sm:px-8 lg:px-30">
 
-                {/* Section Heading */}
-                <h2 className="text-2xl sm:text-3xl lg:text-4xl mb-4 leading-snug text-left text-font-orbitron">
-                    Explore{" "}
-                    <span className="text-yellow-500 font-orbitron">STEPS Robotics</span> Projects
-                </h2>
+                <div className="container-custom">
 
-                {/* Description */}
-                <p className="text-gray-600 text-sm dotted-cards sm:text-base lg:text-lg mb-10 leading-relaxed text-font-poppins text-left">
-                    Real students bringing ideas to life with robotics kits and hands-on STEM—capturing
-                    the spirit of STEPS Robotics projects.
-                </p>
+                    {/* Section Heading */}
+                    <h2 className="text-2xl sm:text-3xl lg:text-4xl mb-4 leading-snug text-left text-font-orbitron">
+                        Explore{" "}
+                        <span className="text-yellow-500 font-orbitron">STEPS Robotics</span> Projects
+                    </h2>
 
-                {/* Cards Grid */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-25 max-w-7xl mx-auto px-6">
-                    {cards.map((card) => (
-                        <div className="relative flex flex-col items-center">
-                            {/* Circle Text */}
-                            <div
-                                className="w-32 h-16 rounded-t-full flex items-center justify-center text-white font-semibold text-lg shadow-lg mb-[-1rem] z-10"
-                                style={{ backgroundColor: card.color }}
-                            >
-                                {card.circleText}
-                            </div>
+                    {/* Description */}
+                    <p className="text-gray-600 text-sm dotted-cards sm:text-base lg:text-lg mb-10 leading-relaxed text-font-poppins text-left">
+                        Real students bringing ideas to life with robotics kits and hands-on STEM—capturing
+                        the spirit of STEPS Robotics projects.
+                    </p>
 
-                            {/* Wrapper for card + outside side bars + bottom strip */}
-                            <div className="relative w-full max-w-sm flex justify-center">
-
-                                {/* Left Side Bar */}
+                    {/* Cards Grid */}
+                    <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-25 max-w-7xl mx-auto px-6">
+                        {cards.map((card) => (
+                            <div className="relative flex flex-col items-center">
+                                {/* Circle Text */}
                                 <div
-                                    className="absolute left-[-18px] top-1/2"
-                                    style={{
-                                        width: '18px',
-                                        height: '50%',
-                                        backgroundColor: card.color,
-                                        borderBottomLeftRadius: '5rem',
-                                    }}
-                                ></div>
+                                    className="w-32 h-16 rounded-t-full flex items-center justify-center text-white font-semibold text-lg shadow-lg mb-[-1rem] z-10"
+                                    style={{ backgroundColor: card.color }}
+                                >
+                                    {card.circleText}
+                                </div>
 
-                                {/* Right Side Bar */}
-                                <div
-                                    className="absolute right-[-18px] top-1/2"
-                                    style={{
-                                        width: '18px',
-                                        height: '50%',
-                                        backgroundColor: card.color,
-                                        borderBottomRightRadius: '5rem',
-                                    }}
-                                ></div>
+                                {/* Wrapper for card + outside side bars + bottom strip */}
+                                <div className="relative w-full max-w-sm flex justify-center">
 
-                                {/* Card Container */}
-                                <div className="relative bg-white text-center rounded-2xl shadow-lg overflow-hidden w-full">
-                                    {/* Image */}
-                                    <div className="p-6">
-                                        <div className="p-4 bg-gray-200 rounded-lg">
-                                            <Image
-                                                src={card.image}
-                                                alt={card.title}
-                                                width={400}
-                                                height={250}
-                                                className="mx-auto object-contain w-full h-40"
-                                            />
+                                    {/* Left Side Bar */}
+                                    <div
+                                        className="absolute left-[-18px] top-1/2"
+                                        style={{
+                                            width: '18px',
+                                            height: '50%',
+                                            backgroundColor: card.color,
+                                            borderBottomLeftRadius: '5rem',
+                                        }}
+                                    ></div>
+
+                                    {/* Right Side Bar */}
+                                    <div
+                                        className="absolute right-[-18px] top-1/2"
+                                        style={{
+                                            width: '18px',
+                                            height: '50%',
+                                            backgroundColor: card.color,
+                                            borderBottomRightRadius: '5rem',
+                                        }}
+                                    ></div>
+
+                                    {/* Card Container */}
+                                    <div className="relative bg-white text-center rounded-2xl shadow-lg overflow-hidden w-auto h-auto">
+                                        {/* Image */}
+                                        <div className="p-6">
+                                            <div className="p-4 bg-gray-200 rounded-lg">
+                                                <Image
+                                                    src={card.image}
+                                                    alt={card.title}
+                                                    width={400}
+                                                    height={250}
+                                                    className="mx-auto object-contain w-full h-40"
+                                                />
+                                            </div>
+                                        </div>
+
+                                        {/* Text */}
+                                        <div className="min-h-45">
+                                            <h3 className="text-xl font-semibold text-gray-900">{card.title}</h3>
+                                            <p className="text-gray-600 text-sm mt-2">{card.description}</p>
                                         </div>
                                     </div>
 
-                                    {/* Text */}
-                                    <div className="min-h-45">
-                                        <h3 className="text-xl font-semibold text-gray-900">{card.title}</h3>
-                                        <p className="text-gray-600 text-sm mt-2">{card.description}</p>
-                                    </div>
-                                </div>
-
-                                {/* Bottom Colored Strip */}
-                                <div
-                                    className="absolute bottom-0 left-[-18px] right-[-18px] h-4 rounded-b-2xl flex justify-center"
-                                    style={{ backgroundColor: card.color }}
-                                >
-                                    {/* Circle Button */}
+                                    {/* Bottom Colored Strip */}
                                     <div
-                                        className="absolute mt-1 -top-6 w-16 h-16 bg-white rounded-full shadow-md flex justify-center items-center border-4"
-                                        style={{
-                                            borderWidth: '12px',
-                                            borderColor: card.color,
-                                        }}
+                                        className="absolute bottom-0 left-[-18px] right-[-18px] h-4 rounded-b-2xl flex justify-center"
+                                        style={{ backgroundColor: card.color }}
                                     >
-                                        <span className={`${card.color.replace("bg-", "text-")} text-lg font-bold`}>
-                                            →
-                                        </span>
+                                        {/* Circle Button */}
+                                        <div
+                                            className="absolute mt-1 -top-6 w-16 h-16 bg-white rounded-full shadow-md flex justify-center items-center border-4"
+                                            style={{
+                                                borderWidth: '12px',
+                                                borderColor: card.color,
+                                            }}
+                                        >
+                                            <span className={`${card.color.replace("bg-", "text-")} text-lg font-bold`}>
+                                                →
+                                            </span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
 
-                    ))}
+                        ))}
+                    </div>
                 </div>
 
             </section>
@@ -448,64 +429,63 @@ export default function Page() {
             >
                 {/* Title and Paragraph */}
 
+                <div className="container-custom">
+                    <h2 className="text-2xl sm:text-3xl lg:text-4xl mb-4 leading-snug text-left text-font-orbitron">
+                        Explore Our{" "}
+                        <span className="text-white text-font-orbitron">Fun-Filled Gallery</span>
+                    </h2>
 
-                <h2 className="text-2xl sm:text-3xl lg:text-4xl mb-4 leading-snug text-left text-font-orbitron">
-                    Explore Our{" "}
-                    <span className="text-white text-font-orbitron">Fun-Filled Gallery</span>
-                </h2>
+                    {/* Description */}
+                    <p className="text-black text-sm dotted-cards sm:text-base lg:text-lg mb-10 leading-relaxed text-font-poppins text-left">
+                        Discover moments of creativity, innovation, and joy as our young innovators bring STEM concepts to life.
+                    </p>
 
-                {/* Description */}
-                <p className="text-black text-sm dotted-cards sm:text-base lg:text-lg mb-10 leading-relaxed text-font-poppins text-left">
-                    Discover moments of creativity, innovation, and joy as our young innovators bring STEM concepts to life.
-                </p>
+                    {/* Image Split Section */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        {/* Left Side - Single Big Image */}
+                        <div className="flex justify-center items-center">
+                            <div className="w-full h-full">
+                                <Image
+                                    src="/about/fun-1.png"
+                                    alt="Left Image"
+                                    width={600}
+                                    height={600}
+                                    className="w-full h-full object-cover rounded-lg"
+                                />
+                            </div>
+                        </div>
 
-
-
-                {/* Image Split Section */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    {/* Left Side - Single Big Image */}
-                    <div className="flex justify-center items-center">
-                        <div className="w-full h-full">
+                        {/* Right Side - 4 Images Grid */}
+                        <div className="grid grid-cols-2 grid-rows-2 gap-2 px-5 ">
                             <Image
-                                src="/about/fun-1.png"
-                                alt="Left Image"
-                                width={600}
-                                height={600}
+                                src="/about/fun-2.png"
+                                alt="Right Image 1"
+                                width={300}
+                                height={300}
+                                className="w-full h-full     rounded-lg"
+                            />
+                            <Image
+                                src="/about/fun-3.png"
+                                alt="Right Image 2"
+                                width={300}
+                                height={300}
+                                className="w-full h-full object-cover rounded-lg"
+                            />
+                            <Image
+                                src="/about/fun-4.png"
+                                alt="Right Image 3"
+                                width={300}
+                                height={300}
+                                className="w-full h-full object-cover rounded-lg"
+                            />
+                            <Image
+                                src="/about/fun-5.png"
+                                alt="Right Image 4"
+                                width={300}
+                                height={300}
                                 className="w-full h-full object-cover rounded-lg"
                             />
                         </div>
-                    </div>
-
-                    {/* Right Side - 4 Images Grid */}
-                    <div className="grid grid-cols-2 grid-rows-2 gap-2 px-5 ">
-                        <Image
-                            src="/about/fun-2.png"
-                            alt="Right Image 1"
-                            width={300}
-                            height={300}
-                            className="w-full h-full     rounded-lg"
-                        />
-                        <Image
-                            src="/about/fun-3.png"
-                            alt="Right Image 2"
-                            width={300}
-                            height={300}
-                            className="w-full h-full object-cover rounded-lg"
-                        />
-                        <Image
-                            src="/about/fun-4.png"
-                            alt="Right Image 3"
-                            width={300}
-                            height={300}
-                            className="w-full h-full object-cover rounded-lg"
-                        />
-                        <Image
-                            src="/about/fun-5.png"
-                            alt="Right Image 4"
-                            width={300}
-                            height={300}
-                            className="w-full h-full object-cover rounded-lg"
-                        />
                     </div>
                 </div>
             </section>

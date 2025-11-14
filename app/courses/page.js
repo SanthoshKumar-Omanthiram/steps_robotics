@@ -9,11 +9,11 @@ import Nap from '../component/Nap'
 export default function page() {
   return (
     <>
-   <HeroicCourse />
-   <StemList />
- <Nap />
-   <FeedbackCourse />
-   <Faq />
+      <HeroicCourse />
+      <StemList />
+      <Nap />
+      <FeedbackCourse />
+      <Faq />
     </>
   )
 }

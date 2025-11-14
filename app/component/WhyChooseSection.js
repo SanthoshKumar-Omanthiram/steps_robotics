@@ -23,13 +23,14 @@ export default function WhyChooseSection() {
   return (
     <section className='explore_learning px-4 pt-15' 
     style={{ 
-      backgroundImage: "url('/why_choose_steps_bg.jpg')", 
+      backgroundImage: "url('/why_choose_STEPS.jpg')", 
       backgroundRepeat: "no-repeat", 
       backgroundSize: "cover",
       backgroundPosition: "center",
+      unoptimized: true
      }}
     >
-      <div className="container-custom -mb-4 pb-10">
+      <div className="container-custom -mb-4 pb-20">
         <div className="mb-8 md:mb-12 lg:mb-16">
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-[500] mb-4 leading-snug text-center sm:text-left text-font-orbitron">
             Why Choose{" "}

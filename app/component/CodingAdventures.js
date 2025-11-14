@@ -14,10 +14,10 @@ export default function CodingAdventures() {
                         We believe that true learning begins with exploration. That's why we deliver immersive, hands-on STEM experiences that ignite creativity and build
                         real-world skills in Robotics, Artificial Intelligence, Coding, IoT and more
                     </p>
-                    <h3 className="leading-snug text-center text-xl sm:text-center coding_adventure">Coding Adventures</h3>
+                    {/* <h3 className="leading-snug text-center text-xl sm:text-center coding_adventure">Coding Adventures</h3> */}
                     <div className="mt-[-40px]">
                         <Image
-                        src="/codingSteps-V2.1.png"
+                        src="/robotics.png"
                         alt="About STEPS Robotics"
                         width={1300}
                         height={700}

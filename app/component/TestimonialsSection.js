@@ -115,13 +115,13 @@ export default function TestimonialsSection() {
         <div
             className="pb-16 py-2 px-5 relative"
             style={{
-                backgroundImage: "url('/talks_bg.jpg')",
+                backgroundImage: "url('/testimonials_bg.jpg')",
                 backgroundRepeat: "no-repeat",
                 backgroundSize: "cover",
                 backgroundPosition: "center",
             }}
         >
-            <div className="max-w-7xl mx-auto">
+            <div className="max-w-7xl mx-auto container-custom">
                 {/* Header */}
                 <div className="mb-4 mt-12">
                         <h2 className="text-3xl sm:text-3xl font-[500] lg:text-4xl mb-4 leading-snug text-center sm:text-left text-font-orbitron text-yellow-400">

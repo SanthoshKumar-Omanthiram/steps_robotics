@@ -10,6 +10,9 @@
   },
   "dependencies": {
     "@heroicons/react": "^2.2.0",
+    "@heroui/skeleton": "^2.2.17",
+    "@heroui/system": "^2.4.23",
+    "@heroui/theme": "^2.4.23",
     "@tailwindcss/cli": "^4.1.14",
     "axios": "^1.12.2",
     "bcrypt": "^6.0.0",

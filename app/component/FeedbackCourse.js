@@ -128,7 +128,7 @@ export default function FeedbackCourse() {
           </div>
 
           {/* Right testimonial section */}
-          <div className="w-full tesitimonial-box-content pt-[98px] lg:w-[40%] relative">
+          <div className="w-full tesitimonial-box-content pt-[30px] md:pt-[98px] lg:w-[40%] relative">
             <div className="relative min-h-[200px] md:min-h-[160px] overflow-hidden">
               <AnimatePresence mode="wait">
                 <motion.div

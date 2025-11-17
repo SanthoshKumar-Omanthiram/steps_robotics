@@ -45,7 +45,6 @@ export default function StemList() {
     return text.slice(0, limit) + "...";
   };
 
-  // Pagination logic
   const totalPages = Math.ceil(filteredCourses.length / itemsPerPage);
   const startIndex = (currentPage - 1) * itemsPerPage;
   const currentCourses = filteredCourses.slice(startIndex, startIndex + itemsPerPage);
@@ -83,14 +82,12 @@ export default function StemList() {
     ))}
   </div>
 </div>
-
-
         <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
           {currentCourses.map((course, idx) => (
             <div
               key={idx}
               className={`flex flex-col md:flex-row bg-white rounded-xl overflow-hidden border-stem-list transition-all duration-300 hover:shadow-xl 
-              h-auto sm:h-[300px]`}
+              h-auto md:h-[300px]`}
             >              <div className="group relative flex w-full md:w-1/2 h-60 md:h-auto">
                 <div className="relative bg-black w-16 md:w-[80px] flex flex-col items-center justify-between py-6 z-10">
                   <svg className="top-triangle" width="30" height="35" viewBox="0 0 30 35" fill="none" xmlns="http://www.w3.org/2000/svg">

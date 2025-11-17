@@ -3719,6 +3719,9 @@ li {
   .about{
     height: 420px !important;
   }
+  .contact-heroic-image{
+    margin-top: 0 !important;
+  }
 }
 
 @media (max-width:1139px) {

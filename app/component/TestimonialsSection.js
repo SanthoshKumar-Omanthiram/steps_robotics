@@ -94,19 +94,19 @@ export default function TestimonialsSection() {
             <div className={` mx-auto mb-5 rounded-2xl overflow-hidden ${isCenter ? 'border-white' : 'border-gray-50'
                 }`}>
                 <Image
-                    src={testimonial.image}
-                    alt={testimonial.name}
+                    src={testimonials?.image || "/Sathish.png"}
+                    alt="student image"
                     width={100}
                     height={100}
                     className="w-full h-full object-cover"
                 />
             </div>
             <h3 className="text-2xl testmonials font-semibold text-gray-800 text-center mb-2.5">
-                {testimonial.name}
+                {testimonial?.name}
             </h3>
-            <StarRating rating={testimonial.rating} center={isCenter} />
+            <StarRating rating={testimonial?.rating} center={isCenter} />
             <p className={`text-center testmonials text-sm ${isCenter ? 'text-gray-800 font-medium' : 'text-gray-600'}`}>
-                {testimonial.role}
+                {testimonial?.role}
             </p>
         </div>
     );
@@ -124,13 +124,13 @@ export default function TestimonialsSection() {
             <div className="max-w-7xl mx-auto container-custom">
                 {/* Header */}
                 <div className="mb-4 mt-12">
-                        <h2 className="text-3xl sm:text-3xl font-[500] lg:text-4xl mb-4 leading-snug text-center sm:text-left text-font-orbitron text-yellow-400">
-                            STEPS Robotics <span className="text-black text-font-orbitron">Talks</span>
-                        </h2>
-                        <p className="text-gray-600 text-base text-center sm:text-left md:text-lg text-font-poppins">
-                            What Parent & Teachers Say About Us
-                        </p>
-                    </div>
+                    <h2 className="text-3xl sm:text-3xl font-[500] lg:text-4xl mb-4 leading-snug text-center sm:text-left text-font-orbitron text-yellow-400">
+                        STEPS Robotics <span className="text-black text-font-orbitron">Talks</span>
+                    </h2>
+                    <p className="text-gray-600 text-base text-center sm:text-left md:text-lg text-font-poppins">
+                        What Parent & Teachers Say About Us
+                    </p>
+                </div>
 
 
                 {/* Desktop Layout */}
@@ -199,37 +199,46 @@ export default function TestimonialsSection() {
                 {/* Mobile Layout */}
                 <div className="md:hidden flex flex-col items-center text-center">
                     <>
-                                    <div className="absolute pin_right">
-                                        <div className="relative w-8 h-8">
-                                            <Image
-                                                src="/comma_right.png"
-                                                alt="pin"
-                                                fill
-                                            />
-                                        </div>
-                                    </div>
+                        <div className="absolute pin_right">
+                            <div className="relative w-8 h-8">
+                                <Image
+                                    src="/comma_right.png"
+                                    alt="pin"
+                                    fill
+                                />
+                            </div>
+                        </div>
 
-                                    <div className="absolute pin_left">
-                                        <div className="relative w-8 h-8">
-                                            <Image
-                                                src="/comma_left.png"
-                                                alt="pin"
-                                                fill
-                                            />
-                                        </div>
-                                    </div>
-                                </>
+                        <div className="absolute pin_left">
+                            <div className="relative w-8 h-8">
+                                <Image
+                                    src="/comma_left.png"
+                                    alt="pin"
+                                    fill
+                                />
+                            </div>
+                        </div>
+                    </>
                     <TestimonialCard
                         testimonial={testimonials[mobileIndex]}
                         isCenter={true}
                         onClick={() => { }}
                     />
-                    <p className="text-gray-800 leading-relaxed mt-4 px-3">
+                    {/* <p className="text-gray-800 leading-relaxed mt-4 px-3">
                         "{testimonials[mobileIndex].quote}"
-                    </p>
+                    </p> */}
+                    {testimonials.length > 0 && testimonials[mobileIndex] && (
+                        <p className="text-gray-800 leading-relaxed mt-4 px-3">
+                            "{testimonials[mobileIndex].quote}"
+                        </p>
+                    )
+                    && (
                     <p className="text-gray-800 text-base leading-relaxed mt-2 px-3">
                         {testimonials[mobileIndex].description}
                     </p>
+                    )
+
+                    }
 
                     {/* Dots for mobile */}
                     <div className="flex justify-center gap-3 mt-6">

@@ -19,6 +19,7 @@ import CodingAdventures from './component/CodingAdventures';
 import { fetchExploreCourses } from "@/app/utils/fetchData";
 import { fetchWhyChoose } from "@/app/utils/fetchData";
 import Navbar from './component/Navbar';
+import Footer from './component/Footer';
 
 
 
@@ -166,7 +167,7 @@ export default function Home() {
 
   return (
     <>
-    {/* <Navbar /> */}
+
    
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
@@ -562,6 +563,8 @@ export default function Home() {
       < StudyProcessGallery />
       
     </div >
+
+
      </>
 
   );

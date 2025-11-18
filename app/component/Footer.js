@@ -16,6 +16,44 @@ import { footer } from "../utils/fetchData";
 import { getNavbarData } from "../utils/menuItems";
 
 export default function Footer() {
+
+  const [email, setEmail] = useState("");
+  const [loading, setLoading] = useState(false)
+  const [message, setMessage] = useState("")
+
+  // Email validation
+  const validateEmail = (email) =>
+    /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    // Simple email validation
+    if (!validateEmail(email)) {
+      setMessage("Please enter a valid email.");
+      return;
+    }
+
+    setLoading(true);
+
+    try {
+      const res = await fetch("/api/subscribe", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      });
+
+      const data = await res.json();
+      setMessage(data.message);
+      if (res.ok) setEmail("");
+    } catch (err) {
+      setMessage("Something went wrong. Try again.");
+    }
+
+    setLoading(false);
+  };
+
+
   const [boxes, setBoxes] = React.useState([]);
   const [menuItems, setMenuItems] = useState([]);
 
@@ -71,7 +109,7 @@ export default function Footer() {
             <div className="footerlogo flex flex-col items-center md:items-start">
               <div className="mb-4">
                 <Image
-                  src={sectionData.logo_url}
+                  src={sectionData.logo_url || "/footer-logo.png"}
                   alt="Steps Robotics Logo"
                   width={194}
                   height={104}
@@ -165,16 +203,34 @@ export default function Footer() {
                 Write to Us
               </h3>
               <div className="space-y-4 w-full max-w-xs md:max-w-none">
-                <div className="relative">
-                  <input
-                    type="email"
-                    placeholder="Email address"
-                    className="w-full px-4 py-3 pr-12 border-2 border-gray-200 rounded-lg focus:outline-none focus:border-yellow-400 transition"
-                  />
-                  <button className="absolute right-2 top-1/2 transform -translate-y-1/2 w-8 h-8 bg-yellow-400 rounded-lg flex items-center justify-center hover:bg-yellow-500 transition">
-                    <Send className="w-4 h-4 text-black" />
-                  </button>
-                </div>
+                <form onSubmit={handleSubmit}>
+                  <div className="relative">
+
+                    <input
+                      type="email"
+                      placeholder="Email address"
+                      required
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      className="w-full px-4 py-3 pr-12 border-2 border-gray-200 rounded-lg"
+                    />
+
+                    {/* Anti-bot honeypot */}
+                    <input type="text" className="hidden" autoComplete="off" tabIndex="-1" />
+
+                    <button
+                      type="submit"
+                      className="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 bg-yellow-400 rounded-lg flex items-center justify-center"
+                    >
+                      <Send className="w-4 h-4 text-black" />
+                    </button>
+                  </div>
+
+                  {message && (
+                    <p className="subscribemt-2 text-sm text-green-600">{message}</p>
+                  )}
+                </form>
+
 
                 <div className="relative text-center md:text-left">
                   <h4 className="text-xl footer-links-title stem-gold mb-2">
@@ -207,34 +263,6 @@ export default function Footer() {
         </button>
       </div>
 
-      {/* FOOTER BOTTOM */}
-      {/* <div className="w-full mt-20 flex flex-col sm:flex-row text-sm relative z-10">
-        <div className="bg-[#FFD700] sm:w-[40%] w-full flex justify-center items-center h-10 sm:h-8">
-          <div className="flex space-x-2 text-black">
-            <a href="#" className="hover:underline footer-bottom-text">
-              Privacy Policy
-            </a>
-            <span>|</span>
-            <a href="#" className="hover:underline footer-bottom-text">
-              Terms of Use
-            </a>
-          </div>
-        </div>
-
-        <div
-          className="bg-black  sm:w-[64%] w-full flex flex-col sm:flex-row justify-center sm:justify-between items-center text-white px-3 sm:px-4 h-auto py-2 sm:h-8 sm:-ml-[30px] text-center sm:[clip-path:polygon(30px_0,100%_0,100%_100%,0_100%)]"
-          style={{
-            clipPath: "polygon(30px 0, 100% 0, 100% 100%, 0 100%)",
-          }}
-        >
-          <p className="text-xs sm:text-sm ml-20 leading-tight">
-            Copyright STEPS Robotics 2025. All rights reserved.
-          </p>
-          <p className="text-xs sm:text-sm  leading-tight mt-1 sm:mt-0">
-            Powered by: <span className="font-medium">Redant Labs</span>
-          </p>
-        </div>
-      </div> */}
       <div className="w-full mt-20 flex flex-col sm:flex-row text-sm relative z-10">
 
         <div className="bg-[#FFD700] sm:w-[40%] w-full flex justify-center items-center h-10 sm:h-8">

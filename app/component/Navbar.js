@@ -22,19 +22,7 @@ const Navbar = () => {
   const [objectives, setObjectives] = useState([]);
   const [highlights, setHighlights] = useState([]);
 
-
-  // useEffect(() => {
-  //   const fetchCourses = async () => {
-  //     try {
-  //       const res = await axios.get("/api/courses");
-  //       const data = Array.isArray(res.data) ? res.data : [];
-  //       setCourses(data);
-  //     } catch (err) {
-  //       console.error("Failed to fetch courses:", err);
-  //     }
-  //   };
-  //   fetchCourses();
-  // }, []);
+  const [navLoading, setNavLoading] = useState(true);
 
   // 🧠 Fetch all data
   useEffect(() => {
@@ -129,10 +117,6 @@ const Navbar = () => {
     return `${start > 0 ? "..." : ""}${highlighted}${end < text.length ? "..." : ""}`;
   };
 
-
-
-
-
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
@@ -142,12 +126,6 @@ const Navbar = () => {
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
-
-
-
-
-
-
 
   const pathname = usePathname();
 
@@ -170,16 +148,48 @@ const Navbar = () => {
 
       } catch (err) {
         console.error("Navbar data fetch error:", err);
+      } finally {
+        setNavLoading(false)
       }
     }
     loadData();
   }, []);
 
+  //Navbar Loader
+  function NavbarSkeleton() {
+    return (
+      <div className="container-custom animate-pulse">
+        <div className="flex justify-between items-center h-24">
+
+          {/* Logo skeleton */}
+          <div className="h-10 w-40 bg-gray-300 rounded"></div>
+
+          {/* Menu skeleton */}
+          <div className="hidden md:flex space-x-6">
+            <div className="h-6 w-16 bg-gray-300 rounded"></div>
+            <div className="h-6 w-20 bg-gray-300 rounded"></div>
+            <div className="h-6 w-24 bg-gray-300 rounded"></div>
+            <div className="h-6 w-20 bg-gray-300 rounded"></div>
+          </div>
+
+          {/* Icons skeleton */}
+          <div className="flex space-x-3">
+            <div className="h-10 w-10 bg-gray-300 rounded-full"></div>
+            <div className="h-10 w-10 bg-gray-300 rounded-full"></div>
+            <div className="h-10 w-10 bg-gray-300 rounded-full"></div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (navLoading) return <NavbarSkeleton />;
+
+
+
 
   return (
     <nav className="bg-white header_part shadow-sm fixed top-0 left-0 right-0 z-50">
-
-
       {/* TOP STRIP */}
       <div className="w-full flex flex-col sm:flex-row text-sm relative z-10">
 
@@ -189,36 +199,12 @@ const Navbar = () => {
         </div>
 
         <div className="bg-black sm:w-[64%] w-full flex justify-center items-center h-2 
-                  
-                 
-                  sm:-ml-[30px]
-                                
+                  sm:-ml-[30px]          
                   sm:[clip-path:polygon(20px_0,100%_0,100%_100%,0_100%)]">
           <div className="flex space-x-2 text-black">
           </div>
         </div>
-
-        {/* <div
-          className="
-                  bg-black  
-                  sm:w-[64%] w-full 
-                  flex flex-col sm:flex-row 
-                  justify-center sm:justify-between 
-                  items-center text-white 
-                  px-3 sm:px-4 
-                  h-1 py-2 -sm:h-2
-                  sm:-ml-[30px]
-                  text-center
-                  sm:[clip-path:polygon(30px_0,100%_0,100%_100%,0_100%)]
-                "
-        >
-        </div> */}
-
       </div>
-      {/* <div className="relative w-full h-[8px]">
-        <div className="absolute inset-0 bg-[#094b23] z-0"></div>
-        <div className="absolute inset-0 bg-yellow-400 z-20 "></div>
-      </div> */}
 
       <div className="container-custom">
         <div className="flex justify-between items-center h-24">

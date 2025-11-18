@@ -37,6 +37,7 @@ export default function WorkShopRobotics() {
         muted
         loop
         playsInline
+        unoptimized
         autoPlay
       ></video>
 

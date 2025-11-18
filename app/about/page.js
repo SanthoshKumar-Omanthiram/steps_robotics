@@ -67,7 +67,7 @@ export default function Page() {
                 <div className="about container-spacing p-6">
                     <div className="container-custom space-y-8 ">
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 transition-all duration-300">
-                            <div className="w-full h-full">
+                            <div className="w-full h-full order-2 md:order-1">
                                 {course.heroicimage ? (
                                     <Image
                                         src={course.heroicimage}
@@ -83,7 +83,7 @@ export default function Page() {
                                 )}
                             </div>
 
-                            <div className="text-left about_banner_heading">
+                            <div className="text-left about_banner_heading order-1 md:order-2">
                                 <h2 className="heroic-title text-3xl font-semibold">
                                     Future-Ready Kids <br></br> Started Here!
                                 </h2>
@@ -339,8 +339,8 @@ export default function Page() {
 
                         {/* Cards Grid */}
                         <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-25 max-w-7xl mx-auto px-6">
-                            {cards.map((card) => (
-                                <div className="relative flex flex-col items-center">
+                            {cards.map((card, i) => (
+                                <div key={i} className="relative flex flex-col items-center">
                                     {/* Circle Text */}
                                     <div
                                         className="w-32 h-16 rounded-t-full flex items-center justify-center text-white font-semibold text-lg shadow-lg mb-[-1rem] z-10"

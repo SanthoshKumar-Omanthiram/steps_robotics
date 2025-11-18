@@ -92,7 +92,7 @@ export default function GetInTouch() {
                 </h2>
                 <p className="get-in-touch-subtitle mb-2 leading-relaxed">
                   It is a long established fact that a reader will be distracted
-                  by the readable content of a page randomised words which don't
+                  by the readable content of a page randomised words which don&apos;t
                   look even slightly when looking at its layout.
                 </p>
 

@@ -29,7 +29,7 @@ export default function Sidebar({ collapsed, setCollapsed }) {
     setAuthorized(true);
     const timer = setTimeout(() => setLoading(false), 2000);
     return () => clearTimeout(timer);
-  }, []);
+  }, [router]);
 
   // const menuItems = [
   //   { href: "/admin/dashboard", label: "Dashboard", icon: "/dashboard.svg" },

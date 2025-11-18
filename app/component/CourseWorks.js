@@ -10,7 +10,7 @@ export default function CourseWorks() {
             How It <span className="stem-gold">Works</span>
           </h2>
           <p className="course-work-p">
-            Getting started with our Virtual Robotics offline course is easy. Here's a step-by-step guide for students joining in person at our learning center
+            Getting started with our Virtual Robotics offline course is easy. Here&apos;s a step-by-step guide for students joining in person at our learning center
           </p>
         </div>
                 <div className="w-full mb-8">
@@ -28,7 +28,7 @@ export default function CourseWorks() {
           <div className="flex flex-col items-center text-center">
             <h3 className="works-main-tag mb-3">Choose Your Course</h3>
             <p className="works-main-subtag">
-              Browse our STEM and robotics programs and pick the one that suits your child's age and interest.
+              Browse our STEM and robotics programs and pick the one that suits your child&apos;s age and interest.
             </p>
           </div>
 

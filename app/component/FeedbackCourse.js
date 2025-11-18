@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import axios from "axios";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function FeedbackCourse() {
@@ -89,7 +90,7 @@ export default function FeedbackCourse() {
           {/* Left side text */}
           <div className="w-full lg:w-[40%]">
             <h2 className="mb-4 leading-tight">
-              <span className="feedback-main stem-gold">People's Say</span>{" "}
+              <span className="feedback-main stem-gold">People&apos;s Say</span>{" "}
               <span className="feedback-main">
                 About <br /> our Course
               </span>
@@ -106,7 +107,6 @@ export default function FeedbackCourse() {
             </Link>
           </div>
 
-          {/* Center image */}
           <div className="w-full lg:w-[15%] mt-[10px] flex justify-center">
             <motion.div
               key={currentTestimonial.image}
@@ -119,15 +119,14 @@ export default function FeedbackCourse() {
                 boxShadow: "0 10px 30px rgba(0,0,0,0.15)",
               }}
             >
-              <img
+              <Image
                 src={currentTestimonial.image}
                 alt={currentTestimonial.name}
                 className="w-full h-full object-cover transform -rotate-6 scale-110 transition-all duration-700 ease-in-out"
+                height={176} width={176}
               />
             </motion.div>
           </div>
-
-          {/* Right testimonial section */}
           <div className="w-full tesitimonial-box-content pt-[30px] md:pt-[98px] lg:w-[40%] relative">
             <div className="relative min-h-[200px] md:min-h-[160px] overflow-hidden">
               <AnimatePresence mode="wait">

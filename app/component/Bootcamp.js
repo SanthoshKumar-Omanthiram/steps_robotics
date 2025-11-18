@@ -1,5 +1,5 @@
 'use client';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import Image from 'next/image';
 import { useParams, usePathname } from "next/navigation";
 import axios from 'axios';
@@ -28,13 +28,7 @@ export default function Bootcamp({ title }) {
       'height=500,width=600,resizable=yes,scrollbars=yes'
     );
   };
-  useEffect(() => {
-    fetchModules();
-    const width = window.innerWidth;
-    console.log("Current width:", width, "px");
-  }, []);
-
-  const fetchModules = async () => {
+  const fetchModules = useCallback(async () => {
     try {
       const res = await axios.get(`/api/modules?courseId=${id}`);
       setModules(res.data || []);
@@ -55,7 +49,13 @@ export default function Bootcamp({ title }) {
     } catch (err) {
       console.error('Error fetching modules/lessons:', err);
     }
-  };
+  }, [id]);
+
+  useEffect(() => {
+    fetchModules();
+    const width = window.innerWidth;
+    console.log("Current width:", width, "px");
+  }, [fetchModules]);
 
 
   return (
@@ -69,7 +69,7 @@ export default function Bootcamp({ title }) {
                   Robotics Boot Camp – Weekend Hands-On Workshop
                 </h1>
                 <p className="bootcamp-description leading-relaxed">
-                  Get ready to bring your virtual learning to life! Our Robotics Boot Camp is an exciting, hands-on weekend program specifically designed for students who have completed the Virtual Robotics course. It's the perfect chance to turn your ideas into working robots while having fun with peers and mentors.
+                  Get ready to bring your virtual learning to life! Our Robotics Boot Camp is an exciting, hands-on weekend program specifically designed for students who have completed the Virtual Robotics course. It&apos;s the perfect chance to turn your ideas into working robots while having fun with peers and mentors.
                 </p>
               </div>
               <div className="rounded-lg overflow-hidden">
@@ -105,7 +105,7 @@ export default function Bootcamp({ title }) {
                     </div>
 
                     <div className='pb-[30px]'>
-                      <h3 className="bg-white bootcamp-drop-title rounded-[0 10px 0 10px] stem-gold p-[17px 17px 17px 28px] shadow-md">What’s Included</h3>
+                      <h3 className="bg-white bootcamp-drop-title rounded-[0 10px 0 10px] stem-gold p-[17px 17px 17px 28px] shadow-md">What&apos;s Included</h3>
                       <div className="bg-white rounded-bl-[15px] rounded-br-[15px] pt-[10px] pb-[20px] pl-[25px] pr-[20px] shadow-sm">
                         {[
                           'Robotics hardware kit access (During boot camp)',

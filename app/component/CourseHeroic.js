@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState, useRef, useCallback } from 'react';
 import axios from 'axios';
 import Image from 'next/image';
 import { useParams } from 'next/navigation';
@@ -11,14 +11,7 @@ export default function HeroicCourse() {
   const [error, setError] = useState('');
   const fetched = useRef(false);
 
-  useEffect(() => {
-    if (!id) return;
-    if (fetched.current) return; 
-    fetched.current = true;
-    fetchCourse();
-  }, [id]);
-
-  const fetchCourse = async () => {
+  const fetchCourse = useCallback(async () => {
     try {
       const res = await axios.get(`/api/courses/${id}`);
       setCourse(res.data || null);
@@ -26,7 +19,14 @@ export default function HeroicCourse() {
       console.error('Failed to fetch course:', err);
       setError('Unable to load course. Please try again later.');
     }
-  };
+  }, [id]);
+
+  useEffect(() => {
+    if (!id) return;
+    if (fetched.current) return; 
+    fetched.current = true;
+    fetchCourse();
+  }, [id, fetchCourse]);
 
   if (error) {
     return <p className="text-center text-red-500">{error}</p>;

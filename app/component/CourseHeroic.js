@@ -39,8 +39,8 @@ export default function HeroicCourse() {
   return (
     <div className="course-heroic container-spacing p-6">
       <div className="container-custom space-y-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 transition-all duration-300">
-          <div className="w-full h-full">
+<div className="flex flex-col md:flex-row gap-6 transition-all duration-300">
+          <div className="w-full h-full order-2 md:order-1">
             {course.heroicimage ? (
               <Image
                 src={course.heroicimage}
@@ -55,7 +55,7 @@ export default function HeroicCourse() {
               </div>
             )}
           </div>
-          <div className=" text-left ">
+          <div className="text-left order-1 md:order-2">
             <h2 className="course-heroic-title text-3xl font-semibold">
  Future-Ready Kids <br></br> Start Here!
              </h2>

@@ -1905,7 +1905,7 @@ button {
   }
 
   .course-heroic-title {
-    margin-top: 0px !important;
+    margin-top: 15px !important;
     text-align: center;
   }
 
@@ -1960,11 +1960,11 @@ button {
     object-fit: contain;
     margin-top: 0 !important;
     width: 100% !important;
-    height: 235px !important;
+    height: 300px !important;
   }
 
   .heroic-title {
-    margin-top: 0 !important;
+    margin-top: 15px !important;
   }
 
   .contacts, .about {
@@ -1981,7 +1981,7 @@ button {
   }
 
   .contact-heroic-image {
-    height: auto !important;
+    height: 249px !important;
   }
 
   .contact-way {
@@ -3129,10 +3129,8 @@ li {
   @media (max-width: 768px) {
     .course-heroic,
     .contacts {
-      height: 538px !important;
+      height: 434px !important;
     }
-
-
 
     .responisve_explore {
       bottom: 10px !important;
@@ -3791,7 +3789,3 @@ li {
     /* width: auto !important; */
   }
 }
-
-/* .info_para{
-  font-weight: 100 !important;
-} */

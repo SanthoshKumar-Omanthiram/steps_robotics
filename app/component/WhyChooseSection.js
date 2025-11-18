@@ -49,7 +49,7 @@ export default function WhyChooseSection() {
             <div className="relative flex justify-start md:justify-center lg:justify-start">
               <div className="relative why_choose_image_1">
                 <Image
-                  src={image_one}
+                  src={image_one || "/Swetha.png"}
                   alt="Kids with mentor"
                   width={148}
                   height={148}
@@ -62,7 +62,7 @@ export default function WhyChooseSection() {
             <div className="relative flex justify-end right-10  -top-8 md:justify-center lg:justify-end">
               <div className="relative why_choose_image_2">
                 <Image
-                  src={image_two}
+                  src={image_two || "/Swetha.png"}
                   alt="Kids with mentor"
                   width={148}
                   height={148}

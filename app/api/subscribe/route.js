@@ -1,13 +1,45 @@
 import { NextResponse } from "next/server";
 import pool from "@/lib/db";
 
-export async function GET() {
+// export async function GET() {
+//   try {
+//     const { rows } = await pool.query(
+//       `SELECT * FROM subscribers ORDER BY created_at DESC`
+//     );
+//     return NextResponse.json(rows);
+//   } catch {
+//     return NextResponse.json(
+//       { error: "Failed to fetch subscribers" },
+//       { status: 500 }
+//     );
+//   }
+// }
+
+
+export async function GET(req) {
   try {
-    const { rows } = await pool.query(
-      `SELECT * FROM subscribers ORDER BY created_at DESC`
+    const { searchParams } = new URL(req.url);
+
+    const page = parseInt(searchParams.get("page")) || 1;
+    const limit = parseInt(searchParams.get("limit")) || 10;
+    const offset = (page - 1) * limit;
+
+    const listQuery = await pool.query(
+      `SELECT * FROM subscribers ORDER BY created_at DESC LIMIT $1 OFFSET $2`,
+      [limit, offset]
     );
-    return NextResponse.json(rows);
-  } catch {
+
+    const countQuery = await pool.query(`SELECT COUNT(*) FROM subscribers`);
+    const total = parseInt(countQuery.rows[0].count);
+
+    return NextResponse.json({
+      data: listQuery.rows,
+      page,
+      limit,
+      total,
+      totalPages: Math.ceil(total / limit),
+    });
+  } catch (err) {
     return NextResponse.json(
       { error: "Failed to fetch subscribers" },
       { status: 500 }

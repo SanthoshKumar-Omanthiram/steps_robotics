@@ -109,7 +109,7 @@ export default function Footer() {
             <div className="footerlogo flex flex-col items-center md:items-start">
               <div className="mb-4">
                 <Image
-                  src={sectionData.logo_url}
+                  src={sectionData.logo_url || "/footer-logo.png"}
                   alt="Steps Robotics Logo"
                   width={194}
                   height={104}

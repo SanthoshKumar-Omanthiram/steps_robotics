@@ -1,19 +1,19 @@
 'use client';
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
-import { useParams,usePathname } from "next/navigation";
+import { useParams, usePathname } from "next/navigation";
 import axios from 'axios';
 import { Clock, Calendar, Share2, Facebook, Twitter, Linkedin } from 'lucide-react';
 import UpcomingCourses from './UpcomingCourses';
 
-export default function Bootcamp({title}) {
+export default function Bootcamp({ title }) {
   const [activeTab, setActiveTab] = useState('course');
   const [modules, setModules] = useState([]);
   const [lessons, setLessons] = useState({});
-  const [openModule, setOpenModule] = useState(null); 
+  const [openModule, setOpenModule] = useState(null);
   const params = useParams();
   const id = params.id;
- const pathname = usePathname();
+  const pathname = usePathname();
   const url = typeof window !== "undefined" ? `${window.location.origin}${pathname}` : "";
 
   const handleCopyLink = () => {
@@ -31,31 +31,31 @@ export default function Bootcamp({title}) {
   useEffect(() => {
     fetchModules();
     const width = window.innerWidth;
-console.log("Current width:", width, "px");
+    console.log("Current width:", width, "px");
   }, []);
 
- const fetchModules = async () => {
-  try {
-    const res = await axios.get(`/api/modules?courseId=${id}`);
-    setModules(res.data || []);
-    const lessonPromises = res.data.map(m =>
-      axios.get('/api/lessons', { params: { moduleId: m.id } })
-    );
-    const lessonResults = await Promise.all(lessonPromises);
-    const lessonsMap = {};
-    res.data.forEach((m, i) => {
-      lessonsMap[m.id] = lessonResults[i]?.data || [];
-    });
-    setLessons(lessonsMap);
+  const fetchModules = async () => {
+    try {
+      const res = await axios.get(`/api/modules?courseId=${id}`);
+      setModules(res.data || []);
+      const lessonPromises = res.data.map(m =>
+        axios.get('/api/lessons', { params: { moduleId: m.id } })
+      );
+      const lessonResults = await Promise.all(lessonPromises);
+      const lessonsMap = {};
+      res.data.forEach((m, i) => {
+        lessonsMap[m.id] = lessonResults[i]?.data || [];
+      });
+      setLessons(lessonsMap);
 
-    // ✅ Open first module by default
-    if (res.data.length > 0) {
-      setOpenModule(res.data[0].id);
+      // ✅ Open first module by default
+      if (res.data.length > 0) {
+        setOpenModule(res.data[0].id);
+      }
+    } catch (err) {
+      console.error('Error fetching modules/lessons:', err);
     }
-  } catch (err) {
-    console.error('Error fetching modules/lessons:', err);
-  }
-};
+  };
 
 
   return (
@@ -122,7 +122,7 @@ console.log("Current width:", width, "px");
                     </div>
                   </div>
 
-<div className="w-full md:w-[30%] flex items-end justify-center p-8 md:p-0 mt-[-20px] md:mt-0">
+                  <div className="w-full md:w-[30%] flex items-end justify-center p-8 md:p-0 mt-[-20px] md:mt-0">
                     <Image
                       src="/child-course.png"
                       alt="child with robotics"
@@ -140,78 +140,75 @@ console.log("Current width:", width, "px");
                   <button
                     key={tab}
                     onClick={() => setActiveTab(tab)}
-                    className={`flex-1 py-4 px-6 font-semibold transition-colors ${
-                      activeTab === tab
+                    className={`flex-1 py-4 px-6 font-semibold transition-colors ${activeTab === tab
                         ? 'text-[#FFA91E] border-b-6 border-[#FFA91E]'
                         : 'text-gray-600 hover:text-gray-900'
-                    }`}
+                      }`}
                   >
                     {tab === 'course'
                       ? 'Course Content'
                       : tab === 'success'
-                      ? 'Success stories'
-                      : 'Reviews'}
+                        ? 'Success stories'
+                        : 'Reviews'}
                   </button>
                 ))}
               </div>
-          {activeTab === 'course' && (
-  <div className="p-6 space-y-3">
-    {modules.map((module, i) => {
-      const isActive = module.id === openModule;
-      return (
-        <div key={module.id} className="rounded-lg overflow-hidden">
-          <button
-            onClick={() =>
-              setOpenModule(isActive ? null : module.id)
-            }
-            className={`w-full flex justify-between items-center p-4 font-semibold transition-colors ${
-              isActive
-                ? 'bg-[#FFCE64] text-white'
-                : 'bg-gray-50 text-gray-800 hover:bg-gray-200'
-            }`}
-          >
-            <span className="course-detail-module text-left flex-1 pr-4">
-              {`Module ${i + 1}: ${module.title}`}
-            </span>
-            <span
-              className={`text-2xl leading-none transition-transform duration-300 ${
-                isActive ? 'rotate-45' : ''
-              }`}
-            >
-              +
-            </span>
-          </button>
+              {activeTab === 'course' && (
+                <div className="p-6 space-y-3">
+                  {modules.map((module, i) => {
+                    const isActive = module.id === openModule;
+                    return (
+                      <div key={module.id} className="rounded-lg overflow-hidden">
+                        <button
+                          onClick={() =>
+                            setOpenModule(isActive ? null : module.id)
+                          }
+                          className={`w-full flex justify-between items-center p-4 font-semibold transition-colors ${isActive
+                              ? 'bg-[#FFCE64] text-white'
+                              : 'bg-gray-50 text-gray-800 hover:bg-gray-200'
+                            }`}
+                        >
+                          <span className="course-detail-module text-left flex-1 pr-4">
+                            {`Module ${i + 1}: ${module.title}`}
+                          </span>
+                          <span
+                            className={`text-2xl leading-none transition-transform duration-300 ${isActive ? 'rotate-45' : ''
+                              }`}
+                          >
+                            +
+                          </span>
+                        </button>
 
-          {isActive && (
-            <div className="bg-white text-gray-700 p-4 space-y-3 animate-fadeIn">
-              {lessons[module.id]?.length > 0 ? (
-                lessons[module.id].map((lesson) => (
-                  <div
-                    key={lesson.id}
-                    className="py-2 px-4 pb-2 model-lesson-accordian bg-white rounded hover:bg-orange-100 transition-colors"
-                  >
-                    <p className="font-normal">{lesson.title}</p>
-                  </div>
-                ))
-              ) : (
-                <div className="py-2 px-4 bg-white rounded">
-                  <p className="font-normal text-gray-400">
-                    No lessons available
-                  </p>
+                        {isActive && (
+                          <div className="bg-white text-gray-700 p-4 space-y-3 animate-fadeIn">
+                            {lessons[module.id]?.length > 0 ? (
+                              lessons[module.id].map((lesson) => (
+                                <div
+                                  key={lesson.id}
+                                  className="py-2 px-4 pb-2 model-lesson-accordian bg-white rounded hover:bg-orange-100 transition-colors"
+                                >
+                                  <p className="font-normal">{lesson.title}</p>
+                                </div>
+                              ))
+                            ) : (
+                              <div className="py-2 px-4 bg-white rounded">
+                                <p className="font-normal text-gray-400">
+                                  No lessons available
+                                </p>
+                              </div>
+                            )}
+                          </div>
+                        )}
+                      </div>
+                    );
+                  })}
                 </div>
               )}
-            </div>
-          )}
-        </div>
-      );
-    })}
-  </div>
-)}
 
             </div>
           </div>
 
-           <div className="space-y-6 -mt-[180px] class-instructor-popup">
+          <div className="space-y-6 -mt-[180px] class-instructor-popup">
             <div className="rounded-lg p-6 shadow-xl">
               <div className="text-center mb-4">
                 <span className="px-3 py-1 rounded-full class-instructor-text">
@@ -221,20 +218,20 @@ console.log("Current width:", width, "px");
 
               <div className="flex justify-center mb-4">
                 <div className="relative">
-                      <Image
-                                        src='/instructor.png'
-                                        alt='instructor'
-                                        width={600}
-                                        height={484}
-                                        className="w-full rounded-lg"
-                                      />
+                  <Image
+                    src='/instructor.png'
+                    alt='instructor'
+                    width={600}
+                    height={484}
+                    className="w-full rounded-lg"
+                  />
                 </div>
               </div>
 
               <div className="text-center mb-4">
                 <h3 className="class-instructor-name mb-1">Ms. Malathi</h3>
                 <p className="class-instructor-designation text-gray-600 text-left mb-3">Computer science - Robotic education</p>
-                
+
                 <div className="flex gap-6 text-sm text-gray-700 mb-4">
                   <div className="flex items-center pr-[40px] gap-1">
                     <span className="text-yellow-500">👥</span>
@@ -252,60 +249,60 @@ console.log("Current width:", width, "px");
               </div>
 
               <div className="pt-1">
-  <div className="flex social-icons-course items-center justify-between text-gray-600">
-    <span className="share-icon">Share:</span>
-    <div className="flex items-center gap-2">
-     {/* Copy Link */}
-    <Image
-       src="/icons/fb-icon.png"
-       alt="Share on Facebook"
-       width={18}
-       height={18}
-       title="Share on Facebook"
-       onClick={() =>
-         openPopup(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`)
-       }
-       className="cursor-pointer transition-all duration-200 inline-block hover:brightness-125 hover:scale-110"
-     />
-   
-     <Image
-       src="/icons/twitter-icon.png"
-       alt="Share on Twitter"
-       width={18}
-       height={18}
-       title="Share on Facebook"
-       onClick={() =>
-         openPopup(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`)
-       }
-       className="cursor-pointer transition-all duration-200 inline-block hover:brightness-125 hover:scale-110"
-     />
-      <Image
-       src="/icons/pinterest-line.png"
-       alt="Share on Twitter"
-       width={18}
-       height={18}
-       title="Share on Facebook"
-       onClick={() =>
-         openPopup(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`)
-       }
-       className="cursor-pointer transition-all duration-200 inline-block hover:brightness-125 hover:scale-110"
-     />
-      <Image
-       src="/icons/linkedin-icon.png"
-       alt="Share on Twitter"
-       width={18}
-       height={18}
-       title="Share on Facebook"
-       onClick={() =>
-         openPopup(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`)
-       }
-       className="cursor-pointer transition-all duration-200 inline-block hover:brightness-125 hover:scale-110"
-     />
-       </div>
-  </div>
-  <UpcomingCourses />
-</div>
-            </div>           
+                <div className="flex social-icons-course items-center justify-between text-gray-600">
+                  <span className="share-icon">Share:</span>
+                  <div className="flex items-center gap-2">
+                    {/* Copy Link */}
+                    <Image
+                      src="/icons/fb-icon.png"
+                      alt="Share on Facebook"
+                      width={18}
+                      height={18}
+                      title="Share on Facebook"
+                      onClick={() =>
+                        openPopup(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`)
+                      }
+                      className="cursor-pointer transition-all duration-200 inline-block hover:brightness-125 hover:scale-110"
+                    />
+
+                    <Image
+                      src="/icons/twitter-icon.png"
+                      alt="Share on Twitter"
+                      width={18}
+                      height={18}
+                      title="Share on Facebook"
+                      onClick={() =>
+                        openPopup(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`)
+                      }
+                      className="cursor-pointer transition-all duration-200 inline-block hover:brightness-125 hover:scale-110"
+                    />
+                    <Image
+                      src="/icons/pinterest-line.png"
+                      alt="Share on Twitter"
+                      width={18}
+                      height={18}
+                      title="Share on Facebook"
+                      onClick={() =>
+                        openPopup(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`)
+                      }
+                      className="cursor-pointer transition-all duration-200 inline-block hover:brightness-125 hover:scale-110"
+                    />
+                    <Image
+                      src="/icons/linkedin-icon.png"
+                      alt="Share on Twitter"
+                      width={18}
+                      height={18}
+                      title="Share on Facebook"
+                      onClick={() =>
+                        openPopup(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`)
+                      }
+                      className="cursor-pointer transition-all duration-200 inline-block hover:brightness-125 hover:scale-110"
+                    />
+                  </div>
+                </div>
+                <UpcomingCourses />
+              </div>
+            </div>
           </div>
 
         </div>

@@ -1913,8 +1913,21 @@ button {
   .course-heroic-title {
     margin-top: 15px !important;
     text-align: center;
+    font-size: 29px !important;
   }
-
+.upcoming-course-view-btn {
+	color: #fdb618;
+	text-align: center;
+	font-feature-settings: "liga" off, "clig" off;
+	font-family: var(--font-poppins), sans-serif;
+	border: 1px solid #fdb618;
+	border-radius: 99px;
+	padding: 0px 7px;
+	font-size: 8px;
+	font-style: normal;
+	font-weight: 600;
+	line-height: 21px;
+}
   .tesitimonial-box-content {
     padding-top: 0px !important;
   }
@@ -1922,7 +1935,13 @@ button {
   .course-news-letter-model {
     margin: 0 !important;
   }
-
+  .course-heroic-image{
+  height: auto !important;
+  width: 100% !important;
+}
+.heroic-title {
+  font-size: 29px !important;
+}
   .course-details-section {
     padding-left: 20px;
     padding-right: 20px;
@@ -1966,7 +1985,7 @@ button {
     object-fit: contain;
     margin-top: 0 !important;
     width: 100% !important;
-    height: 300px !important;
+    height: auto !important;
   }
 
   .heroic-title {
@@ -1986,9 +2005,6 @@ button {
     height: auto !important;
   }
 
-  .contact-heroic-image {
-    height: 249px !important;
-  }
 
   .contact-way {
     padding: 0 17px;
@@ -3135,12 +3151,16 @@ li {
   @media (max-width: 768px) {
     .course-heroic,
     .contacts {
-      height: 434px !important;
+      height: 306px !important;
     }
 
     .responisve_explore {
       bottom: 10px !important;
       top: auto !important;
+    }
+    .contact-heroic-image{
+width: 100% !important;
+height: auto !important;
     }
 
     .top-triangle {
@@ -3723,9 +3743,6 @@ li {
   .about{
     height: 420px !important;
   }
-  .contact-heroic-image{
-    margin-top: 0 !important;
-  }
 }
 
 @media (max-width:1139px) {
@@ -3793,5 +3810,25 @@ li {
 @media (max-width: 1024px) {
   .gallery_section img{
     /* width: auto !important; */
+  }
+}
+/* FULL SCREEN on mobile */
+@media (max-width: 640px) {
+  .mobile-full-width {
+    width: 100% !important;
+    border-radius: 0 !important;
+  }
+
+  /* Contact + Email in single row */
+  .mobile-contact-row {
+    display: flex !important;
+    gap: 12px;
+  }
+
+  /* Icons in single row */
+  .mobile-icons-row {
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 15px !important;
   }
 }

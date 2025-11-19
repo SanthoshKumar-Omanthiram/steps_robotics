@@ -1,6 +1,4 @@
 
-
-/* Mobile devices (portrait) */
 @media (max-width: 768px) {
   .book-trail-popup {
     border-radius: 20px !important;
@@ -10,7 +8,7 @@
 
   .popup-min-heigh{
     height: auto !important;
-    margin-top: -55px !important;
+    margin-top: -308px !important;
 
   }
   .enquiry-main-title {
@@ -44,7 +42,7 @@
   }
 
   .enquiry-model-box {
-    padding-top: 15px !important;
+    padding: 20px !important;
   }
 
   .enquiry-model-box h1 {
@@ -62,7 +60,23 @@
   }
 
 }
+@media (max-width: 640px) {
+  .mobile-full-width {
+    width: 100% !important;
+    border-radius: 0 !important;
+  }
 
+  .mobile-contact-row {
+    display: flex !important;
+    gap: 12px;
+  }
+
+  .mobile-icons-row {
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 15px !important;
+  }
+}
 /* Small mobile (below 480px) */
 @media (max-width: 480px) {
   .enquiry-main-title {
@@ -93,7 +107,7 @@
   }
    .popup-min-heigh{
     height: auto !important;
-            margin-top: -55px !important;
+            margin-top: -305px !important;
 
 
   }

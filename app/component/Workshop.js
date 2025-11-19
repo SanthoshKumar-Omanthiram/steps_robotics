@@ -249,7 +249,7 @@ export default function Workshop() {
         ))}
       </div>
       {showBookTrial && (
-        <div className="fixed inset-0 z-[9999] m-[30px] animate-fadeIn">
+<div className="fixed inset-0 z-[9999] m-0 sm:m-[30px] animate-fadeIn">
           <div className="min-h-screen flex items-center justify-center p-0">
             <Enquiry onClose={closeModal} />
           </div>

@@ -55,7 +55,7 @@ export default function HowDifferent() {
                 priority
               /></div>
 <div
-  className="diffrent-section px-[11px] py-[40px] sm:!px-[12px] sm:!pb-[52px] relative flex flex-col justify-start items-start shadow-sm"
+  className="diffrent-section px-[11px] !py-[40px] sm:!px-[12px] sm:!pb-[52px] relative flex flex-col justify-start items-start shadow-sm"
   style={{
     background: "#fff",
     clipPath: "polygon(0 0, 40% 0, 100% 38%, 100% 100%, 0 100%, 0 0)",

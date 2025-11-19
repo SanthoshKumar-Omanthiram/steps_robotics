@@ -2240,13 +2240,6 @@ li {
   font-size: 16px;
 }
 
-
-
-
-
-
-
-
 /*Container*/
 .container-custom {
   width: 100%;
@@ -2278,7 +2271,9 @@ li {
   .container-custom {
     max-width: 540px;
   }
-
+ .getin-touch{
+    padding-bottom: 0 !important;
+  }
   .class-instructor-popup {
     margin-top: 0;
   }
@@ -2288,7 +2283,7 @@ li {
   }
 
   .maps {
-    margin: -40px 0 0 0;
+    margin: 0 !important;
   }
   
 }
@@ -2297,9 +2292,14 @@ li {
   .container-custom {
     max-width: 720px;
   }
-
+ .getin-touch{
+    padding-bottom: 0 !important;
+  }
   .class-instructor-popup {
     margin-top: 0;
+  }
+    .maps {
+    margin: 0 !important;
   }
 }
 
@@ -3445,7 +3445,7 @@ li {
   }
 
   .maps {
-    margin: -40px 0 0 0;
+    margin: 0 !important;
   }
 
   .nap-section {

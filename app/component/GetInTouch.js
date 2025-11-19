@@ -69,7 +69,7 @@ export default function GetInTouch() {
 
   return (
     <div className="getin-touch">
-      <div className="min-h-screen p-4 sm:p-6 lg:p-8">
+     <div className="min-h-screen max-sm:min-h-[82vh] p-4 sm:p-6 lg:p-8">
         <div className="container-custom">
           <div className="bg-white rounded-3xl shadow-2xl overflow-hidden">
             <div className="grid lg:grid-cols-[40%_60%] gap-0">
@@ -98,7 +98,7 @@ export default function GetInTouch() {
 
                 <div className="space-y-6">
                   <div className="grid sm:grid-cols-2 gap-4 !mb-[5px]">
-                    <div className="relative mt-6">
+                    <div className="relative mt-6 -mb-[15px]">
                       <input
                         type="text"
                         name="firstName"
@@ -130,7 +130,7 @@ export default function GetInTouch() {
 
                     </div>
 
-                    <div className="relative mt-6 !mb-[0px]">
+                    <div className="relative !mb-[0px]">
                       <input
                         type="text"
                         name="lastName"
@@ -148,7 +148,7 @@ export default function GetInTouch() {
                       >
                         Last Name
                       </label>
-                      <p className="text-transparent text-sm mt-1 min-h-[20px]">
+                      <p className="text-transparent text-sm mt-1 min-h-[10px]">
                         .
                       </p>
                     </div>

@@ -20,7 +20,7 @@ const page = () => {
                                 <h2 className="text-lg font-semibold text-gray-700">Header</h2>
                             </div>
                             <p className="mt-3 text-gray-500 text-sm leading-relaxed">
-                                Change Header's Logo and Menus
+                                Change Header&apos;s Logo and Menus
                             </p>
                         </li>
                     </Link>

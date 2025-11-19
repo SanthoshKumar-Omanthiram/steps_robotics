@@ -284,7 +284,7 @@ export default function RegisterPage() {
 
             {/** Parent Phone */}
             <div>
-              <label className="block text-gray-700 font-semibold mb-1">Parent's Phone</label>
+              <label className="block text-gray-700 font-semibold mb-1">Parent&apos;s Phone</label>
               <input
                 name="parent_phone"
                 value={formData.parent_phone}

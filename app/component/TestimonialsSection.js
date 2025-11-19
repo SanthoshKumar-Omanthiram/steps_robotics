@@ -173,7 +173,7 @@ export default function TestimonialsSection() {
                 {/* 💬 Desktop Description */}
                 <div className="hidden md:block testmonial_text text-center max-w-4xl mx-auto mb-8 px-5">
                     <p className="text-gray-800 text-base leading-relaxed mb-4 text-font-poppins">
-                        "{testimonials[activeIndex].quote}"
+                        &apos;{testimonials[activeIndex].quote}&apos;
                     </p>
                     <p className="text-gray-800 text-base leading-relaxed text-font-poppins">
                         {testimonials[activeIndex].description}
@@ -229,7 +229,7 @@ export default function TestimonialsSection() {
                     </p> */}
                     {testimonials.length > 0 && testimonials[mobileIndex] && (
                         <p className="text-gray-800 leading-relaxed mt-4 px-3">
-                            "{testimonials[mobileIndex].quote}"
+                            &apos;{testimonials[mobileIndex].quote}&apos;
                         </p>
                     )
                     && (

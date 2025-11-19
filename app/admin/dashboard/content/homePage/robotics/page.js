@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
+import Image from 'next/image';
 
 export default function RoboticsAdminPage() {
   const [loading, setLoading] = useState(true);
@@ -99,21 +100,23 @@ export default function RoboticsAdminPage() {
             <div>
               <input type="file" onChange={(e) => handleImageChange(e, "image_one")} />
               {roboticsData?.image_one && (
-                <img
-                  src={roboticsData.image_one}
-                  alt="image_one"
-                  className="h-24 mt-2 rounded border"
-                />
+                // <img
+                //   src={roboticsData.image_one}
+                //   alt="image_one"
+                //   className="h-24 mt-2 rounded border"
+                // />
+                <Image src={roboticsData.image_one} alt="image_one" className="h-24 mt-2 rounded border" width={200} height={300} />
               )}
             </div>
             <div>
               <input type="file" onChange={(e) => handleImageChange(e, "image_two")} />
               {roboticsData?.image_two && (
-                <img
-                  src={roboticsData.image_two}
-                  alt="image_two"
-                  className="h-24 mt-2 rounded border"
-                />
+                // <img
+                //   src={roboticsData.image_two}
+                //   alt="image_two"
+                //   className="h-24 mt-2 rounded border"
+                // />
+                <Image src={roboticsData.image_two} alt="image_two" className="h-24 mt-2 rounded border" width={200} height={300} />
               )}
             </div>
           </div>
@@ -141,11 +144,12 @@ export default function RoboticsAdminPage() {
                   onChange={(e) => handleFeatureChange(i, "icon", e.target.files[0])}
                 />
                 {roboticsData?.features?.[i]?.icon && (
-                  <img
-                    src={roboticsData.features[i].icon}
-                    alt={`feature-${i + 1}`}
-                    className="h-10 w-10 mt-2 object-contain"
-                  />
+                  // <img
+                  //   src={roboticsData.features[i].icon}
+                  //   alt={`feature-${i + 1}`}
+                  //   className="h-10 w-10 mt-2 object-contain"
+                  // />
+                  <Image src={roboticsData.features[i].icon} alt={`feature-${i + 1}`} className="h-10 w-10 mt-2 object-contain" width={200} height={300} />
                 )}
               </div>
             ))}
@@ -176,10 +180,12 @@ export default function RoboticsAdminPage() {
             <h3 className="text-xl font-semibold mb-4">Live Preview</h3>
             <div className="flex flex-wrap gap-4 mb-4">
               {roboticsData.image_one && (
-                <img src={roboticsData.image_one} className="h-32 rounded border" />
+                // <img src={roboticsData.image_one} className="h-32 rounded border" />
+                <Image src={roboticsData.image_one} alt="preview" className="h-32 rounded border" width={200} height={300} />
               )}
               {roboticsData.image_two && (
-                <img src={roboticsData.image_two} className="h-32 rounded border" />
+                // <img src={roboticsData.image_two} className="h-32 rounded border" />
+                <Image src={roboticsData.image_two} alt="preview" className="h-32 rounded border" width={200} height={300} />
               )}
             </div>
             <div className="grid grid-cols-2 gap-4">
@@ -189,11 +195,12 @@ export default function RoboticsAdminPage() {
                   className="flex items-center gap-3 bg-gray-100 p-3 rounded-lg"
                 >
                   {f.icon && (
-                    <img
-                      src={f.icon}
-                      alt=""
-                      className="h-8 w-8 object-contain"
-                    />
+                    // <img
+                    //   src={f.icon}
+                    //   alt=""
+                    //   className="h-8 w-8 object-contain"
+                    // />
+                    <Image src={f.icon} alt="" className="h-8 w-8 object-contain" width={200} height={300} />
                   )}
                   <span className="font-medium">{f.title}</span>
                 </div>

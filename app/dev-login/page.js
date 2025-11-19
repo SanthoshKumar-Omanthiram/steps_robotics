@@ -1,8 +1,10 @@
 "use client";
+
 import { useState, useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
+import { Suspense } from "react";
 
-export default function AuthLogin() {
+function AuthLogin() {
   const router = useRouter();
   const searchParams = useSearchParams();
 
@@ -49,7 +51,6 @@ export default function AuthLogin() {
         )}
 
         <form onSubmit={onSubmit} className="grid gap-4">
-          {/* Username */}
           <div className="grid gap-1">
             <label className="text-sm text-gray-300">Username</label>
             <input
@@ -62,7 +63,6 @@ export default function AuthLogin() {
             />
           </div>
 
-          {/* Password */}
           <div className="grid gap-1">
             <label className="text-sm text-gray-300">Password</label>
             <input
@@ -75,7 +75,6 @@ export default function AuthLogin() {
             />
           </div>
 
-          {/* Submit */}
           <button
             type="submit"
             disabled={loading}
@@ -86,5 +85,13 @@ export default function AuthLogin() {
         </form>
       </div>
     </div>
+  );
+}
+
+export default function AuthLoginPage() {
+  return (
+    <Suspense fallback={<div className="text-white p-6">Loading...</div>}>
+      <AuthLogin />
+    </Suspense>
   );
 }

@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
+import Image from 'next/image';
 
 export default function FooterAdmin() {
   const [footer, setFooter] = useState({});
@@ -82,7 +83,8 @@ export default function FooterAdmin() {
         <div>
           <label className="block font-semibold mb-1">Footer Logo</label>
           {footer.logo_url && (
-            <img src={footer.logo_url} alt="Logo" className="w-24 mb-2" />
+            // <img src={footer.logo_url} alt="Logo" className="w-24 mb-2" />
+            <Image src={footer.logo_url} alt="Logo" className="w-24 mb-2" width={100} height={200} />
           )}
           <input
             type="file"
@@ -94,7 +96,8 @@ export default function FooterAdmin() {
         <div>
           <label className="block font-semibold mb-1">Talk to us Image</label>
           {footer.talk_image && (
-            <img src={footer.talk_image} alt="Talk" className="w-24 mb-2" />
+            // <img src={footer.talk_image} alt="Talk" className="w-24 mb-2" />
+            <Image src={footer.talk_image} alt="Talk" className="w-24 mb-2" width={200} height={300} />
           )}
           <input
             type="file"

@@ -278,7 +278,7 @@ export default function Dashboard() {
             <div className="p-4 border-b border-gray-100">
               <h2 className="text-lg font-semibold text-gray-900 flex items-center">
                 <Calendar className="h-5 w-5 mr-2 text-blue-600" />
-                Today's Schedule
+                Today&apos;s Schedule
               </h2>
             </div>
             <div className="p-4 space-y-3">

@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
+import Image from "next/image";
 
 export default function StepsRoboticsPage() {
     const [steps, setSteps] = useState([]);
@@ -103,7 +104,7 @@ export default function StepsRoboticsPage() {
                     className="border p-2 w-full"
                 />
                 {form.image && (
-                    <img
+                    <Image
                         src={
                             typeof form.image === "string"
                                 ? form.image
@@ -111,6 +112,8 @@ export default function StepsRoboticsPage() {
                         }
                         alt="preview"
                         className="w-32 h-32 object-cover rounded"
+                        width={200}
+                        height={300}
                     />
                 )}
 
@@ -146,10 +149,12 @@ export default function StepsRoboticsPage() {
                 {steps.map((b) => (
                     <div key={b.id} className="border rounded-lg p-4 bg-white shadow-sm">
                         {b.image && (
-                            <img
+                            <Image
                                 src={b.image}
                                 alt={b.title}
                                 className="w-full h-40 object-cover rounded-md"
+                                width={300}
+                                height={200}
                             />
                         )}
                         {b.video && (

@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
+import Image from "next/image";
 
 export default function StudyGalleryAdmin() {
   const [gallery, setGallery] = useState([]);
@@ -118,10 +119,12 @@ export default function StudyGalleryAdmin() {
               key={img.id}
               className="relative border rounded-lg p-2 bg-white shadow"
             >
-              <img
+              <Image
                 src={img.image}
                 alt={img.alt}
                 className="w-full h-40 object-cover rounded"
+                width={200}
+                height={300}
               />
               <p className="text-sm text-center mt-1">{img.alt}</p>
 

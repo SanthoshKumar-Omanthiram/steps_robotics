@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
+import Image from 'next/image';
 
 export default function Banner() {
     const [banners, setBanners] = useState([]);
@@ -83,12 +84,29 @@ export default function Banner() {
 
                                         {/* 🖼 Show current image */}
                                         <div>
-                                            <img src={b.image} alt={b.banner_title1} className="w-full h-40 object-cover rounded-md mb-2" />
+                                            <Image
+
+                                                src={b.image} 
+                                                alt={b.banner_title1} 
+                                                width={800}
+                                                height={300}
+                                                className="w-full h-40 object-cover rounded-md mb-2"
+                                            
+                                            />
+                                            {/* <img src={b.image} alt={b.banner_title1} className="w-full h-40 object-cover rounded-md mb-2" /> */}
                                             <input type="file" name="image" accept="image/*" className="border p-2 w-full rounded" />
                                         </div>
 
                                         <div>
-                                            <img src={b.b_image} alt={b.banner_title1} className="w-full h-40 object-cover rounded-md mb-2" />
+                                            <Image 
+                                                src={b.b_image} 
+                                                alt={b.banner_title1}
+                                                width={300}
+                                                height={300}
+                                                className="w-full h-40 object-cover rounded-md mb-2"
+                                            
+                                            />
+                                            {/* <img src={b.b_image} alt={b.banner_title1} className="w-full h-40 object-cover rounded-md mb-2" /> */}
                                             <input type="file" name="b_image" accept="image/*" className="border p-2 w-full rounded" />
                                         </div>
 
@@ -101,11 +119,19 @@ export default function Banner() {
 
                                     // 🖼 Normal view mode
                                     <>
-                                        <img
+                                        <Image
                                             src={b.image}
                                             alt={b.banner_title1}
                                             className="w-full h-40 object-cover rounded-md"
+                                            width={200}
+                                            height={300}
                                         />
+                                    
+                                        {/* <img
+                                            src={b.image}
+                                            alt={b.banner_title1}
+                                            className="w-full h-40 object-cover rounded-md"
+                                        /> */}
                                         <h2 className="font-bold mt-2">{b.banner_title1}</h2>
                                         <p className="text-gray-600">{b.paragraph}</p>
                                         <div className="flex gap-2 mt-3">

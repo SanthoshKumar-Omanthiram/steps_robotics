@@ -1,4 +1,5 @@
 import { Play } from "lucide-react";
+import Image from "next/image";
 
 export default function ProjectCard({ image, name, onClick }) {
   return (
@@ -12,10 +13,12 @@ export default function ProjectCard({ image, name, onClick }) {
       className="relative group rounded-2xl h-full border-2 custom-dashed-border border-black-300 transition-all duration-300 overflow-hidden bg-white p-3 hover:bg-yellow-50 cursor-pointer"
     >
 
-      <img
-        src={image}
+      <Image
+        src={image || "/Swetha.png"}
         alt={name}
         className="w-full h-64 object-cover rounded-2xl"
+        width={300}
+        height={200}
       />
 
       {/* Play button overlay */}

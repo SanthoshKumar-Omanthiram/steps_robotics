@@ -9,7 +9,8 @@ export async function middleware(request) {
       pathname.startsWith('/api/dev-logout') ||
       pathname.startsWith('/_next') ||
       pathname === '/favicon.ico' ||
-      pathname.startsWith('/api'); // do not block existing APIs in dev
+      pathname.startsWith('/api'); 
+
     if (!allow) {
       const devToken = request.cookies.get('dev_session')?.value;
       if (!devToken) {
@@ -18,11 +19,13 @@ export async function middleware(request) {
       }
     }
   }
+
   const protectedPaths = ['/dashboard', '/api/protected'];
   const { pathname } = request.nextUrl;
   if (protectedPaths.some((path) => pathname.startsWith(path))) {
     const token = request.cookies.get('token')?.value;
     if (!token) {
+      return NextResponse.redirect(new URL('/unauthorized', request.url));
       return NextResponse.redirect(new URL('/unauthorized', request.url));
     }
     try {
@@ -31,23 +34,12 @@ export async function middleware(request) {
     } catch (err) {
       console.error('JWT verification failed:', err);
       return NextResponse.redirect(new URL('/unauthorized', request.url));
+      return NextResponse.redirect(new URL('/unauthorized', request.url));
     }
   }
   return NextResponse.next();
 }
+
 export const config = {
-  // Run on all routes so dev-gate applies consistently; internal checks scope JWT paths
   matcher: ['/:path*'],
 };
-
-
-
-
-
-
-
-
-
-
-
-

@@ -59,7 +59,7 @@ export default function BookTrial() {
             <form onSubmit={handleSubmit} className="w-full space-y-3">
               <div>
                 <label className="block book-trail-form-label mb-2">
-                  Student's Name<span className="text-red-500">*</span>
+                  Student&apos;s Name<span className="text-red-500">*</span>
                 </label>
                 <input
                   type="text"
@@ -73,7 +73,7 @@ export default function BookTrial() {
 
               <div>
                 <label className="block book-trail-form-label mb-2">
-                  Parent's Name<span className="text-red-500">*</span>
+                  Parent&apos;s Name<span className="text-red-500">*</span>
                 </label>
                 <input
                   type="text"

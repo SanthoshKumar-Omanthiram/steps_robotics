@@ -11,7 +11,7 @@ export default function ContactWay() {
           <span className="stem-gold contact-way-title pl-2">know us in a better way</span>
         </p>
         <p className="contact-model-title mt-3 text-gray-700 max-w-4xl">
-          Whether you're a parent exploring courses for your child, a student eager to learn, a professional interested in our franchise opportunities, or someone looking to join our team of trainers, we'd love to hear from you. Our team is always approachable and committed to responding promptly.
+          Whether you&apos;re a parent exploring courses for your child, a student eager to learn, a professional interested in our franchise opportunities, or someone looking to join our team of trainers, we&apos;d love to hear from you. Our team is always approachable and committed to responding promptly.
         </p>
       </div>
 

@@ -39,12 +39,10 @@ export default function WorkShopRobotics() {
         playsInline
         autoPlay
       ></video>
-
       <div className="absolute inset-0 bg-black/50"></div>
 
       <div className="relative z-10 text-center px-4 w-full flex flex-col items-center justify-center">
         <div className="relative inline-block container mx-auto">
-
           {/* ✅ Play button triggers popup full video */}
           <div
             onClick={handlePlayVideo}

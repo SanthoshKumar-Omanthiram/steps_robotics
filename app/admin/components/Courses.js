@@ -1,6 +1,7 @@
 'use client';
+/* eslint-disable @next/next/no-img-element */
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -52,11 +53,7 @@ export default function Courses() {
   const [editingHighlightId, setEditingHighlightId] = useState(null);
   const [editingHighlightText, setEditingHighlightText] = useState('');
 
-  useEffect(() => {
-    fetchCourses();
-  }, []);
-
-  const fetchCourses = async () => {
+  const fetchCourses = useCallback(async () => {
     const res = await axios.get('/api/courses');
     setCourses(res.data);
     try {
@@ -64,7 +61,11 @@ export default function Courses() {
     } catch (err) {
       console.error('Failed to prefetch counts', err);
     }
-  };
+  }, []);
+
+  useEffect(() => {
+    fetchCourses();
+  }, [fetchCourses]);
 
   const addCourse = async () => {
     if (!courseTitle) return alert('Course title required');

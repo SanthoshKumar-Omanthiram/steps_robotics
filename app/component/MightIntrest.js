@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import Image from "next/image";
 import { Clock, Users, BookOpen, Star } from "lucide-react";
 
 export default function MightInterested() {
@@ -62,10 +63,14 @@ export default function MightInterested() {
             className="bg-white rounded-2xl transition duration-300 overflow-hidden"
           >
             <div className="relative rounded p-2 shadow-[0_4px_15px_rgba(0,0,0,0.08)] hover:shadow-[0_6px_20px_rgba(0,0,0,0.12)] w-full h-[304px] overflow-hidden">
-              <img
+              <Image
                 src={course.image}
                 alt={course.title}
+                width={480}
+                height={304}
                 className="w-full h-full rounded object-cover"
+                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                priority={i === 0}
               />
               <button className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-[#b6b6b6] rounded-full p-4 shadow-lg hover:scale-110 transition">
                 <div className="w-0 h-0 border-t-8 border-t-transparent border-l-[14px] border-l-[#e8e8e8] border-b-8 border-b-transparent ml-1"></div>

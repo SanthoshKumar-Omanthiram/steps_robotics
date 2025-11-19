@@ -167,13 +167,19 @@ export default function CourseDetails({ title }) {
     />
     <div className="absolute right-[5px] top-[155px] sm:w-24 md:w-28">
       <div className="relative">
-        <Image
-          src="/offers.png"
-          alt="Special Offer"
-          width={110}
-          height={110}
-          className="h-auto w-[110px] drop-shadow-lg"
-        />
+     <Image
+  src="/offers.png"
+  alt="Special Offer"
+  width={110}
+  height={110}
+  className="
+    h-auto 
+    w-[110px]          
+    drop-shadow-lg
+    max-sm:w-[98px]       
+    max-sm:ml-[-15px]       
+  "
+/>
       </div>
     </div>
   </div>

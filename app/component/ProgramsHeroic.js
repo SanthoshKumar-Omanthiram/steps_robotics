@@ -14,7 +14,7 @@ export default function ProgramsHeroic() {
     <div className="contacts container-spacing p-6">
       <div className="container-custom space-y-8">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 transition-all duration-300">
-          <div className="w-full h-full">
+          <div className="w-full h-full order-2 md:order-1">
             {course.heroicimage ? (
               <Image
                 src={course.heroicimage}
@@ -30,7 +30,7 @@ export default function ProgramsHeroic() {
             )}
           </div>
 
-          <div className="text-left">
+          <div className="text-left order-1 md:order-2">
             <h2 className="heroic-title text-3xl font-semibold">
               Future-Ready Kids <br></br> Started Here!
             </h2>

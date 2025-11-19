@@ -224,9 +224,9 @@ export default function LMSDashboard() {
 
           <h3 className="text-lg font-semibold mb-2">Recent Activities</h3>
           <ul className="space-y-2 text-sm text-gray-600">
-            <li>✔ Assignment "React Basics" completed</li>
-            <li>⚠ Assignment "API Integration" delayed</li>
-            <li>✔ Assignment "Deploy Project" submitted</li>
+            <li>✔ Assignment &quot;React Basics&quot; completed</li>
+            <li>⚠ Assignment &quot;API Integration&quot; delayed</li>
+            <li>✔ Assignment &quot;Deploy Project&quot; submitted</li>
           </ul>
         </div>
       </div>
@@ -237,7 +237,7 @@ export default function LMSDashboard() {
           <h4 className="font-semibold mb-2">Notifications</h4>
           <ul className="text-sm text-gray-600 space-y-1">
             <li>New student registered</li>
-            <li>Course "Python" updated</li>
+            <li>Course &quot;Python&quot; updated</li>
             <li>Faculty meeting scheduled</li>
           </ul>
         </div>

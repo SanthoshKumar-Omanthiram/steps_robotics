@@ -1,94 +1,90 @@
-'use client';
+"use client";
+import { useState, useEffect } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 
-import { useState,useEffect } from 'react';
+export default function AuthLogin() {
+  const router = useRouter();
+  const searchParams = useSearchParams();
 
-export default function DevLoginPage() {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
-  useEffect(() => {
-    const header = document.querySelector('.header_part');
-    const footer = document.querySelector('.footer');
-    if (header) header.style.display = 'none';
-    if (footer) footer.style.display = 'none';
+  const [error, setError] = useState("");
 
-    // Restore visibility when leaving the page
-    return () => {
-      if (header) header.style.display = '';
-      if (footer) footer.style.display = '';
-    };
-  }, []);
+  const next = searchParams.get("next") || "/";
 
   async function onSubmit(e) {
     e.preventDefault();
     setLoading(true);
-    setError('');
+    setError("");
+
     try {
-      const res = await fetch('/api/dev-login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+      const res = await fetch("/api/dev-login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ username, password }),
       });
-      if (res.redirected) {
-        window.location.href = res.url;
-        return;
-      }
+
       if (!res.ok) {
         const data = await res.json().catch(() => ({}));
-        setError(data?.message || 'Login failed');
+        throw new Error(data?.error || "Invalid username or password");
       }
+
+      router.replace(next);
     } catch (err) {
-      setError('Network error');
+      setError(err.message);
     } finally {
       setLoading(false);
     }
   }
 
   return (
-    <div style={{ maxWidth: 360, margin: '80px auto', fontFamily: 'system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif' }}>
-      <h1 style={{ fontSize: 24, marginBottom: 16 }}>Developer Login</h1>
-      <form onSubmit={onSubmit} style={{ display: 'grid', gap: 12 }}>
-        <label style={{ display: 'grid', gap: 6 }}>
-          <span>Username</span>
-          <input
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            autoComplete="username"
-            required
-            style={{ padding: '10px 12px', border: '1px solid #ccc', borderRadius: 6 }}
-          />
-        </label>
-        <label style={{ display: 'grid', gap: 6 }}>
-          <span>Password</span>
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            autoComplete="current-password"
-            required
-            style={{ padding: '10px 12px', border: '1px solid #ccc', borderRadius: 6 }}
-          />
-        </label>
-        {error ? (
-          <div style={{ color: '#b00020', fontSize: 14 }}>{error}</div>
-        ) : null}
-        <button
-          type="submit"
-          disabled={loading}
-          style={{
-            padding: '10px 12px',
-            borderRadius: 6,
-            background: '#111827',
-            color: 'white',
-            border: 0,
-            cursor: 'pointer',
-          }}
-        >
-          {loading ? 'Signing in…' : 'Sign in'}
-        </button>
-      </form>
+    <div className="min-h-screen flex items-center justify-center px-4 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white">
+      <div className="w-full max-w-sm bg-gray-900/70 backdrop-blur-md border border-gray-700 shadow-xl rounded-2xl p-6">
+
+        <h1 className="text-2xl font-semibold text-center mb-4">Authentication Login</h1>
+
+        {error && (
+          <p className="text-sm text-red-400 text-center mb-2">{error}</p>
+        )}
+
+        <form onSubmit={onSubmit} className="grid gap-4">
+          {/* Username */}
+          <div className="grid gap-1">
+            <label className="text-sm text-gray-300">Username</label>
+            <input
+              type="text"
+              value={username}
+              required
+              autoComplete="username"
+              onChange={(e) => setUsername(e.target.value)}
+              className="w-full p-3 bg-gray-800 border border-gray-700 text-white rounded-xl focus:outline-none focus:ring-2 focus:ring-gray-500"
+            />
+          </div>
+
+          {/* Password */}
+          <div className="grid gap-1">
+            <label className="text-sm text-gray-300">Password</label>
+            <input
+              type="password"
+              value={password}
+              required
+              autoComplete="current-password"
+              onChange={(e) => setPassword(e.target.value)}
+              className="w-full p-3 bg-gray-800 border border-gray-700 text-white rounded-xl focus:outline-none focus:ring-2 focus:ring-gray-500"
+            />
+          </div>
+
+          {/* Submit */}
+          <button
+            type="submit"
+            disabled={loading}
+            className="w-full py-3 bg-gray-700 hover:bg-gray-600 rounded-xl transition text-white font-medium disabled:opacity-50"
+          >
+            {loading ? "Signing in..." : "Login"}
+          </button>
+        </form>
+      </div>
     </div>
   );
 }
-

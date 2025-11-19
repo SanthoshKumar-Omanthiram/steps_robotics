@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import Image from 'next/image';
 
 export default function TestimonialsAdmin() {
     const [testimonials, setTestimonials] = useState([]);
@@ -187,10 +188,12 @@ export default function TestimonialsAdmin() {
                             className="w-full"
                         />
                         {preview && (
-                            <img
+                            <Image
                                 src={preview}
                                 alt="Preview"
                                 className="w-16 h-16 rounded-full object-cover border"
+                                width={300}
+                                height={200}
                             />
                         )}
                     </div>
@@ -224,15 +227,17 @@ export default function TestimonialsAdmin() {
                                 className="bg-white shadow p-4 rounded-lg border flex flex-col items-center"
                             >
                                 {t.image && (
-                                    <img
+                                    <Image
                                         src={t.image}
                                         alt={t.name}
                                         className="w-24 h-24 rounded-full object-cover mb-2"
+                                        width={300}
+                                        height={200}
                                     />
                                 )}
                                 <h3 className="font-semibold">{t.name}</h3>
                                 <p className="text-sm text-gray-600">{t.role}</p>
-                                <p className="italic text-sm text-gray-500 text-center mt-2">"{t.quote}"</p>
+                                <p className="italic text-sm text-gray-500 text-center mt-2">&quot{t.quote}&quot</p>
                                 <p className="text-xs text-gray-700 mt-2">{t.description}</p>
                                 <p className="mt-2 font-semibold text-yellow-600">⭐ {t.rating}</p>
 

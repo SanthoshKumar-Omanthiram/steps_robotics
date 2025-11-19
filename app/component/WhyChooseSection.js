@@ -78,10 +78,12 @@ export default function WhyChooseSection() {
           <div className="grid grid-cols-1 sm:grid-cols-2 mb-5 gap-6 md:gap-8 lg:gap-12">
             {features.map((item, index) => (
               <div key={index} className="flex items-center gap-4">
-                <img
+                <Image
                   src={item.icon}
                   alt={item.title}
                   className="!w-auto !h-[100px]"
+                  width={200}
+                  height={200}
                 />
                 <div className="pt-2">
                   <h4 className="text-gray-900 text-base sm:text-lg leading-tight">

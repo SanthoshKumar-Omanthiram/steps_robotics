@@ -11,7 +11,7 @@ export default function CodingAdventures() {
                         About <span className="text-yellow-400 text-font-orbitron">STEPS Robotics</span>
                     </h2>
                     <p className="text-gray-600 text-sm sm:text-base lg:text-lg mb-10 leading-relaxed text-center sm:text-left text-font-poppins">
-                        We believe that true learning begins with exploration. That's why we deliver immersive, hands-on STEM experiences that ignite creativity and build
+                        We believe that true learning begins with exploration. That&apos;s why we deliver immersive, hands-on STEM experiences that ignite creativity and build
                         real-world skills in Robotics, Artificial Intelligence, Coding, IoT and more
                     </p>
                     {/* <h3 className="leading-snug text-center text-xl sm:text-center coding_adventure">Coding Adventures</h3> */}

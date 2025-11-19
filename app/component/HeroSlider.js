@@ -8,6 +8,8 @@ import { ArrowRight } from 'lucide-react';
 import { fetchBanners } from "@/app/utils/fetchData"; // ✅ import from utils
 import Enquiry from "./Enquiry";
 import SkeletonHero from "./SkeletonHero";
+import { useCallback } from "react";
+
 
 
 const slides = [
@@ -106,15 +108,23 @@ export default function HeroSlider() {
       nextSlide();
     }, 5000);
     return () => clearInterval(timer);
-  }, [currentSlide]);
+  }, []);
 
 
 
-  const nextSlide = () => {
+
+
+  const nextSlide = useCallback(() => {
     if (banners.length === 0) return;
     setDirection(1);
     setCurrentSlide((prev) => (prev + 1) % banners.length);
-  };
+  }, [banners.length]);
+
+  // const nextSlide = () => {
+  //   if (banners.length === 0) return;
+  //   setDirection(1);
+  //   setCurrentSlide((prev) => (prev + 1) % banners.length);
+  // };
 
   const prevSlide = () => {
     if (banners.length === 0) return;
@@ -201,7 +211,7 @@ export default function HeroSlider() {
                       <span className="ml-2">{banners[currentSlide].button_name || "Get Started"}</span>
                       <span className="relative bg-white ml-4 rounded-full ml-4 p-2"><ArrowRight className="w-6 h-6 text-black" /></span>
                     </button> */}
-                    {banners[currentSlide].button_name !== "dont show" && (
+                    {/* {banners[currentSlide].button_name !== "dont show" && (
                       <button
                         onClick={handleRegisterClick}
                         className="absolute home_banner_button bg-gradient-to-r from-orange-500 to-yellow-500 text-white font-bold text-xl py-2 px-3 rounded-full flex items-center hover:shadow-lg transition-shadow"
@@ -214,7 +224,7 @@ export default function HeroSlider() {
                           <ArrowRight className="w-6 h-6 text-black" />
                         </span>
                       </button>
-                    )}
+                    )} */}
                   </motion.div>
                 </div>
               </div>

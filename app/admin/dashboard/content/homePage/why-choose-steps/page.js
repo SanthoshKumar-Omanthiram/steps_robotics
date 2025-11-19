@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
+import Image from "next/image";
 
 export default function WhyChooseStepsAdmin() {
   const [mainData, setMainData] = useState(null);
@@ -140,10 +141,12 @@ export default function WhyChooseStepsAdmin() {
 
           {mainData?.robot_image && (
             <div className="mt-4">
-              <img
+              <Image
                 src={mainData.robot_image}
                 alt="Robot"
                 className="w-40 h-40 object-contain mx-auto"
+                width={200}
+                height={300}
               />
               <p className="text-center text-sm text-gray-600 mt-2">
                 {mainData.robot_image.split("/").pop()}
@@ -262,10 +265,12 @@ export default function WhyChooseStepsAdmin() {
                 className="border rounded-lg p-4 shadow-sm bg-gray-50 flex flex-col items-center"
               >
                 {item.icon ? (
-                  <img
+                  <Image
                     src={item.icon}
                     alt={item.heading}
                     className="w-16 h-16 object-contain mb-2"
+                    width={200}
+                    height={300}
                   />
                 ) : (
                   <div className="w-16 h-16 bg-gray-200 mb-2"></div>

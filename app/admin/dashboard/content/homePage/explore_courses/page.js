@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Image from 'next/image';
 
 export default function ExploreCoursesPage() {
     const [courses, setCourses] = useState([]);
@@ -170,11 +171,18 @@ export default function ExploreCoursesPage() {
                     {form.imagePreview && (
                         <div className="mb-2">
                             <p className="text-sm text-gray-600 mb-1">Current Image:</p>
-                            <img
+                            <Image
                                 src={form.imagePreview}
                                 alt="Current"
                                 className="h-32 w-auto rounded border"
+                                height={300}
+                                width={100}
                             />
+                            {/* <img
+                                src={form.imagePreview}
+                                alt="Current"
+                                className="h-32 w-auto rounded border"
+                            /> */}
                         </div>
                     )}
 
@@ -219,11 +227,18 @@ export default function ExploreCoursesPage() {
                         {courses.map((item) => (
                             <div key={item.id} className="border rounded-lg p-4 shadow bg-white relative">
                                 {item.image && (
-                                    <img
+                                    <Image 
                                         src={item.image}
                                         alt={item.title}
                                         className="h-40 w-full object-cover rounded"
+                                        width={200}
+                                        height={300}
                                     />
+                                    // <img
+                                    //     src={item.image}
+                                    //     alt={item.title}
+                                    //     className="h-40 w-full object-cover rounded"
+                                    // />
                                 )}
                                 <h3 className="font-bold mt-2">{item.title}</h3>
                                 <p className="text-gray-600">{item.description}</p>

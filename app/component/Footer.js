@@ -171,7 +171,7 @@ export default function Footer() {
                 {/* Let's Connect */}
                 <div>
                   <h3 className="text-xl footer-links-title stem-gold mb-6">
-                    Let's Connect
+                    Let&apos;s Connect
                   </h3>
 
                   <div className="space-y-4">
@@ -237,10 +237,12 @@ export default function Footer() {
                     Talk to us today!
                   </h4>
                   <div className="flex justify-center md:justify-start">
-                    <img
-                      src={sectionData.talk_image}
+                    <Image
+                      src={sectionData.talk_image || "/footer.gif"}
                       alt="Talk to us"
                       className="w-40 h-auto object-contain"
+                      width={200}
+                      height={300}
                     />
                   </div>
                 </div>

@@ -22,7 +22,7 @@ export default function SubscribersPage() {
 
   useEffect(() => {
     load(page);
-  }, []);
+  }, [page]);
 
   return (
     <div className="py-6 admin-main bg-gray-50 min-h-screen ml-64 bg-gradient-to-br from-gray-50 via-white to-gray-100">

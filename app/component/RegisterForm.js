@@ -263,7 +263,7 @@ export default function RegisterForm() {
                 {/* Parent Phone */}
                 <div>
                     <label className="block text-gray-700 font-semibold mb-1">
-                        Parent's Phone
+                        Parent&apos;s Phone
                     </label>
                     <input
                         name="parent_phone"

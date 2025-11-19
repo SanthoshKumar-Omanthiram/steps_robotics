@@ -61,7 +61,7 @@ const course = {
 export default function Page() {
     return (
         <>
-            
+
             <div className="container-spacing ">
                 {/* Banner Hero Section */}
                 <div className="about container-spacing p-6">
@@ -177,7 +177,7 @@ export default function Page() {
                                 From Curiosity to Certainty — Shaping the Future with AI & Robotics
                             </h3>
                             <p className="text-gray-600 text-lg about_STEPS font-poppins">
-                                At STEPS Robotics, we're on a mission to turn young curiosity into
+                                At STEPS Robotics, we&apos;re on a mission to turn young curiosity into
                                 groundbreaking innovation. We create hands-on, playful learning
                                 spaces where children dive into STEM, coding, robotics, AI, ML, IoT,
                                 AR, and VR — building skills that prepare them for the world of
@@ -214,7 +214,14 @@ export default function Page() {
                     {/* Decorative rocket element at top */}
                     <div className="absolute top-[-60] left-[-20]">
                         <div className="w-40 h-40">
-                            <img src="/about/rocket_finder.gif" />
+                            {/* <img src="/about/rocket_finder.gif" /> */}
+                            <Image
+                                src="/about/rocket_finder.gif"
+                                alt="Rocket finder"
+                                width={300}   // add actual width
+                                height={300}  // add actual height
+                                unoptimized   // for GIFs only
+                            />
                         </div>
                     </div>
 
@@ -496,7 +503,7 @@ export default function Page() {
 
 
             </div>
-           
+
         </>
     );
 }

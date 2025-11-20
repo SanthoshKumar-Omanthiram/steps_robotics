@@ -53,7 +53,7 @@ export default function Enquiry({ onClose }) {
         </div>
 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-4 items-center px-4 sm:px-8 pb-0 sm:pb-6 md:pb-8">
           <div className="flex justify-center items-end md:order-1 order-2 h-full">
-            <div className="relative w-full h-[200px] sm:h-[280px] md:h-full">
+<div className="relative w-full h-[200px] sm:h-[280px] md:h-full mt-[-25px] md:mt-0">
            <Image
   src="/enquiry-popup.png"
   alt="Steps Robotics"

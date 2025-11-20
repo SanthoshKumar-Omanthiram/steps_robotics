@@ -6,11 +6,6 @@
   --font-audiowide: 'Audiowide';
 }
 
-/* Use Orbitron for all headings */
-/* h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-orbitron);
-} */
-
 html,
 body {
   margin: 0;
@@ -18,7 +13,6 @@ body {
   overflow-x: hidden;
 }
 
-/* Use Poppins for normal text */
 p,
 span,
 a,
@@ -84,7 +78,6 @@ button {
   font-style: italic;
   font-weight: 500;
   line-height: 150%;
-  /* 21px */
 }
 
 .signin-form-title {
@@ -654,6 +647,7 @@ button {
   height: 280px !important;
   width: 100%;
 }
+
 .getin-touch {
   background-image: url('/contact_bg_bottom.jpg');
   background-position: center;
@@ -1076,10 +1070,10 @@ button {
   font-size: 48px;
   -webkit-text-stroke: .3px white;
   text-shadow:
-  -1px 1px 0 #FFFFFF,
-  -2px 2px 0 #FFFFFF,
-  -3px 5px 4px rgba(59, 59, 59, 0.35),
-  -5px 8px 6px rgba(10, 10, 10, 0.05);
+    -1px 1px 0 #FFFFFF,
+    -2px 2px 0 #FFFFFF,
+    -3px 5px 4px rgba(59, 59, 59, 0.35),
+    -5px 8px 6px rgba(10, 10, 10, 0.05);
   letter-spacing: 1px;
 }
 
@@ -1090,10 +1084,10 @@ button {
   font-size: 44px;
   -webkit-text-stroke: .3px white;
   text-shadow:
-  -1px 1px 0 #FFFFFF,
-  -2px 2px 0 #FFFFFF,
-  -3px 5px 4px rgba(59, 59, 59, 0.35),
-  -5px 8px 6px rgba(10, 10, 10, 0.15);
+    -1px 1px 0 #FFFFFF,
+    -2px 2px 0 #FFFFFF,
+    -3px 5px 4px rgba(59, 59, 59, 0.35),
+    -5px 8px 6px rgba(10, 10, 10, 0.15);
   letter-spacing: 1px;
 }
 
@@ -1599,7 +1593,7 @@ button {
 }
 
 @media (max-width: 500px) {
-  .about img{
+  .about img {
     margin-top: 24px;
   }
 }
@@ -1870,18 +1864,13 @@ button {
 .enquiry-contact-box {
   border-radius: 15px;
   border-top: 1px solid #FFA837;
-  /* ✅ top border only */
   border-right: none;
-  /* ✅ right border only */
   border-bottom: none;
-  /* ❌ no bottom border */
   border-left: none;
   box-shadow: -10px -10px 25px rgba(0, 0, 0, 0.12);
-  /* top-left shadow only */
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   transition: all 0.3s ease;
-  /* ❌ no left border */
   background: linear-gradient(180deg, rgba(253, 182, 24, 0.43) 0%, rgba(255, 255, 255, 0.00) 100%);
 }
 
@@ -1910,24 +1899,30 @@ button {
     width: 100%;
   }
 
+  .getin-touch {
+    padding-bottom: 0 !important;
+  }
+
   .course-heroic-title {
     margin-top: 15px !important;
     text-align: center;
-    font-size: 29px !important;
+    font-size: 18px !important;
   }
-.upcoming-course-view-btn {
-	color: #fdb618;
-	text-align: center;
-	font-feature-settings: "liga" off, "clig" off;
-	font-family: var(--font-poppins), sans-serif;
-	border: 1px solid #fdb618;
-	border-radius: 99px;
-	padding: 0px 7px;
-	font-size: 8px;
-	font-style: normal;
-	font-weight: 600;
-	line-height: 21px;
-}
+
+  .upcoming-course-view-btn {
+    color: #fdb618;
+    text-align: center;
+    font-feature-settings: "liga" off, "clig" off;
+    font-family: var(--font-poppins), sans-serif;
+    border: 1px solid #fdb618;
+    border-radius: 99px;
+    padding: 0px 7px;
+    font-size: 8px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 21px;
+  }
+
   .tesitimonial-box-content {
     padding-top: 0px !important;
   }
@@ -1935,13 +1930,16 @@ button {
   .course-news-letter-model {
     margin: 0 !important;
   }
-  .course-heroic-image{
-  height: auto !important;
-  width: 100% !important;
-}
-.heroic-title {
-  font-size: 29px !important;
-}
+
+  .course-heroic-image {
+    height: auto !important;
+    width: 100% !important;
+  }
+
+  .heroic-title {
+    font-size: 18px !important;
+  }
+
   .course-details-section {
     padding-left: 20px;
     padding-right: 20px;
@@ -1992,7 +1990,8 @@ button {
     margin-top: 15px !important;
   }
 
-  .contacts, .about {
+  .contacts,
+  .about {
     height: 470px !important;
   }
 
@@ -2270,14 +2269,14 @@ li {
 }
 
 @media screen and (max-width: 524px) {
-     .steps-robotics-points {
-  padding-left: 32px;
+  .steps-robotics-points {
+    padding-left: 32px;
     padding-right: 30px;
     width: 360px !important;
   }
 
   .steps-robotics-others {
-  padding-left: 32px;
+    padding-left: 32px;
     padding-right: 30px;
     width: 360px !important;
   }
@@ -2287,9 +2286,11 @@ li {
   .container-custom {
     max-width: 540px;
   }
- .getin-touch{
+
+  .getin-touch {
     padding-bottom: 0 !important;
   }
+
   .class-instructor-popup {
     margin-top: 0;
   }
@@ -2301,20 +2302,23 @@ li {
   .maps {
     margin: 0 !important;
   }
-  
+
 }
 
 @media (min-width: 720px) {
   .container-custom {
     max-width: 720px;
   }
- .getin-touch{
+
+  .getin-touch {
     padding-bottom: 0 !important;
   }
+
   .class-instructor-popup {
     margin-top: 0;
   }
-    .maps {
+
+  .maps {
     margin: 0 !important;
   }
 }
@@ -2342,7 +2346,7 @@ li {
     margin-top: -21px;
   }
 
- .steps-robotics-points {
+  .steps-robotics-points {
     padding-left: 15px;
     padding-right: 17px;
   }
@@ -2375,7 +2379,7 @@ li {
   }
 
 
-   .steps-robotics-points {
+  .steps-robotics-points {
     padding-left: 36px;
     padding-right: 39px;
   }
@@ -2709,7 +2713,7 @@ li {
     margin-top: 0;
   }
 
-  .feature-course-review{
+  .feature-course-review {
     margin-top: 0px !important;
   }
 
@@ -3122,7 +3126,6 @@ li {
   }
 
 
-  /**Home page - Explore Learnign with STEPS Robotics**/
 
   @media (max-width: 1023px) {
     /* .explore_learning {
@@ -3149,6 +3152,7 @@ li {
   }
 
   @media (max-width: 768px) {
+
     .course-heroic,
     .contacts {
       height: 306px !important;
@@ -3158,9 +3162,10 @@ li {
       bottom: 10px !important;
       top: auto !important;
     }
-    .contact-heroic-image{
-width: 100% !important;
-height: auto !important;
+
+    .contact-heroic-image {
+      width: 351px !important;
+      height: auto !important;
     }
 
     .top-triangle {
@@ -3511,7 +3516,7 @@ height: auto !important;
   }
 
   .steps-robotics-others {
-   padding-left: 15px;
+    padding-left: 15px;
     padding-bottom: -3px;
     padding-right: 17px;
     width: 100% !important;
@@ -3549,52 +3554,57 @@ height: auto !important;
     margin-top: -180px;
   }
 }
+
 @media screen and (min-width: 980px) and (max-width: 1317px) {
-  .steps-robotics-points{
-        width: 100% !important;
+  .steps-robotics-points {
+    width: 100% !important;
     height: 504px !important;
   }
-  .steps-robotics-others{
-        width: 100% !important;
+
+  .steps-robotics-others {
+    width: 100% !important;
     height: 504px !important;
   }
 }
 
 @media screen and (min-width: 998px) and (max-width: 1140px) {
-    .steps-robotics-points{
-        width: 321px !important;
+  .steps-robotics-points {
+    width: 321px !important;
     height: 504px !important;
   }
-  .steps-robotics-others{
-        width: 321px !important;
+
+  .steps-robotics-others {
+    width: 321px !important;
     height: 504px !important;
   }
 }
 
 @media screen and (min-width: 954px) and (max-width: 978px) {
-     .steps-robotics-points{
-         width: 320px !important;
+  .steps-robotics-points {
+    width: 320px !important;
     height: 506px !important;
   }
-  .steps-robotics-others{
-        width: 320px !important;
+
+  .steps-robotics-others {
+    width: 320px !important;
     height: 506px !important;
   }
 }
 
 @media screen and (min-width: 769px) and (max-width: 954px) {
-     .steps-robotics-points{
-         width: 320px !important;
+  .steps-robotics-points {
+    width: 320px !important;
     height: 506px !important;
   }
-  .steps-robotics-others{
-        width: 320px !important;
+
+  .steps-robotics-others {
+    width: 320px !important;
     height: 506px !important;
   }
 }
 
 @media screen and (min-width: 1028px) and (max-width: 1320px) {
-   .feature-course-review{
+  .feature-course-review {
     margin-top: -160px !important;
   }
 }
@@ -3614,10 +3624,10 @@ height: auto !important;
   }
 
   .steps-robotics-others {
-      padding-left: 30px !important;
+    padding-left: 30px !important;
     padding-top: 30px !important;
     padding-right: 30px !important;
-     width: 360px !important;
+    width: 360px !important;
     height: 504px !important;
   }
 
@@ -3661,7 +3671,7 @@ height: auto !important;
 }
 
 @media (max-width: 959px) {
-  .about_steps_robotics{
+  .about_steps_robotics {
     left: -30;
   }
 }
@@ -3682,7 +3692,7 @@ height: auto !important;
 }
 
 @media (max-width:1023px) {
-  .why_choose_sec{
+  .why_choose_sec {
     margin-bottom: -80px;
   }
 }
@@ -3697,138 +3707,164 @@ height: auto !important;
 } */
 
 @media (max-width: 1023px) {
-  .banner_info_sec{
+  .banner_info_sec {
     bottom: -70px !important;
   }
 }
 
 @media (max-width: 768px) {
-  .banner_info_sec{
+  .banner_info_sec {
     bottom: -50px !important;
   }
 }
 
 @media (max-width: 428px) {
-  .banner_info_sec{
+  .banner_info_sec {
     bottom: -100px !important;
   }
 }
 
 @media (max-width: 767px) {
-  .banner_RTL_image{
+  .banner_RTL_image {
     margin-bottom: 160px !important;
   }
 }
 
 
 @media (max-width: 1139px) {
-  .about_five_start{
+  .about_five_start {
     display: none;
   }
 }
 
 @media (max-width: 767px) {
-  .about{
+  .about {
     height: 450px !important;
   }
-  .about_banner_heading{
+
+  .about_banner_heading {
     margin-top: -60px;
   }
 }
 
 @media (max-width: 640px) {
-  .about_banner_heading{
+  .about_banner_heading {
     margin-top: 0;
   }
-  .about{
+
+  .about {
     height: 420px !important;
   }
 }
 
 @media (max-width:1139px) {
-  .about_VMV{
+  .about_VMV {
     margin-bottom: 30px;
   }
-  .about_VMV_img img{
+
+  .about_VMV_img img {
     width: 300px;
     margin-bottom: -110px !important;
   }
 }
 
 @media (max-width: 1023px) {
-  .about_VMV_img img{
+  .about_VMV_img img {
     width: 300px;
     margin-bottom: -30px !important;
   }
 }
 
 @media (max-width: 1135px) {
-  .study_process_youtube{
+  .study_process_youtube {
     display: none;
   }
 }
+
 @media (min-width: 768px) and (max-width: 959px) {
-  .diffrent-section{
-	margin-top: 78px !important;
-	padding-top: 10px !important;
-	padding-bottom: 15px !important;
-	margin-left: 10px !important;
-	margin-right: 10px !important;
-}
-.steps-robotics-points {
-  width: 100% !important;
-  height: 520px !important;
-  margin-top: -80px;
-}
-.steps-robotics-others {
-  width: 100% !important;
-  height: 503px !important;
-  margin-top: -80px;
-}
-.steps-robotics-points-titile {
- font-size: 12px !important;
- margin-bottom: 15px !important; 
-}
-.feature-font{
-  font-size: 8px;
-}
-.steps-robotics-robot{
-  top: 108px;
-  right: 37px;
-}
+  .diffrent-section {
+    margin-top: 78px !important;
+    padding-top: 10px !important;
+    padding-bottom: 15px !important;
+    margin-left: 10px !important;
+    margin-right: 10px !important;
+  }
+
+  .steps-robotics-points {
+    width: 100% !important;
+    height: 520px !important;
+    margin-top: -80px;
+  }
+
+  .steps-robotics-others {
+    width: 100% !important;
+    height: 503px !important;
+    margin-top: -80px;
+  }
+
+  .steps-robotics-points-titile {
+    font-size: 12px !important;
+    margin-bottom: 15px !important;
+  }
+
+  .feature-font {
+    font-size: 8px;
+  }
+
+  .steps-robotics-robot {
+    top: 108px;
+    right: 37px;
+  }
 }
 
 @media (min-width: 640px) and (max-width: 767px) {
-  .diffrent-section{
-	margin-left: 30px !important;
-  margin-right: 30px !important;
-}
+  .diffrent-section {
+    margin-left: 30px !important;
+    margin-right: 30px !important;
+  }
 
 }
 
- 
+
 @media (max-width: 1024px) {
-  .gallery_section img{
+  .gallery_section img {
     /* width: auto !important; */
   }
 }
-/* FULL SCREEN on mobile */
-@media (max-width: 640px) {
-  .mobile-full-width {
+
+@media screen and (width: 375px) {
+  .contact-heroic-image {
+    object-fit: contain;
+    margin-top: 2px;
     width: 100% !important;
-    border-radius: 0 !important;
-  }
-
-  /* Contact + Email in single row */
-  .mobile-contact-row {
-    display: flex !important;
-    gap: 12px;
-  }
-
-  /* Icons in single row */
-  .mobile-icons-row {
-    display: flex !important;
-    flex-direction: row !important;
-    gap: 15px !important;
-  }
+    height: 287px !important;
+}
+.programs-heroic-image {
+    object-fit: contain;
+    width: 100% !important;
+    height: auto !important;
+    margin-top: 35px !important;
+}
+.course-heroic-image {
+    width: 100% !important;
+    height: 265px !important;
+}
+}
+@media screen and (width: 320px) {
+  .contact-heroic-image {
+    object-fit: contain;
+    margin-top: 40px;
+    width: 100% !important;
+    height: 287px !important;
+}
+.programs-heroic-image {
+    object-fit: contain;
+    width: 100% !important;
+    height: 303px !important;
+    margin-top: 0 !important;
+}
+.course-heroic-image {
+    width: 100% !important;
+    height: 287px !important;
+}
 }

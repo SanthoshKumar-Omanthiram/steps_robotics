@@ -1937,7 +1937,7 @@ button {
   }
 
   .heroic-title {
-    font-size: 18px !important;
+    font-size: 24px !important;
   }
 
   .course-details-section {
@@ -1995,10 +1995,9 @@ button {
     height: 470px !important;
   }
 
-  .program-workshop {
-    padding-right: 30px;
-    padding-left: 30px;
-  }
+.workshop-sample-title{
+  font-size: 24px !important;
+}
 
   .course-news-letters {
     height: auto !important;
@@ -3166,6 +3165,7 @@ li {
     .contact-heroic-image {
       width: 351px !important;
       height: auto !important;
+      margin-top: -10px !important;
     }
 
     .top-triangle {
@@ -3832,12 +3832,22 @@ li {
   }
 }
 
+@media screen and (min-width: 375px) and (max-width: 425px) {
+    .contact-heroic-image {
+    object-fit: contain;
+    margin-top: -7px;
+    width: 100% !important;
+    height: auto !important;
+}
+}
+
+
 @media screen and (width: 375px) {
   .contact-heroic-image {
     object-fit: contain;
     margin-top: 2px;
     width: 100% !important;
-    height: 287px !important;
+    height: auto !important;
 }
 .programs-heroic-image {
     object-fit: contain;

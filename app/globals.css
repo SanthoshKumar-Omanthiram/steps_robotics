@@ -654,6 +654,7 @@ button {
   height: 280px !important;
   width: 100%;
 }
+
 .getin-touch {
   background-image: url('/contact_bg_bottom.jpg');
   background-position: center;
@@ -1076,10 +1077,10 @@ button {
   font-size: 48px;
   -webkit-text-stroke: .3px white;
   text-shadow:
-  -1px 1px 0 #FFFFFF,
-  -2px 2px 0 #FFFFFF,
-  -3px 5px 4px rgba(59, 59, 59, 0.35),
-  -5px 8px 6px rgba(10, 10, 10, 0.05);
+    -1px 1px 0 #FFFFFF,
+    -2px 2px 0 #FFFFFF,
+    -3px 5px 4px rgba(59, 59, 59, 0.35),
+    -5px 8px 6px rgba(10, 10, 10, 0.05);
   letter-spacing: 1px;
 }
 
@@ -1090,10 +1091,10 @@ button {
   font-size: 44px;
   -webkit-text-stroke: .3px white;
   text-shadow:
-  -1px 1px 0 #FFFFFF,
-  -2px 2px 0 #FFFFFF,
-  -3px 5px 4px rgba(59, 59, 59, 0.35),
-  -5px 8px 6px rgba(10, 10, 10, 0.15);
+    -1px 1px 0 #FFFFFF,
+    -2px 2px 0 #FFFFFF,
+    -3px 5px 4px rgba(59, 59, 59, 0.35),
+    -5px 8px 6px rgba(10, 10, 10, 0.15);
   letter-spacing: 1px;
 }
 
@@ -1110,7 +1111,7 @@ button {
 
 @media (max-width: 500px) {
   .banner-text h1 {
-    margin-top: 100px;
+    margin-top: 30px !important;
     font-size: 20px;
   }
 
@@ -1594,15 +1595,13 @@ button {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  height: 280px !important;
+  height: 280px;
   width: 100%;
 }
 
-@media (max-width: 500px) {
-  .about img{
-    margin-top: 24px;
-  }
-}
+
+
+
 
 
 
@@ -1973,7 +1972,8 @@ button {
     margin-top: 15px !important;
   }
 
-  .contacts, .about {
+  .contacts,
+  .about {
     height: 470px !important;
   }
 
@@ -2254,14 +2254,14 @@ li {
 }
 
 @media screen and (max-width: 524px) {
-     .steps-robotics-points {
-  padding-left: 32px;
+  .steps-robotics-points {
+    padding-left: 32px;
     padding-right: 30px;
     width: 360px !important;
   }
 
   .steps-robotics-others {
-  padding-left: 32px;
+    padding-left: 32px;
     padding-right: 30px;
     width: 360px !important;
   }
@@ -2271,9 +2271,11 @@ li {
   .container-custom {
     max-width: 540px;
   }
- .getin-touch{
+
+  .getin-touch {
     padding-bottom: 0 !important;
   }
+
   .class-instructor-popup {
     margin-top: 0;
   }
@@ -2285,20 +2287,23 @@ li {
   .maps {
     margin: 0 !important;
   }
-  
+
 }
 
 @media (min-width: 720px) {
   .container-custom {
     max-width: 720px;
   }
- .getin-touch{
+
+  .getin-touch {
     padding-bottom: 0 !important;
   }
+
   .class-instructor-popup {
     margin-top: 0;
   }
-    .maps {
+
+  .maps {
     margin: 0 !important;
   }
 }
@@ -2326,7 +2331,7 @@ li {
     margin-top: -21px;
   }
 
- .steps-robotics-points {
+  .steps-robotics-points {
     padding-left: 15px;
     padding-right: 17px;
   }
@@ -2359,7 +2364,7 @@ li {
   }
 
 
-   .steps-robotics-points {
+  .steps-robotics-points {
     padding-left: 36px;
     padding-right: 39px;
   }
@@ -2693,7 +2698,7 @@ li {
     margin-top: 0;
   }
 
-  .feature-course-review{
+  .feature-course-review {
     margin-top: 0px !important;
   }
 
@@ -3133,6 +3138,7 @@ li {
   }
 
   @media (max-width: 768px) {
+
     .course-heroic,
     .contacts {
       height: 434px !important;
@@ -3491,7 +3497,7 @@ li {
   }
 
   .steps-robotics-others {
-   padding-left: 15px;
+    padding-left: 15px;
     padding-bottom: -3px;
     padding-right: 17px;
     width: 100% !important;
@@ -3529,52 +3535,57 @@ li {
     margin-top: -180px;
   }
 }
+
 @media screen and (min-width: 980px) and (max-width: 1317px) {
-  .steps-robotics-points{
-        width: 100% !important;
+  .steps-robotics-points {
+    width: 100% !important;
     height: 504px !important;
   }
-  .steps-robotics-others{
-        width: 100% !important;
+
+  .steps-robotics-others {
+    width: 100% !important;
     height: 504px !important;
   }
 }
 
 @media screen and (min-width: 998px) and (max-width: 1140px) {
-    .steps-robotics-points{
-        width: 321px !important;
+  .steps-robotics-points {
+    width: 321px !important;
     height: 504px !important;
   }
-  .steps-robotics-others{
-        width: 321px !important;
+
+  .steps-robotics-others {
+    width: 321px !important;
     height: 504px !important;
   }
 }
 
 @media screen and (min-width: 954px) and (max-width: 978px) {
-     .steps-robotics-points{
-         width: 320px !important;
+  .steps-robotics-points {
+    width: 320px !important;
     height: 506px !important;
   }
-  .steps-robotics-others{
-        width: 320px !important;
+
+  .steps-robotics-others {
+    width: 320px !important;
     height: 506px !important;
   }
 }
 
 @media screen and (min-width: 769px) and (max-width: 954px) {
-     .steps-robotics-points{
-         width: 320px !important;
+  .steps-robotics-points {
+    width: 320px !important;
     height: 506px !important;
   }
-  .steps-robotics-others{
-        width: 320px !important;
+
+  .steps-robotics-others {
+    width: 320px !important;
     height: 506px !important;
   }
 }
 
 @media screen and (min-width: 1028px) and (max-width: 1320px) {
-   .feature-course-review{
+  .feature-course-review {
     margin-top: -160px !important;
   }
 }
@@ -3594,10 +3605,10 @@ li {
   }
 
   .steps-robotics-others {
-      padding-left: 30px !important;
+    padding-left: 30px !important;
     padding-top: 30px !important;
     padding-right: 30px !important;
-     width: 360px !important;
+    width: 360px !important;
     height: 504px !important;
   }
 
@@ -3641,7 +3652,7 @@ li {
 }
 
 @media (max-width: 959px) {
-  .about_steps_robotics{
+  .about_steps_robotics {
     left: -30;
   }
 }
@@ -3662,7 +3673,7 @@ li {
 }
 
 @media (max-width:1023px) {
-  .why_choose_sec{
+  .why_choose_sec {
     margin-bottom: -80px;
   }
 }
@@ -3677,121 +3688,188 @@ li {
 } */
 
 @media (max-width: 1023px) {
-  .banner_info_sec{
+  .banner_info_sec {
     bottom: -70px !important;
   }
 }
 
 @media (max-width: 768px) {
-  .banner_info_sec{
+  .banner_info_sec {
     bottom: -50px !important;
   }
 }
 
+@media (max-width: 447px) {
+  .banner_info_sec p{
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 430px) {
+  .banner_info_sec p{
+    font-size: 11px;
+  }
+}
+
 @media (max-width: 428px) {
-  .banner_info_sec{
+  .banner_info_sec {
     bottom: -100px !important;
   }
 }
 
 @media (max-width: 767px) {
-  .banner_RTL_image{
+  .banner_RTL_image {
     margin-bottom: 160px !important;
   }
 }
 
 
 @media (max-width: 1139px) {
-  .about_five_start{
+  .about_five_start {
     display: none;
   }
 }
 
 @media (max-width: 767px) {
-  .about{
+  .about {
     height: 450px !important;
   }
-  .about_banner_heading{
+
+  .about_banner_heading {
     margin-top: -60px;
   }
 }
 
 @media (max-width: 640px) {
-  .about_banner_heading{
+  .about_banner_heading {
     margin-top: 0;
   }
-  .about{
-    height: 420px !important;
+
+  .about {
+    height: 410px !important;
   }
-  .contact-heroic-image{
+
+  .contact-heroic-image {
     margin-top: 0 !important;
   }
 }
 
+@media (max-width: 500px) {
+  .about img {
+    margin-top: -1px;
+  }
+}
+
+@media (max-width: 479px) {
+  .about img {
+    margin-top: -47px !important;
+  }
+}
+
+@media (max-width: 428px) {
+  .about {
+    height: 260px !important;
+    width: 100%;
+  }
+
+  .about img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80% !important;
+    height: 100% !important;
+    margin-top: -24px !important;
+  }
+
+  .about_banner_heading h2 {
+    font-size: 24px !important;
+  }
+
+  .heroic-title {
+    -webkit-text-stroke: .3px white;
+    text-shadow: .5px 1px 0 #FFFFFF, 3px 2px 0 #FFFFFF, 1px 1px 1px rgba(59, 59, 59, 0.8), 2px 2px 1px rgba(59, 59, 59, 0.5);
+
+  }
+}
+
 @media (max-width:1139px) {
-  .about_VMV{
+  .about_VMV {
     margin-bottom: 30px;
   }
-  .about_VMV_img img{
+
+  .about_VMV_img img {
     width: 300px;
     margin-bottom: -110px !important;
   }
 }
 
 @media (max-width: 1023px) {
-  .about_VMV_img img{
+  .about_VMV_img img {
     width: 300px;
     margin-bottom: -30px !important;
   }
 }
 
+@media (max-width:428px) {
+  .about_VMV_img img {
+    width: 180px;
+    margin-bottom: -30px !important;
+  }
+}
+
 @media (max-width: 1135px) {
-  .study_process_youtube{
+  .study_process_youtube {
     display: none;
   }
 }
+
 @media (min-width: 768px) and (max-width: 959px) {
-  .diffrent-section{
-	margin-top: 78px !important;
-	padding-top: 10px !important;
-	padding-bottom: 15px !important;
-	margin-left: 10px !important;
-	margin-right: 10px !important;
-}
-.steps-robotics-points {
-  width: 100% !important;
-  height: 520px !important;
-  margin-top: -80px;
-}
-.steps-robotics-others {
-  width: 100% !important;
-  height: 503px !important;
-  margin-top: -80px;
-}
-.steps-robotics-points-titile {
- font-size: 12px !important;
- margin-bottom: 15px !important; 
-}
-.feature-font{
-  font-size: 8px;
-}
-.steps-robotics-robot{
-  top: 108px;
-  right: 37px;
-}
+  .diffrent-section {
+    margin-top: 78px !important;
+    padding-top: 10px !important;
+    padding-bottom: 15px !important;
+    margin-left: 10px !important;
+    margin-right: 10px !important;
+  }
+
+  .steps-robotics-points {
+    width: 100% !important;
+    height: 520px !important;
+    margin-top: -80px;
+  }
+
+  .steps-robotics-others {
+    width: 100% !important;
+    height: 503px !important;
+    margin-top: -80px;
+  }
+
+  .steps-robotics-points-titile {
+    font-size: 12px !important;
+    margin-bottom: 15px !important;
+  }
+
+  .feature-font {
+    font-size: 8px;
+  }
+
+  .steps-robotics-robot {
+    top: 108px;
+    right: 37px;
+  }
 }
 
 @media (min-width: 640px) and (max-width: 767px) {
-  .diffrent-section{
-	margin-left: 30px !important;
-  margin-right: 30px !important;
-}
+  .diffrent-section {
+    margin-left: 30px !important;
+    margin-right: 30px !important;
+  }
 
 }
 
- 
+
 @media (max-width: 1024px) {
-  .gallery_section img{
+  .gallery_section img {
     /* width: auto !important; */
   }
 }

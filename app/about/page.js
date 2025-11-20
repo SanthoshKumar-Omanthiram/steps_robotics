@@ -62,7 +62,7 @@ export default function Page() {
     return (
         <>
 
-            <div className="container-spacing ">
+            <div className="container-spacing">
                 {/* Banner Hero Section */}
                 <div className="about container-spacing p-6">
                     <div className="container-custom space-y-8 ">
@@ -173,9 +173,12 @@ export default function Page() {
 
                         {/* RIGHT SIDE TEXT & FEATURES */}
                         <div className="flex flex-col justify-center text-center md:text-left space-y-4">
-                            <h3 className="text-2xl pr-10 font-semibold text-gray-800 font-orbitron">
+                            <h3 className="text-2xl text-left font-orbitron">
                                 From Curiosity to Certainty — Shaping the Future with AI & Robotics
                             </h3>
+                            {/* <h3 className="text-2xl pr-10 font-semibold text-gray-800 font-orbitron">
+                                From Curiosity to Certainty — Shaping the Future with AI & Robotics
+                            </h3> */}
                             <p className="text-gray-600 text-lg about_STEPS font-poppins">
                                 At STEPS Robotics, we&apos;re on a mission to turn young curiosity into
                                 groundbreaking innovation. We create hands-on, playful learning

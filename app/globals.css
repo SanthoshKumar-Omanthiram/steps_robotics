@@ -6,11 +6,6 @@
   --font-audiowide: 'Audiowide';
 }
 
-/* Use Orbitron for all headings */
-/* h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-orbitron);
-} */
-
 html,
 body {
   margin: 0;
@@ -18,7 +13,6 @@ body {
   overflow-x: hidden;
 }
 
-/* Use Poppins for normal text */
 p,
 span,
 a,
@@ -84,7 +78,6 @@ button {
   font-style: italic;
   font-weight: 500;
   line-height: 150%;
-  /* 21px */
 }
 
 .signin-form-title {
@@ -654,6 +647,7 @@ button {
   height: 280px !important;
   width: 100%;
 }
+
 
 .getin-touch {
   background-image: url('/contact_bg_bottom.jpg');
@@ -1599,9 +1593,11 @@ button {
   width: 100%;
 }
 
-
-
-
+@media (max-width: 500px) {
+  .about img {
+    margin-top: 24px;
+  }
+}
 
 
 
@@ -1869,18 +1865,13 @@ button {
 .enquiry-contact-box {
   border-radius: 15px;
   border-top: 1px solid #FFA837;
-  /* ✅ top border only */
   border-right: none;
-  /* ✅ right border only */
   border-bottom: none;
-  /* ❌ no bottom border */
   border-left: none;
   box-shadow: -10px -10px 25px rgba(0, 0, 0, 0.12);
-  /* top-left shadow only */
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   transition: all 0.3s ease;
-  /* ❌ no left border */
   background: linear-gradient(180deg, rgba(253, 182, 24, 0.43) 0%, rgba(255, 255, 255, 0.00) 100%);
 }
 
@@ -1909,9 +1900,28 @@ button {
     width: 100%;
   }
 
+  .getin-touch {
+    padding-bottom: 0 !important;
+  }
+
   .course-heroic-title {
     margin-top: 15px !important;
     text-align: center;
+    font-size: 24px !important;
+  }
+
+  .upcoming-course-view-btn {
+    color: #fdb618;
+    text-align: center;
+    font-feature-settings: "liga" off, "clig" off;
+    font-family: var(--font-poppins), sans-serif;
+    border: 1px solid #fdb618;
+    border-radius: 99px;
+    padding: 0px 7px;
+    font-size: 8px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 21px;
   }
 
   .tesitimonial-box-content {
@@ -1920,6 +1930,15 @@ button {
 
   .course-news-letter-model {
     margin: 0 !important;
+  }
+
+  .course-heroic-image {
+    height: auto !important;
+    width: 100% !important;
+  }
+
+  .heroic-title {
+    font-size: 24px !important;
   }
 
   .course-details-section {
@@ -1965,7 +1984,7 @@ button {
     object-fit: contain;
     margin-top: 0 !important;
     width: 100% !important;
-    height: 300px !important;
+    height: auto !important;
   }
 
   .heroic-title {
@@ -1977,18 +1996,14 @@ button {
     height: 470px !important;
   }
 
-  .program-workshop {
-    padding-right: 30px;
-    padding-left: 30px;
-  }
+.workshop-sample-title{
+  font-size: 24px !important;
+}
 
   .course-news-letters {
     height: auto !important;
   }
 
-  .contact-heroic-image {
-    height: 249px !important;
-  }
 
   .contact-way {
     padding: 0 17px;
@@ -3111,7 +3126,6 @@ li {
   }
 
 
-  /**Home page - Explore Learnign with STEPS Robotics**/
 
   @media (max-width: 1023px) {
     /* .explore_learning {
@@ -3141,12 +3155,18 @@ li {
 
     .course-heroic,
     .contacts {
-      height: 434px !important;
+      height: 306px !important;
     }
 
     .responisve_explore {
       bottom: 10px !important;
       top: auto !important;
+    }
+
+    .contact-heroic-image {
+      width: 351px !important;
+      height: auto !important;
+      margin-top: -13px !important;
     }
 
     .top-triangle {
@@ -3872,4 +3892,51 @@ li {
   .gallery_section img {
     /* width: auto !important; */
   }
+}
+
+@media screen and (min-width: 375px) and (max-width: 425px) {
+    .contact-heroic-image {
+    object-fit: contain;
+    margin-top: -7px;
+    width: 100% !important;
+    height: auto !important;
+}
+}
+
+
+@media screen and (width: 375px) {
+  .contact-heroic-image {
+    object-fit: contain;
+    margin-top: 2px;
+    width: 100% !important;
+    height: auto !important;
+}
+.programs-heroic-image {
+    object-fit: contain;
+    width: 100% !important;
+    height: auto !important;
+    margin-top: 35px !important;
+}
+.course-heroic-image {
+    width: 100% !important;
+    height: 265px !important;
+}
+}
+@media screen and (width: 320px) {
+  .contact-heroic-image {
+    object-fit: contain;
+    margin-top: 40px;
+    width: 100% !important;
+    height: 287px !important;
+}
+.programs-heroic-image {
+    object-fit: contain;
+    width: 100% !important;
+    height: 303px !important;
+    margin-top: 0 !important;
+}
+.course-heroic-image {
+    width: 100% !important;
+    height: 287px !important;
+}
 }

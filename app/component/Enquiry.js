@@ -51,16 +51,16 @@ export default function Enquiry({ onClose }) {
             Contact us immediately...
           </p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-4 items-center px-4 sm:px-8 pb-6 sm:pb-8">
+<div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-4 items-center px-4 sm:px-8 pb-0 sm:pb-6 md:pb-8">
           <div className="flex justify-center items-end md:order-1 order-2 h-full">
-            <div className="relative w-full h-[200px] sm:h-[280px] md:h-full">
-              <Image
-                src="/enquiry-popup.png"
-                alt="Steps Robotics"
-                fill
-                className="object-cover mt-[25px] object-bottom"
-                priority
-              />
+<div className="relative w-full h-[200px] sm:h-[280px] md:h-full mt-[-25px] md:mt-0">
+           <Image
+  src="/enquiry-popup.png"
+  alt="Steps Robotics"
+  fill
+  className="object-cover mt-0 sm:mt-[25px] object-bottom"
+  priority
+/>
             </div>
           </div>
           <div className="flex flex-col items-center justify-center text-center space-y-3 sm:space-y-4 md:order-2 order-1">

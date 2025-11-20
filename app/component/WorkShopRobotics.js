@@ -46,7 +46,7 @@ export default function WorkShopRobotics() {
           {/* ✅ Play button triggers popup full video */}
           <div
             onClick={handlePlayVideo}
-            className="absolute -top-10 left-1/2 -translate-x-1/2 cursor-pointer z-20"
+            className="absolute -top-13 left-1/2 -translate-x-1/2 cursor-pointer z-20"
           >
             <div className="w-18 h-18 mt-[2px] border border-red-500 bg-[#FFB800] rounded-full flex items-center justify-center shadow-lg hover:scale-105 transition-transform">
               <Play className="w-8 h-8 text-white" />
@@ -85,7 +85,7 @@ export default function WorkShopRobotics() {
 
       {/* Enquiry Modal */}
       {showBookTrial && (
-        <div className="fixed inset-0 z-[9999] m-[30px] animate-fadeIn">
+<div className="fixed inset-0 z-[9999] m-0 sm:m-[30px] animate-fadeIn">
           <div className="min-h-screen flex items-center justify-center p-0">
             <Enquiry onClose={closeModal} />
           </div>

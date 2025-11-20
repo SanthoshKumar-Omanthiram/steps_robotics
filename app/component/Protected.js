@@ -4,6 +4,8 @@ import { useRouter, useSearchParams } from "next/navigation"
 import { motion } from "framer-motion"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
+import ProjectCard from "./ProjectCard"
+
 
 export default function Protected() {
   const router = useRouter()
@@ -14,7 +16,6 @@ export default function Protected() {
   const [loading, setLoading] = useState(false)
 
   const next = searchParams.get("next") || "/"
-
   useEffect(() => {
     setError("")
   }, [username, password])

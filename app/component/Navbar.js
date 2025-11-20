@@ -191,20 +191,18 @@ const Navbar = () => {
   return (
     <nav className="bg-white header_part shadow-sm fixed top-0 left-0 right-0 z-50">
       {/* TOP STRIP */}
-      <div className="w-full flex flex-col sm:flex-row text-sm relative z-10">
-
-        <div className="bg-[#FFD700] sm:w-[40%] w-full flex justify-center items-center h-4 sm:h-2">
-          <div className="flex space-x-2 text-black">
-          </div>
+      <div className="w-full flex flex-row text-sm relative z-10">
+        <div className="bg-[#FFD700] w-[35%] flex justify-center items-center h-2">
         </div>
 
-        <div className="bg-black sm:w-[64%] w-full flex justify-center items-center h-2 
-                  sm:-ml-[30px]          
-                  sm:[clip-path:polygon(20px_0,100%_0,100%_100%,0_100%)]">
-          <div className="flex space-x-2 text-black">
-          </div>
+        <div
+          className="bg-black w-[90%] flex justify-center items-center h-2
+               -ml-[30px]
+               [clip-path:polygon(20px_0,100%_0,100%_100%,0_100%)]"
+        >
         </div>
       </div>
+
 
       <div className="container-custom">
         <div className="flex justify-between items-center h-24">

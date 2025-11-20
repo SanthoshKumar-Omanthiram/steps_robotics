@@ -1593,11 +1593,7 @@ button {
   width: 100%;
 }
 
-@media (max-width: 500px) {
-  .about img {
-    margin-top: 24px;
-  }
-}
+
 
 
 
@@ -3698,14 +3694,7 @@ li {
   }
 }
 
-/* @media (max-width: 428px) {
-  .slider-left{
-    left: -10px;
-  }
-  .slider-right{
-    right: -10px;
-  }
-} */
+
 
 @media (max-width: 1023px) {
   .banner_info_sec {
@@ -3750,9 +3739,19 @@ li {
   }
 }
 
+@media (max-width:959px) {
+  .about img{
+    margin-top: 14px;
+  }
+  
+}
+
 @media (max-width: 767px) {
   .about {
     height: 450px !important;
+  }
+  .about img{
+    margin-top: 48px;
   }
 
   .about_banner_heading {
@@ -3764,29 +3763,42 @@ li {
   .about_banner_heading {
     margin-top: 0;
   }
-
   .about {
     height: 410px !important;
   }
-
+  .about img{
+    margin-top: 33px;
+  }
   .contact-heroic-image {
     margin-top: 0 !important;
   }
 }
 
-@media (max-width: 500px) {
+/* @media (max-width: 500px) {
   .about img {
     margin-top: -1px;
+  }
+} */
+
+@media (max-width: 500px) {
+  .about img {
+    margin-top: 33px;
   }
 }
 
 @media (max-width: 479px) {
   .about img {
-    margin-top: -47px !important;
+    margin-top: 33px;
   }
 }
 
-@media (max-width: 428px) {
+@media (max-width: 545px) {
+  .about img {
+    margin-top: 38px;
+  }
+}
+
+@media (max-width: 430px) {
   .about {
     height: 260px !important;
     width: 100%;
@@ -3800,11 +3812,9 @@ li {
     height: 100% !important;
     margin-top: -24px !important;
   }
-
   .about_banner_heading h2 {
     font-size: 24px !important;
   }
-
   .heroic-title {
     -webkit-text-stroke: .3px white;
     text-shadow: .5px 1px 0 #FFFFFF, 3px 2px 0 #FFFFFF, 1px 1px 1px rgba(59, 59, 59, 0.8), 2px 2px 1px rgba(59, 59, 59, 0.5);

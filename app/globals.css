@@ -648,6 +648,7 @@ button {
   width: 100%;
 }
 
+
 .getin-touch {
   background-image: url('/contact_bg_bottom.jpg');
   background-position: center;
@@ -1104,7 +1105,7 @@ button {
 
 @media (max-width: 500px) {
   .banner-text h1 {
-    margin-top: 100px;
+    margin-top: 30px !important;
     font-size: 20px;
   }
 
@@ -1588,15 +1589,11 @@ button {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  height: 280px !important;
+  height: 280px;
   width: 100%;
 }
 
-@media (max-width: 500px) {
-  .about img {
-    margin-top: 24px;
-  }
-}
+
 
 
 
@@ -3699,14 +3696,7 @@ li {
   }
 }
 
-/* @media (max-width: 428px) {
-  .slider-left{
-    left: -10px;
-  }
-  .slider-right{
-    right: -10px;
-  }
-} */
+
 
 @media (max-width: 1023px) {
   .banner_info_sec {
@@ -3717,6 +3707,18 @@ li {
 @media (max-width: 768px) {
   .banner_info_sec {
     bottom: -50px !important;
+  }
+}
+
+@media (max-width: 447px) {
+  .banner_info_sec p{
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 430px) {
+  .banner_info_sec p{
+    font-size: 11px;
   }
 }
 
@@ -3739,9 +3741,19 @@ li {
   }
 }
 
+@media (max-width:959px) {
+  .about img{
+    margin-top: 14px;
+  }
+  
+}
+
 @media (max-width: 767px) {
   .about {
     height: 450px !important;
+  }
+  .about img{
+    margin-top: 48px;
   }
 
   .about_banner_heading {
@@ -3753,9 +3765,62 @@ li {
   .about_banner_heading {
     margin-top: 0;
   }
-
   .about {
-    height: 420px !important;
+    height: 410px !important;
+  }
+  .about img{
+    margin-top: 33px;
+  }
+  .contact-heroic-image {
+    margin-top: 0 !important;
+  }
+}
+
+/* @media (max-width: 500px) {
+  .about img {
+    margin-top: -1px;
+  }
+} */
+
+@media (max-width: 500px) {
+  .about img {
+    margin-top: 33px;
+  }
+}
+
+@media (max-width: 479px) {
+  .about img {
+    margin-top: 33px;
+  }
+}
+
+@media (max-width: 545px) {
+  .about img {
+    margin-top: 38px;
+  }
+}
+
+@media (max-width: 430px) {
+  .about {
+    height: 260px !important;
+    width: 100%;
+  }
+
+  .about img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80% !important;
+    height: 100% !important;
+    margin-top: -24px !important;
+  }
+  .about_banner_heading h2 {
+    font-size: 24px !important;
+  }
+  .heroic-title {
+    -webkit-text-stroke: .3px white;
+    text-shadow: .5px 1px 0 #FFFFFF, 3px 2px 0 #FFFFFF, 1px 1px 1px rgba(59, 59, 59, 0.8), 2px 2px 1px rgba(59, 59, 59, 0.5);
+
   }
 }
 
@@ -3773,6 +3838,13 @@ li {
 @media (max-width: 1023px) {
   .about_VMV_img img {
     width: 300px;
+    margin-bottom: -30px !important;
+  }
+}
+
+@media (max-width:428px) {
+  .about_VMV_img img {
+    width: 180px;
     margin-bottom: -30px !important;
   }
 }

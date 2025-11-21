@@ -1,24 +1,18 @@
 "use client";
-
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-
-export default function page() {
+export default function AuthLogin() {
   const router = useRouter();
   const searchParams = useSearchParams();
-
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-
   const next = searchParams.get("next") || "/";
-
   async function onSubmit(e) {
     e.preventDefault();
     setLoading(true);
     setError("");
-
     try {
       const res = await fetch("/api/dev-login", {
         method: "POST",
@@ -29,7 +23,6 @@ export default function page() {
         const data = await res.json().catch(() => ({}));
         throw new Error(data?.error || "Invalid username or password");
       }
-
       router.replace(next);
     } catch (err) {
       setError(err.message);
@@ -37,15 +30,15 @@ export default function page() {
       setLoading(false);
     }
   }
-
   return (
     <div className="min-h-screen flex items-center justify-center px-4 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white">
       <div className="w-full max-w-sm bg-gray-900/70 backdrop-blur-md border border-gray-700 shadow-xl rounded-2xl p-6">
         <h1 className="text-2xl font-semibold text-center mb-4">Authentication Login</h1>
-
-        {error && <p className="text-sm text-red-400 text-center mb-2">{error}</p>}
-
+        {error && (
+          <p className="text-sm text-red-400 text-center mb-2">{error}</p>
+        )}
         <form onSubmit={onSubmit} className="grid gap-4">
+          {/* Username */}
           <div className="grid gap-1">
             <label className="text-sm text-gray-300">Username</label>
             <input
@@ -57,7 +50,7 @@ export default function page() {
               className="w-full p-3 bg-gray-800 border border-gray-700 text-white rounded-xl focus:outline-none focus:ring-2 focus:ring-gray-500"
             />
           </div>
-
+          {/* Password */}
           <div className="grid gap-1">
             <label className="text-sm text-gray-300">Password</label>
             <input
@@ -69,7 +62,7 @@ export default function page() {
               className="w-full p-3 bg-gray-800 border border-gray-700 text-white rounded-xl focus:outline-none focus:ring-2 focus:ring-gray-500"
             />
           </div>
-
+          {/* Submit */}
           <button
             type="submit"
             disabled={loading}

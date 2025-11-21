@@ -1530,7 +1530,7 @@ button {
 }
 
 .steps-robotics-others {
-  background-image: url('/others.svg');
+  background-image: url('/other.svg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
@@ -3158,10 +3158,12 @@ li {
       bottom: 10px !important;
       top: auto !important;
     }
-
+.join-title {
+  font-size: 20px !important;
+}
     .contact-heroic-image {
       width: 351px !important;
-      height: auto !important;
+      height: 197px !important;
       margin-top: -13px !important;
     }
 
@@ -3909,7 +3911,7 @@ li {
     object-fit: contain;
     margin-top: -7px;
     width: 100% !important;
-    height: auto !important;
+    height: 197px !important;
 }
 }
 
@@ -3919,7 +3921,7 @@ li {
     object-fit: contain;
     margin-top: 2px;
     width: 100% !important;
-    height: auto !important;
+    height: 197px !important;
 }
 .programs-heroic-image {
     object-fit: contain;

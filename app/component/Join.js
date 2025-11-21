@@ -18,7 +18,7 @@ export default function Join() {
           </p>
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-          <div className="lg:col-span-6 h-[505px]">
+          <div className="lg:col-span-6 h-[340px] lg:h-[505px]">
             <Image 
               src="/join.png" 
               alt="Join"

@@ -28,34 +28,30 @@ export default function Bootcamp({ title }) {
       'height=500,width=600,resizable=yes,scrollbars=yes'
     );
   };
-  const fetchModules = useCallback(async () => {
-    try {
-      const res = await axios.get(`/api/modules?courseId=${id}`);
-      setModules(res.data || []);
-      const lessonPromises = res.data.map(m =>
-        axios.get('/api/lessons', { params: { moduleId: m.id } })
-      );
-      const lessonResults = await Promise.all(lessonPromises);
-      const lessonsMap = {};
-      res.data.forEach((m, i) => {
-        lessonsMap[m.id] = lessonResults[i]?.data || [];
-      });
-      setLessons(lessonsMap);
-
-      // ✅ Open first module by default
-      if (res.data.length > 0) {
-        setOpenModule(res.data[0].id);
-      }
-    } catch (err) {
-      console.error('Error fetching modules/lessons:', err);
-    }
-  }, [id]);
-
-  useEffect(() => {
+ useEffect(() => {
     fetchModules();
-    const width = window.innerWidth;
-    console.log("Current width:", width, "px");
-  }, [fetchModules]);
+  }, []);
+
+ const fetchModules = async () => {
+  try {
+    const res = await axios.get(`/api/modules?courseId=${id}`);
+    setModules(res.data || []);
+    const lessonPromises = res.data.map(m =>
+      axios.get('/api/lessons', { params: { moduleId: m.id } })
+    );
+    const lessonResults = await Promise.all(lessonPromises);
+    const lessonsMap = {};
+    res.data.forEach((m, i) => {
+      lessonsMap[m.id] = lessonResults[i]?.data || [];
+    });
+    setLessons(lessonsMap);
+    if (res.data.length > 0) {
+      setOpenModule(res.data[0].id);
+    }
+  } catch (err) {
+    console.error('Error fetching modules/lessons:', err);
+  }
+};
 
 
   return (

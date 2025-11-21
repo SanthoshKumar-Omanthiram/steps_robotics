@@ -7,6 +7,7 @@ import { usePathname } from "next/navigation";
 import { getNavbarData } from "../utils/menuItems";
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import NavbarSkeleton from "./NavbarSkeleton";
 
 
 const Navbar = () => {
@@ -156,32 +157,32 @@ const Navbar = () => {
   }, []);
 
   //Navbar Loader
-  function NavbarSkeleton() {
-    return (
-      <div className="container-custom animate-pulse">
-        <div className="flex justify-between items-center h-24">
+  // function NavbarSkeleton() {
+  //   return (
+  //     <div className="container-custom animate-pulse">
+  //       <div className="flex justify-between items-center h-24">
 
-          {/* Logo skeleton */}
-          <div className="h-10 w-40 bg-gray-300 rounded"></div>
+  //         {/* Logo skeleton */}
+  //         <div className="h-10 w-40 bg-gray-300 rounded"></div>
 
-          {/* Menu skeleton */}
-          <div className="hidden md:flex space-x-6">
-            <div className="h-6 w-16 bg-gray-300 rounded"></div>
-            <div className="h-6 w-20 bg-gray-300 rounded"></div>
-            <div className="h-6 w-24 bg-gray-300 rounded"></div>
-            <div className="h-6 w-20 bg-gray-300 rounded"></div>
-          </div>
+  //         {/* Menu skeleton */}
+  //         <div className="hidden md:flex space-x-6">
+  //           <div className="h-6 w-16 bg-gray-300 rounded"></div>
+  //           <div className="h-6 w-20 bg-gray-300 rounded"></div>
+  //           <div className="h-6 w-24 bg-gray-300 rounded"></div>
+  //           <div className="h-6 w-20 bg-gray-300 rounded"></div>
+  //         </div>
 
-          {/* Icons skeleton */}
-          <div className="flex space-x-3">
-            <div className="h-10 w-10 bg-gray-300 rounded-full"></div>
-            <div className="h-10 w-10 bg-gray-300 rounded-full"></div>
-            <div className="h-10 w-10 bg-gray-300 rounded-full"></div>
-          </div>
-        </div>
-      </div>
-    );
-  }
+  //         {/* Icons skeleton */}
+  //         <div className="flex space-x-3">
+  //           <div className="h-10 w-10 bg-gray-300 rounded-full"></div>
+  //           <div className="h-10 w-10 bg-gray-300 rounded-full"></div>
+  //           <div className="h-10 w-10 bg-gray-300 rounded-full"></div>
+  //         </div>
+  //       </div>
+  //     </div>
+  //   );
+  // }
 
   if (navLoading) return <NavbarSkeleton />;
 

@@ -7,6 +7,7 @@ import { usePathname } from "next/navigation";
 import { getNavbarData } from "../utils/menuItems";
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import NavbarSkeleton from "./NavbarSkeleton";
 
 
 const Navbar = () => {
@@ -156,32 +157,32 @@ const Navbar = () => {
   }, []);
 
   //Navbar Loader
-  function NavbarSkeleton() {
-    return (
-      <div className="container-custom animate-pulse">
-        <div className="flex justify-between items-center h-24">
+  // function NavbarSkeleton() {
+  //   return (
+  //     <div className="container-custom animate-pulse">
+  //       <div className="flex justify-between items-center h-24">
 
-          {/* Logo skeleton */}
-          <div className="h-10 w-40 bg-gray-300 rounded"></div>
+  //         {/* Logo skeleton */}
+  //         <div className="h-10 w-40 bg-gray-300 rounded"></div>
 
-          {/* Menu skeleton */}
-          <div className="hidden md:flex space-x-6">
-            <div className="h-6 w-16 bg-gray-300 rounded"></div>
-            <div className="h-6 w-20 bg-gray-300 rounded"></div>
-            <div className="h-6 w-24 bg-gray-300 rounded"></div>
-            <div className="h-6 w-20 bg-gray-300 rounded"></div>
-          </div>
+  //         {/* Menu skeleton */}
+  //         <div className="hidden md:flex space-x-6">
+  //           <div className="h-6 w-16 bg-gray-300 rounded"></div>
+  //           <div className="h-6 w-20 bg-gray-300 rounded"></div>
+  //           <div className="h-6 w-24 bg-gray-300 rounded"></div>
+  //           <div className="h-6 w-20 bg-gray-300 rounded"></div>
+  //         </div>
 
-          {/* Icons skeleton */}
-          <div className="flex space-x-3">
-            <div className="h-10 w-10 bg-gray-300 rounded-full"></div>
-            <div className="h-10 w-10 bg-gray-300 rounded-full"></div>
-            <div className="h-10 w-10 bg-gray-300 rounded-full"></div>
-          </div>
-        </div>
-      </div>
-    );
-  }
+  //         {/* Icons skeleton */}
+  //         <div className="flex space-x-3">
+  //           <div className="h-10 w-10 bg-gray-300 rounded-full"></div>
+  //           <div className="h-10 w-10 bg-gray-300 rounded-full"></div>
+  //           <div className="h-10 w-10 bg-gray-300 rounded-full"></div>
+  //         </div>
+  //       </div>
+  //     </div>
+  //   );
+  // }
 
   if (navLoading) return <NavbarSkeleton />;
 
@@ -423,37 +424,6 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Mobile Menu */}
-      {/* {isOpen && (
-                <div className="md:hidden bg-white shadow-lg border-t">
-                    <div className="flex flex-col items-center space-y-4 py-6">
-                        <Link href="/" className="text-gray-700 hover:text-yellow-500" onClick={() => setIsOpen(false)}>
-                            Home
-                        </Link>
-                        <Link href="/courses/4" className="text-gray-700 hover:text-yellow-500" onClick={() => setIsOpen(false)}>
-                            Courses
-                        </Link>
-                        <Link href="/programs" className="text-gray-700 hover:text-yellow-500" onClick={() => setIsOpen(false)}>
-                            Programs
-                        </Link>
-                        <Link href="/about" className="text-gray-700 hover:text-yellow-500" onClick={() => setIsOpen(false)}>
-                            About us
-                        </Link>
-                        <Link href="/contacts" className="text-gray-700 hover:text-yellow-500" onClick={() => setIsOpen(false)}>
-                            Contact
-                        </Link>
-                    </div>
-                </div>
-            )} */}
-      {/* Hamburger Button */}
-      {/* <button
-                onClick={() => setIsOpen(!isOpen)}
-                className="md:hidden p-2 text-gray-800"
-            >
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                </svg>
-            </button> */}
 
       {/* Mobile Menu Overlay */}
       {
@@ -515,12 +485,12 @@ const Navbar = () => {
                   </Link>
 
                   {/* Courses - Dropdown */}
-                  <div className="border-b border-gray-200">
+                  {/* <div className="border-b border-gray-200">
                     <button
                       onClick={() => toggleDropdown('courses')}
                       className="w-full px-6 py-4 flex items-center justify-between text-gray-800 font-medium hover:bg-gray-50"
                     >
-                      <span>Courses</span>
+                      <Link href="/courses" onClick={() => setIsOpen(false)}>Courses</Link>
                       <svg
                         className={`w-5 h-5 transition-transform ${openDropdown === 'courses' ? 'rotate-180' : ''}`}
                         fill="none"
@@ -533,22 +503,70 @@ const Navbar = () => {
 
                     {openDropdown === 'courses' && (
                       <div className="bg-gray-50">
-                        {['VEX 123', 'VEX GO', 'VEX IQ', 'VEX AIM'].map((course) => (
+                        {courses.map((course) => (
                           <Link
-                            key={course}
-                            href={`/courses/${course.toLowerCase().replace(' ', '-')}`}
-                            onClick={() => setIsOpen(false)}
-                            className={`block px-10 py-3 text-sm ${course === 'VEX GO'
-                              ? 'bg-yellow-200 text-gray-800 font-semibold'
-                              : 'text-gray-700 hover:bg-yellow-100'
+                            key={course.id}
+                            href={`/courses/${course.id}`}
+                            className={`block px-4 py-3 text-gray-700 hover:bg-yellow-50 hover:text-yellow-500 transition-colors ${pathname === "/courses"
+                              ? "bg-yellow-50 border-yellow-400 text-yellow-600"
+                              : "border-transparent text-gray-800 hover:bg-yellow-50 hover:border-yellow-400 hover:text-yellow-600"
                               }`}
+                            onClick={() => setIsOpen(false)}
                           >
-                            {course}
+                            {course.title}
                           </Link>
                         ))}
                       </div>
                     )}
+                  </div> */}
+                  <div className="border-b border-gray-200">
+                    <button
+                      onClick={() => toggleDropdown("courses")}
+                      className={`w-full px-6 py-4 flex items-center justify-between font-medium transition-colors
+      ${pathname.startsWith("/courses")
+                          ? "bg-yellow-50 border-yellow-400 text-yellow-600"
+                          : "border-transparent text-gray-800 hover:bg-gray-50"
+                        }`}
+                    >
+                      <Link href="/courses" onClick={() => setIsOpen(false)}>
+                        Courses
+                      </Link>
+
+                      <svg
+                        className={`w-5 h-5 transition-transform ${openDropdown === "courses" ? "rotate-180" : ""}`}
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                      </svg>
+                    </button>
+
+                    {/* Dropdown Items */}
+                    {openDropdown === "courses" && (
+                      <div className="bg-gray-50">
+                        {courses.map((course) => {
+                          const isActive = pathname === `/courses/${course.id}`;
+
+                          return (
+                            <Link
+                              key={course.id}
+                              href={`/courses/${course.id}`}
+                              className={`block px-4 py-3 transition-colors
+              ${isActive
+                                  ? "bg-yellow-50 border-yellow-400 text-yellow-600"
+                                  : "text-gray-800 hover:bg-yellow-50 hover:text-yellow-600"
+                                }`}
+                              onClick={() => setIsOpen(false)}
+                            >
+                              {course.title}
+                            </Link>
+                          );
+                        })}
+                      </div>
+                    )}
                   </div>
+
 
                   <Link
                     href="/programs"

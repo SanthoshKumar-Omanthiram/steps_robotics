@@ -103,12 +103,7 @@ export default function HeroSlider() {
   const handleRegisterClick = () => setShowBookTrial(true);
   const closeModal = () => setShowBookTrial(false);
 
-  useEffect(() => {
-    const timer = setInterval(() => {
-      nextSlide();
-    }, 5000);
-    return () => clearInterval(timer);
-  }, []);
+
 
 
 
@@ -119,6 +114,13 @@ export default function HeroSlider() {
     setDirection(1);
     setCurrentSlide((prev) => (prev + 1) % banners.length);
   }, [banners.length]);
+
+    useEffect(() => {
+    const timer = setInterval(() => {
+      nextSlide();
+    }, 4000);
+    return () => clearInterval(timer);
+  });
 
   // const nextSlide = () => {
   //   if (banners.length === 0) return;

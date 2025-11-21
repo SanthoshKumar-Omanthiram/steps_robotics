@@ -89,7 +89,7 @@ export default function Workshop() {
               </div>
             </div>
 <div
-  className="p-6 md:p-5 rounded-xl 
+  className="p-6 mt-[10px] md:p-5 rounded-xl 
   bg-[linear-gradient(180deg,#FDF9EB_0%,#FFFFFF_37.53%)] 
   border-t border-l border-r border-gray-100 
   shadow-[5px_-5px_13.8px_rgba(0,0,0,0.12)]"

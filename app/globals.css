@@ -3163,7 +3163,7 @@ li {
 }
     .contact-heroic-image {
       width: 351px !important;
-      height: auto !important;
+      height: 197px !important;
       margin-top: -13px !important;
     }
 
@@ -3911,7 +3911,7 @@ li {
     object-fit: contain;
     margin-top: -7px;
     width: 100% !important;
-    height: auto !important;
+    height: 197px !important;
 }
 }
 
@@ -3921,7 +3921,7 @@ li {
     object-fit: contain;
     margin-top: 2px;
     width: 100% !important;
-    height: auto !important;
+    height: 197px !important;
 }
 .programs-heroic-image {
     object-fit: contain;

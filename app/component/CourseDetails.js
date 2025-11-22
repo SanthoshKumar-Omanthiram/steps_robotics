@@ -80,12 +80,17 @@ export default function CourseDetails({ title }) {
   ];
 
   if (!course)
-    return (
-      <div className="flex justify-center items-center min-h-screen">
-        <p className="text-gray-500 animate-pulse">Loading course details...</p>
-      </div>
-    );
-
+  return (
+    <div className="flex justify-center items-center min-h-screen">
+      <Image
+        src="/logo.png"
+        alt="Loading"
+        width={120}
+        height={120}
+        className="fade-logo"
+      />
+    </div>
+  );
   return (
     <div className="course-details-section">
     <div className="container-custom py-10">

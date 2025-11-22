@@ -13,7 +13,7 @@ export default function UpcomingCourses() {
     {
       id: 1,
       title: "Robotics Foundation",
-      image: "/kid1.png",
+      image: "/upcomes.png",
       venue: "ABC International",
       startDate: "15 Nov 2025",
       batch: "Evening Batch",
@@ -22,7 +22,7 @@ export default function UpcomingCourses() {
     {
       id: 2,
       title: "Introduction Robot",
-      image: "/kid2.png",
+      image: "/upcomes.png",
       venue: "STAR International",
       startDate: "15 Nov 2025",
       batch: "Evening Batch",

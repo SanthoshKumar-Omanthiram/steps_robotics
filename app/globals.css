@@ -3952,3 +3952,31 @@ li {
     height: 287px !important;
 }
 }
+
+.spin-logo {
+  animation: spin-logo-rotate 2.2s linear infinite;
+}
+
+@keyframes spin-logo-rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.fade-logo {
+  animation: fadeLogo 1.8s ease-in-out infinite;
+}
+
+@keyframes fadeLogo {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.25;
+  }
+  100% {
+    opacity: 1;
+  }
+}

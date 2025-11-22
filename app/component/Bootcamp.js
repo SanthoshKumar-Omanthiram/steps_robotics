@@ -29,31 +29,34 @@ export default function Bootcamp({ title }) {
     );
   };
  useEffect(() => {
-    fetchModules();
-  }, []);
+  const fetchModules = async () => {
+    try {
+      const res = await axios.get(`/api/modules?courseId=${id}`);
+      setModules(res.data || []);
 
- const fetchModules = async () => {
-  try {
-    const res = await axios.get(`/api/modules?courseId=${id}`);
-    setModules(res.data || []);
-    const lessonPromises = res.data.map(m =>
-      axios.get('/api/lessons', { params: { moduleId: m.id } })
-    );
-    const lessonResults = await Promise.all(lessonPromises);
-    const lessonsMap = {};
-    res.data.forEach((m, i) => {
-      lessonsMap[m.id] = lessonResults[i]?.data || [];
-    });
-    setLessons(lessonsMap);
-    if (res.data.length > 0) {
-      setOpenModule(res.data[0].id);
+      const lessonPromises = res.data.map((m) =>
+        axios.get('/api/lessons', { params: { moduleId: m.id } })
+      );
+
+      const lessonResults = await Promise.all(lessonPromises);
+
+      const lessonsMap = {};
+      res.data.forEach((m, i) => {
+        lessonsMap[m.id] = lessonResults[i]?.data || [];
+      });
+
+      setLessons(lessonsMap);
+
+      if (res.data.length > 0) {
+        setOpenModule(res.data[0].id);
+      }
+    } catch (err) {
+      console.error('Error fetching modules/lessons:', err);
     }
-  } catch (err) {
-    console.error('Error fetching modules/lessons:', err);
-  }
-};
+  };
 
-
+  fetchModules();
+}, [id]);
   return (
     <div className="min-h-screen bootcamp-section pt-8 pb-5 px-4">
       <div className="container-custom">

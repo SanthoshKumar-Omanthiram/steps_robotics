@@ -33,6 +33,24 @@ export default function SignIn() {
       }
     }
   }, [router]);
+useEffect(() => {
+  function hideElements() {
+    const footer = document.querySelector(".footer");
+    if (footer) footer.style.display = "none";
+  }
+  hideElements();
+  const observer = new MutationObserver(() => hideElements());
+  observer.observe(document.body, {
+    childList: true,
+    subtree: true,
+  });
+
+  return () => {
+    observer.disconnect();
+    const footer = document.querySelector(".footer");
+    if (footer) footer.style.display = "";
+  };
+}, []);
 
   const handleLogin = async (e) => {
     e.preventDefault();

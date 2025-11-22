@@ -30,31 +30,12 @@ export default function Sidebar({ collapsed, setCollapsed }) {
     const timer = setTimeout(() => setLoading(false), 2000);
     return () => clearTimeout(timer);
   }, [router]);
-
-  // const menuItems = [
-  //   { href: "/admin/dashboard", label: "Dashboard", icon: "/dashboard.svg" },
-  //   { href: "/admin/add-users", label: "Users", icon: "/user.svg" },
-  //   { href: "/admin/dashboard/courses", label: "LMS", icon: "/lms.svg" },
-  //   {
-  //     href: "/admin/tasks",
-  //     label: "Classroom & Timetable",
-  //     icon: "/class.svg",
-  //   },
-  //   { href: "/admin/dashboard/programs", label: "Programs", icon: "/exam.svg" },
-  //   {href: "/admin/dashboard/content", label: "Content", icon: "/exam.svg"},
-  //   { href: "/admin/analytics", label: "Attendance", icon: "/attendance.svg" },
-  //   { href: "/admin/reports", label: "Exams & Results", icon: "/exam.svg" },
-  //   { href: "/admin/dashboard/roles", label: "Roles", icon: "/user.svg" },
-  //   { href: "/admin/dashboard/contacts", label: "Contact Info", icon: "/user.svg" },
-  //   { href: "/admin/settings", label: "Settings", icon: "/settings.svg" },
-  // ];
   const menuItems = [
-    { href: "/admin/dashboard", label: "Dashboard", icon: "/dashboard.svg" },
+    { href: "/admin/dashboard", label: "Dashboard", icon: "/attendance.svg" },
     { href: "/admin/add-users", label: "Users", icon: "/user.svg" },
     { href: "/admin/dashboard/courses", label: "Courses", icon: "/lms.svg" },
-    { href: "/admin/dashboard/courses", label: "Courses", icon: "/lms.svg" },
     {
-      href: "/admin/tasks",
+      href: "/admin/dashboard",
       label: "Classroom & Timetable",
       icon: "/class.svg",
     },
@@ -66,11 +47,8 @@ export default function Sidebar({ collapsed, setCollapsed }) {
     { href: "/admin/dashboard/contacts", label: "Contact Info", icon: "/user.svg" },
     { href: "/admin/settings", label: "Settings", icon: "/settings.svg" },
   ];
-
-
   if (loading) return <Loader />;
   if (!authorized) return null;
-
   return (
     <>
       {mobileOpen && (
@@ -87,13 +65,18 @@ export default function Sidebar({ collapsed, setCollapsed }) {
           ${collapsed ? "lg:w-20" : "lg:w-64"} 
           w-64`}
       >
-        {/* Header */}
         <div
           className={`p-4 border-b border-gray-200 flex items-center ${collapsed ? "lg:justify-center" : "justify-between"
             }`}
         >
           <div className={`flex items-center ${collapsed ? "lg:hidden" : ""}`}>
-            <h1 className="text-xl text-black font-bold">Steps Admin</h1>
+              <Image
+                            src="/logo.png"
+                            alt="Steps Robotics Logo"
+                            width={700}
+                            height={60}
+                            className="h-16 w-auto"
+                          />
           </div>
           <div className={`${collapsed ? "hidden lg:block" : "hidden"}`}>
             <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center text-teal-600 font-bold text-lg shadow-md">
@@ -107,8 +90,6 @@ export default function Sidebar({ collapsed, setCollapsed }) {
             ✕
           </button>
         </div>
-
-        {/* Collapse button */}
         <div className="hidden lg:block p-3 border-b border-gray-100">
           <button
             onClick={() => setCollapsed(!collapsed)}
@@ -127,8 +108,6 @@ export default function Sidebar({ collapsed, setCollapsed }) {
             </span>
           </button>
         </div>
-
-        {/* Menu Items */}
         <nav className="p-3 space-y-1 flex-1 overflow-y-auto custom-scrollbar">
           {menuItems.map((item) => (
             <Link
@@ -154,8 +133,6 @@ export default function Sidebar({ collapsed, setCollapsed }) {
               </span>
             </Link>
           ))}
-
-          {/* Logout */}
           <button
             onClick={handleLogout}
             className={`w-full flex items-center px-3 py-3 rounded-lg hover:bg-red-50 hover:text-red-600 transition-all duration-200 group relative ${collapsed ? "lg:justify-center lg:px-2" : ""
@@ -176,8 +153,6 @@ export default function Sidebar({ collapsed, setCollapsed }) {
             </span>
           </button>
         </nav>
-
-        {/* Footer user info */}
         <div
           className={`p-4 border-t border-gray-200 mt-auto ${collapsed ? "lg:px-2" : ""
             } bg-gray-50`}
@@ -196,8 +171,6 @@ export default function Sidebar({ collapsed, setCollapsed }) {
           </div>
         </div>
       </aside>
-
-      {/* Mobile toggle */}
       <button
         className="fixed top-4 left-4 z-30 lg:hidden p-3 bg-gradient-to-r from-teal-600 to-teal-700 text-white rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200"
         onClick={() => setMobileOpen(true)}
